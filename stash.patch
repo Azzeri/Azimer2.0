@@ -1,0 +1,2377 @@
+diff --git a/.idea/Azimer.iml b/.idea/Azimer.iml
+index c956989..ec912a3 100644
+--- a/.idea/Azimer.iml
++++ b/.idea/Azimer.iml
+@@ -1,7 +1,52 @@
+ <?xml version="1.0" encoding="UTF-8"?>
+ <module type="WEB_MODULE" version="4">
+   <component name="NewModuleRootManager">
+-    <content url="file://$MODULE_DIR$" />
++    <content url="file://$MODULE_DIR$">
++      <sourceFolder url="file://$MODULE_DIR$/src/App" isTestSource="false" packagePrefix="App\" />
++      <sourceFolder url="file://$MODULE_DIR$/src/UI" isTestSource="false" packagePrefix="UI\" />
++      <sourceFolder url="file://$MODULE_DIR$/tests" isTestSource="true" packagePrefix="App\Tests\" />
++      <excludeFolder url="file://$MODULE_DIR$/vendor/carbonphp/carbon-doctrine-types" />
++      <excludeFolder url="file://$MODULE_DIR$/vendor/composer" />
++      <excludeFolder url="file://$MODULE_DIR$/vendor/nesbot/carbon" />
++      <excludeFolder url="file://$MODULE_DIR$/vendor/psr/cache" />
++      <excludeFolder url="file://$MODULE_DIR$/vendor/psr/clock" />
++      <excludeFolder url="file://$MODULE_DIR$/vendor/psr/container" />
++      <excludeFolder url="file://$MODULE_DIR$/vendor/psr/event-dispatcher" />
++      <excludeFolder url="file://$MODULE_DIR$/vendor/psr/log" />
++      <excludeFolder url="file://$MODULE_DIR$/vendor/runtime/frankenphp-symfony" />
++      <excludeFolder url="file://$MODULE_DIR$/vendor/symfony/cache" />
++      <excludeFolder url="file://$MODULE_DIR$/vendor/symfony/cache-contracts" />
++      <excludeFolder url="file://$MODULE_DIR$/vendor/symfony/clock" />
++      <excludeFolder url="file://$MODULE_DIR$/vendor/symfony/config" />
++      <excludeFolder url="file://$MODULE_DIR$/vendor/symfony/console" />
++      <excludeFolder url="file://$MODULE_DIR$/vendor/symfony/dependency-injection" />
++      <excludeFolder url="file://$MODULE_DIR$/vendor/symfony/deprecation-contracts" />
++      <excludeFolder url="file://$MODULE_DIR$/vendor/symfony/dotenv" />
++      <excludeFolder url="file://$MODULE_DIR$/vendor/symfony/error-handler" />
++      <excludeFolder url="file://$MODULE_DIR$/vendor/symfony/event-dispatcher" />
++      <excludeFolder url="file://$MODULE_DIR$/vendor/symfony/event-dispatcher-contracts" />
++      <excludeFolder url="file://$MODULE_DIR$/vendor/symfony/filesystem" />
++      <excludeFolder url="file://$MODULE_DIR$/vendor/symfony/finder" />
++      <excludeFolder url="file://$MODULE_DIR$/vendor/symfony/flex" />
++      <excludeFolder url="file://$MODULE_DIR$/vendor/symfony/framework-bundle" />
++      <excludeFolder url="file://$MODULE_DIR$/vendor/symfony/http-foundation" />
++      <excludeFolder url="file://$MODULE_DIR$/vendor/symfony/http-kernel" />
++      <excludeFolder url="file://$MODULE_DIR$/vendor/symfony/polyfill-intl-grapheme" />
++      <excludeFolder url="file://$MODULE_DIR$/vendor/symfony/polyfill-intl-normalizer" />
++      <excludeFolder url="file://$MODULE_DIR$/vendor/symfony/polyfill-mbstring" />
++      <excludeFolder url="file://$MODULE_DIR$/vendor/symfony/polyfill-php83" />
++      <excludeFolder url="file://$MODULE_DIR$/vendor/symfony/polyfill-uuid" />
++      <excludeFolder url="file://$MODULE_DIR$/vendor/symfony/routing" />
++      <excludeFolder url="file://$MODULE_DIR$/vendor/symfony/runtime" />
++      <excludeFolder url="file://$MODULE_DIR$/vendor/symfony/service-contracts" />
++      <excludeFolder url="file://$MODULE_DIR$/vendor/symfony/string" />
++      <excludeFolder url="file://$MODULE_DIR$/vendor/symfony/translation" />
++      <excludeFolder url="file://$MODULE_DIR$/vendor/symfony/translation-contracts" />
++      <excludeFolder url="file://$MODULE_DIR$/vendor/symfony/uid" />
++      <excludeFolder url="file://$MODULE_DIR$/vendor/symfony/var-dumper" />
++      <excludeFolder url="file://$MODULE_DIR$/vendor/symfony/var-exporter" />
++      <excludeFolder url="file://$MODULE_DIR$/vendor/symfony/yaml" />
++    </content>
+     <orderEntry type="inheritedJdk" />
+     <orderEntry type="sourceFolder" forTests="false" />
+   </component>
+diff --git a/.idea/php.xml b/.idea/php.xml
+index f324872..5458bb5 100644
+--- a/.idea/php.xml
++++ b/.idea/php.xml
+@@ -10,9 +10,131 @@
+     <option name="highlightLevel" value="WARNING" />
+     <option name="transferred" value="true" />
+   </component>
++  <component name="PhpIncludePathManager">
++    <include_path>
++      <path value="$PROJECT_DIR$/vendor/psr/event-dispatcher" />
++      <path value="$PROJECT_DIR$/vendor/psr/cache" />
++      <path value="$PROJECT_DIR$/vendor/psr/container" />
++      <path value="$PROJECT_DIR$/vendor/psr/log" />
++      <path value="$PROJECT_DIR$/vendor/symfony/cache" />
++      <path value="$PROJECT_DIR$/vendor/runtime/frankenphp-symfony" />
++      <path value="$PROJECT_DIR$/vendor/symfony/http-kernel" />
++      <path value="$PROJECT_DIR$/vendor/symfony/var-dumper" />
++      <path value="$PROJECT_DIR$/vendor/symfony/event-dispatcher" />
++      <path value="$PROJECT_DIR$/vendor/symfony/deprecation-contracts" />
++      <path value="$PROJECT_DIR$/vendor/symfony/string" />
++      <path value="$PROJECT_DIR$/vendor/symfony/var-exporter" />
++      <path value="$PROJECT_DIR$/vendor/symfony/finder" />
++      <path value="$PROJECT_DIR$/vendor/symfony/framework-bundle" />
++      <path value="$PROJECT_DIR$/vendor/symfony/polyfill-mbstring" />
++      <path value="$PROJECT_DIR$/vendor/symfony/polyfill-php83" />
++      <path value="$PROJECT_DIR$/vendor/symfony/polyfill-intl-normalizer" />
++      <path value="$PROJECT_DIR$/vendor/symfony/dependency-injection" />
++      <path value="$PROJECT_DIR$/vendor/symfony/http-foundation" />
++      <path value="$PROJECT_DIR$/vendor/symfony/filesystem" />
++      <path value="$PROJECT_DIR$/vendor/symfony/cache-contracts" />
++      <path value="$PROJECT_DIR$/vendor/symfony/polyfill-intl-grapheme" />
++      <path value="$PROJECT_DIR$/vendor/symfony/event-dispatcher-contracts" />
++      <path value="$PROJECT_DIR$/vendor/symfony/error-handler" />
++      <path value="$PROJECT_DIR$/vendor/symfony/runtime" />
++      <path value="$PROJECT_DIR$/vendor/symfony/yaml" />
++      <path value="$PROJECT_DIR$/vendor/symfony/console" />
++      <path value="$PROJECT_DIR$/vendor/symfony/routing" />
++      <path value="$PROJECT_DIR$/vendor/symfony/config" />
++      <path value="$PROJECT_DIR$/vendor/symfony/flex" />
++      <path value="$PROJECT_DIR$/vendor/symfony/service-contracts" />
++      <path value="$PROJECT_DIR$/vendor/symfony/dotenv" />
++      <path value="$PROJECT_DIR$/vendor/composer" />
++      <path value="$PROJECT_DIR$/vendor/symfony/polyfill-uuid" />
++      <path value="$PROJECT_DIR$/vendor/symfony/uid" />
++      <path value="$PROJECT_DIR$/vendor/psr/clock" />
++      <path value="$PROJECT_DIR$/vendor/symfony/translation-contracts" />
++      <path value="$PROJECT_DIR$/vendor/symfony/clock" />
++      <path value="$PROJECT_DIR$/vendor/symfony/translation" />
++      <path value="$PROJECT_DIR$/vendor/carbonphp/carbon-doctrine-types" />
++      <path value="$PROJECT_DIR$/vendor/nesbot/carbon" />
++    </include_path>
++  </component>
++  <component name="PhpInterpreters">
++    <interpreters>
++      <interpreter id="6402b86c-dd3e-4cde-aa67-2b0bfc5bcf6e" name="php" home="docker-compose://DATA" auto="false" debugger_id="php.debugger.XDebug">
++        <remote_data INTERPRETER_PATH="php" HELPERS_PATH="/opt/.phpstorm_helpers" VALID="true" RUN_AS_ROOT_VIA_SUDO="false" DOCKER_ACCOUNT_NAME="Docker" DOCKER_COMPOSE_SERVICE_NAME="php" DOCKER_REMOTE_PROJECT_PATH="/opt/project">
++          <type_data command="RUN" />
++          <dockerComposeConfigurationPaths>
++            <item value="$PROJECT_DIR$/compose.yaml" />
++          </dockerComposeConfigurationPaths>
++          <envs />
++        </remote_data>
++      </interpreter>
++    </interpreters>
++  </component>
++  <component name="PhpInterpretersPhpInfoCache">
++    <phpInfoCache>
++      <interpreter name="php">
++        <phpinfo binary_type="PHP" php_cgi="/usr/local/bin/php-cgi" php_cli="/usr/local/bin/php" path_separator=":" version="8.3.16">
++          <additional_php_ini>/usr/local/etc/php/conf.d/docker-php-ext-apcu.ini, /usr/local/etc/php/conf.d/docker-php-ext-intl.ini, /usr/local/etc/php/conf.d/docker-php-ext-opcache.ini, /usr/local/etc/php/conf.d/docker-php-ext-sodium.ini, /usr/local/etc/php/conf.d/docker-php-ext-xdebug.ini, /usr/local/etc/php/conf.d/docker-php-ext-zip.ini, /usr/local/etc/php/app.conf.d/10-app.ini, /usr/local/etc/php/app.conf.d/20-app.dev.ini</additional_php_ini>
++          <configuration_file>/usr/local/etc/php/php.ini</configuration_file>
++          <configuration_options>
++            <configuration_option name="include_path" value=".:/usr/local/lib/php" />
++          </configuration_options>
++          <debuggers>
++            <debugger_info debugger="xdebug" debugger_version="3.4.1">
++              <debug_extensions />
++            </debugger_info>
++          </debuggers>
++          <loaded_extensions>
++            <extension name="Core" />
++            <extension name="PDO" />
++            <extension name="Phar" />
++            <extension name="Reflection" />
++            <extension name="SPL" />
++            <extension name="SimpleXML" />
++            <extension name="Zend OPcache" />
++            <extension name="apcu" />
++            <extension name="ctype" />
++            <extension name="curl" />
++            <extension name="date" />
++            <extension name="dom" />
++            <extension name="fileinfo" />
++            <extension name="filter" />
++            <extension name="hash" />
++            <extension name="iconv" />
++            <extension name="intl" />
++            <extension name="json" />
++            <extension name="libxml" />
++            <extension name="mbstring" />
++            <extension name="mysqlnd" />
++            <extension name="openssl" />
++            <extension name="pcre" />
++            <extension name="pdo_sqlite" />
++            <extension name="posix" />
++            <extension name="random" />
++            <extension name="readline" />
++            <extension name="session" />
++            <extension name="sodium" />
++            <extension name="sqlite3" />
++            <extension name="standard" />
++            <extension name="tokenizer" />
++            <extension name="xdebug" />
++            <extension name="xml" />
++            <extension name="xmlreader" />
++            <extension name="xmlwriter" />
++            <extension name="zip" />
++            <extension name="zlib" />
++          </loaded_extensions>
++        </phpinfo>
++      </interpreter>
++    </phpInfoCache>
++  </component>
++  <component name="PhpProjectSharedConfiguration" php_language_level="8.3" />
+   <component name="PhpStanOptionsConfiguration">
+     <option name="transferred" value="true" />
+   </component>
++  <component name="PhpUnit">
++    <phpunit_settings>
++      <PhpUnitSettings custom_loader_path="$PROJECT_DIR$/vendor/autoload.php" />
++    </phpunit_settings>
++  </component>
+   <component name="PsalmOptionsConfiguration">
+     <option name="transferred" value="true" />
+   </component>
+diff --git a/bin/console b/bin/console
+index d8d530e..2fc4fe9 100755
+--- a/bin/console
++++ b/bin/console
+@@ -1,7 +1,7 @@
+ #!/usr/bin/env php
+ <?php
+ 
+-use App\Kernel;
++use App\Shared\Infrastructure\Symfony\Kernel;
+ use Symfony\Bundle\FrameworkBundle\Console\Application;
+ 
+ if (!is_dir(dirname(__DIR__).'/vendor')) {
+diff --git a/composer.json b/composer.json
+index a5de590..77aa178 100644
+--- a/composer.json
++++ b/composer.json
+@@ -9,12 +9,14 @@
+         "php": ">=8.3.16",
+         "ext-ctype": "*",
+         "ext-iconv": "*",
++        "nesbot/carbon": "*",
+         "runtime/frankenphp-symfony": "^0.2.0",
+         "symfony/console": "7.2.*",
+         "symfony/dotenv": "7.2.*",
+         "symfony/flex": "^2",
+         "symfony/framework-bundle": "7.2.*",
+         "symfony/runtime": "7.2.*",
++        "symfony/uid": "7.2.*",
+         "symfony/yaml": "7.2.*"
+     },
+     "config": {
+diff --git a/composer.lock b/composer.lock
+index a25fe9a..f398909 100644
+--- a/composer.lock
++++ b/composer.lock
+@@ -4,8 +4,183 @@
+         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
+         "This file is @generated automatically"
+     ],
+-    "content-hash": "ce4dd1ce5bf6e263b5c5aebca298a121",
++    "content-hash": "e787371407b29b9cffde95a242d43611",
+     "packages": [
++        {
++            "name": "carbonphp/carbon-doctrine-types",
++            "version": "3.2.0",
++            "source": {
++                "type": "git",
++                "url": "https://github.com/CarbonPHP/carbon-doctrine-types.git",
++                "reference": "18ba5ddfec8976260ead6e866180bd5d2f71aa1d"
++            },
++            "dist": {
++                "type": "zip",
++                "url": "https://api.github.com/repos/CarbonPHP/carbon-doctrine-types/zipball/18ba5ddfec8976260ead6e866180bd5d2f71aa1d",
++                "reference": "18ba5ddfec8976260ead6e866180bd5d2f71aa1d",
++                "shasum": ""
++            },
++            "require": {
++                "php": "^8.1"
++            },
++            "conflict": {
++                "doctrine/dbal": "<4.0.0 || >=5.0.0"
++            },
++            "require-dev": {
++                "doctrine/dbal": "^4.0.0",
++                "nesbot/carbon": "^2.71.0 || ^3.0.0",
++                "phpunit/phpunit": "^10.3"
++            },
++            "type": "library",
++            "autoload": {
++                "psr-4": {
++                    "Carbon\\Doctrine\\": "src/Carbon/Doctrine/"
++                }
++            },
++            "notification-url": "https://packagist.org/downloads/",
++            "license": [
++                "MIT"
++            ],
++            "authors": [
++                {
++                    "name": "KyleKatarn",
++                    "email": "kylekatarnls@gmail.com"
++                }
++            ],
++            "description": "Types to use Carbon in Doctrine",
++            "keywords": [
++                "carbon",
++                "date",
++                "datetime",
++                "doctrine",
++                "time"
++            ],
++            "support": {
++                "issues": "https://github.com/CarbonPHP/carbon-doctrine-types/issues",
++                "source": "https://github.com/CarbonPHP/carbon-doctrine-types/tree/3.2.0"
++            },
++            "funding": [
++                {
++                    "url": "https://github.com/kylekatarnls",
++                    "type": "github"
++                },
++                {
++                    "url": "https://opencollective.com/Carbon",
++                    "type": "open_collective"
++                },
++                {
++                    "url": "https://tidelift.com/funding/github/packagist/nesbot/carbon",
++                    "type": "tidelift"
++                }
++            ],
++            "time": "2024-02-09T16:56:22+00:00"
++        },
++        {
++            "name": "nesbot/carbon",
++            "version": "3.8.4",
++            "source": {
++                "type": "git",
++                "url": "https://github.com/CarbonPHP/carbon.git",
++                "reference": "129700ed449b1f02d70272d2ac802357c8c30c58"
++            },
++            "dist": {
++                "type": "zip",
++                "url": "https://api.github.com/repos/CarbonPHP/carbon/zipball/129700ed449b1f02d70272d2ac802357c8c30c58",
++                "reference": "129700ed449b1f02d70272d2ac802357c8c30c58",
++                "shasum": ""
++            },
++            "require": {
++                "carbonphp/carbon-doctrine-types": "<100.0",
++                "ext-json": "*",
++                "php": "^8.1",
++                "psr/clock": "^1.0",
++                "symfony/clock": "^6.3 || ^7.0",
++                "symfony/polyfill-mbstring": "^1.0",
++                "symfony/translation": "^4.4.18 || ^5.2.1|| ^6.0 || ^7.0"
++            },
++            "provide": {
++                "psr/clock-implementation": "1.0"
++            },
++            "require-dev": {
++                "doctrine/dbal": "^3.6.3 || ^4.0",
++                "doctrine/orm": "^2.15.2 || ^3.0",
++                "friendsofphp/php-cs-fixer": "^3.57.2",
++                "kylekatarnls/multi-tester": "^2.5.3",
++                "ondrejmirtes/better-reflection": "^6.25.0.4",
++                "phpmd/phpmd": "^2.15.0",
++                "phpstan/extension-installer": "^1.3.1",
++                "phpstan/phpstan": "^1.11.2",
++                "phpunit/phpunit": "^10.5.20",
++                "squizlabs/php_codesniffer": "^3.9.0"
++            },
++            "bin": [
++                "bin/carbon"
++            ],
++            "type": "library",
++            "extra": {
++                "laravel": {
++                    "providers": [
++                        "Carbon\\Laravel\\ServiceProvider"
++                    ]
++                },
++                "phpstan": {
++                    "includes": [
++                        "extension.neon"
++                    ]
++                },
++                "branch-alias": {
++                    "dev-2.x": "2.x-dev",
++                    "dev-master": "3.x-dev"
++                }
++            },
++            "autoload": {
++                "psr-4": {
++                    "Carbon\\": "src/Carbon/"
++                }
++            },
++            "notification-url": "https://packagist.org/downloads/",
++            "license": [
++                "MIT"
++            ],
++            "authors": [
++                {
++                    "name": "Brian Nesbitt",
++                    "email": "brian@nesbot.com",
++                    "homepage": "https://markido.com"
++                },
++                {
++                    "name": "kylekatarnls",
++                    "homepage": "https://github.com/kylekatarnls"
++                }
++            ],
++            "description": "An API extension for DateTime that supports 281 different languages.",
++            "homepage": "https://carbon.nesbot.com",
++            "keywords": [
++                "date",
++                "datetime",
++                "time"
++            ],
++            "support": {
++                "docs": "https://carbon.nesbot.com/docs",
++                "issues": "https://github.com/briannesbitt/Carbon/issues",
++                "source": "https://github.com/briannesbitt/Carbon"
++            },
++            "funding": [
++                {
++                    "url": "https://github.com/sponsors/kylekatarnls",
++                    "type": "github"
++                },
++                {
++                    "url": "https://opencollective.com/Carbon#sponsor",
++                    "type": "opencollective"
++                },
++                {
++                    "url": "https://tidelift.com/subscription/pkg/packagist-nesbot-carbon?utm_source=packagist-nesbot-carbon&utm_medium=referral&utm_campaign=readme",
++                    "type": "tidelift"
++                }
++            ],
++            "time": "2024-12-27T09:25:35+00:00"
++        },
+         {
+             "name": "psr/cache",
+             "version": "3.0.0",
+@@ -55,6 +230,54 @@
+             },
+             "time": "2021-02-03T23:26:27+00:00"
+         },
++        {
++            "name": "psr/clock",
++            "version": "1.0.0",
++            "source": {
++                "type": "git",
++                "url": "https://github.com/php-fig/clock.git",
++                "reference": "e41a24703d4560fd0acb709162f73b8adfc3aa0d"
++            },
++            "dist": {
++                "type": "zip",
++                "url": "https://api.github.com/repos/php-fig/clock/zipball/e41a24703d4560fd0acb709162f73b8adfc3aa0d",
++                "reference": "e41a24703d4560fd0acb709162f73b8adfc3aa0d",
++                "shasum": ""
++            },
++            "require": {
++                "php": "^7.0 || ^8.0"
++            },
++            "type": "library",
++            "autoload": {
++                "psr-4": {
++                    "Psr\\Clock\\": "src/"
++                }
++            },
++            "notification-url": "https://packagist.org/downloads/",
++            "license": [
++                "MIT"
++            ],
++            "authors": [
++                {
++                    "name": "PHP-FIG",
++                    "homepage": "https://www.php-fig.org/"
++                }
++            ],
++            "description": "Common interface for reading the clock.",
++            "homepage": "https://github.com/php-fig/clock",
++            "keywords": [
++                "clock",
++                "now",
++                "psr",
++                "psr-20",
++                "time"
++            ],
++            "support": {
++                "issues": "https://github.com/php-fig/clock/issues",
++                "source": "https://github.com/php-fig/clock/tree/1.0.0"
++            },
++            "time": "2022-11-25T14:36:26+00:00"
++        },
+         {
+             "name": "psr/container",
+             "version": "2.0.2",
+@@ -434,6 +657,80 @@
+             ],
+             "time": "2024-09-25T14:20:29+00:00"
+         },
++        {
++            "name": "symfony/clock",
++            "version": "v7.2.0",
++            "source": {
++                "type": "git",
++                "url": "https://github.com/symfony/clock.git",
++                "reference": "b81435fbd6648ea425d1ee96a2d8e68f4ceacd24"
++            },
++            "dist": {
++                "type": "zip",
++                "url": "https://api.github.com/repos/symfony/clock/zipball/b81435fbd6648ea425d1ee96a2d8e68f4ceacd24",
++                "reference": "b81435fbd6648ea425d1ee96a2d8e68f4ceacd24",
++                "shasum": ""
++            },
++            "require": {
++                "php": ">=8.2",
++                "psr/clock": "^1.0",
++                "symfony/polyfill-php83": "^1.28"
++            },
++            "provide": {
++                "psr/clock-implementation": "1.0"
++            },
++            "type": "library",
++            "autoload": {
++                "files": [
++                    "Resources/now.php"
++                ],
++                "psr-4": {
++                    "Symfony\\Component\\Clock\\": ""
++                },
++                "exclude-from-classmap": [
++                    "/Tests/"
++                ]
++            },
++            "notification-url": "https://packagist.org/downloads/",
++            "license": [
++                "MIT"
++            ],
++            "authors": [
++                {
++                    "name": "Nicolas Grekas",
++                    "email": "p@tchwork.com"
++                },
++                {
++                    "name": "Symfony Community",
++                    "homepage": "https://symfony.com/contributors"
++                }
++            ],
++            "description": "Decouples applications from the system clock",
++            "homepage": "https://symfony.com",
++            "keywords": [
++                "clock",
++                "psr20",
++                "time"
++            ],
++            "support": {
++                "source": "https://github.com/symfony/clock/tree/v7.2.0"
++            },
++            "funding": [
++                {
++                    "url": "https://symfony.com/sponsor",
++                    "type": "custom"
++                },
++                {
++                    "url": "https://github.com/fabpot",
++                    "type": "github"
++                },
++                {
++                    "url": "https://tidelift.com/funding/github/packagist/symfony/symfony",
++                    "type": "tidelift"
++                }
++            ],
++            "time": "2024-09-25T14:21:43+00:00"
++        },
+         {
+             "name": "symfony/config",
+             "version": "v7.2.0",
+@@ -1909,6 +2206,85 @@
+             ],
+             "time": "2024-09-09T11:45:10+00:00"
+         },
++        {
++            "name": "symfony/polyfill-uuid",
++            "version": "v1.31.0",
++            "source": {
++                "type": "git",
++                "url": "https://github.com/symfony/polyfill-uuid.git",
++                "reference": "21533be36c24be3f4b1669c4725c7d1d2bab4ae2"
++            },
++            "dist": {
++                "type": "zip",
++                "url": "https://api.github.com/repos/symfony/polyfill-uuid/zipball/21533be36c24be3f4b1669c4725c7d1d2bab4ae2",
++                "reference": "21533be36c24be3f4b1669c4725c7d1d2bab4ae2",
++                "shasum": ""
++            },
++            "require": {
++                "php": ">=7.2"
++            },
++            "provide": {
++                "ext-uuid": "*"
++            },
++            "suggest": {
++                "ext-uuid": "For best performance"
++            },
++            "type": "library",
++            "extra": {
++                "thanks": {
++                    "url": "https://github.com/symfony/polyfill",
++                    "name": "symfony/polyfill"
++                }
++            },
++            "autoload": {
++                "files": [
++                    "bootstrap.php"
++                ],
++                "psr-4": {
++                    "Symfony\\Polyfill\\Uuid\\": ""
++                }
++            },
++            "notification-url": "https://packagist.org/downloads/",
++            "license": [
++                "MIT"
++            ],
++            "authors": [
++                {
++                    "name": "Grégoire Pineau",
++                    "email": "lyrixx@lyrixx.info"
++                },
++                {
++                    "name": "Symfony Community",
++                    "homepage": "https://symfony.com/contributors"
++                }
++            ],
++            "description": "Symfony polyfill for uuid functions",
++            "homepage": "https://symfony.com",
++            "keywords": [
++                "compatibility",
++                "polyfill",
++                "portable",
++                "uuid"
++            ],
++            "support": {
++                "source": "https://github.com/symfony/polyfill-uuid/tree/v1.31.0"
++            },
++            "funding": [
++                {
++                    "url": "https://symfony.com/sponsor",
++                    "type": "custom"
++                },
++                {
++                    "url": "https://github.com/fabpot",
++                    "type": "github"
++                },
++                {
++                    "url": "https://tidelift.com/funding/github/packagist/symfony/symfony",
++                    "type": "tidelift"
++                }
++            ],
++            "time": "2024-09-09T11:45:10+00:00"
++        },
+         {
+             "name": "symfony/routing",
+             "version": "v7.2.0",
+@@ -2239,6 +2615,253 @@
+             ],
+             "time": "2024-11-13T13:31:26+00:00"
+         },
++        {
++            "name": "symfony/translation",
++            "version": "v7.2.2",
++            "source": {
++                "type": "git",
++                "url": "https://github.com/symfony/translation.git",
++                "reference": "e2674a30132b7cc4d74540d6c2573aa363f05923"
++            },
++            "dist": {
++                "type": "zip",
++                "url": "https://api.github.com/repos/symfony/translation/zipball/e2674a30132b7cc4d74540d6c2573aa363f05923",
++                "reference": "e2674a30132b7cc4d74540d6c2573aa363f05923",
++                "shasum": ""
++            },
++            "require": {
++                "php": ">=8.2",
++                "symfony/deprecation-contracts": "^2.5|^3",
++                "symfony/polyfill-mbstring": "~1.0",
++                "symfony/translation-contracts": "^2.5|^3.0"
++            },
++            "conflict": {
++                "symfony/config": "<6.4",
++                "symfony/console": "<6.4",
++                "symfony/dependency-injection": "<6.4",
++                "symfony/http-client-contracts": "<2.5",
++                "symfony/http-kernel": "<6.4",
++                "symfony/service-contracts": "<2.5",
++                "symfony/twig-bundle": "<6.4",
++                "symfony/yaml": "<6.4"
++            },
++            "provide": {
++                "symfony/translation-implementation": "2.3|3.0"
++            },
++            "require-dev": {
++                "nikic/php-parser": "^4.18|^5.0",
++                "psr/log": "^1|^2|^3",
++                "symfony/config": "^6.4|^7.0",
++                "symfony/console": "^6.4|^7.0",
++                "symfony/dependency-injection": "^6.4|^7.0",
++                "symfony/finder": "^6.4|^7.0",
++                "symfony/http-client-contracts": "^2.5|^3.0",
++                "symfony/http-kernel": "^6.4|^7.0",
++                "symfony/intl": "^6.4|^7.0",
++                "symfony/polyfill-intl-icu": "^1.21",
++                "symfony/routing": "^6.4|^7.0",
++                "symfony/service-contracts": "^2.5|^3",
++                "symfony/yaml": "^6.4|^7.0"
++            },
++            "type": "library",
++            "autoload": {
++                "files": [
++                    "Resources/functions.php"
++                ],
++                "psr-4": {
++                    "Symfony\\Component\\Translation\\": ""
++                },
++                "exclude-from-classmap": [
++                    "/Tests/"
++                ]
++            },
++            "notification-url": "https://packagist.org/downloads/",
++            "license": [
++                "MIT"
++            ],
++            "authors": [
++                {
++                    "name": "Fabien Potencier",
++                    "email": "fabien@symfony.com"
++                },
++                {
++                    "name": "Symfony Community",
++                    "homepage": "https://symfony.com/contributors"
++                }
++            ],
++            "description": "Provides tools to internationalize your application",
++            "homepage": "https://symfony.com",
++            "support": {
++                "source": "https://github.com/symfony/translation/tree/v7.2.2"
++            },
++            "funding": [
++                {
++                    "url": "https://symfony.com/sponsor",
++                    "type": "custom"
++                },
++                {
++                    "url": "https://github.com/fabpot",
++                    "type": "github"
++                },
++                {
++                    "url": "https://tidelift.com/funding/github/packagist/symfony/symfony",
++                    "type": "tidelift"
++                }
++            ],
++            "time": "2024-12-07T08:18:10+00:00"
++        },
++        {
++            "name": "symfony/translation-contracts",
++            "version": "v3.5.1",
++            "source": {
++                "type": "git",
++                "url": "https://github.com/symfony/translation-contracts.git",
++                "reference": "4667ff3bd513750603a09c8dedbea942487fb07c"
++            },
++            "dist": {
++                "type": "zip",
++                "url": "https://api.github.com/repos/symfony/translation-contracts/zipball/4667ff3bd513750603a09c8dedbea942487fb07c",
++                "reference": "4667ff3bd513750603a09c8dedbea942487fb07c",
++                "shasum": ""
++            },
++            "require": {
++                "php": ">=8.1"
++            },
++            "type": "library",
++            "extra": {
++                "thanks": {
++                    "url": "https://github.com/symfony/contracts",
++                    "name": "symfony/contracts"
++                },
++                "branch-alias": {
++                    "dev-main": "3.5-dev"
++                }
++            },
++            "autoload": {
++                "psr-4": {
++                    "Symfony\\Contracts\\Translation\\": ""
++                },
++                "exclude-from-classmap": [
++                    "/Test/"
++                ]
++            },
++            "notification-url": "https://packagist.org/downloads/",
++            "license": [
++                "MIT"
++            ],
++            "authors": [
++                {
++                    "name": "Nicolas Grekas",
++                    "email": "p@tchwork.com"
++                },
++                {
++                    "name": "Symfony Community",
++                    "homepage": "https://symfony.com/contributors"
++                }
++            ],
++            "description": "Generic abstractions related to translation",
++            "homepage": "https://symfony.com",
++            "keywords": [
++                "abstractions",
++                "contracts",
++                "decoupling",
++                "interfaces",
++                "interoperability",
++                "standards"
++            ],
++            "support": {
++                "source": "https://github.com/symfony/translation-contracts/tree/v3.5.1"
++            },
++            "funding": [
++                {
++                    "url": "https://symfony.com/sponsor",
++                    "type": "custom"
++                },
++                {
++                    "url": "https://github.com/fabpot",
++                    "type": "github"
++                },
++                {
++                    "url": "https://tidelift.com/funding/github/packagist/symfony/symfony",
++                    "type": "tidelift"
++                }
++            ],
++            "time": "2024-09-25T14:20:29+00:00"
++        },
++        {
++            "name": "symfony/uid",
++            "version": "v7.2.0",
++            "source": {
++                "type": "git",
++                "url": "https://github.com/symfony/uid.git",
++                "reference": "2d294d0c48df244c71c105a169d0190bfb080426"
++            },
++            "dist": {
++                "type": "zip",
++                "url": "https://api.github.com/repos/symfony/uid/zipball/2d294d0c48df244c71c105a169d0190bfb080426",
++                "reference": "2d294d0c48df244c71c105a169d0190bfb080426",
++                "shasum": ""
++            },
++            "require": {
++                "php": ">=8.2",
++                "symfony/polyfill-uuid": "^1.15"
++            },
++            "require-dev": {
++                "symfony/console": "^6.4|^7.0"
++            },
++            "type": "library",
++            "autoload": {
++                "psr-4": {
++                    "Symfony\\Component\\Uid\\": ""
++                },
++                "exclude-from-classmap": [
++                    "/Tests/"
++                ]
++            },
++            "notification-url": "https://packagist.org/downloads/",
++            "license": [
++                "MIT"
++            ],
++            "authors": [
++                {
++                    "name": "Grégoire Pineau",
++                    "email": "lyrixx@lyrixx.info"
++                },
++                {
++                    "name": "Nicolas Grekas",
++                    "email": "p@tchwork.com"
++                },
++                {
++                    "name": "Symfony Community",
++                    "homepage": "https://symfony.com/contributors"
++                }
++            ],
++            "description": "Provides an object-oriented API to generate and represent UIDs",
++            "homepage": "https://symfony.com",
++            "keywords": [
++                "UID",
++                "ulid",
++                "uuid"
++            ],
++            "support": {
++                "source": "https://github.com/symfony/uid/tree/v7.2.0"
++            },
++            "funding": [
++                {
++                    "url": "https://symfony.com/sponsor",
++                    "type": "custom"
++                },
++                {
++                    "url": "https://github.com/fabpot",
++                    "type": "github"
++                },
++                {
++                    "url": "https://tidelift.com/funding/github/packagist/symfony/symfony",
++                    "type": "tidelift"
++                }
++            ],
++            "time": "2024-09-25T14:21:43+00:00"
++        },
+         {
+             "name": "symfony/var-dumper",
+             "version": "v7.2.0",
+diff --git a/config/packages/translation.yaml b/config/packages/translation.yaml
+new file mode 100644
+index 0000000..b3f8f9c
+--- /dev/null
++++ b/config/packages/translation.yaml
+@@ -0,0 +1,7 @@
++framework:
++    default_locale: en
++    translator:
++        default_path: '%kernel.project_dir%/translations'
++        fallbacks:
++            - en
++        providers:
+diff --git a/config/services.yaml b/config/services.yaml
+index 2d6a76f..9275067 100644
+--- a/config/services.yaml
++++ b/config/services.yaml
+@@ -14,11 +14,12 @@ services:
+     # makes classes in src/ available to be used as services
+     # this creates a service per class whose id is the fully-qualified class name
+     App\:
+-        resource: '../src/'
++        resource: '../src/App/*'
+         exclude:
+             - '../src/DependencyInjection/'
+             - '../src/Entity/'
+             - '../src/Kernel.php'
++            - '../src/App/**/{Migrations,EventSubscriber}'
+ 
+     # add more service definitions when explicit configuration is needed
+     # please note that last definitions always *replace* previous ones
+diff --git a/notes.md b/notes.md
+new file mode 100644
+index 0000000..e53d6c4
+--- /dev/null
++++ b/notes.md
+@@ -0,0 +1,11 @@
++### TODO
++    - vehicles domain layer
++    - vehicles infrastructure and application layers
++    - vehicles and utilities tests
++    - quality tools
++    - vehicles query model (elastic maybe)
++    - a nice readme for a portfolio
++    - security context
++    - employee context
++    - fire brigades context
++    - other contexts...
+diff --git a/public/index.php b/public/index.php
+index 9982c21..9aca788 100644
+--- a/public/index.php
++++ b/public/index.php
+@@ -1,6 +1,6 @@
+ <?php
+ 
+-use App\Kernel;
++use App\Shared\Infrastructure\Symfony\Kernel;
+ 
+ require_once dirname(__DIR__).'/vendor/autoload_runtime.php';
+ 
+diff --git a/src/App/FireBrigadeUnit/Application/Service/FireBrigadeUnitApiService.php b/src/App/FireBrigadeUnit/Application/Service/FireBrigadeUnitApiService.php
+new file mode 100644
+index 0000000..f410f0b
+--- /dev/null
++++ b/src/App/FireBrigadeUnit/Application/Service/FireBrigadeUnitApiService.php
+@@ -0,0 +1,26 @@
++<?php
++
++declare(strict_types=1);
++
++namespace App\FireBrigadeUnit\Application\Service;
++
++/**
++ * This service can be used by other bounded contexts to fetch data about units
++ *
++ * @author Mariusz Waloszczyk
++ */
++interface FireBrigadeUnitApiService
++{
++    /**
++     * Find a single unit by its ID
++     *
++     * @param string $id - Identifier of the searched unit
++     * @return array{
++     *     id: string,
++     *     superiorUnitId: string,
++     *     subservientUnitsIds: array<int,string>
++     * }|null
++     * @author Mariusz Waloszczyk
++     */
++    public function findUnitById(string $id): ?array;
++}
+diff --git a/src/App/Fleet/Domain/Dto/VehicleInputData.php b/src/App/Fleet/Domain/Dto/VehicleInputData.php
+new file mode 100644
+index 0000000..2d2e8dd
+--- /dev/null
++++ b/src/App/Fleet/Domain/Dto/VehicleInputData.php
+@@ -0,0 +1,37 @@
++<?php
++
++declare(strict_types=1);
++
++namespace App\Fleet\Domain\Dto;
++
++/**
++ * Input data required to create/update a vehicle
++ *
++ * @author Mariusz Waloszczyk
++ */
++final readonly class VehicleInputData
++{
++    /**
++     * @param string|null $plateNumber
++     * @param string|null $status
++     * @param string|null $type
++     * @param string|null $make
++     * @param string|null $model
++     * @param int|null $productionYear
++     * @param int|null $productionMonth
++     * @param string|null $fireBrigadeUnitId
++     *
++     * @author Mariusz Waloszczyk
++     */
++    public function __construct(
++        public ?string $plateNumber = null,
++        public ?string $status = null,
++        public ?string $type = null,
++        public ?string $make = null,
++        public ?string $model = null,
++        public ?int $productionYear = null,
++        public ?int $productionMonth = null,
++        public ?string $fireBrigadeUnitId = null
++    ) {
++    }
++}
+diff --git a/src/App/Fleet/Domain/Enum/FleetPermission.php b/src/App/Fleet/Domain/Enum/FleetPermission.php
+new file mode 100644
+index 0000000..1f4e832
+--- /dev/null
++++ b/src/App/Fleet/Domain/Enum/FleetPermission.php
+@@ -0,0 +1,22 @@
++<?php
++
++declare(strict_types=1);
++
++namespace App\Fleet\Domain\Enum;
++
++/**
++ * Permissions defining access to fleet functionalities
++ *
++ * @author Mariusz Waloszczyk
++ */
++enum FleetPermission: string
++{
++    /** Add vehicles to all units in the system */
++    case ADD_ALL = 'add_all';
++
++    /** Add vehicles only to the unit assigned to manager */
++    case ADD_OWN = 'add_own';
++
++    /** Add vehicles to units that are subservient to unit assigned to manager */
++    case ADD_SUBSERVIENT = 'add_subservient';
++}
+diff --git a/src/App/Fleet/Domain/Enum/VehicleStatus.php b/src/App/Fleet/Domain/Enum/VehicleStatus.php
+new file mode 100644
+index 0000000..53fec3e
+--- /dev/null
++++ b/src/App/Fleet/Domain/Enum/VehicleStatus.php
+@@ -0,0 +1,25 @@
++<?php
++
++declare(strict_types=1);
++
++namespace App\Fleet\Domain\Enum;
++
++/**
++ * Statuses representing a lifecycle of a vehicle
++ *
++ * @author Mariusz Waloszczyk
++ */
++enum VehicleStatus: string
++{
++    /** Vehicle being currently used */
++    case IN_USE = 'in_use';
++
++    /** Vehicle that cannot be currently used and awaits maintenance */
++    case AWAITING_MAINTENANCE = 'awaiting_maintenance';
++
++    /** Vehicle that is currently undergoing maintenance */
++    case IN_MAINTENANCE = 'in_maintenance';
++
++    /** Vehicle that was abandoned and will not be used anymore */
++    case ABANDONED = 'abandoned';
++}
+diff --git a/src/App/Fleet/Domain/Enum/VehicleType.php b/src/App/Fleet/Domain/Enum/VehicleType.php
+new file mode 100644
+index 0000000..cc4be0c
+--- /dev/null
++++ b/src/App/Fleet/Domain/Enum/VehicleType.php
+@@ -0,0 +1,15 @@
++<?php
++
++declare(strict_types=1);
++
++namespace App\Fleet\Domain\Enum;
++
++/**
++ * All possible vehicle types
++ *
++ * @author Mariusz Waloszczyk
++ */
++enum VehicleType: string
++{
++    case TRUCK = 'truck';
++}
+diff --git a/src/App/Fleet/Domain/Event/VehicleAdded.php b/src/App/Fleet/Domain/Event/VehicleAdded.php
+new file mode 100644
+index 0000000..068a577
+--- /dev/null
++++ b/src/App/Fleet/Domain/Event/VehicleAdded.php
+@@ -0,0 +1,23 @@
++<?php
++
++declare(strict_types=1);
++
++namespace App\Fleet\Domain\Event;
++
++/**
++ * Event published when a new vehicle was added
++ *
++ * @author Mariusz Waloszczyk
++ */
++final readonly class VehicleAdded
++{
++    /**
++     * @param string $VehiclePlateNumber
++     *
++     * @author Mariusz Waloszczyk
++     */
++    public function __construct(
++        public string $VehiclePlateNumber,
++    ) {
++    }
++}
+diff --git a/src/App/Fleet/Domain/Factory/AssignedUnitFactory.php b/src/App/Fleet/Domain/Factory/AssignedUnitFactory.php
+new file mode 100644
+index 0000000..27008fd
+--- /dev/null
++++ b/src/App/Fleet/Domain/Factory/AssignedUnitFactory.php
+@@ -0,0 +1,27 @@
++<?php
++
++declare(strict_types=1);
++
++namespace App\Fleet\Domain\Factory;
++
++use App\Fleet\Domain\ValueObject\AssignedUnit;
++use App\Fleet\Domain\ValueObject\AssignedUnitId;
++use App\Shared\DomainUtilities\Exception\ResourceNotFoundException;
++
++/**
++ * This factory should be used to create instances of FireBrigadeUnit
++ *
++ * @author Mariusz Waloszczyk
++ */
++interface AssignedUnitFactory
++{
++    /**
++     * Create instance of FireBrigadeUnit from the provided ID
++     *
++     * @param AssignedUnitId $id
++     * @return AssignedUnit
++     * @throws ResourceNotFoundException
++     * @author Mariusz Waloszczyk
++     */
++    public function createFromIdentifier(AssignedUnitId $id): AssignedUnit;
++}
+diff --git a/src/App/Fleet/Domain/Factory/FleetManagerFactory.php b/src/App/Fleet/Domain/Factory/FleetManagerFactory.php
+new file mode 100644
+index 0000000..242ffbf
+--- /dev/null
++++ b/src/App/Fleet/Domain/Factory/FleetManagerFactory.php
+@@ -0,0 +1,23 @@
++<?php
++
++declare(strict_types=1);
++
++namespace App\Fleet\Domain\Factory;
++
++use App\Fleet\Domain\ValueObject\FleetManager;
++
++/**
++ * This factory should be used to create instances of FleetManager
++ *
++ * @author Mariusz Waloszczyk
++ */
++interface FleetManagerFactory
++{
++    /**
++     * Create instance of FleetManager based on the authenticated user
++     *
++     * @return FleetManager
++     * @author Mariusz Waloszczyk
++     */
++    public function fromAuthenticatedUser(): FleetManager;
++}
+diff --git a/src/App/Fleet/Domain/Policy/AddVehicle/BusinessRule/FleetManagerIsAuthorized.php b/src/App/Fleet/Domain/Policy/AddVehicle/BusinessRule/FleetManagerIsAuthorized.php
+new file mode 100644
+index 0000000..3947b12
+--- /dev/null
++++ b/src/App/Fleet/Domain/Policy/AddVehicle/BusinessRule/FleetManagerIsAuthorized.php
+@@ -0,0 +1,14 @@
++<?php
++
++declare(strict_types=1);
++
++namespace App\Fleet\Domain\Policy\AddVehicle\BusinessRule;
++
++/**
++ * Fleet manager has to be authorized to add a vehicle to the requested unit
++ *
++ * @author Mariusz Waloszczyk
++ */
++interface FleetManagerIsAuthorized extends VehicleCanBeAddedBusinessRule
++{
++}
+diff --git a/src/App/Fleet/Domain/Policy/AddVehicle/BusinessRule/PlateNumberIsUnique.php b/src/App/Fleet/Domain/Policy/AddVehicle/BusinessRule/PlateNumberIsUnique.php
+new file mode 100644
+index 0000000..9378968
+--- /dev/null
++++ b/src/App/Fleet/Domain/Policy/AddVehicle/BusinessRule/PlateNumberIsUnique.php
+@@ -0,0 +1,14 @@
++<?php
++
++declare(strict_types=1);
++
++namespace App\Fleet\Domain\Policy\AddVehicle\BusinessRule;
++
++/**
++ * Plate number has to be unique
++ *
++ * @author Mariusz Waloszczyk
++ */
++interface PlateNumberIsUnique extends VehicleCanBeAddedBusinessRule
++{
++}
+diff --git a/src/App/Fleet/Domain/Policy/AddVehicle/BusinessRule/RequiredDataIsProvided.php b/src/App/Fleet/Domain/Policy/AddVehicle/BusinessRule/RequiredDataIsProvided.php
+new file mode 100644
+index 0000000..27c42dc
+--- /dev/null
++++ b/src/App/Fleet/Domain/Policy/AddVehicle/BusinessRule/RequiredDataIsProvided.php
+@@ -0,0 +1,14 @@
++<?php
++
++declare(strict_types=1);
++
++namespace App\Fleet\Domain\Policy\AddVehicle\BusinessRule;
++
++/**
++ * All required data has to be provided and valid
++ *
++ * @author Mariusz Waloszczyk
++ */
++interface RequiredDataIsProvided extends VehicleCanBeAddedBusinessRule
++{
++}
+diff --git a/src/App/Fleet/Domain/Policy/AddVehicle/BusinessRule/VehicleCanBeAddedBusinessRule.php b/src/App/Fleet/Domain/Policy/AddVehicle/BusinessRule/VehicleCanBeAddedBusinessRule.php
+new file mode 100644
+index 0000000..493e763
+--- /dev/null
++++ b/src/App/Fleet/Domain/Policy/AddVehicle/BusinessRule/VehicleCanBeAddedBusinessRule.php
+@@ -0,0 +1,30 @@
++<?php
++
++declare(strict_types=1);
++
++namespace App\Fleet\Domain\Policy\AddVehicle\BusinessRule;
++
++use App\Fleet\Domain\Dto\VehicleInputData;
++use App\Fleet\Domain\ValueObject\FleetManager;
++use App\Shared\BusinessRuleUtilities\Domain\ValueObject\BusinessRuleNotification;
++
++/**
++ * A single business rule that needs to be valid to create a new vehicle
++ *
++ * @author Mariusz Waloszczyk
++ */
++interface VehicleCanBeAddedBusinessRule
++{
++    /**
++     * A single business rule that needs to be valid to create a new vehicle
++     *
++     * @param VehicleInputData|null $inputData
++     * @param FleetManager|null $fleetManager
++     * @return BusinessRuleNotification|null
++     * @author Mariusz Waloszczyk
++     */
++    public function check(
++        ?VehicleInputData $inputData = null,
++        ?FleetManager $fleetManager = null,
++    ): ?BusinessRuleNotification;
++}
+diff --git a/src/App/Fleet/Domain/Policy/AddVehicle/VehicleCanBeAdded.php b/src/App/Fleet/Domain/Policy/AddVehicle/VehicleCanBeAdded.php
+new file mode 100644
+index 0000000..c633faf
+--- /dev/null
++++ b/src/App/Fleet/Domain/Policy/AddVehicle/VehicleCanBeAdded.php
+@@ -0,0 +1,30 @@
++<?php
++
++declare(strict_types=1);
++
++namespace App\Fleet\Domain\Policy\AddVehicle;
++
++use App\Fleet\Domain\Dto\VehicleInputData;
++use App\Fleet\Domain\ValueObject\FleetManager;
++use App\Shared\BusinessRuleUtilities\Domain\ValueObject\BusinessRulesNotificationsCollection;
++
++/**
++ * Policy checking if all business rules to create a vehicle are valid
++ *
++ * @author Mariusz Waloszczyk
++ */
++interface VehicleCanBeAdded
++{
++    /**
++     * Check if all business rules to create a vehicle are valid, and return a collection of violations
++     *
++     * @param VehicleInputData|null $inputData
++     * @param FleetManager|null $fleetManager
++     * @return BusinessRulesNotificationsCollection
++     * @author Mariusz Waloszczyk
++     */
++    public function isSatisfiedBy(
++        ?VehicleInputData $inputData = null,
++        ?FleetManager $fleetManager = null
++    ): BusinessRulesNotificationsCollection;
++}
+diff --git a/src/App/Fleet/Domain/Repository/VehicleCommandModelRepository.php b/src/App/Fleet/Domain/Repository/VehicleCommandModelRepository.php
+new file mode 100644
+index 0000000..6edd1a1
+--- /dev/null
++++ b/src/App/Fleet/Domain/Repository/VehicleCommandModelRepository.php
+@@ -0,0 +1,36 @@
++<?php
++
++declare(strict_types=1);
++
++namespace App\Fleet\Domain\Repository;
++
++use App\Fleet\Domain\ValueObject\VehiclePlateNumber;
++use App\Fleet\Domain\Vehicle;
++use App\Shared\DomainUtilities\Exception\ResourceNotFoundException;
++
++/**
++ * A repository for a vehicle command model
++ *
++ * @author Mariusz Waloszczyk
++ */
++interface VehicleCommandModelRepository
++{
++    /**
++     * Load the given vehicle aggregate from persistence
++     *
++     * @param VehiclePlateNumber $id
++     * @return Vehicle
++     * @throws ResourceNotFoundException
++     * @author Mariusz Waloszczyk
++     */
++    public function loadById(VehiclePlateNumber $id): Vehicle;
++
++    /**
++     * Persists the given vehicle aggregate in its current state
++     *
++     * @param Vehicle $vehicle
++     * @return void
++     * @author Mariusz Waloszczyk
++     */
++    public function persist(Vehicle $vehicle): void;
++}
+diff --git a/src/App/Fleet/Domain/ValueObject/AssignedUnit.php b/src/App/Fleet/Domain/ValueObject/AssignedUnit.php
+new file mode 100644
+index 0000000..0e90704
+--- /dev/null
++++ b/src/App/Fleet/Domain/ValueObject/AssignedUnit.php
+@@ -0,0 +1,76 @@
++<?php
++
++declare(strict_types=1);
++
++namespace App\Fleet\Domain\ValueObject;
++
++use App\Shared\DomainUtilities\Domain\ValueObject;
++
++/**
++ * TODO - I don't like that this class has ID value object, also is this a valid value object,
++ * TODO - or does it start to look like an enity
++ * A fire brigade unit to which a fleet is assigned
++ *
++ * @author Mariusz Waloszczyk
++ */
++final readonly class AssignedUnit extends ValueObject
++{
++    /**
++     * @param AssignedUnitId $id
++     * @param AssignedUnit $superiorUnit
++     * @param array<int,AssignedUnit> $subservientUnits
++     */
++    private function __construct(
++        private AssignedUnitId $id,
++        private AssignedUnit $superiorUnit,
++        private array $subservientUnits,
++    ) {
++    }
++
++    /**
++     * Create instance of an assigned unit
++     *
++     * @param AssignedUnitId $id
++     * @param AssignedUnit $superiorUnit
++     * @param array<int,AssignedUnit> $subservientUnits
++     * @return self
++     * @author Mariusz Waloszczyk
++     */
++    public static function create(
++        AssignedUnitId $id,
++        AssignedUnit $superiorUnit,
++        array $subservientUnits
++    ): self {
++        return new self($id, $superiorUnit, $subservientUnits);
++    }
++
++    /**
++     * @return AssignedUnitId
++     * @author Mariusz Waloszczyk
++     */
++    public function id(): AssignedUnitId
++    {
++        return $this->id;
++    }
++
++    /**
++     * @param AssignedUnitId $unitId
++     * @return bool
++     * @author Mariusz Waloszczyk
++     */
++    public function isSubservientTo(AssignedUnitId $unitId): bool
++    {
++        return $this->superiorUnit->id()->equals($unitId);
++    }
++
++    /**
++     * @param AssignedUnitId $unitId
++     * @return bool
++     * @author Mariusz Waloszczyk
++     */
++    public function isSuperiorTo(AssignedUnitId $unitId): bool
++    {
++        $ids = array_map(fn($unit) => $unit->id(), $this->subservientUnits);
++        return in_array($unitId, $ids);
++    }
++}
+diff --git a/src/App/Fleet/Domain/ValueObject/AssignedUnitId.php b/src/App/Fleet/Domain/ValueObject/AssignedUnitId.php
+new file mode 100644
+index 0000000..fe8d648
+--- /dev/null
++++ b/src/App/Fleet/Domain/ValueObject/AssignedUnitId.php
+@@ -0,0 +1,16 @@
++<?php
++
++declare(strict_types=1);
++
++namespace App\Fleet\Domain\ValueObject;
++
++use App\Shared\DomainUtilities\Domain\UuidIdentifier;
++
++/**
++ * Identifier of a fire brigade unit to which a fleet is assigned
++ *
++ * @author Mariusz Waloszczyk
++ */
++final readonly class AssignedUnitId extends UuidIdentifier
++{
++}
+diff --git a/src/App/Fleet/Domain/ValueObject/FleetManager.php b/src/App/Fleet/Domain/ValueObject/FleetManager.php
+new file mode 100644
+index 0000000..c0db2ef
+--- /dev/null
++++ b/src/App/Fleet/Domain/ValueObject/FleetManager.php
+@@ -0,0 +1,90 @@
++<?php
++
++declare(strict_types=1);
++
++namespace App\Fleet\Domain\ValueObject;
++
++use App\Fleet\Domain\Enum\FleetPermission;
++use App\Shared\DomainUtilities\Domain\ValueObject;
++
++/**
++ * An employee authorized to manage fleet
++ *
++ * @author Mariusz Waloszczyk
++ */
++final readonly class FleetManager extends ValueObject
++{
++    /**
++     * @param AssignedUnit $assignedUnit
++     * FleetPermission[] $permissions
++     */
++    private function __construct(private AssignedUnit $assignedUnit, private array $permissions)
++    {
++    }
++
++    /**
++     * Create a new instance of a fleet manager
++     *
++     * @param AssignedUnit $assignedUnit
++     * @param array $permissions
++     * @return self
++     * @author Mariusz Waloszczyk
++     */
++    public static function create(AssignedUnit $assignedUnit, array $permissions): self
++    {
++        return new self($assignedUnit, $permissions);
++    }
++
++    /**
++     * Check if fleet manager is authorized to manage fleet in the given unit
++     *
++     * @param AssignedUnit $unit
++     * @return bool
++     * @author Mariusz Waloszczyk
++     */
++    public function canManageFleetInUnit(AssignedUnit $unit): bool
++    {
++        return $this->canManageFleetInAllUnits()
++            || ($this->canManageFleetInOwnUnit() && $this->isAssignedToUnit($unit))
++            || ($this->canManageFleetInSubservientUnit() && $unit->isSubservientTo($this->assignedUnit->id()));
++    }
++
++    /**
++     * @return bool
++     * @author Mariusz Waloszczyk
++     */
++    private function canManageFleetInAllUnits(): bool
++    {
++        return in_array(FleetPermission::ADD_ALL, $this->permissions);
++    }
++
++    /**
++     * @return bool
++     * @author Mariusz Waloszczyk
++     */
++    private function canManageFleetInOwnUnit(): bool
++    {
++        return in_array(FleetPermission::ADD_OWN, $this->permissions);
++    }
++
++    /**
++     * @return bool
++     * @author Mariusz Waloszczyk
++     */
++    private function canManageFleetInSubservientUnit(): bool
++    {
++        return in_array(FleetPermission::ADD_SUBSERVIENT, $this->permissions);
++    }
++
++    /**
++     * @param AssignedUnit $unit
++     * @return bool
++     * @author Mariusz Waloszczyk
++     */
++    private function isAssignedToUnit(AssignedUnit $unit): bool
++    {
++        return $this->assignedUnit
++            ->id()
++            ->equals($unit->id());
++    }
++}
+diff --git a/src/App/Fleet/Domain/ValueObject/VehicleName.php b/src/App/Fleet/Domain/ValueObject/VehicleName.php
+new file mode 100644
+index 0000000..963e750
+--- /dev/null
++++ b/src/App/Fleet/Domain/ValueObject/VehicleName.php
+@@ -0,0 +1,86 @@
++<?php
++
++declare(strict_types=1);
++
++namespace App\Fleet\Domain\ValueObject;
++
++use App\Shared\CommonUtilities\StringUtils;
++use App\Shared\DomainUtilities\Domain\ValueObject;
++use App\Shared\DomainUtilities\Exception\InvalidDataException;
++
++/**
++ * Name of the vehicle, including its make and model
++ *
++ * @author Mariusz Waloszczyk
++ */
++final readonly class VehicleName extends ValueObject
++{
++    /**
++     * @param string $make
++     * @param string $model
++     * @throws InvalidDataException
++     */
++    private function __construct(private string $make, private string $model)
++    {
++        $this->validate();
++    }
++
++    /**
++     * Create a new instance from make and model
++     *
++     * @param string $make
++     * @param string $model
++     * @return self
++     * @throws InvalidDataException
++     * @author Mariusz Waloszczyk
++     */
++    public static function fromMakeAndModel(string $make, string $model): self
++    {
++        return new self($make, $model);
++    }
++
++    /**
++     * @return string
++     * @author Mariusz Waloszczyk
++     */
++    public function make(): string
++    {
++        return $this->make;
++    }
++
++    /**
++     * @return string
++     * @author Mariusz Waloszczyk
++     */
++    public function model(): string
++    {
++        return $this->model;
++    }
++
++    /**
++     * @param VehicleName $object
++     * @return bool
++     * @author Mariusz Waloszczyk
++     */
++    public function equals(VehicleName $object): bool
++    {
++        return $this->make === $object->make()
++            && $this->model === $object->model();
++    }
++
++    /**
++     * @return void
++     * @throws InvalidDataException
++     * @author Mariusz Waloszczyk
++     */
++    private function validate(): void
++    {
++        if (!StringUtils::isLengthBetween($this->make, 1, 64)) {
++            throw new InvalidDataException("Vehicle make must be between 1 and 64 characters.");
++        }
++
++        if (!StringUtils::isLengthBetween($this->model, 1, 64)) {
++            throw new InvalidDataException("Vehicle model must be between 1 and 64 characters.");
++        }
++    }
++}
+diff --git a/src/App/Fleet/Domain/ValueObject/VehiclePlateNumber.php b/src/App/Fleet/Domain/ValueObject/VehiclePlateNumber.php
+new file mode 100644
+index 0000000..1a4f78b
+--- /dev/null
++++ b/src/App/Fleet/Domain/ValueObject/VehiclePlateNumber.php
+@@ -0,0 +1,75 @@
++<?php
++
++declare(strict_types=1);
++
++namespace App\Fleet\Domain\ValueObject;
++
++use App\Shared\CommonUtilities\StringUtils;
++use App\Shared\DomainUtilities\Domain\ValueObject;
++use App\Shared\DomainUtilities\Exception\InvalidDataException;
++
++/**
++ * Vehicle plate number, which is also vehicle's unique identifier
++ *
++ * @author Mariusz Waloszczyk
++ */
++final readonly class VehiclePlateNumber extends ValueObject
++{
++    /**
++     * @param string $plateNumber
++     * @throws InvalidDataException
++     */
++    private function __construct(private string $plateNumber)
++    {
++        $this->validate();
++    }
++
++    /**
++     * Create a new plate number instance
++     *
++     * @param string $plateNumber
++     * @return self
++     * @throws InvalidDataException
++     * @author Mariusz Waloszczyk
++     */
++    public static function fromString(string $plateNumber): self
++    {
++        return new self($plateNumber);
++    }
++
++    /**
++     * @param VehiclePlateNumber $object
++     * @return bool
++     * @author Mariusz Waloszczyk
++     */
++    public function equals(VehiclePlateNumber $object): bool
++    {
++        return $object->toString() === $this->toString();
++    }
++
++    /**
++     * @return string
++     * @author Mariusz Waloszczyk
++     */
++    public function toString(): string
++    {
++        return $this->plateNumber;
++    }
++
++    /**
++     * @return void
++     * @throws InvalidDataException
++     * @author Mariusz Waloszczyk
++     */
++    private function validate(): void
++    {
++        $isValid = StringUtils::isLengthBetween($this->plateNumber, 2, 12)
++            && !StringUtils::containsSpecialCharacters($this->plateNumber, ['-', ' ']);
++
++        if (!$isValid) {
++            $message = "Invalid plate number: $this->plateNumber. Plate number must be between 1 and 12 characters and"
++                . " contain only letters, numbers, hyphens and spaces.";
++            throw new InvalidDataException($message);
++        }
++    }
++}
+diff --git a/src/App/Fleet/Domain/ValueObject/VehicleProductionDate.php b/src/App/Fleet/Domain/ValueObject/VehicleProductionDate.php
+new file mode 100644
+index 0000000..ac9bd41
+--- /dev/null
++++ b/src/App/Fleet/Domain/ValueObject/VehicleProductionDate.php
+@@ -0,0 +1,80 @@
++<?php
++
++declare(strict_types=1);
++
++namespace App\Fleet\Domain\ValueObject;
++
++use App\Shared\CommonUtilities\DateTimeUtils;
++use App\Shared\DomainUtilities\Domain\ValueObject;
++use App\Shared\DomainUtilities\Exception\InvalidDataException;
++
++/**
++ * Date when the vehicle was manufactured
++ *
++ * @author Mariusz Waloszczyk
++ */
++final readonly class VehicleProductionDate extends ValueObject
++{
++    /**
++     * @param int $year
++     * @param int|null $month
++     * @throws InvalidDataException
++     */
++    private function __construct(private int $year, private ?int $month = null)
++    {
++        $this->validate();
++    }
++
++    /**
++     * @param int $year
++     * @param int|null $month
++     * @return self
++     * @throws InvalidDataException
++     * @author Mariusz Waloszczyk
++     */
++    public static function fromYearAndMonth(int $year, ?int $month = null): self
++    {
++        return new self($year, $month);
++    }
++
++    /**
++     * @return int
++     * @author Mariusz Waloszczyk
++     */
++    public function year(): int
++    {
++        return $this->year;
++    }
++
++    /**
++     * @return string|null
++     * @author Mariusz Waloszczyk
++     */
++    public function month(): ?string
++    {
++        return $this->month;
++    }
++
++    /**
++     * @param VehicleProductionDate $object
++     * @return bool
++     * @author Mariusz Waloszczyk
++     */
++    public function equals(VehicleProductionDate $object): bool
++    {
++        return $this->year === $object->year()
++            && $this->month === $object->month();
++    }
++
++    /**
++     * @return void
++     * @throws InvalidDataException
++     * @author Mariusz Waloszczyk
++     */
++    private function validate(): void
++    {
++        if (!DateTimeUtils::isValidMonth($this->month)) {
++            throw new InvalidDataException("Invalid month: $this->month");
++        }
++    }
++}
+diff --git a/src/App/Fleet/Domain/Vehicle.php b/src/App/Fleet/Domain/Vehicle.php
+new file mode 100644
+index 0000000..e8274c0
+--- /dev/null
++++ b/src/App/Fleet/Domain/Vehicle.php
+@@ -0,0 +1,59 @@
++<?php
++
++declare(strict_types=1);
++
++namespace App\Fleet\Domain;
++
++use App\Fleet\Domain\Dto\VehicleInputData;
++use App\Fleet\Domain\Enum\VehicleStatus;
++use App\Fleet\Domain\Enum\VehicleType;
++use App\Fleet\Domain\Policy\AddVehicle\VehicleCanBeAdded;
++use App\Fleet\Domain\ValueObject\AssignedUnitId;
++use App\Fleet\Domain\ValueObject\VehicleName;
++use App\Fleet\Domain\ValueObject\VehiclePlateNumber;
++use App\Fleet\Domain\ValueObject\VehicleProductionDate;
++use App\Shared\BusinessRuleUtilities\Domain\Exception\BusinessRuleViolationException;
++use App\Shared\DomainUtilities\Domain\AggregateRoot;
++use App\Shared\DomainUtilities\Exception\InvalidDataException;
++
++/**
++ * Aggregate root for Fleet bounded context
++ *
++ * @author Mariusz Waloszczyk
++ */
++final class Vehicle extends AggregateRoot
++{
++    private VehiclePlateNumber $plateNumber;
++    private VehicleType $type;
++    private VehicleName $name;
++    private VehicleStatus $status;
++    private VehicleProductionDate $productionDate;
++    private AssignedUnitId $assignedUnitId;
++
++    /**
++     * Create a new instance of vehicle aggregate
++     *
++     * @param VehicleInputData $inputData
++     * @param VehicleCanBeAdded $vehicleCanBeAdded
++     * @throws BusinessRuleViolationException
++     * @throws InvalidDataException
++     */
++    public function __construct(
++        VehicleInputData $inputData,
++        VehicleCanBeAdded $vehicleCanBeAdded
++    ) {
++        $vehicleCanBeAdded->isSatisfiedBy($inputData)
++            ->validate();
++
++        $this->plateNumber = VehiclePlateNumber::fromString($inputData->plateNumber);
++        $this->type = VehicleType::from($inputData->type);
++        $this->name = VehicleName::fromMakeAndModel($inputData->make, $inputData->model);
++        $this->status = VehicleStatus::from($inputData->status);
++        $this->productionDate = VehicleProductionDate::fromYearAndMonth(
++            $inputData->productionYear,
++            $inputData->productionMonth
++        );
++        $this->assignedUnitId = AssignedUnitId::fromString($inputData->fireBrigadeUnitId);
++        // TODO dispatch domain event
++    }
++}
+diff --git a/src/App/Security/Application/Service/SecurityApiService.php b/src/App/Security/Application/Service/SecurityApiService.php
+new file mode 100644
+index 0000000..4c9b6f2
+--- /dev/null
++++ b/src/App/Security/Application/Service/SecurityApiService.php
+@@ -0,0 +1,25 @@
++<?php
++
++declare(strict_types=1);
++
++namespace App\Security\Application\Service;
++
++/**
++ * This service can be used by other bounded contexts to fetch data about security
++ *
++ * @author Mariusz Waloszczyk
++ */
++interface SecurityApiService
++{
++    /**
++     * Fetch data of the authenticated user
++     *
++     * @return array{
++     *     id: string,
++     *     fireBrigadeUnitId: string,
++     *     permissions: array<int,string>
++     * }
++     * @author Mariusz Waloszczyk
++     */
++    public function getAuthenticatedUser(): array;
++}
+diff --git a/src/App/Shared/BusinessRuleUtilities/Domain/Exception/BusinessRuleViolationException.php b/src/App/Shared/BusinessRuleUtilities/Domain/Exception/BusinessRuleViolationException.php
+new file mode 100644
+index 0000000..0e4af9b
+--- /dev/null
++++ b/src/App/Shared/BusinessRuleUtilities/Domain/Exception/BusinessRuleViolationException.php
+@@ -0,0 +1,14 @@
++<?php
++
++declare(strict_types=1);
++
++namespace App\Shared\BusinessRuleUtilities\Domain\Exception;
++
++/**
++ * Exception thrown when the business rule was violated
++ *
++ * @author Mariusz Waloszczyk
++ */
++final class BusinessRuleViolationException extends \Exception
++{
++}
+diff --git a/src/App/Shared/BusinessRuleUtilities/Domain/ValueObject/BusinessRuleNotification.php b/src/App/Shared/BusinessRuleUtilities/Domain/ValueObject/BusinessRuleNotification.php
+new file mode 100644
+index 0000000..9fa3f21
+--- /dev/null
++++ b/src/App/Shared/BusinessRuleUtilities/Domain/ValueObject/BusinessRuleNotification.php
+@@ -0,0 +1,44 @@
++<?php
++
++declare(strict_types=1);
++
++namespace App\Shared\BusinessRuleUtilities\Domain\ValueObject;
++
++/**
++ * Single notification message of a business rule
++ *
++ * @author Mariusz Waloszczyk
++ */
++final readonly class BusinessRuleNotification
++{
++    /**
++     * @param string $message
++     */
++    private function __construct(
++        private string $message
++    ) {
++    }
++
++    /**
++     * Return notification's content
++     *
++     * @return string
++     * @author Mariusz Waloszczyk
++     */
++    public function message(): string
++    {
++        return $this->message;
++    }
++
++    /**
++     * Create a new notification from a string
++     *
++     * @param string $message
++     * @return self
++     * @author Mariusz Waloszczyk
++     */
++    public static function fromString(string $message): self
++    {
++        return new self($message);
++    }
++}
+diff --git a/src/App/Shared/BusinessRuleUtilities/Domain/ValueObject/BusinessRulesNotificationsCollection.php b/src/App/Shared/BusinessRuleUtilities/Domain/ValueObject/BusinessRulesNotificationsCollection.php
+new file mode 100644
+index 0000000..274bb32
+--- /dev/null
++++ b/src/App/Shared/BusinessRuleUtilities/Domain/ValueObject/BusinessRulesNotificationsCollection.php
+@@ -0,0 +1,79 @@
++<?php
++
++declare(strict_types=1);
++
++namespace App\Shared\BusinessRuleUtilities\Domain\ValueObject;
++
++use App\Shared\BusinessRuleUtilities\Domain\Exception\BusinessRuleViolationException;
++
++/**
++ * A list of business rules notifications
++ *
++ * @author Mariusz Waloszczyk
++ */
++final class BusinessRulesNotificationsCollection
++{
++
++    /**
++     * @param array<int, BusinessRuleNotification> $notifications
++     */
++    private function __construct(
++        private array $notifications
++    ) {
++    }
++
++    /**
++     * Create a new collection from an array of Notifications
++     *
++     * @param array<int, BusinessRuleNotification> $notifications
++     * @return self
++     * @author Mariusz Waloszczyk
++     */
++    public static function create(array $notifications = []): self
++    {
++        return new self($notifications);
++    }
++
++    /**
++     * Add a single notification to the collection
++     *
++     * @param BusinessRuleNotification $notification
++     * @return void
++     * @author Mariusz Waloszczyk
++     */
++    public function addNotification(BusinessRuleNotification $notification): void
++    {
++        $this->notifications[] = $notification;
++    }
++
++    /**
++     * Check if there are any notifications and throw exception if so
++     *
++     * @return void
++     * @throws BusinessRuleViolationException
++     * @author Mariusz Waloszczyk
++     */
++    public function validate(): void
++    {
++        $messages = [];
++        foreach ($this->notifications as $notification) {
++            $messages[] = $notification->message();
++        }
++
++        if ($this->isValid() === false) {
++            throw new BusinessRuleViolationException(implode("\n", $messages));
++        }
++    }
++
++    /**
++     * Collection is valid when there are no notifications
++     *
++     * @return bool
++     * @author Mariusz Waloszczyk
++     */
++    public function isValid(): bool
++    {
++        return empty($this->notifications);
++    }
++
++}
+diff --git a/src/App/Shared/CommonUtilities/DateTimeUtils.php b/src/App/Shared/CommonUtilities/DateTimeUtils.php
+new file mode 100644
+index 0000000..1112fd2
+--- /dev/null
++++ b/src/App/Shared/CommonUtilities/DateTimeUtils.php
+@@ -0,0 +1,25 @@
++<?php
++
++declare(strict_types=1);
++
++namespace App\Shared\CommonUtilities;
++
++use Carbon\Month;
++
++/**
++ * This class contains common operations for date and time
++ *
++ * @author Mariusz Waloszczyk
++ */
++final class DateTimeUtils
++{
++    /**
++     * @param int $month
++     * @return bool
++     * @author Mariusz Waloszczyk
++     */
++    public static function isValidMonth(int $month): bool
++    {
++        return Month::tryFrom($month) !== null;
++    }
++}
+diff --git a/src/App/Shared/CommonUtilities/StringUtils.php b/src/App/Shared/CommonUtilities/StringUtils.php
+new file mode 100644
+index 0000000..6db14f5
+--- /dev/null
++++ b/src/App/Shared/CommonUtilities/StringUtils.php
+@@ -0,0 +1,40 @@
++<?php
++
++declare(strict_types=1);
++
++namespace App\Shared\CommonUtilities;
++
++/**
++ * This class contains common operations for strings
++ *
++ * @author Mariusz Waloszczyk
++ */
++final class StringUtils
++{
++    /**
++     * @param string $string
++     * @param int $min
++     * @param int $max
++     * @return bool
++     * @author Mariusz Waloszczyk
++     */
++    public static function isLengthBetween(string $string, int $min, int $max): bool
++    {
++        return mb_strlen($string) >= $min && mb_strlen($string) <= $max;
++    }
++
++    /**
++     * @param string $string
++     * @param array $exclude
++     * @return bool
++     * @author Mariusz Waloszczyk
++     */
++    public static function containsSpecialCharacters(string $string, array $exclude = []): bool
++    {
++        $escapedExclude = array_map('preg_quote', $exclude);
++
++        $pattern = '/[^a-zA-Z0-9' . implode('', $escapedExclude) . ']/';
++
++        return (bool)preg_match($pattern, $string);
++    }
++}
+diff --git a/src/App/Shared/DomainUtilities/Domain/AggregateRoot.php b/src/App/Shared/DomainUtilities/Domain/AggregateRoot.php
+new file mode 100644
+index 0000000..dd590f6
+--- /dev/null
++++ b/src/App/Shared/DomainUtilities/Domain/AggregateRoot.php
+@@ -0,0 +1,14 @@
++<?php
++
++declare(strict_types=1);
++
++namespace App\Shared\DomainUtilities\Domain;
++
++/**
++ * This class contains common functionalities for domain aggregate roots
++ *
++ * @author Mariusz Waloszczyk
++ */
++abstract class AggregateRoot
++{
++}
+diff --git a/src/App/Shared/DomainUtilities/Domain/UuidIdentifier.php b/src/App/Shared/DomainUtilities/Domain/UuidIdentifier.php
+new file mode 100644
+index 0000000..2bdaa57
+--- /dev/null
++++ b/src/App/Shared/DomainUtilities/Domain/UuidIdentifier.php
+@@ -0,0 +1,63 @@
++<?php
++
++declare(strict_types=1);
++
++namespace App\Shared\DomainUtilities\Domain;
++
++use App\Shared\DomainUtilities\Exception\InvalidDataException;
++use Symfony\Component\Uid\Uuid;
++
++/**
++ * This class represents a basic UUID identifier to be used across domain
++ *
++ * @author Mariusz Waloszczyk
++ */
++abstract readonly class UuidIdentifier extends ValueObject
++{
++    /**
++     * @param Uuid $uuid
++     */
++    protected function __construct(private Uuid $uuid)
++    {
++    }
++
++    /**
++     * Create a new UUID from a string
++     *
++     * @param string $uuid
++     * @return static
++     * @throws InvalidDataException
++     * @author Mariusz Waloszczyk
++     */
++    public static function fromString(string $uuid): static
++    {
++        if (!Uuid::isValid($uuid)) {
++            throw new InvalidDataException("Invalid UUID: {$uuid}");
++        }
++
++        return new static(Uuid::fromString($uuid));
++    }
++
++    /**
++     * Return UUID in the form of string
++     *
++     * @return string
++     * @author Mariusz Waloszczyk
++     */
++    public function toString(): string
++    {
++        return $this->uuid->toRfc4122();
++    }
++
++    /**
++     * Verify if UUID is equal to the given one
++     *
++     * @param UuidIdentifier $other
++     * @return bool
++     * @author Mariusz Waloszczyk
++     */
++    public function equals(self $other): bool
++    {
++        return $this->uuid->equals($other->uuid);
++    }
++}
+diff --git a/src/App/Shared/DomainUtilities/Domain/ValueObject.php b/src/App/Shared/DomainUtilities/Domain/ValueObject.php
+new file mode 100644
+index 0000000..0715815
+--- /dev/null
++++ b/src/App/Shared/DomainUtilities/Domain/ValueObject.php
+@@ -0,0 +1,14 @@
++<?php
++
++declare(strict_types=1);
++
++namespace App\Shared\DomainUtilities\Domain;
++
++/**
++ * This class contains common functionalities for domain value objects
++ *
++ * @author Mariusz Waloszczyk
++ */
++abstract readonly class ValueObject
++{
++}
+diff --git a/src/App/Shared/DomainUtilities/Exception/InvalidDataException.php b/src/App/Shared/DomainUtilities/Exception/InvalidDataException.php
+new file mode 100644
+index 0000000..51f10ea
+--- /dev/null
++++ b/src/App/Shared/DomainUtilities/Exception/InvalidDataException.php
+@@ -0,0 +1,14 @@
++<?php
++
++declare(strict_types=1);
++
++namespace App\Shared\DomainUtilities\Exception;
++
++/**
++ * Exception thrown when the provided data is invalid
++ *
++ * @author Mariusz Waloszczyk
++ */
++final class InvalidDataException extends \Exception
++{
++}
+diff --git a/src/App/Shared/DomainUtilities/Exception/ResourceNotFoundException.php b/src/App/Shared/DomainUtilities/Exception/ResourceNotFoundException.php
+new file mode 100644
+index 0000000..8d42ca8
+--- /dev/null
++++ b/src/App/Shared/DomainUtilities/Exception/ResourceNotFoundException.php
+@@ -0,0 +1,14 @@
++<?php
++
++declare(strict_types=1);
++
++namespace App\Shared\DomainUtilities\Exception;
++
++/**
++ * Exception thrown when the provided data is invalid
++ *
++ * @author Mariusz Waloszczyk
++ */
++final class ResourceNotFoundException extends \Exception
++{
++}
+diff --git a/src/App/Shared/DomainUtilities/Exception/UnauthorizedException.php b/src/App/Shared/DomainUtilities/Exception/UnauthorizedException.php
+new file mode 100644
+index 0000000..567873c
+--- /dev/null
++++ b/src/App/Shared/DomainUtilities/Exception/UnauthorizedException.php
+@@ -0,0 +1,14 @@
++<?php
++
++declare(strict_types=1);
++
++namespace App\Shared\DomainUtilities\Exception;
++
++/**
++ * Exception thrown when the user is not authorized to perform an action
++ *
++ * @author Mariusz Waloszczyk
++ */
++final class UnauthorizedException extends \Exception
++{
++}
+diff --git a/src/Kernel.php b/src/App/Shared/Infrastructure/Symfony/Kernel.php
+similarity index 80%
+rename from src/Kernel.php
+rename to src/App/Shared/Infrastructure/Symfony/Kernel.php
+index 779cd1f..87c54ec 100644
+--- a/src/Kernel.php
++++ b/src/App/Shared/Infrastructure/Symfony/Kernel.php
+@@ -1,6 +1,6 @@
+ <?php
+ 
+-namespace App;
++namespace App\Shared\Infrastructure\Symfony;
+ 
+ use Symfony\Bundle\FrameworkBundle\Kernel\MicroKernelTrait;
+ use Symfony\Component\HttpKernel\Kernel as BaseKernel;
+diff --git a/symfony.lock b/symfony.lock
+index 8ca246f..e34504a 100644
+--- a/symfony.lock
++++ b/symfony.lock
+@@ -55,5 +55,27 @@
+             "config/packages/routing.yaml",
+             "config/routes.yaml"
+         ]
++    },
++    "symfony/translation": {
++        "version": "7.2",
++        "recipe": {
++            "repo": "github.com/symfony/recipes",
++            "branch": "main",
++            "version": "6.3",
++            "ref": "e28e27f53663cc34f0be2837aba18e3a1bef8e7b"
++        },
++        "files": [
++            "config/packages/translation.yaml",
++            "translations/.gitignore"
++        ]
++    },
++    "symfony/uid": {
++        "version": "7.2",
++        "recipe": {
++            "repo": "github.com/symfony/recipes",
++            "branch": "main",
++            "version": "7.0",
++            "ref": "0df5844274d871b37fc3816c57a768ffc60a43a5"
++        }
+     }
+ }
+diff --git a/translations/.gitignore b/translations/.gitignore
+new file mode 100644
+index 0000000..e69de29
