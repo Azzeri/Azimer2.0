@@ -1,0 +1,11 @@
+### TODO
+    - vehicles domain layer
+    - vehicles infrastructure and application layers
+    - vehicles and utilities tests
+    - quality tools
+    - vehicles query model (elastic maybe)
+    - a nice readme for a portfolio
+    - security context
+    - employee context
+    - fire brigades context
+    - other contexts...
