@@ -5,6 +5,7 @@
     - quality tools
     - project cleanup
     - vehicles query model (elastic maybe)
+    - add design files
     - a nice readme for a portfolio
     - security context
     - employee context
