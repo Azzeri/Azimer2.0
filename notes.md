@@ -3,6 +3,7 @@
     - vehicles infrastructure and application layers
     - vehicles and utilities tests
     - quality tools
+    - project cleanup
     - vehicles query model (elastic maybe)
     - a nice readme for a portfolio
     - security context
