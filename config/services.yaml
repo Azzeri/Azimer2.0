@@ -16,6 +16,9 @@ services:
     App\:
         resource: '../src/App/*'
         exclude: '../src/App/**/{Migrations,EventSubscriber}'
-
+        
+    ### UI
+    UI\Cli\Command\:
+        resource: '../src/UI/Cli/Command'
     # add more service definitions when explicit configuration is needed
     # please note that last definitions always *replace* previous ones

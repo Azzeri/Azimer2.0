@@ -1,12 +1,12 @@
 ### TODO
     - vehicles domain layer
     - vehicles infrastructure and application layers
-    - vehicles and utilities tests
+    - vehicles and utilities unit tests
     - quality tools
-    - project cleanup
     - vehicles query model (elastic maybe)
-    - add design files
-    - a nice readme for a portfolio
+    - add and refactor design files
+    - a nice readme for a portfolio - koniec lutego
+    - project cleanup, optimizing tools etc
     - security context
     - employee context
     - fire brigades context

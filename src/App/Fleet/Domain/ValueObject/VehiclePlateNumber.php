@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace App\Fleet\Domain\ValueObject;
 
 use App\Shared\CommonUtilities\StringUtils;
-use App\Shared\DomainUtilities\Domain\ValueObject;
+use App\Shared\DomainUtilities\Domain\IdentifierValueObject;
 use App\Shared\DomainUtilities\Exception\InvalidDataException;
 
 /**
@@ -13,8 +13,11 @@ use App\Shared\DomainUtilities\Exception\InvalidDataException;
  *
  * @author Mariusz Waloszczyk
  */
-final readonly class VehiclePlateNumber extends ValueObject
+final readonly class VehiclePlateNumber extends IdentifierValueObject
 {
+    public const int MIN_LENGTH = 2;
+    public const int MAX_LENGTH = 12;
+
     /**
      * @param string $plateNumber
      * @throws InvalidDataException
@@ -44,14 +47,14 @@ final readonly class VehiclePlateNumber extends ValueObject
      */
     public function equals(VehiclePlateNumber $object): bool
     {
-        return $object->toString() === $this->toString();
+        return (string)$object === (string)$this;
     }
 
     /**
-     * @return string
+     * @inheritDoc
      * @author Mariusz Waloszczyk
      */
-    public function toString(): string
+    public function __toString(): string
     {
         return $this->plateNumber;
     }
@@ -63,7 +66,7 @@ final readonly class VehiclePlateNumber extends ValueObject
      */
     private function validate(): void
     {
-        $isValid = StringUtils::isLengthBetween($this->plateNumber, 2, 12)
+        $isValid = StringUtils::isLengthBetween($this->plateNumber, self::MIN_LENGTH, self::MAX_LENGTH)
             && !StringUtils::containsSpecialCharacters($this->plateNumber, ['-', ' ']);
 
         if (!$isValid) {

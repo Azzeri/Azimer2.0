@@ -12,12 +12,12 @@ use Symfony\Component\Uid\Uuid;
  *
  * @author Mariusz Waloszczyk
  */
-abstract readonly class UuidIdentifier extends ValueObject
+abstract readonly class UuidIdentifier extends IdentifierValueObject
 {
     /**
      * @param Uuid $uuid
      */
-    protected function __construct(private Uuid $uuid)
+    protected function __construct(protected Uuid $uuid)
     {
     }
 
@@ -39,14 +39,12 @@ abstract readonly class UuidIdentifier extends ValueObject
     }
 
     /**
-     * Return UUID in the form of string
-     *
-     * @return string
-     * @author Mariusz Waloszczyk
+     * @inheritDoc
+     * @author Mariusz Waloszczyk <mwaloszczyk@ottoworkforce.eu>
      */
-    public function toString(): string
+    public function __toString(): string
     {
-        return $this->uuid->toRfc4122();
+        return $this->uuid->toString();
     }
 
     /**

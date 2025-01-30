@@ -7,12 +7,15 @@ namespace App\Fleet\Domain\ValueObject;
 use App\Shared\CommonUtilities\DateTimeUtils;
 use App\Shared\DomainUtilities\Domain\ValueObject;
 use App\Shared\DomainUtilities\Exception\InvalidDataException;
+use Doctrine\DBAL\Types\Types;
+use Doctrine\ORM\Mapping as ORM;
 
 /**
  * Date when the vehicle was manufactured
  *
  * @author Mariusz Waloszczyk
  */
+#[ORM\Embeddable]
 final readonly class VehicleProductionDate extends ValueObject
 {
     /**
@@ -20,8 +23,12 @@ final readonly class VehicleProductionDate extends ValueObject
      * @param int|null $month
      * @throws InvalidDataException
      */
-    private function __construct(private int $year, private ?int $month = null)
-    {
+    private function __construct(
+        #[ORM\Column(type: Types::INTEGER)]
+        private int $year,
+        #[ORM\Column(type: Types::INTEGER, nullable: true)]
+        private ?int $month = null
+    ) {
         $this->validate();
     }
 
