@@ -24,7 +24,7 @@ abstract class AbstractStringIdentifierType extends Type
      *
      * @param string $value
      * @return object
-     * @author Mariusz Waloszczyk <mwaloszczyk@ottoworkforce.eu>
+     * @author Mariusz Waloszczyk
      */
     abstract protected function fromString(string $value): object;
 
@@ -33,13 +33,13 @@ abstract class AbstractStringIdentifierType extends Type
      *
      * @param object $value
      * @return string
-     * @author Mariusz Waloszczyk <mwaloszczyk@ottoworkforce.eu>
+     * @author Mariusz Waloszczyk
      */
     abstract protected function toString(object $value): string;
 
     /**
      * @inheritDoc
-     * @author Mariusz Waloszczyk <mwaloszczyk@ottoworkforce.eu>
+     * @author Mariusz Waloszczyk
      */
     public function getSQLDeclaration(array $column, AbstractPlatform $platform): string
     {
@@ -48,7 +48,7 @@ abstract class AbstractStringIdentifierType extends Type
 
     /**
      * @inheritDoc
-     * @author Mariusz Waloszczyk <mwaloszczyk@ottoworkforce.eu>
+     * @author Mariusz Waloszczyk
      */
     public function convertToDatabaseValue($value, AbstractPlatform $platform): string
     {
@@ -57,7 +57,7 @@ abstract class AbstractStringIdentifierType extends Type
 
     /**
      * @inheritDoc
-     * @author Mariusz Waloszczyk <mwaloszczyk@ottoworkforce.eu>
+     * @author Mariusz Waloszczyk
      */
     public function convertToPHPValue($value, AbstractPlatform $platform): object
     {

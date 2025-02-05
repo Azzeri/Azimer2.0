@@ -9,7 +9,7 @@ namespace App\Fleet\Domain\Event;
  *
  * @author Mariusz Waloszczyk
  */
-final readonly class VehicleAdded
+final readonly class VehicleWasAdded
 {
     /**
      * @param string $VehiclePlateNumber

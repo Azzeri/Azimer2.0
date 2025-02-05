@@ -26,6 +26,9 @@
             "migrations/.gitignore"
         ]
     },
+    "ecotone/symfony-bundle": {
+        "version": "1.244.0"
+    },
     "symfony/console": {
         "version": "7.2",
         "recipe": {

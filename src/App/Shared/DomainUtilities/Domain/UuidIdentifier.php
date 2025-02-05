@@ -40,7 +40,7 @@ abstract readonly class UuidIdentifier extends IdentifierValueObject
 
     /**
      * @inheritDoc
-     * @author Mariusz Waloszczyk <mwaloszczyk@ottoworkforce.eu>
+     * @author Mariusz Waloszczyk
      */
     public function __toString(): string
     {

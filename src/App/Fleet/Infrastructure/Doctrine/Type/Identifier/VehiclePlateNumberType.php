@@ -11,7 +11,7 @@ use App\Shared\Infrastructure\Doctrine\Type\Identifier\AbstractStringIdentifierT
 /**
  * Custom type for vehicle plate number identifier
  *
- * @author Mariusz Waloszczyk <mwaloszczyk@ottoworkforce.eu>
+ * @author Mariusz Waloszczyk
  */
 final class VehiclePlateNumberType extends AbstractStringIdentifierType
 {
@@ -23,7 +23,7 @@ final class VehiclePlateNumberType extends AbstractStringIdentifierType
     /**
      * @inheritDoc
      * @throws InvalidDataException
-     * @author Mariusz Waloszczyk <mwaloszczyk@ottoworkforce.eu>
+     * @author Mariusz Waloszczyk
      */
     protected function fromString(string $value): VehiclePlateNumber
     {
@@ -33,10 +33,14 @@ final class VehiclePlateNumberType extends AbstractStringIdentifierType
     /**
      * @inheritDoc
      * @throws InvalidDataException
-     * @author Mariusz Waloszczyk <mwaloszczyk@ottoworkforce.eu>
+     * @author Mariusz Waloszczyk
      */
-    protected function toString(object $value): string
+    protected function toString(object|string $value): string
     {
+        if (is_string($value)) {
+            return $value;
+        }
+
         if (!$value instanceof VehiclePlateNumber) {
             throw new InvalidDataException("Invalid type provided");
         }
