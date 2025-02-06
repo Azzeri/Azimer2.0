@@ -8,7 +8,7 @@ use App\Shared\DomainUtilities\Domain\ValueObject;
 
 /**
  * TODO - I don't like that this class has ID value object, also is this a valid value object,
- * TODO - or does it start to look like an enity
+ * TODO - or does it start to look like an entity
  * A fire brigade unit to which a fleet is assigned
  *
  * @author Mariusz Waloszczyk
@@ -17,13 +17,13 @@ final readonly class AssignedUnit extends ValueObject
 {
     /**
      * @param AssignedUnitId $id
-     * @param AssignedUnit $superiorUnit
      * @param array<int,AssignedUnit> $subservientUnits
+     * @param AssignedUnit|null $superiorUnit
      */
     private function __construct(
         private AssignedUnitId $id,
-        private AssignedUnit $superiorUnit,
-        private array $subservientUnits,
+        private array $subservientUnits = [],
+        private ?AssignedUnit $superiorUnit = null,
     ) {
     }
 
@@ -31,17 +31,17 @@ final readonly class AssignedUnit extends ValueObject
      * Create instance of an assigned unit
      *
      * @param AssignedUnitId $id
-     * @param AssignedUnit $superiorUnit
      * @param array<int,AssignedUnit> $subservientUnits
+     * @param AssignedUnit|null $superiorUnit
      * @return self
      * @author Mariusz Waloszczyk
      */
     public static function create(
         AssignedUnitId $id,
-        AssignedUnit $superiorUnit,
-        array $subservientUnits
+        array $subservientUnits = [],
+        ?AssignedUnit $superiorUnit = null,
     ): self {
-        return new self($id, $superiorUnit, $subservientUnits);
+        return new self($id, $subservientUnits, $superiorUnit);
     }
 
     /**

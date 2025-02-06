@@ -7,12 +7,14 @@ namespace App\Fleet\Domain\Policy\AddVehicle\BusinessRule;
 use App\Fleet\Domain\Dto\VehicleInputData;
 use App\Fleet\Domain\ValueObject\FleetManager;
 use App\Shared\BusinessRuleUtilities\Domain\ValueObject\BusinessRuleNotification;
+use Symfony\Component\DependencyInjection\Attribute\AutoconfigureTag;
 
 /**
  * A single business rule that needs to be valid to create a new vehicle
  *
  * @author Mariusz Waloszczyk
  */
+#[AutoconfigureTag(VehicleCanBeAddedBusinessRule::class)]
 interface VehicleCanBeAddedBusinessRule
 {
     /**

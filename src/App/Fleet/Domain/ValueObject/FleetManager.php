@@ -36,24 +36,24 @@ final readonly class FleetManager extends ValueObject
     }
 
     /**
-     * Check if fleet manager is authorized to manage fleet in the given unit
+     * Check if fleet manager is authorized to add fleet to the given unit
      *
      * @param AssignedUnit $unit
      * @return bool
      * @author Mariusz Waloszczyk
      */
-    public function canManageFleetInUnit(AssignedUnit $unit): bool
+    public function canAddFleetToUnit(AssignedUnit $unit): bool
     {
-        return $this->canManageFleetInAllUnits()
-            || ($this->canManageFleetInOwnUnit() && $this->isAssignedToUnit($unit))
-            || ($this->canManageFleetInSubservientUnit() && $unit->isSubservientTo($this->assignedUnit->id()));
+        return $this->canAddFleetToAllUnits()
+            || ($this->canAddFleetToOwnUnit() && $this->isAssignedToUnit($unit))
+            || ($this->canAddFleetToSubservientUnits() && $unit->isSubservientTo($this->assignedUnit->id()));
     }
 
     /**
      * @return bool
      * @author Mariusz Waloszczyk
      */
-    private function canManageFleetInAllUnits(): bool
+    private function canAddFleetToAllUnits(): bool
     {
         return in_array(FleetPermission::ADD_ALL, $this->permissions);
     }
@@ -62,7 +62,7 @@ final readonly class FleetManager extends ValueObject
      * @return bool
      * @author Mariusz Waloszczyk
      */
-    private function canManageFleetInOwnUnit(): bool
+    private function canAddFleetToOwnUnit(): bool
     {
         return in_array(FleetPermission::ADD_OWN, $this->permissions);
     }
@@ -71,7 +71,7 @@ final readonly class FleetManager extends ValueObject
      * @return bool
      * @author Mariusz Waloszczyk
      */
-    private function canManageFleetInSubservientUnit(): bool
+    private function canAddFleetToSubservientUnits(): bool
     {
         return in_array(FleetPermission::ADD_SUBSERVIENT, $this->permissions);
     }
