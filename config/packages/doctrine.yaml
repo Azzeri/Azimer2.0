@@ -1,7 +1,7 @@
 doctrine:
     dbal:
         types:
-            vehicle_plate_number: App\Fleet\Infrastructure\Doctrine\Type\Identifier\VehiclePlateNumberType
+            vehicle_plate_number: App\Fleet\Infrastructure\Persistence\Doctrine\Type\Identifier\VehiclePlateNumberType
         url: '%env(resolve:DATABASE_URL)%'
 
         # IMPORTANT: You MUST configure your server version,

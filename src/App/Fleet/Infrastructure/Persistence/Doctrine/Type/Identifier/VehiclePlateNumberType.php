@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace App\Fleet\Infrastructure\Doctrine\Type\Identifier;
+namespace App\Fleet\Infrastructure\Persistence\Doctrine\Type\Identifier;
 
 use App\Fleet\Domain\ValueObject\VehiclePlateNumber;
 use App\Shared\DomainUtilities\Exception\InvalidDataException;

@@ -6,7 +6,7 @@ use App\Fleet\Domain\Dto\VehicleInputData;
 use App\Fleet\Domain\Policy\AddVehicle\BusinessRule\PlateNumberIsUnique;
 use App\Fleet\Domain\ValueObject\FleetManager;
 use App\Fleet\Domain\Vehicle;
-use App\Fleet\Infrastructure\Doctrine\Repository\VehicleDoctrineRepository;
+use App\Fleet\Infrastructure\Persistence\Doctrine\Repository\VehicleDoctrineRepository;
 use App\Shared\BusinessRuleUtilities\Domain\ValueObject\BusinessRuleNotification;
 use Ecotone\Modelling\StandardRepository;
 use Symfony\Component\DependencyInjection\Attribute\Autowire;

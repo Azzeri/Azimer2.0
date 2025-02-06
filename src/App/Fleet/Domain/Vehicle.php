@@ -13,7 +13,7 @@ use App\Fleet\Domain\ValueObject\AssignedUnitId;
 use App\Fleet\Domain\ValueObject\VehicleName;
 use App\Fleet\Domain\ValueObject\VehiclePlateNumber;
 use App\Fleet\Domain\ValueObject\VehicleProductionDate;
-use App\Fleet\Infrastructure\Doctrine\Type\Identifier\VehiclePlateNumberType;
+use App\Fleet\Infrastructure\Persistence\Doctrine\Type\Identifier\VehiclePlateNumberType;
 use App\Shared\BusinessRuleUtilities\Domain\Exception\BusinessRuleViolationException;
 use App\Shared\DomainUtilities\Domain\AggregateRoot;
 use App\Shared\DomainUtilities\Exception\InvalidDataException;

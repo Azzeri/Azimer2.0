@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace App\Fleet\Infrastructure\Doctrine\Repository;
+namespace App\Fleet\Infrastructure\Persistence\Doctrine\Repository;
 
 use App\Fleet\Domain\Vehicle;
 use Doctrine\ORM\EntityManagerInterface;
