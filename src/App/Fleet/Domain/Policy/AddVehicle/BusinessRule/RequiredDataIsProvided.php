@@ -30,7 +30,7 @@ final class RequiredDataIsProvided implements VehicleCanBeAddedBusinessRule
             && $inputData->make !== null
             && $inputData->model !== null
             && $inputData->productionYear !== null
-            && $inputData->fireBrigadeUnitId !== null;
+            && $inputData->assignedUnitId !== null;
 
         return $requiredDataIsPresent
             ? null

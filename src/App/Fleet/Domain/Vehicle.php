@@ -90,7 +90,7 @@ final class Vehicle extends AggregateRoot
                 $inputData->productionYear,
                 $inputData->productionMonth
             ),
-            AssignedUnitId::fromString($inputData->fireBrigadeUnitId)
+            AssignedUnitId::fromString($inputData->assignedUnitId)
         );
     }
 }

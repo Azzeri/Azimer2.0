@@ -42,7 +42,7 @@ final readonly class FleetManagerIsAuthorizedImpl implements FleetManagerIsAutho
             ->fromAuthenticatedUser();
 
         $unitToCheck = $this->fireBrigadeUnitFactory
-            ->createFromIdentifier(AssignedUnitId::fromString($inputData->fireBrigadeUnitId));
+            ->createFromIdentifier(AssignedUnitId::fromString($inputData->assignedUnitId));
 
         return $fleetManager->canAddFleetToUnit($unitToCheck)
             ? null

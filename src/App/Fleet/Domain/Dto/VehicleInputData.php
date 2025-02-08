@@ -19,7 +19,7 @@ final readonly class VehicleInputData
      * @param string|null $model
      * @param int|null $productionYear
      * @param int|null $productionMonth
-     * @param string|null $fireBrigadeUnitId
+     * @param string|null $assignedUnitId
      *
      * @author Mariusz Waloszczyk
      */
@@ -31,7 +31,7 @@ final readonly class VehicleInputData
         public ?string $model = null,
         public ?int $productionYear = null,
         public ?int $productionMonth = null,
-        public ?string $fireBrigadeUnitId = null
+        public ?string $assignedUnitId = null
     ) {
     }
 }

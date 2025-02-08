@@ -54,10 +54,10 @@ final readonly class VehicleProductionDate extends ValueObject
     }
 
     /**
-     * @return string|null
+     * @return int|null
      * @author Mariusz Waloszczyk
      */
-    public function month(): ?string
+    public function month(): ?int
     {
         return $this->month;
     }
