@@ -25,7 +25,7 @@ final class StringUtils
 
     /**
      * @param string $string
-     * @param array $exclude
+     * @param array<int,string> $exclude
      * @return bool
      * @author Mariusz Waloszczyk
      */

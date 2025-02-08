@@ -16,7 +16,7 @@ final readonly class FleetManager extends ValueObject
 {
     /**
      * @param AssignedUnit $assignedUnit
-     * FleetPermission[] $permissions
+     * @param FleetPermission[] $permissions
      */
     private function __construct(private AssignedUnit $assignedUnit, private array $permissions)
     {
@@ -26,7 +26,7 @@ final readonly class FleetManager extends ValueObject
      * Create a new instance of a fleet manager
      *
      * @param AssignedUnit $assignedUnit
-     * @param array $permissions
+     * @param FleetPermission[] $permissions
      * @return self
      * @author Mariusz Waloszczyk
      */

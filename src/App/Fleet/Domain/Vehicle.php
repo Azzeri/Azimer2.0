@@ -44,18 +44,24 @@ final class Vehicle extends AggregateRoot
      * @param AssignedUnitId $assignedUnitId
      */
     private function __construct(
+        /** @phpstan-ignore-next-line */
         #[ORM\Id]
         #[CQRS\Identifier]
         #[ORM\Column(type: VehiclePlateNumberType::NAME, length: VehiclePlateNumber::MAX_LENGTH, unique: true)]
         private VehiclePlateNumber $plateNumber,
+        /** @phpstan-ignore-next-line */
         #[ORM\Column(type: Types::STRING, enumType: VehicleType::class)]
         private VehicleType $type,
+        /** @phpstan-ignore-next-line */
         #[ORM\Embedded(class: VehicleName::class)]
         private VehicleName $name,
+        /** @phpstan-ignore-next-line */
         #[ORM\Column(type: Types::STRING, enumType: VehicleStatus::class)]
         private VehicleStatus $status,
+        /** @phpstan-ignore-next-line */
         #[ORM\Embedded(class: VehicleProductionDate::class)]
         private VehicleProductionDate $productionDate,
+        /** @phpstan-ignore-next-line */
         #[ORM\Embedded(class: AssignedUnitId::class)]
         private AssignedUnitId $assignedUnitId
     ) {

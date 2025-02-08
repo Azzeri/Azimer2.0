@@ -12,9 +12,15 @@
     <option name="transferred" value="true" />
   </component>
   <component name="PHPCodeSnifferOptionsConfiguration">
+    <option name="codingStandard" value="PSR12" />
     <option name="highlightLevel" value="WARNING" />
     <option name="installedPaths" value="\\wsl.localhost\Ubuntu\home\maniek\projects\private\Azimer\vendor\bin" />
     <option name="transferred" value="true" />
+  </component>
+  <component name="PhpCSFixer">
+    <phpcsfixer_settings>
+      <phpcs_fixer_by_interpreter asDefaultInterpreter="true" interpreter_id="6402b86c-dd3e-4cde-aa67-2b0bfc5bcf6e" timeout="30000" />
+    </phpcsfixer_settings>
   </component>
   <component name="PhpCodeSniffer">
     <phpcs_settings>
@@ -102,6 +108,7 @@
       <path value="$PROJECT_DIR$/vendor/pagerfanta/pagerfanta" />
       <path value="$PROJECT_DIR$/vendor/elasticsearch/elasticsearch" />
       <path value="$PROJECT_DIR$/vendor/squizlabs/php_codesniffer" />
+      <path value="$PROJECT_DIR$/vendor/phpstan/phpstan" />
     </include_path>
   </component>
   <component name="PhpInterpreters">
@@ -178,10 +185,13 @@
   <component name="PhpProjectSharedConfiguration" php_language_level="8.3" />
   <component name="PhpStan">
     <PhpStan_settings>
-      <phpstan_by_interpreter asDefaultInterpreter="true" interpreter_id="6402b86c-dd3e-4cde-aa67-2b0bfc5bcf6e" timeout="60000" />
+      <phpstan_by_interpreter asDefaultInterpreter="true" interpreter_id="6402b86c-dd3e-4cde-aa67-2b0bfc5bcf6e" tool_path="/app/vendor/bin/phpstan" timeout="60000" />
+      <PhpStanConfiguration tool_path="$PROJECT_DIR$/vendor/bin/phpstan" />
     </PhpStan_settings>
   </component>
   <component name="PhpStanOptionsConfiguration">
+    <option name="config" value="\\wsl.localhost\Ubuntu\home\maniek\projects\private\Azimer\phpstan.dist.neon" />
+    <option name="level" value="6" />
     <option name="transferred" value="true" />
   </component>
   <component name="PhpUnit">

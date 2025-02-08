@@ -44,6 +44,7 @@ final readonly class VehicleQueryModelElasticRepository implements VehicleQueryM
      */
     public function search(): Collection
     {
+        /** @var array<int,VehicleQueryModel> $results */
         $results = $this->elasticFinder->find('*', 999);
 
         return new Collection(

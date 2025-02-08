@@ -19,7 +19,7 @@ use Symfony\Component\DependencyInjection\Attribute\AutowireIterator;
 final readonly class VehicleCanBeAddedImpl implements VehicleCanBeAdded
 {
     /**
-     * @param iterable $businessRules
+     * @param iterable<VehicleCanBeAddedBusinessRule> $businessRules
      */
     public function __construct(
         #[AutowireIterator(VehicleCanBeAddedBusinessRule::class)]

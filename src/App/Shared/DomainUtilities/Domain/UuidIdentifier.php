@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App\Shared\DomainUtilities\Domain;
 
 use App\Shared\DomainUtilities\Exception\InvalidDataException;
+use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Uid\Uuid;
 
 /**
@@ -17,8 +18,9 @@ abstract readonly class UuidIdentifier extends IdentifierValueObject
     /**
      * @param Uuid $uuid
      */
-    protected function __construct(protected Uuid $uuid)
-    {
+    final private function __construct(
+        #[ORM\Column(type: "uuid")] protected Uuid $uuid
+    ) {
     }
 
     /**

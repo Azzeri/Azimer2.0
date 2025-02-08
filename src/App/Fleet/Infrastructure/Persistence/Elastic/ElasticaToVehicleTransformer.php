@@ -6,6 +6,7 @@ namespace App\Fleet\Infrastructure\Persistence\Elastic;
 
 use App\Fleet\Domain\Dto\VehicleQueryModel;
 use Elastica\Result;
+use FOS\ElasticaBundle\HybridResult;
 use FOS\ElasticaBundle\Transformer\ElasticaToModelTransformerInterface;
 
 /**
@@ -32,6 +33,7 @@ final readonly class ElasticaToVehicleTransformer implements ElasticaToModelTran
 
     /**
      * @inheritDoc
+     * @return list<HybridResult<object>>
      * @author Mariusz Waloszczyk
      */
     public function hybridTransform(array $elasticaObjects): array
@@ -39,7 +41,8 @@ final readonly class ElasticaToVehicleTransformer implements ElasticaToModelTran
         $result = [];
         /** @var Result $elasticaObject */
         foreach ($elasticaObjects as $elasticaObject) {
-            $result[] = $this->mapElasticaResultToDto($elasticaObject);
+            $mappedResult = $this->mapElasticaResultToDto($elasticaObject);
+            $result[] = new HybridResult(new Result([$mappedResult]));
         }
 
         return $result;

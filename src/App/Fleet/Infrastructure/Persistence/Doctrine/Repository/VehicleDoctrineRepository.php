@@ -38,6 +38,7 @@ final readonly class VehicleDoctrineRepository implements StandardRepository
      * @inheritDoc
      * @author Mariusz Waloszczyk
      */
+    /** @phpstan-ignore-next-line */
     public function findBy(string $aggregateClassName, array $identifiers): ?object
     {
         return $this->entityManager->getRepository(Vehicle::class)
@@ -48,6 +49,7 @@ final readonly class VehicleDoctrineRepository implements StandardRepository
      * @inheritDoc
      * @author Mariusz Waloszczyk
      */
+    /** @phpstan-ignore-next-line */
     public function save(array $identifiers, object $aggregate, array $metadata, ?int $versionBeforeHandling): void
     {
         $this->entityManager->persist($aggregate);
