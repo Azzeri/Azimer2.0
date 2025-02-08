@@ -1,5 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="MessDetector">
+    <phpmd_settings>
+      <phpmd_by_interpreter asDefaultInterpreter="true" interpreter_id="6402b86c-dd3e-4cde-aa67-2b0bfc5bcf6e" timeout="30000" />
+    </phpmd_settings>
+  </component>
   <component name="MessDetectorOptionsConfiguration">
     <option name="transferred" value="true" />
   </component>
@@ -8,11 +13,13 @@
   </component>
   <component name="PHPCodeSnifferOptionsConfiguration">
     <option name="highlightLevel" value="WARNING" />
+    <option name="installedPaths" value="\\wsl.localhost\Ubuntu\home\maniek\projects\private\Azimer\vendor\bin" />
     <option name="transferred" value="true" />
   </component>
   <component name="PhpCodeSniffer">
     <phpcs_settings>
-      <phpcs_by_interpreter asDefaultInterpreter="true" interpreter_id="6402b86c-dd3e-4cde-aa67-2b0bfc5bcf6e" timeout="30000" />
+      <PhpCSConfiguration tool_path="$PROJECT_DIR$/vendor/bin/phpcs" />
+      <phpcs_by_interpreter asDefaultInterpreter="true" interpreter_id="6402b86c-dd3e-4cde-aa67-2b0bfc5bcf6e" tool_path="/app/vendor/bin/phpcs" timeout="30000" />
     </phpcs_settings>
   </component>
   <component name="PhpIncludePathManager">
@@ -94,13 +101,14 @@
       <path value="$PROJECT_DIR$/vendor/react/promise" />
       <path value="$PROJECT_DIR$/vendor/pagerfanta/pagerfanta" />
       <path value="$PROJECT_DIR$/vendor/elasticsearch/elasticsearch" />
+      <path value="$PROJECT_DIR$/vendor/squizlabs/php_codesniffer" />
     </include_path>
   </component>
   <component name="PhpInterpreters">
     <interpreters>
       <interpreter id="6402b86c-dd3e-4cde-aa67-2b0bfc5bcf6e" name="php" home="docker-compose://DATA" auto="false" debugger_id="php.debugger.XDebug">
         <remote_data INTERPRETER_PATH="php" HELPERS_PATH="/opt/.phpstorm_helpers" VALID="true" RUN_AS_ROOT_VIA_SUDO="false" DOCKER_ACCOUNT_NAME="Docker" DOCKER_COMPOSE_SERVICE_NAME="php" DOCKER_REMOTE_PROJECT_PATH="/opt/project">
-          <type_data command="RUN" />
+          <type_data command="EXEC" />
           <dockerComposeConfigurationPaths>
             <item value="$PROJECT_DIR$/compose.yaml" />
           </dockerComposeConfigurationPaths>

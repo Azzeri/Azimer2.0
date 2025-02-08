@@ -64,4 +64,3 @@ abstract class AbstractStringIdentifierType extends Type
         return $this->fromString($value);
     }
 }
-

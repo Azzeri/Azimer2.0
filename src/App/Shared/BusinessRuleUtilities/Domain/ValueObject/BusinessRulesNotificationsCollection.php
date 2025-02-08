@@ -13,7 +13,6 @@ use App\Shared\BusinessRuleUtilities\Domain\Exception\BusinessRuleViolationExcep
  */
 final class BusinessRulesNotificationsCollection
 {
-
     /**
      * @param array<int, BusinessRuleNotification> $notifications
      */
@@ -75,5 +74,4 @@ final class BusinessRulesNotificationsCollection
     {
         return empty($this->notifications);
     }
-
 }
