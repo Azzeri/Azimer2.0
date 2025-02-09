@@ -22,12 +22,12 @@ final readonly class FleetManagerFactoryImpl implements FleetManagerFactory
 {
     /**
      * @param SecurityApiService $securityApiService
-     * @param AssignedUnitFactory $fireBrigadeUnitFactory
+     * @param AssignedUnitFactory $assignedUnitFactory
      * @author Mariusz Waloszczyk
      */
     public function __construct(
         private SecurityApiService $securityApiService,
-        private AssignedUnitFactory $fireBrigadeUnitFactory
+        private AssignedUnitFactory $assignedUnitFactory
     ) {
     }
 
@@ -40,7 +40,7 @@ final readonly class FleetManagerFactoryImpl implements FleetManagerFactory
     {
         $authenticatedUser = $this->securityApiService
             ->getAuthenticatedUser();
-        $fireBrigadeUnit = $this->fireBrigadeUnitFactory
+        $fireBrigadeUnit = $this->assignedUnitFactory
             ->createFromIdentifier(AssignedUnitId::fromString($authenticatedUser['fireBrigadeUnitId']));
 
         $permissions = [];
