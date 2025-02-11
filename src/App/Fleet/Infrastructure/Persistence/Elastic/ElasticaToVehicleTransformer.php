@@ -11,8 +11,8 @@ use FOS\ElasticaBundle\Transformer\ElasticaToModelTransformerInterface;
 
 /**
  * Implementation of {@see ElasticaToModelTransformerInterface} for Vehicle
- *
- * @author Mariusz Waloszczyk <mwaloszczyk@ottoworkforce.eu>
+ * // TODO - unit test
+ * @author Mariusz Waloszczyk
  */
 final readonly class ElasticaToVehicleTransformer implements ElasticaToModelTransformerInterface
 {
@@ -71,7 +71,7 @@ final readonly class ElasticaToVehicleTransformer implements ElasticaToModelTran
      *
      * @param Result $object
      * @return VehicleQueryModel
-     * @author Mariusz Waloszczyk <mwaloszczyk@ottoworkforce.eu>
+     * @author Mariusz Waloszczyk
      */
     private function mapElasticaResultToDto(Result $object): VehicleQueryModel
     {

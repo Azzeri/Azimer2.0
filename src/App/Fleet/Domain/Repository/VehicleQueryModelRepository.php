@@ -20,7 +20,7 @@ interface VehicleQueryModelRepository
      *
      * @param VehiclePlateNumber $plateNumber
      * @return VehicleQueryModel|null
-     * @author Mariusz Waloszczyk <mwaloszczyk@ottoworkforce.eu>
+     * @author Mariusz Waloszczyk
      */
     public function findByPlateNumber(VehiclePlateNumber $plateNumber): ?VehicleQueryModel;
 
@@ -28,7 +28,7 @@ interface VehicleQueryModelRepository
      * Find vehicles by the criteria provided
      *
      * @return Collection<VehicleQueryModel>
-     * @author Mariusz Waloszczyk <mwaloszczyk@ottoworkforce.eu>
+     * @author Mariusz Waloszczyk
      */
     public function search(): Collection;
 }

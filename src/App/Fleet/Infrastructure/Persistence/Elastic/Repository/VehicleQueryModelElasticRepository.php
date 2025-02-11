@@ -20,7 +20,7 @@ final readonly class VehicleQueryModelElasticRepository implements VehicleQueryM
 {
     /**
      * @param TransformedFinder $elasticFinder
-     * @author Mariusz Waloszczyk <mwaloszczyk@ottoworkforce.eu>
+     * @author Mariusz Waloszczyk
      */
     public function __construct(
         #[Autowire(service: 'fos_elastica.finder.vehicle')]
@@ -30,7 +30,7 @@ final readonly class VehicleQueryModelElasticRepository implements VehicleQueryM
 
     /**
      * @inheritDoc
-     * @author Mariusz Waloszczyk <mwaloszczyk@ottoworkforce.eu>
+     * @author Mariusz Waloszczyk
      */
     public function findByPlateNumber(VehiclePlateNumber $plateNumber): ?VehicleQueryModel
     {
@@ -40,7 +40,7 @@ final readonly class VehicleQueryModelElasticRepository implements VehicleQueryM
 
     /**
      * @inheritDoc
-     * @author Mariusz Waloszczyk <mwaloszczyk@ottoworkforce.eu>
+     * @author Mariusz Waloszczyk
      */
     public function search(): Collection
     {

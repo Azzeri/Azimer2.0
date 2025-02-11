@@ -19,14 +19,14 @@ use ReflectionException;
 /**
  * Implementation of {@see ModelToElasticaTransformerInterface} for Vehicle
  *
- * @author Mariusz Waloszczyk <mwaloszczyk@ottoworkforce.eu>
+ * @author Mariusz Waloszczyk
  */
 final readonly class VehicleToElasticaTransformer implements ModelToElasticaTransformerInterface
 {
     /**
      * @inheritDoc
      * @throws ReflectionException
-     * @author Mariusz Waloszczyk <mwaloszczyk@ottoworkforce.eu>
+     * @author Mariusz Waloszczyk
      */
     public function transform(object $object, array $fields): Document
     {

@@ -9,7 +9,7 @@ namespace App\Fleet\Application\Query\Definition;
  *
  * TODO - implement pagination|sorting|criteria
  *
- * @author Mariusz Waloszczyk <mwaloszczyk@ottoworkforce.eu>
+ * @author Mariusz Waloszczyk
  */
 final readonly class SearchVehiclesQuery
 {

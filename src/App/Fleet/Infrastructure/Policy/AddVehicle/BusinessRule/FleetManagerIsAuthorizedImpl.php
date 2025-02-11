@@ -21,11 +21,11 @@ final readonly class FleetManagerIsAuthorizedImpl implements FleetManagerIsAutho
 {
     /**
      * @param FleetManagerFactory $fleetManagerFactory
-     * @param AssignedUnitFactory $fireBrigadeUnitFactory
+     * @param AssignedUnitFactory $assignedUnitFactory
      */
     public function __construct(
         private FleetManagerFactory $fleetManagerFactory,
-        private AssignedUnitFactory $fireBrigadeUnitFactory,
+        private AssignedUnitFactory $assignedUnitFactory,
     ) {
     }
 
@@ -41,7 +41,7 @@ final readonly class FleetManagerIsAuthorizedImpl implements FleetManagerIsAutho
         $fleetManager = $this->fleetManagerFactory
             ->fromAuthenticatedUser();
 
-        $unitToCheck = $this->fireBrigadeUnitFactory
+        $unitToCheck = $this->assignedUnitFactory
             ->createFromIdentifier(AssignedUnitId::fromString($inputData->assignedUnitId));
 
         return $fleetManager->canAddFleetToUnit($unitToCheck)

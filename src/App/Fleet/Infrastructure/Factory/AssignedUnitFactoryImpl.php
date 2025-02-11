@@ -47,7 +47,7 @@ final readonly class AssignedUnitFactoryImpl implements AssignedUnitFactory
 
         $subservientUnits = array_map(
             fn(string $subservientUnitId) => AssignedUnit::create(
-                AssignedUnitId::fromString($apiUnit['superiorUnitId'])
+                AssignedUnitId::fromString($subservientUnitId)
             ),
             $apiUnit['subservientUnitsIds']
         );

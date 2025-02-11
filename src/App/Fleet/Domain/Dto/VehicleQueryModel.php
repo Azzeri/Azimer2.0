@@ -20,7 +20,7 @@ final readonly class VehicleQueryModel
      * @param int $productionYear
      * @param string $assignedUnitId
      * @param int|null $productionMonth
-     * @author Mariusz Waloszczyk <mwaloszczyk@ottoworkforce.eu>
+     * @author Mariusz Waloszczyk
      */
     public function __construct(
         public string $plateNumber,

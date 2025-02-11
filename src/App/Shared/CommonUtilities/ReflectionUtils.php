@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Shared\CommonUtilities;
 
+use ReflectionClass;
 use ReflectionException;
 use ReflectionProperty;
 
@@ -27,5 +28,23 @@ final readonly class ReflectionUtils
     {
         $reflectionProperty = new ReflectionProperty($object, $propertyName);
         return $reflectionProperty->getValue($object);
+    }
+
+    /**
+     * Invoke private or protected method on the object
+     *
+     * @param object $object
+     * @param string $methodName
+     * @param mixed[] $parameters
+     * @return mixed
+     * @throws ReflectionException
+     * @author Mariusz Waloszczyk
+     */
+    public static function invokeMethod(object $object, string $methodName, array $parameters = []): mixed
+    {
+        $reflection = new ReflectionClass(get_class($object));
+        $method = $reflection->getMethod($methodName);
+
+        return $method->invokeArgs($object, $parameters);
     }
 }

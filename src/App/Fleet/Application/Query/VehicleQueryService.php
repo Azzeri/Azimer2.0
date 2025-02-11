@@ -17,13 +17,13 @@ use Ecotone\Modelling\Attribute\QueryHandler;
 /**
  * Handles fleet queries
  *
- * @author Mariusz Waloszczyk <mwaloszczyk@ottoworkforce.eu>
+ * @author Mariusz Waloszczyk
  */
 final readonly class VehicleQueryService
 {
     /**
      * @param VehicleQueryModelRepository $repository
-     * @author Mariusz Waloszczyk <mwaloszczyk@ottoworkforce.eu>
+     * @author Mariusz Waloszczyk
      */
     public function __construct(
         private VehicleQueryModelRepository $repository
@@ -34,7 +34,7 @@ final readonly class VehicleQueryService
      * @param FindVehicleQuery $query
      * @return QueryItem<VehicleQueryModel>|null
      * @throws InvalidDataException
-     * @author Mariusz Waloszczyk <mwaloszczyk@ottoworkforce.eu>
+     * @author Mariusz Waloszczyk
      */
     #[QueryHandler]
     public function handleFindVehicle(FindVehicleQuery $query): ?QueryItem

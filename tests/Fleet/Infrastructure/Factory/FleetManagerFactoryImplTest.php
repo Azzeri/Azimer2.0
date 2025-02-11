@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Tests\Fleet\Infrastructure\Factory;
 
 use App\Fleet\Domain\Enum\FleetPermission;
@@ -11,6 +13,8 @@ use App\Security\Application\Service\SecurityApiService;
 use App\Shared\CommonUtilities\ReflectionUtils;
 use App\Shared\DomainUtilities\Exception\InvalidDataException;
 use App\Shared\DomainUtilities\Exception\ResourceNotFoundException;
+use App\Tests\SampleProvider\Fleet\FleetSamples;
+use App\Tests\SampleProvider\Security\SecuritySamples;
 use Mockery;
 use ReflectionException;
 
@@ -21,15 +25,15 @@ it(
      * @throws InvalidDataException
      * @throws ResourceNotFoundException
      */
-    function (array $sampleSecurityUser, AssignedUnit $unit) {
+    function () {
         // Arrange
         $securityApiService = Mockery::mock(SecurityApiService::class);
         $securityApiService->shouldReceive('getAuthenticatedUser')
-            ->andReturn($sampleSecurityUser);
+            ->andReturn(SecuritySamples::apiUser([FleetPermission::ADD_SUBSERVIENT->value, 'other']));
 
         $assignedUnitFactory = Mockery::mock(AssignedUnitFactory::class);
         $assignedUnitFactory->shouldReceive('createFromIdentifier')
-            ->andReturn($unit);
+            ->andReturn(FleetSamples::assignedUnit());
 
         $factory = new FleetManagerFactoryImpl($securityApiService, $assignedUnitFactory);
 
@@ -41,4 +45,4 @@ it(
         expect($manager)->toBeInstanceOf(FleetManager::class)
             ->and($permissions)->toContainOnlyInstancesOf(FleetPermission::class);
     }
-)->with('security user with full fleet permissions', 'unit');
+);
