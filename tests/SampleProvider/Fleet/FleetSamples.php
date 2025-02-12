@@ -6,6 +6,7 @@ namespace App\Tests\SampleProvider\Fleet;
 
 use App\Fleet\Application\Command\AddVehicleCommand;
 use App\Fleet\Domain\Dto\VehicleInputData;
+use App\Fleet\Domain\Dto\VehicleQueryModel;
 use App\Fleet\Domain\Enum\FleetPermission;
 use App\Fleet\Domain\Enum\VehicleStatus;
 use App\Fleet\Domain\Enum\VehicleType;
@@ -19,6 +20,7 @@ use App\Shared\BusinessRuleUtilities\Domain\ValueObject\BusinessRulesNotificatio
 use App\Shared\DomainUtilities\Exception\InvalidDataException;
 use Mockery;
 use Symfony\Component\Uid\Uuid;
+use Symfony\Component\Uid\UuidV4;
 
 use function Pest\Faker\fake;
 
@@ -54,24 +56,72 @@ final readonly class FleetSamples
     }
 
     /**
-     * @param FleetPermission[] $permissions
-     * @return FleetManager
-     * @throws InvalidDataException
-     * @author Mariusz Waloszczyk
+     * @return VehicleQueryModel
+     * @author Mariusz Waloszczyk <mwaloszczyk@ottoworkforce.eu>
      */
-    public static function fleetManager(array $permissions): FleetManager
+    public static function vehicleQueryModel(): VehicleQueryModel
     {
-        $assignedUnit = AssignedUnit::create(AssignedUnitId::fromString(Uuid::v4()->toString()));
-        return FleetManager::create($assignedUnit, $permissions);
+        return new VehicleQueryModel(
+            fake()->numerify('ONY####'),
+            VehicleStatus::IN_USE->value,
+            VehicleType::TRUCK->value,
+            fake()->company(),
+            fake()->word(),
+            (int)fake()->year(),
+            Uuid::v4()->toString(),
+            (int)fake()->month(),
+        );
     }
 
     /**
+     * @return VehicleInputData
+     * @author Mariusz Waloszczyk <mwaloszczyk@ottoworkforce.eu>
+     */
+    public static function vehicleValidInputData(): VehicleInputData
+    {
+        return new VehicleInputData(
+            fake()->numerify('ONY####'),
+            VehicleStatus::IN_USE->value,
+            VehicleType::TRUCK->value,
+            fake()->company(),
+            fake()->word(),
+            (int)fake()->year(),
+            (int)fake()->month(),
+            Uuid::v4()->toString(),
+        );
+    }
+
+    /**
+     * @param UuidV4|null $id
+     * @param UuidV4|null $superiorUnitId
      * @return AssignedUnit
      * @throws InvalidDataException
      * @author Mariusz Waloszczyk
      */
-    public static function assignedUnit(): AssignedUnit
+    public static function assignedUnit(?UuidV4 $id = null, ?UuidV4 $superiorUnitId = null): AssignedUnit
     {
-        return AssignedUnit::create(AssignedUnitId::fromString(Uuid::v4()->toString()));
+        $id = $id ?: Uuid::v4();
+        $superiorUnit = $superiorUnitId
+            ? AssignedUnit::create(AssignedUnitId::fromString((string)$superiorUnitId))
+            : null;
+
+        return AssignedUnit::create(
+            id: AssignedUnitId::fromString($id->toString()),
+            superiorUnit: $superiorUnit
+        );
+    }
+
+    /**
+     * @param FleetPermission[] $permissions
+     * @param UuidV4|null $assignedUnitId
+     * @return FleetManager
+     * @throws InvalidDataException
+     * @author Mariusz Waloszczyk
+     */
+    public static function fleetManager(array $permissions, ?UuidV4 $assignedUnitId = null): FleetManager
+    {
+        $assignedUnitId = $assignedUnitId ?: Uuid::v4();
+        $assignedUnit = AssignedUnit::create(AssignedUnitId::fromString((string)$assignedUnitId));
+        return FleetManager::create($assignedUnit, $permissions);
     }
 }

@@ -9,6 +9,9 @@ use App\Shared\DomainUtilities\Exception\InvalidDataException;
 
 it(
     'can not be created with an invalid month',
+    /**
+     * @throws InvalidDataException
+     */
     function () {
         // Arrange // Act // Assert
         expect(
@@ -19,6 +22,9 @@ it(
 
 it(
     'can be created from year and month',
+    /**
+     * @throws InvalidDataException
+     */
     function () {
         // Arrange // Act // Assert
         expect(VehicleProductionDate::fromYearAndMonth(2024, 11))
@@ -28,6 +34,9 @@ it(
 
 it(
     'returns true if compared production dates equal',
+    /**
+     * @throws InvalidDataException
+     */
     function () {
         // Arrange
         $firstDate = VehicleProductionDate::fromYearAndMonth(2024, 11);
@@ -40,6 +49,9 @@ it(
 
 it(
     'returns false if compared production dates are different',
+    /**
+     * @throws InvalidDataException
+     */
     function () {
         // Arrange
         $firstDate = VehicleProductionDate::fromYearAndMonth(2024, 11);

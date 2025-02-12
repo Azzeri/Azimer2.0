@@ -7,8 +7,8 @@ namespace App\Fleet\Domain\ValueObject;
 use App\Shared\DomainUtilities\Domain\ValueObject;
 
 /**
- * TODO - I don't like that this class has ID value object, also is this a valid value object,
- * TODO - or does it start to look like an entity
+ * TODO - It needs a big refactor, makes no sense to build all the hierarchy and repeat it in every bounded context.
+ * TODO - it will be better to make API calls to fbunit context, just try not to lose domain methods etc
  * A fire brigade unit to which a fleet is assigned
  *
  * @author Mariusz Waloszczyk

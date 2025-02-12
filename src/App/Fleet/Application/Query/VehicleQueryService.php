@@ -37,7 +37,7 @@ final readonly class VehicleQueryService
      * @author Mariusz Waloszczyk
      */
     #[QueryHandler]
-    public function handleFindVehicle(FindVehicleQuery $query): ?QueryItem
+    public function findOne(FindVehicleQuery $query): ?QueryItem
     {
         $vehicle = $this->repository->findByPlateNumber(VehiclePlateNumber::fromString($query->plateNumber));
         return $vehicle !== null
@@ -51,7 +51,7 @@ final readonly class VehicleQueryService
      * @author Mariusz Waloszczyk
      */
     #[QueryHandler]
-    public function handleSearchVehiclesQuery(SearchVehiclesQuery $query): QueryItemCollection
+    public function search(SearchVehiclesQuery $query): QueryItemCollection
     {
         $vehicles = $this->repository->search();
         $items = array_map(
