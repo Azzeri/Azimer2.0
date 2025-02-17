@@ -57,7 +57,7 @@ final readonly class FleetSamples
 
     /**
      * @return VehicleQueryModel
-     * @author Mariusz Waloszczyk <mwaloszczyk@ottoworkforce.eu>
+     * @author Mariusz Waloszczyk
      */
     public static function vehicleQueryModel(): VehicleQueryModel
     {
@@ -75,7 +75,7 @@ final readonly class FleetSamples
 
     /**
      * @return VehicleInputData
-     * @author Mariusz Waloszczyk <mwaloszczyk@ottoworkforce.eu>
+     * @author Mariusz Waloszczyk
      */
     public static function vehicleValidInputData(): VehicleInputData
     {
