@@ -7,7 +7,7 @@ namespace App\Fleet\Application\Query\Definition;
 /**
  * Search for vehicles by the criteria provided
  *
- * TODO - implement pagination|sorting|criteria
+ * TODO - implement pagination|sorting|criteria|policy
  *
  * @author Mariusz Waloszczyk
  */

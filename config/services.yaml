@@ -15,10 +15,18 @@ services:
     # this creates a service per class whose id is the fully-qualified class name
     App\:
         resource: '../src/App/*'
-        exclude: '../src/App/**/{Migrations,EventSubscriber}'
-        
+        exclude: '../src/App/*/{Migration,EventSubscriber}'
+    
     ### UI
     UI\Cli\Command\:
         resource: '../src/UI/Cli/Command'
+    
+    UI\Http\Rest\Controller\:
+        resource: '../src/UI/Http/Rest/Controller/*'
+        tags: [ 'controller.service_arguments' ]
+    
+    ### Exception listener
+    UI\Http\ExceptionSubscriber\ExceptionListener:
+        tags: [ kernel.event_listener ]
     # add more service definitions when explicit configuration is needed
     # please note that last definitions always *replace* previous ones

@@ -16,6 +16,7 @@ final readonly class SampleClass
     ) {
     }
 
+    // @phpstan-ignore-next-line
     private function getName(): string
     {
         return $this->name;

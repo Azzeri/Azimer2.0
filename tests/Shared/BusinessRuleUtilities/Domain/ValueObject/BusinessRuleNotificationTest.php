@@ -11,6 +11,6 @@ it('returns its message', function () {
     $notification = BusinessRuleNotification::fromString('note');
 
     // Act // Assert
-    expect($notification)->message()
+    expect($notification->message())
         ->toEqual('note');
 });

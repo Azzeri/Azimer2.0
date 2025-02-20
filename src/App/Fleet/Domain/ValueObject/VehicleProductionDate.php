@@ -80,7 +80,7 @@ final readonly class VehicleProductionDate extends ValueObject
      */
     private function validate(): void
     {
-        if (!DateTimeUtils::isValidMonth($this->month)) {
+        if ($this->month !== null && !DateTimeUtils::isValidMonth($this->month)) {
             throw new InvalidDataException("Invalid month: $this->month");
         }
     }

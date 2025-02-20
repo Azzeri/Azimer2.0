@@ -38,6 +38,9 @@ final readonly class FleetManagerIsAuthorizedImpl implements FleetManagerIsAutho
         ?VehicleInputData $inputData = null,
         ?FleetManager $fleetManager = null,
     ): ?BusinessRuleNotification {
+        if ($inputData === null || empty($inputData->assignedUnitId)) {
+            return BusinessRuleNotification::fromString("Missing data to validate plate number uniqueness");
+        }
         $fleetManager = $this->fleetManagerFactory
             ->fromAuthenticatedUser();
 
