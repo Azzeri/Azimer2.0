@@ -2,7 +2,7 @@ nelmio_api_doc:
     documentation:
         info:
             title: Azimer API
-            description: API for a new version of Azimer Project!
+            description: API for a Domain-Driven Design version of Azimer project!
             version: 1.0.0
     areas: # to filter documented areas
         path_patterns:
