@@ -13,6 +13,7 @@ use FOS\ElasticaBundle\Transformer\ElasticaToModelTransformerInterface;
  * Implementation of {@see ElasticaToModelTransformerInterface} for Vehicle
  *
  * @psalm-suppress UnusedClass // TODO - unit test and remove suppression
+ * @codeCoverageIgnoreStart
  * @author Mariusz Waloszczyk
  */
 final readonly class ElasticaToVehicleTransformer implements ElasticaToModelTransformerInterface
@@ -87,3 +88,4 @@ final readonly class ElasticaToVehicleTransformer implements ElasticaToModelTran
         );
     }
 }
+// @codeCoverageIgnoreEnd

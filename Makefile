@@ -101,7 +101,7 @@ cs-fix: ## Run tool fixing phpcs errors
 	@$(PHP_CBF) src tests
 
 stan: ## Run phpstan analysis
-	@$(PHPSTAN) analyse src tests
+	@$(PHPSTAN) analyse src tests --memory-limit=1G
 
 psalm: ## Run PSALM analysis
 	@$(PSALM)
