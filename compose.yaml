@@ -54,6 +54,8 @@ services:
       # You may use a bind-mounted host directory instead, so that it is harder to accidentally remove the volume and lose all your data!
       # - ./docker/db/data:/var/lib/postgresql/data:rw
 ###< doctrine/doctrine-bundle ###
+
+###> elasticsearch ###
   elasticsearch:
       image: docker.elastic.co/elasticsearch/elasticsearch:8.17.1
       container_name: elasticsearch
@@ -65,6 +67,8 @@ services:
           - "9200:9200"
       volumes:
           - elasticsearch_data:/usr/share/elasticsearch/data
+###< elasticsearch ###
+
 volumes:
   caddy_data:
   caddy_config:
@@ -73,6 +77,9 @@ volumes:
 
 ###> doctrine/doctrine-bundle ###
   database_data:
+###< doctrine/doctrine-bundle ###
+  
+###> elasticsearch ###
   elasticsearch_data:
       driver: local
-###< doctrine/doctrine-bundle ###
+###< elasticsearch ###
