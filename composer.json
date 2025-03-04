@@ -94,6 +94,7 @@
         "pestphp/pest-plugin-faker": "^3.0",
         "phpstan/phpstan": "^2.1",
         "phpstan/phpstan-mockery": "^2.0",
+        "psalm/plugin-mockery": "^1.2",
         "squizlabs/php_codesniffer": "^3.11",
         "symfony/maker-bundle": "^1.62",
         "vimeo/psalm": "^6.5"

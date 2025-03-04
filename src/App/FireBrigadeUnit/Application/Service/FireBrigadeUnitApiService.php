@@ -17,7 +17,7 @@ interface FireBrigadeUnitApiService
      * @param string $id - Identifier of the searched unit
      * @return array{
      *     id: string,
-     *     superiorUnitId: string,
+     *     superiorUnitId: string|null,
      *     subservientUnitsIds: array<int,string>
      * }|null
      * @author Mariusz Waloszczyk

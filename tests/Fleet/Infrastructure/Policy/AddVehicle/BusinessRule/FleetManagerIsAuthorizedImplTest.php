@@ -45,7 +45,7 @@ it(
 
         // Assert
         expect($result)->toBeInstanceOf(BusinessRuleNotification::class)
-            ->and($result->message())->toEqual("Fleet manager not authorized to manage this unit");
+            ->and($result?->message())->toEqual("Fleet manager not authorized to manage this unit");
     }
 );
 

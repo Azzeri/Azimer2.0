@@ -32,10 +32,11 @@ final readonly class PlateNumberIsUniqueImpl implements PlateNumberIsUnique
      * @author Mariusz Waloszczyk
      */
     public function check(
+        // TODO - maybe it would make more sense to create input data for every action without everything nullable?
         ?VehicleInputData $inputData = null,
         ?FleetManager $fleetManager = null,
     ): ?BusinessRuleNotification {
-        if ($inputData === null || empty($inputData->plateNumber)) {
+        if ($inputData === null || $inputData->plateNumber === null) {
             return BusinessRuleNotification::fromString("Missing data to validate plate number uniqueness");
         }
 

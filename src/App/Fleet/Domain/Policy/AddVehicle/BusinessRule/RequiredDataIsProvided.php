@@ -10,7 +10,8 @@ use App\Shared\BusinessRuleUtilities\Domain\ValueObject\BusinessRuleNotification
 
 /**
  * All required data has to be provided and valid
- *
+ * TODO - maybe won't be necessary after fixing input data
+ * @psalm-suppress UnusedClass
  * @author Mariusz Waloszczyk
  */
 final class RequiredDataIsProvided implements VehicleCanBeAddedBusinessRule

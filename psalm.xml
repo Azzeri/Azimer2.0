@@ -9,10 +9,30 @@
     findUnusedCode="true"
 >
     <projectFiles>
-        <directory name="src" />
-        <directory name="tests" />
+        <directory name="src"/>
+        <directory name="tests"/>
         <ignoreFiles>
-            <directory name="vendor" />
+            <directory name="vendor"/>
+            <directory name="src/App/Shared/Infrastructure/Doctrine/Migration"/>
         </ignoreFiles>
     </projectFiles>
+    <issueHandlers>
+        <InternalMethod>
+            <errorLevel type="suppress">
+                <!-- PSALM seems to have a problem with PEST methods, so I had to ignore these -->
+                <directory name="**/tests/*"/>
+            </errorLevel>
+        </InternalMethod>
+        <PossiblyUnusedProperty>
+            <errorLevel type="suppress">
+                <!-- DTOs are often mapped as API, and therefore, their properties are not directly used -->
+                <file name="**/Dto/*"/>
+                <!-- Event can be dispatched, but they are not necessarily used -->
+                <file name="**/Event/*"/>
+            </errorLevel>
+        </PossiblyUnusedProperty>
+    </issueHandlers>
+    <plugins>
+        <pluginClass class="Psalm\MockeryPlugin\Plugin"/>
+    </plugins>
 </psalm>

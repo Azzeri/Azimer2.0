@@ -6,7 +6,6 @@ namespace App\Tests\Shared\CommonUtilities;
 
 /**
  * Class for reflection testing purposes
- *
  * @author Mariusz Waloszczyk
  */
 final readonly class SampleClass
@@ -16,6 +15,7 @@ final readonly class SampleClass
     ) {
     }
 
+    /** @psalm-suppress UnusedMethod */
     // @phpstan-ignore-next-line
     private function getName(): string
     {

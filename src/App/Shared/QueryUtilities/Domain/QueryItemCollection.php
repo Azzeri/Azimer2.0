@@ -9,6 +9,7 @@ namespace App\Shared\QueryUtilities\Domain;
  *
  * @template T
  *
+ * @psalm-suppress PossiblyUnusedProperty
  * @author Mariusz Waloszczyk
  */
 final readonly class QueryItemCollection

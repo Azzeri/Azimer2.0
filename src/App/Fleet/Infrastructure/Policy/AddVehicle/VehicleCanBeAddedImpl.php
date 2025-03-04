@@ -37,7 +37,6 @@ final readonly class VehicleCanBeAddedImpl implements VehicleCanBeAdded
     ): BusinessRulesNotificationsCollection {
         $notifications = BusinessRulesNotificationsCollection::create();
 
-        /** @var VehicleCanBeAddedBusinessRule $businessRule */
         foreach ($this->businessRules as $businessRule) {
             $businessRuleResult = $businessRule->check($inputData, $fleetManager);
             if ($businessRuleResult !== null) {

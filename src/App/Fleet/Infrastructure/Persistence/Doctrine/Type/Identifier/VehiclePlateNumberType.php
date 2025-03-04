@@ -16,7 +16,7 @@ use App\Shared\Infrastructure\Doctrine\Type\Identifier\AbstractStringIdentifierT
 final class VehiclePlateNumberType extends AbstractStringIdentifierType
 {
     /**
-     * @inheritdoc
+     * Unique name of the type
      */
     public const string NAME = 'vehicle_plate_number';
 
@@ -37,14 +37,10 @@ final class VehiclePlateNumberType extends AbstractStringIdentifierType
      */
     protected function toString(object|string $value): string
     {
-        if (is_string($value)) {
-            return $value;
+        if (is_string($value) || $value instanceof VehiclePlateNumber) {
+            return (string)$value;
         }
 
-        if (!$value instanceof VehiclePlateNumber) {
-            throw new InvalidDataException("Invalid type provided");
-        }
-
-        return (string)$value;
+        throw new InvalidDataException("Invalid type provided");
     }
 }

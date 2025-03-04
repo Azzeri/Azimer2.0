@@ -26,7 +26,13 @@ it(
         // Arrange
         $repository = Mockery::mock(VehicleQueryModelRepository::class);
         $repository->shouldReceive('findByPlateNumber')
-            ->with(Mockery::on(fn($arg) => $arg->equals(VehiclePlateNumber::fromString('ONY1234'))))
+            ->with(
+                Mockery::on(
+                    fn(VehiclePlateNumber $arg): bool => $arg->equals(
+                        VehiclePlateNumber::fromString('ONY1234')
+                    )
+                )
+            )
             ->andReturn(null);
 
         $service = new VehicleQueryService($repository);
@@ -49,7 +55,13 @@ it(
         $queryModel = FleetSamples::vehicleQueryModel();
         $repository = Mockery::mock(VehicleQueryModelRepository::class);
         $repository->shouldReceive('findByPlateNumber')
-            ->with(Mockery::on(fn($arg) => $arg->equals(VehiclePlateNumber::fromString('ONY1234'))))
+            ->with(
+                Mockery::on(
+                    fn(VehiclePlateNumber $arg): bool => $arg->equals(
+                        VehiclePlateNumber::fromString('ONY1234')
+                    )
+                )
+            )
             ->andReturn($queryModel);
 
         $service = new VehicleQueryService($repository);
@@ -59,7 +71,7 @@ it(
 
         // Assert
         expect($result)->toBeInstanceOf(QueryItem::class)
-            ->and($result->data)->toEqual($queryModel);
+            ->and($result?->data)->toEqual($queryModel);
     }
 );
 it(

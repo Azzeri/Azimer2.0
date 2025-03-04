@@ -58,7 +58,7 @@ it(
 
         // Act // Assert
         expect(
-            fn() => ReflectionUtils::invokeMethod($type, 'toString', [new stdClass()])
+            fn(): mixed => ReflectionUtils::invokeMethod($type, 'toString', [new stdClass()])
         )->toThrow(InvalidDataException::class);
     }
 );

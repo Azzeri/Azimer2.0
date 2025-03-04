@@ -60,7 +60,7 @@ final readonly class AssignedUnit extends ValueObject
      */
     public function isSubservientTo(AssignedUnitId $unitId): bool
     {
-        return $this->superiorUnit->id()->equals($unitId);
+        return $this->superiorUnit?->id()->equals($unitId);
     }
 
     /**

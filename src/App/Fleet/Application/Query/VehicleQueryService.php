@@ -48,6 +48,7 @@ final readonly class VehicleQueryService
     /**
      * @param SearchVehiclesQuery $query
      * @return QueryItemCollection<VehicleQueryModel>
+     * @psalm-suppress UnusedParam
      * @author Mariusz Waloszczyk
      */
     #[QueryHandler]

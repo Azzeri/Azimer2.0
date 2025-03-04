@@ -24,7 +24,7 @@ it('fails if input data is missing', function () {
 
     // Assert
     expect($result)->toBeInstanceOf(BusinessRuleNotification::class)
-        ->and($result->message())->toEqual("Missing data to validate plate number uniqueness");
+        ->and($result?->message())->toEqual("Missing data to validate plate number uniqueness");
 });
 
 it('fails if plate number is missing', function () {
@@ -37,7 +37,7 @@ it('fails if plate number is missing', function () {
 
     // Assert
     expect($result)->toBeInstanceOf(BusinessRuleNotification::class)
-        ->and($result->message())->toEqual("Missing data to validate plate number uniqueness");
+        ->and($result?->message())->toEqual("Missing data to validate plate number uniqueness");
 });
 
 it(
@@ -64,7 +64,7 @@ it(
 
         // Assert
         expect($result)->toBeInstanceOf(BusinessRuleNotification::class)
-            ->and($result->message())->toEqual("Vehicle's plate number: 1234 already exists");
+            ->and($result?->message())->toEqual("Vehicle's plate number: 1234 already exists");
     }
 );
 

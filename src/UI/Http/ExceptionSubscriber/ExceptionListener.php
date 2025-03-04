@@ -16,13 +16,13 @@ use Throwable;
 /**
  * Defines how API should react to different kinds of exceptions thrown
  *
- * @author Mariusz Waloszczyk <mwaloszczyk@ottoworkforce.eu>
+ * @author Mariusz Waloszczyk
  */
 final readonly class ExceptionListener
 {
     /**
      * @param string $environmentMode
-     * @author Mariusz Waloszczyk <mwaloszczyk@ottoworkforce.eu>
+     * @author Mariusz Waloszczyk
      */
     public function __construct(
         #[Autowire('%kernel.environment%')]
@@ -33,7 +33,7 @@ final readonly class ExceptionListener
     /**
      * @param ExceptionEvent $event
      * @return void
-     * @author Mariusz Waloszczyk <mwaloszczyk@ottoworkforce.eu>
+     * @author Mariusz Waloszczyk
      */
     public function __invoke(ExceptionEvent $event): void
     {
@@ -63,7 +63,7 @@ final readonly class ExceptionListener
      * @param Throwable $exception
      * @param string $productionMessage
      * @return mixed[]
-     * @author Mariusz Waloszczyk <mwaloszczyk@ottoworkforce.eu>
+     * @author Mariusz Waloszczyk
      */
     private function getExceptionResponse(Throwable $exception, string $productionMessage): array
     {

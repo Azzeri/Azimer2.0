@@ -10,13 +10,12 @@ use Ecotone\Modelling\QueryBus;
 use Nelmio\ApiDocBundle\Attribute\Model;
 use OpenApi\Attributes as OA;
 use Symfony\Component\HttpFoundation\JsonResponse;
-use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
 
 /**
  * Controller that searches for vehicles
- *
- * @author Mariusz Waloszczyk <mwaloszczyk@ottoworkforce.eu>
+ * @psalm-suppress UnusedClass
+ * @author Mariusz Waloszczyk
  */
 #[Route('/vehicle', methods: ['GET'])]
 #[OA\Response(
@@ -34,14 +33,12 @@ use Symfony\Component\Routing\Annotation\Route;
 final readonly class SearchVehiclesController
 {
     /**
-     * @param Request $request
      * @param QueryBus $queryBus
      * @return JsonResponse
-     * @author Mariusz Waloszczyk <mwaloszczyk@ottoworkforce.eu>
+     * @author Mariusz Waloszczyk
      */
     #[OA\Tag(name: "Vehicle")]
     public function __invoke(
-        Request $request,
         QueryBus $queryBus,
     ): JsonResponse {
         $vehicles = $queryBus->send(new SearchVehiclesQuery());

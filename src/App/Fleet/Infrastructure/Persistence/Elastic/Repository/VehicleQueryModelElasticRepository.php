@@ -13,7 +13,6 @@ use Symfony\Component\DependencyInjection\Attribute\Autowire;
 
 /**
  * Implementation of {@see VehicleQueryModelRepository} with Elastic search engine
- *
  * @author Mariusz Waloszczyk
  */
 final readonly class VehicleQueryModelElasticRepository implements VehicleQueryModelRepository
@@ -34,8 +33,10 @@ final readonly class VehicleQueryModelElasticRepository implements VehicleQueryM
      */
     public function findByPlateNumber(VehiclePlateNumber $plateNumber): ?VehicleQueryModel
     {
+        /** @var VehicleQueryModel[] $result */
         $result = $this->elasticFinder->find((string)$plateNumber);
-        return empty($result) ? null : $result[0];
+
+        return !empty($result[0]) ? $result[0] : null;
     }
 
     /**

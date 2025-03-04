@@ -10,14 +10,13 @@ use Ecotone\Modelling\CommandBus;
 use Nelmio\ApiDocBundle\Attribute\Model;
 use OpenApi\Attributes as OA;
 use Symfony\Component\HttpFoundation\JsonResponse;
-use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpKernel\Attribute\MapRequestPayload;
 use Symfony\Component\Routing\Annotation\Route;
 
 /**
  * Controller that adds a new vehicle
- *
- * @author Mariusz Waloszczyk <mwaloszczyk@ottoworkforce.eu>
+ * @psalm-suppress UnusedClass
+ * @author Mariusz Waloszczyk
  */
 #[Route('/vehicle', methods: ['POST'])]
 #[OA\RequestBody(content: new Model(type: VehicleInputData::class))]
@@ -29,15 +28,13 @@ use Symfony\Component\Routing\Annotation\Route;
 final readonly class AddVehicleController
 {
     /**
-     * @param Request $request
      * @param CommandBus $commandBus
      * @param VehicleInputData $vehicleInput
      * @return JsonResponse
-     * @author Mariusz Waloszczyk <mwaloszczyk@ottoworkforce.eu>
+     * @author Mariusz Waloszczyk
      */
     #[OA\Tag(name: "Vehicle")]
     public function __invoke(
-        Request $request,
         CommandBus $commandBus,
         #[MapRequestPayload] VehicleInputData $vehicleInput
     ): JsonResponse {

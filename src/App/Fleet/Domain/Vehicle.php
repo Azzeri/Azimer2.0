@@ -25,7 +25,7 @@ use Ecotone\Modelling\WithEvents;
 
 /**
  * Aggregate root for Fleet bounded context
- *
+ * @psalm-suppress UnusedProperty
  * @author Mariusz Waloszczyk
  * TODO - I wonder if I should assign AssignedUnit or AssignedUnitId?
  */
@@ -76,6 +76,7 @@ final class Vehicle extends AggregateRoot
      * @return Vehicle
      * @throws BusinessRuleViolationException
      * @throws InvalidDataException
+     * @psalm-suppress PossiblyNullArgument // TODO - disabled when input data will be fixed
      */
     #[CQRS\CommandHandler()]
     public static function fromInputData(

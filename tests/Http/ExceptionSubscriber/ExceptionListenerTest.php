@@ -21,8 +21,8 @@ it(
 
         $listener($event);
 
-        expect($event->getResponse()->getStatusCode())->toBe(Response::HTTP_NOT_FOUND)
-            ->and($event->getResponse()->getContent())->toContain('Resource not found');
+        expect($event->getResponse()?->getStatusCode())->toBe(Response::HTTP_NOT_FOUND)
+            ->and($event->getResponse()?->getContent())->toContain('Resource not found');
     }
 );
 
@@ -34,8 +34,8 @@ it('handles UnauthorizedException with 403 response in production', function () 
 
     $listener($event);
 
-    expect($event->getResponse()->getStatusCode())->toBe(Response::HTTP_FORBIDDEN)
-        ->and($event->getResponse()->getContent())->toContain('User not authorized');
+    expect($event->getResponse()?->getStatusCode())->toBe(Response::HTTP_FORBIDDEN)
+        ->and($event->getResponse()?->getContent())->toContain('User not authorized');
 });
 
 it('handles UnauthorizedException with 403 response in non-production', function () {
@@ -46,9 +46,9 @@ it('handles UnauthorizedException with 403 response in non-production', function
 
     $listener($event);
 
-    expect($event->getResponse()->getStatusCode())->toBe(Response::HTTP_FORBIDDEN)
-        ->and($event->getResponse()->getContent())->toContain('Access denied')
-        ->and($event->getResponse()->getContent())->toContain('trace');
+    expect($event->getResponse()?->getStatusCode())->toBe(Response::HTTP_FORBIDDEN)
+        ->and($event->getResponse()?->getContent())->toContain('Access denied')
+        ->and($event->getResponse()?->getContent())->toContain('trace');
 });
 
 it('handles BusinessRuleViolationException with 422 response', function () {
@@ -59,8 +59,8 @@ it('handles BusinessRuleViolationException with 422 response', function () {
 
     $listener($event);
 
-    expect($event->getResponse()->getStatusCode())->toBe(Response::HTTP_UNPROCESSABLE_ENTITY)
-        ->and($event->getResponse()->getContent())->toContain('Business rule violated');
+    expect($event->getResponse()?->getStatusCode())->toBe(Response::HTTP_UNPROCESSABLE_ENTITY)
+        ->and($event->getResponse()?->getContent())->toContain('Business rule violated');
 });
 
 it('handles generic exceptions with 500 response in production', function () {
@@ -71,8 +71,8 @@ it('handles generic exceptions with 500 response in production', function () {
 
     $listener($event);
 
-    expect($event->getResponse()->getStatusCode())->toBe(Response::HTTP_INTERNAL_SERVER_ERROR)
-        ->and($event->getResponse()->getContent())->toContain('Internal server error');
+    expect($event->getResponse()?->getStatusCode())->toBe(Response::HTTP_INTERNAL_SERVER_ERROR)
+        ->and($event->getResponse()?->getContent())->toContain('Internal server error');
 });
 
 it('handles generic exceptions with full trace in non-production', function () {
@@ -83,7 +83,7 @@ it('handles generic exceptions with full trace in non-production', function () {
 
     $listener($event);
 
-    expect($event->getResponse()->getStatusCode())->toBe(Response::HTTP_INTERNAL_SERVER_ERROR)
-        ->and($event->getResponse()->getContent())->toContain('Unexpected error')
-        ->and($event->getResponse()->getContent())->toContain('trace');
+    expect($event->getResponse()?->getStatusCode())->toBe(Response::HTTP_INTERNAL_SERVER_ERROR)
+        ->and($event->getResponse()?->getContent())->toContain('Unexpected error')
+        ->and($event->getResponse()?->getContent())->toContain('trace');
 });

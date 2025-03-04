@@ -11,7 +11,8 @@ use FOS\ElasticaBundle\Transformer\ElasticaToModelTransformerInterface;
 
 /**
  * Implementation of {@see ElasticaToModelTransformerInterface} for Vehicle
- * // TODO - unit test
+ *
+ * @psalm-suppress UnusedClass // TODO - unit test and remove suppression
  * @author Mariusz Waloszczyk
  */
 final readonly class ElasticaToVehicleTransformer implements ElasticaToModelTransformerInterface
@@ -23,7 +24,6 @@ final readonly class ElasticaToVehicleTransformer implements ElasticaToModelTran
     public function transform(array $elasticaObjects): array
     {
         $result = [];
-        /** @var Result $elasticaObject */
         foreach ($elasticaObjects as $elasticaObject) {
             $result[] = $this->mapElasticaResultToDto($elasticaObject);
         }

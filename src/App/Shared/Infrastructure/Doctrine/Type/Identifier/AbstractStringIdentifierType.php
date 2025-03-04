@@ -15,11 +15,6 @@ use Doctrine\DBAL\Types\Type;
 abstract class AbstractStringIdentifierType extends Type
 {
     /**
-     * Unique name of the property, you need to overload this
-     */
-    public const string NAME = '';
-
-    /**
      * Creates a target type from a string value
      *
      * @param string $value
@@ -31,11 +26,11 @@ abstract class AbstractStringIdentifierType extends Type
     /**
      * Converts a target type to string value
      *
-     * @param object $value
+     * @param object|string $value - sometimes type can be a string anyway
      * @return string
      * @author Mariusz Waloszczyk
      */
-    abstract protected function toString(object $value): string;
+    abstract protected function toString(object|string $value): string;
 
     /**
      * @inheritDoc

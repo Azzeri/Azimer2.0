@@ -190,6 +190,7 @@
       <path value="$PROJECT_DIR$/vendor/symfony/twig-bridge" />
       <path value="$PROJECT_DIR$/vendor/symfony/twig-bundle" />
       <path value="$PROJECT_DIR$/vendor/symfony/serializer" />
+      <path value="$PROJECT_DIR$/vendor/psalm/plugin-mockery" />
     </include_path>
   </component>
   <component name="PhpInterpreters">

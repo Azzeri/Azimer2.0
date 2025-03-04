@@ -41,7 +41,7 @@ final readonly class AssignedUnitFactoryImpl implements AssignedUnitFactory
             throw new ResourceNotFoundException("Fire brigade unit not found");
         }
 
-        $parentUnit = !empty($apiUnit['superiorUnitId'])
+        $parentUnit = isset($apiUnit['superiorUnitId'])
             ? AssignedUnit::create(AssignedUnitId::fromString($apiUnit['superiorUnitId']))
             : null;
 
