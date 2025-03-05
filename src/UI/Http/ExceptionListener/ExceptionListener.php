@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace UI\Http\ExceptionSubscriber;
+namespace UI\Http\ExceptionListener;
 
 use App\Shared\BusinessRuleUtilities\Domain\Exception\BusinessRuleViolationException;
 use App\Shared\DomainUtilities\Exception\ResourceNotFoundException;

@@ -31,5 +31,5 @@ services:
         tags: [ 'controller.service_arguments' ]
     
     ### Exception listener
-    UI\Http\ExceptionSubscriber\ExceptionListener:
+    UI\Http\ExceptionListener\ExceptionListener:
         tags: [ kernel.event_listener ]

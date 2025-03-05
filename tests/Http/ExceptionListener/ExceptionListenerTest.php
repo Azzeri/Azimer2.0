@@ -9,7 +9,7 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpKernel\Event\ExceptionEvent;
 use Symfony\Component\HttpKernel\HttpKernelInterface;
-use UI\Http\ExceptionSubscriber\ExceptionListener;
+use UI\Http\ExceptionListener\ExceptionListener;
 
 it(
     'handles ResourceNotFoundException with 404 response',

@@ -91,7 +91,12 @@ commands: ## Display all commands in the project namespace
 ## —— Tests ✅ —————————————————————————————————————————————————————————————————
 test: ## Run PEST tests with optional filter
 	@$(eval filter := $(filter-out $@,$(MAKECMDGOALS)))
-	@$(PEST) --filter="$(filter)"
+	@if [ -n "$(filter)" ]; then \
+		$(PEST) --filter="$(filter)"; \
+	else \
+		$(PEST); \
+	fi
+
 
 ## —— Coding standards ✨ ——————————————————————————————————————————————————————
 cs: ## Run php code sniffer
