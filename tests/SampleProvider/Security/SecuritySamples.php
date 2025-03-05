@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace App\Tests\SampleProvider\Security;
+namespace Tests\SampleProvider\Security;
 
 use Symfony\Component\Uid\Uuid;
 

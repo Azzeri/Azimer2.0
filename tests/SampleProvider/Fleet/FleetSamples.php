@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace App\Tests\SampleProvider\Fleet;
+namespace Tests\SampleProvider\Fleet;
 
 use App\Fleet\Application\Command\AddVehicleCommand;
 use App\Fleet\Domain\Dto\VehicleInputData;

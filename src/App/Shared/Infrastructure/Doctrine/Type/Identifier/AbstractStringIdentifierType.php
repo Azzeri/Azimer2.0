@@ -9,7 +9,7 @@ use Doctrine\DBAL\Types\Type;
 
 /**
  * Abstract custom doctrine type for identifiers based on string primitive
- *
+ * TODO - test
  * @author Mariusz Waloszczyk
  */
 abstract class AbstractStringIdentifierType extends Type
