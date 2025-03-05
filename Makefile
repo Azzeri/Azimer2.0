@@ -36,6 +36,15 @@ help: ## Outputs this help screen
 install: composer.lock ## Install vendors according to the current composer.lock file
 	@$(COMPOSER) install --no-progress --prefer-dist --optimize-autoloader
 
+## —— XDEBUG 🧙‍♂️ ————————————————————————————————————————————————————————————
+xdebug-config: composer.lock ## Check current xdebug config
+	@$(EXEC_PHP) -i | grep xdebug.mode
+	@$(EXEC_PHP) -i | grep xdebug.client_port
+	@$(EXEC_PHP) -i | grep xdebug.start_with_request
+	@$(EXEC_PHP) -i | grep xdebug.client_host
+	@$(EXEC_PHP) -i | grep xdebug.discover_client_host
+	@$(EXEC_PHP) -i | grep xdebug.log
+
 ## —— Symfony 🎵 ———————————————————————————————————————————————————————————————
 sf: ## List all Symfony commands
 	@$(SYMFONY)
@@ -64,10 +73,13 @@ delete-index: ## Delete a given index (parameters: index=app_2021-01-05-075600")
 
 ## —— Docker 🐳 ————————————————————————————————————————————————————————————————
 up: ## Start the docker hub
-	$(DOCKER_COMP) up --detach
+	XDEBUG_MODE=debug $(DOCKER_COMP) up --detach
+
+build-fresh: ## Builds the images (php + caddy)
+	$(DOCKER_COMP) build --pull --no-cache
 
 build: ## Builds the images (php + caddy)
-	$(DOCKER_COMP) build --pull --no-cache
+	$(DOCKER_COMP) build
 
 down: ## Stop the docker hub
 	$(DOCKER_COMP) down --remove-orphans
@@ -96,7 +108,6 @@ test: ## Run PEST tests with optional filter
 	else \
 		$(PEST); \
 	fi
-
 
 ## —— Coding standards ✨ ——————————————————————————————————————————————————————
 cs: ## Run php code sniffer
