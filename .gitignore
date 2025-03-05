@@ -25,7 +25,7 @@ phpstan.neon
 .phpunit.result.cache
 ###< phpunit/phpunit ###
 
-###> documentation ###
-docs/Domain/src-gen/
-###< documentation ###
+####> documentation ###
+/docs/Domain/src-gen/
+####< documentation ###
 
