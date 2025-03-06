@@ -1,0 +1,25 @@
+import "Fleet/FleetContext.cml"
+import "Security/SecurityContext.cml"
+import "Employee/EmployeesContext.cml"
+import "Notifications/NotificationsContext.cml"
+import "FireBrigadeUnit/FireBrigadeUnitsContext.cml"
+import "Equipment/EquipmentContext.cml"
+
+
+ContextMap {
+    type = SYSTEM_LANDSCAPE
+    state = TO_BE
+    contains FleetContext
+    contains SecurityContext
+    contains EmployeesContext
+    contains NotificationsContext
+    contains FireBrigadeUnitsContext
+    contains EquipmentContext
+
+    FleetContext[D]<-[U] EmployeesContext // to check employee's permissions and unit assignment
+
+    EmployeesContext[D]<-[U] SecurityContext // to check employee's permissions
+
+    EmployeesContext[D]<-[U]FireBrigadeUnitsContext // to check employee's unit hierarchy
+}
+

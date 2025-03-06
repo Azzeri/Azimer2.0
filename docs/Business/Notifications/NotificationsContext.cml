@@ -1,0 +1,33 @@
+import "../Domain.cml"
+
+BoundedContext NotificationsContext implements Notifications {
+    domainVisionStatement = "Notifying employees about events occurring in the domain, eg. emails for users."
+    type = FEATURE
+    implementationTechnology = "PHP, MySql"
+    responsibilities = "Notifying employees"
+    knowledgeLevel = CONCRETE
+    Module Notification {
+        Aggregate Notification {
+            Entity Notification {
+                aggregateRoot
+                - NotificationId id
+                - NotificationType type
+                - Content content
+                - List<Recipient> recipients
+            }
+            enum NotificationType {
+                EMAIL
+            }
+            ValueObject NotificationId {
+                Uuid id key
+            }
+            ValueObject Recipient {
+                String destination
+            }
+            ValueObject Content {
+                String content
+            }
+        }
+    }
+}
+

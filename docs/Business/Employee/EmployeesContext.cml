@@ -1,0 +1,43 @@
+import "../Domain.cml"
+
+BoundedContext EmployeesContext implements Employees {
+    domainVisionStatement = "Managing personal and contact data of employees working in fire brigade units."
+    type = FEATURE
+    implementationTechnology = "PHP, MySql"
+    responsibilities = "Employees personal data, employees contact data"
+    knowledgeLevel = CONCRETE
+    Module Employee {
+        Aggregate Employee {
+            Entity Employee {
+                aggregateRoot
+                - EmployeeId id
+                - FullName fullName
+                - BirthDate birthDate
+                - PhoneNumber phone
+                - Email email
+                - FireBrigadeUnitId fireBrigadeUnitId
+            }
+            ValueObject EmployeeId {
+                Uuid id key
+            }
+            ValueObject BirthDate {
+                Date date
+            }
+            ValueObject FullName {
+                - String firstName
+                - String lastName
+            }
+            ValueObject PhoneNumber {
+                String countryCode
+                String number
+            }
+            ValueObject Email {
+                String email
+            }
+            ValueObject FireBrigadeUnitId {
+                Uuid id
+            }
+        }
+    }
+}
+

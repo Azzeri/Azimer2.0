@@ -1,0 +1,72 @@
+import "../Domain.cml"
+
+BoundedContext SecurityContext implements Security {
+    domainVisionStatement = "Authentication and authorization of users using the system."
+    type = FEATURE
+    implementationTechnology = "PHP, MySql"
+    responsibilities = "AuthenticatedUsers, Roles, LoginHistory"
+    knowledgeLevel = CONCRETE
+    Module Security {
+        Aggregate AuthenticatedUser {
+            Entity AuthenticatedUser {
+                aggregateRoot
+                - AuthenticatedUserId id
+                - Password password
+                - Status status
+                - List<AclRoleId> roles
+                - List<LoginHistoryEntryId> loginHistoryEntries
+            }
+            ValueObject AuthenticatedUserId {
+                String emailAddress key
+            }
+            ValueObject Password {
+                String hashedPassword
+            }
+            enum Status {
+                ACTIVE, INACTIVE
+            }
+        }
+        Aggregate LoginHistory {
+            Entity LoginHistoryEntry {
+                aggregateRoot
+                - LoginHistoryEntryId id
+                - AuthenticatedUserId id
+                - DateTime loginTime
+                - Browser browser
+                - IpAddress ipAddress
+                - boolean isSuccessful
+            }
+            ValueObject LoginHistoryEntryId {
+                int id key
+            }
+            ValueObject Browser {
+                String name
+                String version
+            }
+            ValueObject IpAddress {
+                String address
+            }
+        }
+        Aggregate AclRole {
+            Entity AclRole {
+                aggregateRoot
+                - AclRoleId id
+                - List<AclResourceId> resources
+                - List<AuthenticatedUserId> users
+            }
+            ValueObject AclRoleId {
+                String uniqueName key
+            }
+        }
+        Aggregate AclResource {
+            Entity AclResource {
+                aggregateRoot
+                - AclResourceId id
+            }
+            ValueObject AclResourceId {
+                String uniqueName key
+            }
+        }
+    }
+}
+

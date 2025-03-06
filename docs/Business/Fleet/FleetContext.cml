@@ -1,0 +1,44 @@
+import "../Domain.cml"
+
+BoundedContext FleetContext implements Fleet {
+    domainVisionStatement = "Managing fleet of vehicles used by the fire brigade unit."
+    type = FEATURE
+    implementationTechnology = "PHP, MySql"
+    responsibilities = "Vehicles"
+    knowledgeLevel = CONCRETE
+    Module Vehicle {
+        Aggregate Vehicle {
+            Entity Vehicle {
+                aggregateRoot
+                - VehicleId id
+                - VehicleType type
+                - VehicleName name
+                - VehicleStatus status
+                - VehicleProductionDate productionDate
+                - FireBrigadeUnitId fireBrigadeUnit
+            }
+            enum VehicleType {
+                TRUCK
+            }
+            enum VehicleStatus {
+                aggregateLifecycle
+                IN_USE, AWAITING_MAINTENANCE, IN_MAINTENANCE, ABANDONED
+            }
+            ValueObject VehicleId {
+                String plateNumber key
+            }
+            ValueObject VehicleName {
+                String make
+                String model
+            }
+            ValueObject VehicleProductionDate {
+                int productionYear
+                int productionMonth
+                int productionDay
+            }
+            ValueObject FireBrigadeUnitId {
+                Uuid id
+            }
+        }
+    }
+}

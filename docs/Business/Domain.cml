@@ -1,0 +1,34 @@
+Domain FireBrigade {
+    domainVisionStatement = "Supporting fire brigade units in planning maintenance of equipment they use."
+    
+    Subdomain Equipment {
+        type = CORE_DOMAIN
+        domainVisionStatement = "Managing equipment used by employees, recording usage statistics and planning maintenance."
+    }
+
+    Subdomain FireBrigadeUnits {
+        type = SUPPORTING_DOMAIN
+        domainVisionStatement = "Managing fire brigade units, like their data, members and hierarchy."
+    }
+
+    Subdomain Fleet {
+        type = SUPPORTING_DOMAIN
+        domainVisionStatement = "Managing fleet of vehicles used by the fire brigade unit."
+    }
+
+    Subdomain Employees {
+        type = SUPPORTING_DOMAIN
+        domainVisionStatement = "Managing personal and contact data of employees working in fire brigade units."
+    }
+
+    Subdomain Notifications {
+        type = GENERIC_SUBDOMAIN
+        domainVisionStatement = "Notifying employees about events occurring in the domain, eg. emails for users."
+    }
+
+    Subdomain Security {
+        type = GENERIC_SUBDOMAIN
+        domainVisionStatement = "Authentication and authorization of users using the system."
+    }
+
+}

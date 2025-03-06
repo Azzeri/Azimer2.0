@@ -1,0 +1,147 @@
+import "../Domain.cml"
+
+// przemylsec podział na 3 subdomeny - szablony, serwisy, uzycia
+// to find subdomains: identify sets of coherent use
+// cases that operate on the same data and avoid decomposing them into multiple boun‐
+// ded contexts.
+// przemylec apke (interfejs) jako osobna domene
+// przejrzec pod katem ubiquotiius language
+// use cases - gherkinv tests? wiki-glossary? terminy i nazwy jednoznaczne, unikalne, bez synonimów
+// context maph
+BoundedContext EquipmentContext implements Equipment {
+    domainVisionStatement = "Managing equipment used by employees, recording usage statistics and planning maintenance."
+    type = FEATURE
+    implementationTechnology = "PHP, MySql"
+    responsibilities = "Equipment register, equipment usage history, equipment maintenance"
+    knowledgeLevel = CONCRETE
+    Module Register {
+        Aggregate Equipment {
+            Entity Equipment {
+                aggregateRoot
+                - EquipmentId id
+                - OwnerId owner
+                - EquipmentTemplateId templateId
+                - List<EquipmentProperty> properties
+            }
+            ValueObject EquipmentId {
+                Uuid id key
+            }
+            ValueObject OwnerId {
+                Uuid id
+            }
+            ValueObject EquipmentProperty {
+                String name
+                String value
+            }
+        }
+        Aggregate EquipmentTemplate {
+            Entity EquipmentTemplate {
+                aggregateRoot
+                - EquipmentTemplateId id
+                - EquipmentCategoryId categoryId
+                - EquipmentManufacturerId manufacturerId
+                - List<EquipmentTemplateProperty> properties
+                String name
+            }
+            ValueObject EquipmentTemplateId {
+                Uuid id key
+            }
+            ValueObject EquipmentTemplateProperty {
+                - EquipmentTemplatePropertyType type
+                String name
+                boolean isRequired
+            }
+            enum EquipmentTemplatePropertyType {
+                INT,STRING,FLOAT,BOOLEAN,DATE,DATETIME
+            }
+        }
+        Aggregate EquipmentManufacturer {
+            Entity EquipmentManufacturer {
+                aggregateRoot
+                - EquipmentManufacturerId id
+                String name
+            }
+            ValueObject EquipmentManufacturerId {
+                Uuid id key
+            }
+        }
+        Aggregate EquipmentCategory {
+            Entity EquipmentCategory {
+                aggregateRoot
+                - EquipmentCategoryId id
+                - EquipmentCategoryId parentCategoryId
+                - List<EquipmentCategoryId> subcategories
+                String name
+            }
+            ValueObject EquipmentCategoryId {
+                Uuid id key
+            }
+        }
+    }
+    Module Usage {
+        Aggregate Usage {
+            Entity Usage {
+                aggregateRoot
+                - UsageId id
+                - UsingPersonId usingPersonId
+                - EquipmentId equipmentId
+                DateTime usageFrom
+                DateTime usageTo
+            }
+            ValueObject UsageId {
+                Uuid id key
+            }
+            ValueObject UsingPersonId {
+                Uuid id
+            }
+        }
+    }
+    Module Maintenance {
+        Aggregate Maintenance {
+            Entity Maintenance {
+                aggregateRoot
+                - MaintenanceId id
+                - MaintenanceTemplateId maintenanceTemplateId
+                - EquipmentId equipmentId
+                - EmployeeId assignedEmployeeId
+                - EmployeeId performedById
+                DateTime plannedDate
+                DateTime actualStartDate
+                DateTime actualEndDate
+            }
+            ValueObject MaintenanceId {
+                Uuid id key
+            }
+            ValueObject MaintenanceTemplateId { // will refer one-time/periodic or others in future
+                Uuid id key
+            }
+            ValueObject EmployeeId {
+                Uuid id
+            }
+        }
+        Aggregate PeriodicMaintenanceTemplate {
+            Entity PeriodicMaintenanceTemplate {
+                aggregateRoot
+                - PeriodicMaintenanceTemplateId id
+                - EquipmentTemplateId equipmentTemplateId
+                int intervalInDays
+                String description
+            }
+            ValueObject PeriodicMaintenanceTemplateId {
+                Uuid id key
+            }
+        }
+        Aggregate OneTimeMaintenanceTemplate {
+            Entity OneTimeMaintenanceTemplate {
+                aggregateRoot
+                - OneTimeMaintenanceTemplate id
+                - EquipmentId equipmentId
+                String description
+            }
+            ValueObject OneTimeMaintenanceTemplateId {
+                Uuid id key
+            }
+        }
+    }
+}
+

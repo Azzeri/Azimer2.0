@@ -1,0 +1,31 @@
+import "../Domain.cml"
+
+BoundedContext FireBrigadeUnitsContext implements FireBrigadeUnits {
+    domainVisionStatement = "Managing fire brigade units, like their data, members and hierarchy."
+    type = FEATURE
+    implementationTechnology = "PHP, MySql"
+    responsibilities = "Fire brigade units data and hierarchy"
+    knowledgeLevel = CONCRETE
+    Module FireBrigadeUnit {
+        Aggregate FireBrigadeUnit {
+            Entity FireBrigadeUnit {
+                aggregateRoot
+                - FireBrigadeUnitId id
+                - Address address
+                - FireBrigadeUnitId superiorUnit
+                - List<FireBrigadeUnitId> subservientUnits
+            }
+            ValueObject FireBrigadeUnitId {
+                Uuid id key
+            }
+            ValueObject Address {
+                String country
+                String street
+                String number
+                String locality
+                String postCode
+            }
+        }
+    }
+}
+
