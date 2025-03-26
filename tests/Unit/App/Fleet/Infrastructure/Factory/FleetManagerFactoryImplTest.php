@@ -6,17 +6,16 @@ namespace Tests\Unit\App\Fleet\Infrastructure\Factory;
 
 use App\Fleet\Domain\Enum\FleetPermission;
 use App\Fleet\Domain\Factory\AssignedUnitFactory;
-use App\Fleet\Domain\ValueObject\AssignedUnit;
 use App\Fleet\Domain\ValueObject\FleetManager;
 use App\Fleet\Infrastructure\Factory\FleetManagerFactoryImpl;
-use App\Security\Application\Service\SecurityApiService;
+use App\Security\Application\Tenant\Service\SecurityApiService;
 use App\Shared\CommonUtilities\ReflectionUtils;
 use App\Shared\DomainUtilities\Exception\InvalidDataException;
 use App\Shared\DomainUtilities\Exception\ResourceNotFoundException;
-use Tests\SampleProvider\Fleet\FleetSamples;
-use Tests\SampleProvider\Security\SecuritySamples;
 use Mockery;
 use ReflectionException;
+use Tests\SampleProvider\Fleet\FleetSamples;
+use Tests\SampleProvider\Security\SecuritySamples;
 
 it(
     'creates fleet manager from an authenticated user with fleet permissions only',

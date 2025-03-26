@@ -4,8 +4,8 @@ declare(strict_types=1);
 
 namespace UI\Http\Rest\Controller\Security;
 
-use App\Security\Application\Command\AuthenticateTenant\AuthenticateTenantCommand;
-use App\Security\Application\Command\AuthenticateTenant\AuthenticateTenantCommandHandler;
+use App\Security\Application\Tenant\Command\AuthenticateTenant\AuthenticateTenantCommand;
+use App\Security\Application\Tenant\Command\AuthenticateTenant\AuthenticateTenantCommandHandler;
 use App\Shared\CqrsUtilities\Domain\Repository\RuntimeMessageCollectorRepository;
 use Ecotone\Modelling\CommandBus;
 use Nelmio\ApiDocBundle\Attribute\Model;

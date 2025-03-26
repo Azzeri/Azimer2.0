@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace App\Security\Application\Command\AuthenticateTenant;
+namespace App\Security\Application\Tenant\Command\AuthenticateTenant;
 
 /**
  * Command to authenticate tenant in the system

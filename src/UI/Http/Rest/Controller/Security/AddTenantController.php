@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace UI\Http\Rest\Controller\Security;
 
-use App\Security\Application\Command\AddTenant\AddTenantCommand;
+use App\Security\Application\Tenant\Command\AddTenant\AddTenantCommand;
 use Ecotone\Modelling\CommandBus;
 use Nelmio\ApiDocBundle\Attribute\Model;
 use OpenApi\Attributes as OA;

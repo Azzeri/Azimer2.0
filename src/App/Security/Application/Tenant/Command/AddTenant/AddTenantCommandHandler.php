@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace App\Security\Application\Command\AddTenant;
+namespace App\Security\Application\Tenant\Command\AddTenant;
 
 use App\Security\Domain\Tenant\Enum\TenantStatus;
 use App\Security\Domain\Tenant\Tenant;

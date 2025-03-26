@@ -9,7 +9,7 @@ use App\Fleet\Domain\Factory\AssignedUnitFactory;
 use App\Fleet\Domain\Factory\FleetManagerFactory;
 use App\Fleet\Domain\ValueObject\AssignedUnitId;
 use App\Fleet\Domain\ValueObject\FleetManager;
-use App\Security\Application\Service\SecurityApiService;
+use App\Security\Application\Tenant\Service\SecurityApiService;
 use App\Shared\DomainUtilities\Exception\InvalidDataException;
 use App\Shared\DomainUtilities\Exception\ResourceNotFoundException;
 
