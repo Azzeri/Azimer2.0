@@ -28,7 +28,7 @@ it(
     function () {
         // Arrange
         $securityApiService = Mockery::mock(SecurityApiService::class);
-        $securityApiService->shouldReceive('getAuthenticatedUser')
+        $securityApiService->shouldReceive('getAuthenticatedUser')//TODO - renamed to tenant
             ->andReturn(SecuritySamples::apiUser([FleetPermission::ADD_SUBSERVIENT->value, 'other']));
 
         $assignedUnitFactory = Mockery::mock(AssignedUnitFactory::class);

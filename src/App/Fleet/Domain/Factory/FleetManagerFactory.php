@@ -8,7 +8,7 @@ use App\Fleet\Domain\ValueObject\FleetManager;
 
 /**
  * This factory should be used to create instances of FleetManager
- *
+ * TODO - authenticated user renamed to tenant
  * @author Mariusz Waloszczyk
  */
 interface FleetManagerFactory

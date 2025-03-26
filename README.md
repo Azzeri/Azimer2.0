@@ -34,7 +34,9 @@ documentation: [Business Description](docs/Business/BusinessDescription.md).
 - **Containerization:** Docker
 - **Quality Tools:** PHPStan, PHP_CodeSniffer, Psalm
 - **Scaffolding:** Dunglas Symfony/Docker: [GitHub Link](https://github.com/dunglas/symfony-docker)
-- **Other:** - Ecotone, to simplify orchestration.
+- **Other:**
+    - Ecotone, to simplify orchestration.
+    - LexikJWT for API authentication
 
 ## 📂 Project Structure
 

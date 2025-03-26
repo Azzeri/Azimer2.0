@@ -5,12 +5,12 @@ declare(strict_types=1);
 namespace Tests\Unit\App\Fleet\Infrastructure\Persistence\Elastic\Repository;
 
 use App\Fleet\Domain\ValueObject\VehiclePlateNumber;
-use App\Fleet\Infrastructure\Persistence\Elastic\Repository\VehicleQueryModelElasticRepository;
+use App\Fleet\Infrastructure\Repository\Persistence\Elastic\Repository\VehicleQueryModelElasticRepository;
 use App\Shared\DomainUtilities\Exception\InvalidDataException;
-use Tests\SampleProvider\Fleet\FleetSamples;
 use FOS\ElasticaBundle\Finder\TransformedFinder;
 use Mockery;
 use Ramsey\Collection\Collection;
+use Tests\SampleProvider\Fleet\FleetSamples;
 
 it(
     'returns vehicle found by a plate number',

@@ -11,6 +11,6 @@ fos_elastica:
                 listener: ~
                 finder: ~
                 model_to_elastica_transformer:
-                    service: App\Fleet\Infrastructure\Persistence\Elastic\VehicleToElasticaTransformer
+                    service: App\Fleet\Infrastructure\Repository\Persistence\Elastic\VehicleToElasticaTransformer
                 elastica_to_model_transformer:
-                    service: App\Fleet\Infrastructure\Persistence\Elastic\ElasticaToVehicleTransformer
+                    service: App\Fleet\Infrastructure\Repository\Persistence\Elastic\ElasticaToVehicleTransformer

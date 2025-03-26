@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace App\Fleet\Infrastructure\Persistence\Elastic;
+namespace App\Fleet\Infrastructure\Repository\Persistence\Elastic;
 
 use App\Fleet\Domain\Enum\VehicleStatus;
 use App\Fleet\Domain\Enum\VehicleType;

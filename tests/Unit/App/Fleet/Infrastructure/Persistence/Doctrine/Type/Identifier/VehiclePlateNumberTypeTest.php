@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace Tests\Unit\App\Fleet\Infrastructure\Persistence\Doctrine\Type\Identifier;
 
 use App\Fleet\Domain\ValueObject\VehiclePlateNumber;
-use App\Fleet\Infrastructure\Persistence\Doctrine\Type\Identifier\VehiclePlateNumberType;
+use App\Fleet\Infrastructure\Repository\Persistence\Doctrine\Type\Identifier\VehiclePlateNumberType;
 use App\Shared\CommonUtilities\ReflectionUtils;
 use App\Shared\DomainUtilities\Exception\InvalidDataException;
 use ReflectionException;

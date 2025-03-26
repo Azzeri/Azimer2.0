@@ -5,13 +5,13 @@ declare(strict_types=1);
 namespace Tests\Unit\App\Fleet\Infrastructure\Persistence\Doctrine\Repository;
 
 use App\Fleet\Domain\Vehicle;
-use App\Fleet\Infrastructure\Persistence\Doctrine\Repository\VehicleDoctrineRepository;
+use App\Fleet\Infrastructure\Repository\Persistence\Doctrine\VehicleDoctrineRepository;
 use App\Shared\BusinessRuleUtilities\Domain\Exception\BusinessRuleViolationException;
 use App\Shared\DomainUtilities\Exception\InvalidDataException;
-use Tests\SampleProvider\Fleet\FleetSamples;
 use Doctrine\ORM\EntityManagerInterface;
 use Doctrine\ORM\EntityRepository;
 use Mockery;
+use Tests\SampleProvider\Fleet\FleetSamples;
 
 it('handles Vehicle class but not others', function () {
     // Arrange

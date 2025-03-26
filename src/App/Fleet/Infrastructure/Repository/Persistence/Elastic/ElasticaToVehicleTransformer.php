@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace App\Fleet\Infrastructure\Persistence\Elastic;
+namespace App\Fleet\Infrastructure\Repository\Persistence\Elastic;
 
 use App\Fleet\Domain\Dto\VehicleQueryModel;
 use Elastica\Result;
@@ -34,7 +34,7 @@ final readonly class ElasticaToVehicleTransformer implements ElasticaToModelTran
 
     /**
      * @inheritDoc
-     * @return list<HybridResult<object>>
+     * @return HybridResult
      * @author Mariusz Waloszczyk
      */
     public function hybridTransform(array $elasticaObjects): array

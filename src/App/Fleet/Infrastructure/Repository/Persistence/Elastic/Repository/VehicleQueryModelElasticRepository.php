@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace App\Fleet\Infrastructure\Persistence\Elastic\Repository;
+namespace App\Fleet\Infrastructure\Repository\Persistence\Elastic\Repository;
 
 use App\Fleet\Domain\Dto\VehicleQueryModel;
 use App\Fleet\Domain\Repository\VehicleQueryModelRepository;

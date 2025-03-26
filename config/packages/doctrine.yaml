@@ -4,7 +4,7 @@ doctrine:
         profiling_collect_backtrace: '%kernel.debug%'
         use_savepoints: true
         types:
-            vehicle_plate_number: App\Fleet\Infrastructure\Persistence\Doctrine\Type\Identifier\VehiclePlateNumberType
+            vehicle_plate_number: App\Fleet\Infrastructure\Repository\Persistence\Doctrine\Type\Identifier\VehiclePlateNumberType
     orm:
         auto_generate_proxy_classes: true
         enable_lazy_ghost_objects: true
@@ -29,6 +29,12 @@ doctrine:
                 dir: '%kernel.project_dir%/src/App/Fleet/Domain'
                 prefix: 'App\Fleet\Domain'
                 alias: App\Fleet\Domain
+            Tenant:
+                is_bundle: false
+                type: attribute
+                dir: '%kernel.project_dir%/src/App/Security/Infrastructure/Tenant/Symfony/AuthenticatedUser'
+                prefix: 'App\Security\Infrastructure\Tenant\Symfony\AuthenticatedUser'
+                alias: App\Security\Infrastructure\Tenant\Symfony\AuthenticatedUser
 when@test:
     doctrine:
         dbal:

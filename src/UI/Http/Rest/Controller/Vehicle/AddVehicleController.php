@@ -20,11 +20,12 @@ use Symfony\Component\Routing\Annotation\Route;
  */
 #[Route('/vehicle', methods: ['POST'])]
 #[OA\RequestBody(content: new Model(type: VehicleInputData::class))]
-#[OA\Response(response: 200, description: 'Vehicle created')]
+#[OA\Response(response: 201, description: 'Vehicle created')]
 #[OA\Response(response: 404, description: 'Resource not found')]
 #[OA\Response(response: 403, description: 'User unauthorized')]
 #[OA\Response(response: 401, description: 'User unauthenticated')]
 #[OA\Response(response: 422, description: 'Request data is invalid')]
+#[OA\Tag(name: "Vehicle")]
 final readonly class AddVehicleController
 {
     /**
@@ -33,7 +34,6 @@ final readonly class AddVehicleController
      * @return JsonResponse
      * @author Mariusz Waloszczyk
      */
-    #[OA\Tag(name: "Vehicle")]
     public function __invoke(
         CommandBus $commandBus,
         #[MapRequestPayload] VehicleInputData $vehicleInput

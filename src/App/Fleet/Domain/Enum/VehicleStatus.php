@@ -6,7 +6,7 @@ namespace App\Fleet\Domain\Enum;
 
 /**
  * Statuses representing a lifecycle of a vehicle
- *
+ * TODO - zdecydowac sie czy snake, czy normalnie czy jeszcze co innego
  * @author Mariusz Waloszczyk
  */
 enum VehicleStatus: string

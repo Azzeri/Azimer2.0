@@ -4,19 +4,19 @@ BoundedContext SecurityContext implements Security {
     domainVisionStatement = "Authentication and authorization of users using the system."
     type = FEATURE
     implementationTechnology = "PHP, MySql"
-    responsibilities = "AuthenticatedUsers, Roles, LoginHistory"
+    responsibilities = "Tenants, Roles, LoginHistory"
     knowledgeLevel = CONCRETE
     Module Security {
-        Aggregate AuthenticatedUser {
-            Entity AuthenticatedUser {
+        Aggregate Tenant {
+            Entity Tenant {
                 aggregateRoot
-                - AuthenticatedUserId id
+                - TenantId id
                 - Password password
                 - Status status
                 - List<AclRoleId> roles
                 - List<LoginHistoryEntryId> loginHistoryEntries
             }
-            ValueObject AuthenticatedUserId {
+            ValueObject TenantId {
                 String emailAddress key
             }
             ValueObject Password {
@@ -30,7 +30,7 @@ BoundedContext SecurityContext implements Security {
             Entity LoginHistoryEntry {
                 aggregateRoot
                 - LoginHistoryEntryId id
-                - AuthenticatedUserId id
+                - TenantId id
                 - DateTime loginTime
                 - Browser browser
                 - IpAddress ipAddress
@@ -52,7 +52,7 @@ BoundedContext SecurityContext implements Security {
                 aggregateRoot
                 - AclRoleId id
                 - List<AclResourceId> resources
-                - List<AuthenticatedUserId> users
+                - List<TenantId> users
             }
             ValueObject AclRoleId {
                 String uniqueName key

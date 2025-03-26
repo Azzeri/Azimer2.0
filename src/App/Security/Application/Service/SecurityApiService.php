@@ -6,7 +6,7 @@ namespace App\Security\Application\Service;
 
 /**
  * This service can be used by other bounded contexts to fetch data about security
- *
+ * TODO - aggregate renamed to Tenant
  * @author Mariusz Waloszczyk
  */
 interface SecurityApiService

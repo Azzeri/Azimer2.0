@@ -29,3 +29,7 @@ phpstan.neon
 /docs/Domain/src-gen/
 ####< documentation ###
 
+
+###> lexik/jwt-authentication-bundle ###
+/config/jwt/*.pem
+###< lexik/jwt-authentication-bundle ###

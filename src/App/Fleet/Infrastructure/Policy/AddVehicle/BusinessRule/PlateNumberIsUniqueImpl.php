@@ -5,10 +5,12 @@ namespace App\Fleet\Infrastructure\Policy\AddVehicle\BusinessRule;
 use App\Fleet\Domain\Dto\VehicleInputData;
 use App\Fleet\Domain\Policy\AddVehicle\BusinessRule\PlateNumberIsUnique;
 use App\Fleet\Domain\ValueObject\FleetManager;
-use App\Fleet\Domain\Vehicle;
-use App\Fleet\Infrastructure\Persistence\Doctrine\Repository\VehicleDoctrineRepository;
+use App\Fleet\Domain\ValueObject\VehiclePlateNumber;
+use App\Fleet\Infrastructure\Repository\Persistence\Doctrine\VehicleDoctrineRepository;
 use App\Shared\BusinessRuleUtilities\Domain\ValueObject\BusinessRuleNotification;
-use Ecotone\Modelling\StandardRepository;
+use App\Shared\Domain\Repository\StandardRepository;
+use App\Shared\DomainUtilities\Exception\InvalidDataException;
+use App\Shared\DomainUtilities\Exception\ResourceNotFoundException;
 use Symfony\Component\DependencyInjection\Attribute\Autowire;
 
 /**
@@ -29,6 +31,7 @@ final readonly class PlateNumberIsUniqueImpl implements PlateNumberIsUnique
 
     /**
      * @inheritDoc
+     * @throws InvalidDataException
      * @author Mariusz Waloszczyk
      */
     public function check(
@@ -40,13 +43,12 @@ final readonly class PlateNumberIsUniqueImpl implements PlateNumberIsUnique
             return BusinessRuleNotification::fromString("Missing data to validate plate number uniqueness");
         }
 
-        $vehicleWithPlateNumber = $this->vehicleRepository->findBy(
-            Vehicle::class,
-            ['plateNumber' => $inputData->plateNumber]
-        );
+        try {
+            $this->vehicleRepository->findById(VehiclePlateNumber::fromString($inputData->plateNumber));
+        } catch (ResourceNotFoundException) {
+            return null;
+        }
 
-        return $vehicleWithPlateNumber === null
-            ? null
-            : BusinessRuleNotification::fromString("Vehicle's plate number: $inputData->plateNumber already exists");
+        return BusinessRuleNotification::fromString("Vehicle's plate number: $inputData->plateNumber already exists");
     }
 }

@@ -10,15 +10,15 @@ use App\Fleet\Domain\ValueObject\AssignedUnitId;
 use App\Fleet\Domain\ValueObject\VehicleName;
 use App\Fleet\Domain\ValueObject\VehiclePlateNumber;
 use App\Fleet\Domain\ValueObject\VehicleProductionDate;
-use App\Fleet\Infrastructure\Persistence\Elastic\VehicleToElasticaTransformer;
+use App\Fleet\Infrastructure\Repository\Persistence\Elastic\VehicleToElasticaTransformer;
 use App\Shared\BusinessRuleUtilities\Domain\Exception\BusinessRuleViolationException;
 use App\Shared\CommonUtilities\ReflectionUtils;
 use App\Shared\DomainUtilities\Exception\InvalidDataException;
-use Tests\SampleProvider\Fleet\FleetSamples;
 use Elastica\Document;
 use InvalidArgumentException;
 use ReflectionException;
 use stdClass;
+use Tests\SampleProvider\Fleet\FleetSamples;
 
 it(
     'throws exception on invalid data type',
