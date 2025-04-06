@@ -9,7 +9,7 @@ use App\Fleet\Domain\Enum\VehicleStatus;
 use App\Fleet\Domain\Enum\VehicleType;
 use App\Fleet\Domain\Event\VehicleWasAdded;
 use App\Fleet\Domain\Policy\AddVehicle\VehicleCanBeAdded;
-use App\Fleet\Domain\ValueObject\AssignedUnitId;
+use App\Fleet\Domain\ValueObject\FleetUnitId;
 use App\Fleet\Domain\ValueObject\VehicleName;
 use App\Fleet\Domain\ValueObject\VehiclePlateNumber;
 use App\Fleet\Domain\ValueObject\VehicleProductionDate;
@@ -41,7 +41,7 @@ final class Vehicle extends AggregateRoot
      * @param VehicleName $name
      * @param VehicleStatus $status
      * @param VehicleProductionDate $productionDate
-     * @param AssignedUnitId $assignedUnitId
+     * @param FleetUnitId $assignedUnitId
      */
     private function __construct(
         /** @phpstan-ignore-next-line */
@@ -62,8 +62,8 @@ final class Vehicle extends AggregateRoot
         #[ORM\Embedded(class: VehicleProductionDate::class)]
         private VehicleProductionDate $productionDate,
         /** @phpstan-ignore-next-line */
-        #[ORM\Embedded(class: AssignedUnitId::class)]
-        private AssignedUnitId $assignedUnitId
+        #[ORM\Embedded(class: FleetUnitId::class)]
+        private FleetUnitId $assignedUnitId
     ) {
         $this->recordThat(new VehicleWasAdded((string)$plateNumber));
     }
@@ -83,21 +83,19 @@ final class Vehicle extends AggregateRoot
         AddVehicleCommand $addVehicleCommand,
         #[Reference] VehicleCanBeAdded $vehicleCanBeAdded
     ): self {
-        $inputData = $addVehicleCommand->vehicleInputData;
-
-        $vehicleCanBeAdded->isSatisfiedBy($inputData)
+        $vehicleCanBeAdded->checkBusinessRules($addVehicleCommand)
             ->validate();
 
         return new self(
-            VehiclePlateNumber::fromString($inputData->plateNumber),
-            VehicleType::from($inputData->type),
-            VehicleName::fromMakeAndModel($inputData->make, $inputData->model),
-            VehicleStatus::from($inputData->status),
+            VehiclePlateNumber::fromString($addVehicleCommand->plateNumber),
+            VehicleType::from($addVehicleCommand->type),
+            VehicleName::fromMakeAndModel($addVehicleCommand->make, $addVehicleCommand->model),
+            VehicleStatus::from($addVehicleCommand->status),
             VehicleProductionDate::fromYearAndMonth(
-                $inputData->productionYear,
-                $inputData->productionMonth
+                $addVehicleCommand->productionYear,
+                $addVehicleCommand->productionMonth
             ),
-            AssignedUnitId::fromString($inputData->assignedUnitId)
+            FleetUnitId::fromString($addVehicleCommand->assignedUnitId)
         );
     }
 }

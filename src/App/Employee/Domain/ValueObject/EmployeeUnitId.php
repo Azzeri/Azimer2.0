@@ -10,7 +10,7 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * Identifier of a fire brigade unit that employee belongs to
  *
- * @author Mariusz Waloszczyk <mwaloszczyk@ottoworkforce.eu>
+ * @author Mariusz Waloszczyk
  */
 #[ORM\Embeddable]
 final readonly class EmployeeUnitId extends UuidIdentifier

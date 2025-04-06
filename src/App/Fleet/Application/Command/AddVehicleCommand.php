@@ -4,20 +4,33 @@ declare(strict_types=1);
 
 namespace App\Fleet\Application\Command;
 
-use App\Fleet\Domain\Dto\VehicleInputData;
-
 /**
- * Add a new vehicle from input data
+ * Command to create a new vehicle
  *
  * @author Mariusz Waloszczyk
  */
 final readonly class AddVehicleCommand
 {
     /**
-     * @param VehicleInputData $vehicleInputData
+     * @param string $plateNumber
+     * @param string $status
+     * @param string $type
+     * @param string $make
+     * @param string $model
+     * @param int|null $productionYear
+     * @param int|null $productionMonth
+     * @param string|null $assignedUnitId
+     * @author Mariusz Waloszczyk
      */
     public function __construct(
-        public VehicleInputData $vehicleInputData
+        public string $plateNumber,
+        public string $status,
+        public string $type,
+        public string $make,
+        public string $model,
+        public ?int $productionYear = null,
+        public ?int $productionMonth = null,
+        public ?string $assignedUnitId = null
     ) {
     }
 }

@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace App\Fleet\Domain\Policy\AddVehicle\BusinessRule;
 
-use App\Fleet\Domain\Dto\VehicleInputData;
+use App\Fleet\Application\Command\AddVehicleCommand;
 use App\Fleet\Domain\ValueObject\FleetManager;
 use App\Shared\BusinessRuleUtilities\Domain\ValueObject\BusinessRuleNotification;
 use Symfony\Component\DependencyInjection\Attribute\AutoconfigureTag;
@@ -20,13 +20,10 @@ interface VehicleCanBeAddedBusinessRule
     /**
      * A single business rule that needs to be valid to create a new vehicle
      *
-     * @param VehicleInputData|null $inputData
-     * @param FleetManager|null $fleetManager
+     * @param AddVehicleCommand $command
+     * @param FleetManager $fleetManager
      * @return BusinessRuleNotification|null
      * @author Mariusz Waloszczyk
      */
-    public function check(
-        ?VehicleInputData $inputData = null,
-        ?FleetManager $fleetManager = null,
-    ): ?BusinessRuleNotification;
+    public function check(AddVehicleCommand $command, FleetManager $fleetManager): ?BusinessRuleNotification;
 }

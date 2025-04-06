@@ -21,7 +21,7 @@ use Symfony\Component\Uid\Uuid;
 /**
  * Aggregate representing fire brigade units in system
  *
- * @author Mariusz Waloszczyk <mwaloszczyk@ottoworkforce.eu>
+ * @author Mariusz Waloszczyk
  */
 #[ORM\Entity]
 #[CQRS\Aggregate]
@@ -31,7 +31,7 @@ class FireBrigadeUnit extends AggregateRoot
      * @param FireBrigadeUnitId $id
      * @param FireBrigadeUnit|null $superiorUnit
      * @param Collection $subservientUnits
-     * @author Mariusz Waloszczyk <mwaloszczyk@ottoworkforce.eu>
+     * @author Mariusz Waloszczyk
      */
     private function __construct(
         #[CQRS\Identifier]
@@ -52,7 +52,7 @@ class FireBrigadeUnit extends AggregateRoot
      * @param FireBrigadeUnitRepository $fireBrigadeUnitRepository
      * @return self
      * @throws InvalidDataException|ResourceNotFoundException
-     * @author Mariusz Waloszczyk <mwaloszczyk@ottoworkforce.eu>
+     * @author Mariusz Waloszczyk
      */
     #[CQRS\CommandHandler]
     public static function create(
@@ -73,7 +73,7 @@ class FireBrigadeUnit extends AggregateRoot
 
     /**
      * @return FireBrigadeUnitId
-     * @author Mariusz Waloszczyk <mwaloszczyk@ottoworkforce.eu>
+     * @author Mariusz Waloszczyk
      */
     public function getId(): FireBrigadeUnitId
     {
@@ -83,7 +83,7 @@ class FireBrigadeUnit extends AggregateRoot
     /**
      * @param FireBrigadeUnitId $fireBrigadeUnitId
      * @return bool
-     * @author Mariusz Waloszczyk <mwaloszczyk@ottoworkforce.eu>
+     * @author Mariusz Waloszczyk
      */
     public function isSuperiorOf(FireBrigadeUnitId $fireBrigadeUnitId): bool
     {
@@ -99,7 +99,7 @@ class FireBrigadeUnit extends AggregateRoot
     /**
      * @param FireBrigadeUnitId $fireBrigadeUnitId
      * @return bool
-     * @author Mariusz Waloszczyk <mwaloszczyk@ottoworkforce.eu>
+     * @author Mariusz Waloszczyk
      */
     public function isSubservientTo(FireBrigadeUnitId $fireBrigadeUnitId): bool
     {

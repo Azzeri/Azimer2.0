@@ -13,6 +13,6 @@ use Doctrine\ORM\Mapping as ORM;
  * @author Mariusz Waloszczyk
  */
 #[ORM\Embeddable]
-final readonly class AssignedUnitId extends UuidIdentifier
+final readonly class FleetUnitId extends UuidIdentifier
 {
 }

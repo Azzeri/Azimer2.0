@@ -4,10 +4,10 @@ declare(strict_types=1);
 
 namespace App\Fleet\Infrastructure\Policy\AddVehicle;
 
-use App\Fleet\Domain\Dto\VehicleInputData;
+use App\Fleet\Application\Command\AddVehicleCommand;
+use App\Fleet\Domain\Factory\FleetManagerFactory;
 use App\Fleet\Domain\Policy\AddVehicle\BusinessRule\VehicleCanBeAddedBusinessRule;
 use App\Fleet\Domain\Policy\AddVehicle\VehicleCanBeAdded;
-use App\Fleet\Domain\ValueObject\FleetManager;
 use App\Shared\BusinessRuleUtilities\Domain\ValueObject\BusinessRulesNotificationsCollection;
 use Symfony\Component\DependencyInjection\Attribute\AutowireIterator;
 
@@ -20,10 +20,13 @@ final readonly class VehicleCanBeAddedImpl implements VehicleCanBeAdded
 {
     /**
      * @param iterable<VehicleCanBeAddedBusinessRule> $businessRules
+     * @param FleetManagerFactory $fleetManagerFactory
+     * @author Mariusz Waloszczyk
      */
     public function __construct(
         #[AutowireIterator(VehicleCanBeAddedBusinessRule::class)]
-        private iterable $businessRules
+        private iterable $businessRules,
+        private FleetManagerFactory $fleetManagerFactory,
     ) {
     }
 
@@ -31,14 +34,13 @@ final readonly class VehicleCanBeAddedImpl implements VehicleCanBeAdded
      * @inheritDoc
      * @author Mariusz Waloszczyk
      */
-    public function isSatisfiedBy(
-        ?VehicleInputData $inputData = null,
-        ?FleetManager $fleetManager = null
-    ): BusinessRulesNotificationsCollection {
-        $notifications = BusinessRulesNotificationsCollection::create();
+    public function checkBusinessRules(AddVehicleCommand $command): BusinessRulesNotificationsCollection
+    {
+        $authenticatedEmployee = $this->fleetManagerFactory->fromAuthenticatedEmployee();
 
+        $notifications = BusinessRulesNotificationsCollection::create();
         foreach ($this->businessRules as $businessRule) {
-            $businessRuleResult = $businessRule->check($inputData, $fleetManager);
+            $businessRuleResult = $businessRule->check($command, $authenticatedEmployee);
             if ($businessRuleResult !== null) {
                 $notifications->addNotification($businessRuleResult);
             }

@@ -10,7 +10,7 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * Full name of an employee
  *
- * @author Mariusz Waloszczyk <mwaloszczyk@ottoworkforce.eu>
+ * @author Mariusz Waloszczyk
  */
 #[ORM\Embeddable]
 final readonly class EmployeeFullName
@@ -18,7 +18,7 @@ final readonly class EmployeeFullName
     /**
      * @param string $firstName
      * @param string $lastName
-     * @author Mariusz Waloszczyk <mwaloszczyk@ottoworkforce.eu>
+     * @author Mariusz Waloszczyk
      */
     private function __construct(
         #[ORM\Column(type: Types::STRING)]
@@ -32,7 +32,7 @@ final readonly class EmployeeFullName
      * @param string $firstName
      * @param string $lastName
      * @return self
-     * @author Mariusz Waloszczyk <mwaloszczyk@ottoworkforce.eu>
+     * @author Mariusz Waloszczyk
      */
     public static function create(string $firstName, string $lastName): self
     {
@@ -41,7 +41,7 @@ final readonly class EmployeeFullName
 
     /**
      * @return string
-     * @author Mariusz Waloszczyk <mwaloszczyk@ottoworkforce.eu>
+     * @author Mariusz Waloszczyk
      */
     public function fullName(): string
     {

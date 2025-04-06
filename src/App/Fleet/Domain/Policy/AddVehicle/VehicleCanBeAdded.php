@@ -4,8 +4,7 @@ declare(strict_types=1);
 
 namespace App\Fleet\Domain\Policy\AddVehicle;
 
-use App\Fleet\Domain\Dto\VehicleInputData;
-use App\Fleet\Domain\ValueObject\FleetManager;
+use App\Fleet\Application\Command\AddVehicleCommand;
 use App\Shared\BusinessRuleUtilities\Domain\ValueObject\BusinessRulesNotificationsCollection;
 
 /**
@@ -18,13 +17,9 @@ interface VehicleCanBeAdded
     /**
      * Check if all business rules to create a vehicle are valid, and return a collection of violations
      *
-     * @param VehicleInputData|null $inputData
-     * @param FleetManager|null $fleetManager
+     * @param AddVehicleCommand $command
      * @return BusinessRulesNotificationsCollection
      * @author Mariusz Waloszczyk
      */
-    public function isSatisfiedBy(
-        ?VehicleInputData $inputData = null,
-        ?FleetManager $fleetManager = null
-    ): BusinessRulesNotificationsCollection;
+    public function checkBusinessRules(AddVehicleCommand $command): BusinessRulesNotificationsCollection;
 }

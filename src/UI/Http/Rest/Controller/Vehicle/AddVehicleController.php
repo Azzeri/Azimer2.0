@@ -5,7 +5,6 @@ declare(strict_types=1);
 namespace UI\Http\Rest\Controller\Vehicle;
 
 use App\Fleet\Application\Command\AddVehicleCommand;
-use App\Fleet\Domain\Dto\VehicleInputData;
 use Ecotone\Modelling\CommandBus;
 use Nelmio\ApiDocBundle\Attribute\Model;
 use OpenApi\Attributes as OA;
@@ -19,7 +18,7 @@ use Symfony\Component\Routing\Annotation\Route;
  * @author Mariusz Waloszczyk
  */
 #[Route('/vehicle', methods: ['POST'])]
-#[OA\RequestBody(content: new Model(type: VehicleInputData::class))]
+#[OA\RequestBody(content: new Model(type: AddVehicleCommand::class))]
 #[OA\Response(response: 201, description: 'Vehicle created')]
 #[OA\Response(response: 404, description: 'Resource not found')]
 #[OA\Response(response: 403, description: 'User unauthorized')]
@@ -30,15 +29,15 @@ final readonly class AddVehicleController
 {
     /**
      * @param CommandBus $commandBus
-     * @param VehicleInputData $vehicleInput
+     * @param AddVehicleCommand $command
      * @return JsonResponse
      * @author Mariusz Waloszczyk
      */
     public function __invoke(
         CommandBus $commandBus,
-        #[MapRequestPayload] VehicleInputData $vehicleInput
+        #[MapRequestPayload] AddVehicleCommand $command
     ): JsonResponse {
-        $commandBus->send(new AddVehicleCommand($vehicleInput));
+        $commandBus->send($command);
         return new JsonResponse(['ok'], 200);
     }
 }

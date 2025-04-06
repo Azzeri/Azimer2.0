@@ -12,7 +12,7 @@ use Ecotone\Modelling\Attribute\Repository;
  * Repository for {@see FireBrigadeUnit} aggregate
  * @extends StandardRepository<FireBrigadeUnit>
  *
- * @author Mariusz Waloszczyk <mwaloszczyk@ottoworkforce.eu>
+ * @author Mariusz Waloszczyk
  */
 #[Repository]
 interface FireBrigadeUnitRepository extends StandardRepository

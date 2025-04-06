@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App\Employee\Domain;
 
 use App\Employee\Application\Command\AddEmployee\AddEmployeeCommand;
+use App\Employee\Domain\ValueObject\EmployeeEmail;
 use App\Employee\Domain\ValueObject\EmployeeFullName;
 use App\Employee\Domain\ValueObject\EmployeeId;
 use App\Employee\Domain\ValueObject\EmployeeUnitId;
@@ -27,8 +28,9 @@ final class Employee extends AggregateRoot
     /**
      * @param EmployeeId $id
      * @param EmployeeFullName $fullName
+     * @param EmployeeEmail $email
      * @param EmployeeUnitId $employeeUnitId
-     * @author Mariusz Waloszczyk <mwaloszczyk@ottoworkforce.eu>
+     * @author Mariusz Waloszczyk
      */
     private function __construct(
         /** @phpstan-ignore-next-line */
@@ -42,8 +44,12 @@ final class Employee extends AggregateRoot
         private EmployeeFullName $fullName,
 
         /** @phpstan-ignore-next-line */
+        #[ORM\Embedded(class: EmployeeEmail::class)]
+        private EmployeeEmail $email,
+
+        /** @phpstan-ignore-next-line */
         #[ORM\Embedded(class: EmployeeUnitId::class)]
-        private EmployeeUnitId $employeeUnitId
+        private EmployeeUnitId $employeeUnitId,
     ) {
     }
 
@@ -51,7 +57,7 @@ final class Employee extends AggregateRoot
      * @param AddEmployeeCommand $command
      * @return self
      * @throws InvalidDataException
-     * @author Mariusz Waloszczyk <mwaloszczyk@ottoworkforce.eu>
+     * @author Mariusz Waloszczyk
      */
     #[CQRS\CommandHandler()]
     public static function create(
@@ -61,7 +67,8 @@ final class Employee extends AggregateRoot
         return new self(
             EmployeeId::fromString(Uuid::v4()->toString()),
             EmployeeFullName::create($command->firstName, $command->lastName),
-            EmployeeUnitId::fromString($command->employeeUnitId)
+            EmployeeEmail::fromString($command->email),
+            EmployeeUnitId::fromString($command->employeeUnitId),
         );
     }
 }

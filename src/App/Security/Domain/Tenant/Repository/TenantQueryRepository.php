@@ -6,7 +6,6 @@ namespace App\Security\Domain\Tenant\Repository;
 
 use App\Security\Domain\Tenant\Dto\TenantQueryModel;
 use App\Security\Domain\Tenant\ValueObject\TenantId;
-use App\Shared\DomainUtilities\Exception\ResourceNotFoundException;
 
 /**
  * Repository for a tenant query model
@@ -20,7 +19,6 @@ interface TenantQueryRepository
      *
      * @param TenantId $identifier
      * @return TenantQueryModel|null
-     * @throws ResourceNotFoundException
      * @author Mariusz Waloszczyk
      */
     public function findByIdentifier(TenantId $identifier): ?TenantQueryModel;

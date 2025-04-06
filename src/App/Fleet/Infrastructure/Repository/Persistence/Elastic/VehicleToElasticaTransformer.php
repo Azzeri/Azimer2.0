@@ -6,7 +6,7 @@ namespace App\Fleet\Infrastructure\Repository\Persistence\Elastic;
 
 use App\Fleet\Domain\Enum\VehicleStatus;
 use App\Fleet\Domain\Enum\VehicleType;
-use App\Fleet\Domain\ValueObject\AssignedUnitId;
+use App\Fleet\Domain\ValueObject\FleetUnitId;
 use App\Fleet\Domain\ValueObject\VehicleName;
 use App\Fleet\Domain\ValueObject\VehiclePlateNumber;
 use App\Fleet\Domain\ValueObject\VehicleProductionDate;
@@ -49,7 +49,7 @@ final readonly class VehicleToElasticaTransformer implements ModelToElasticaTran
         /** @var VehicleProductionDate $productionDate */
         $productionDate = ReflectionUtils::getReflectionPropertyValue($object, 'productionDate');
 
-        /** @var AssignedUnitId $assignedUnitId */
+        /** @var FleetUnitId $assignedUnitId */
         $assignedUnitId = ReflectionUtils::getReflectionPropertyValue($object, 'assignedUnitId');
 
         return new Document(

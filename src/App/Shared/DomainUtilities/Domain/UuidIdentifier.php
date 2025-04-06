@@ -51,7 +51,7 @@ abstract readonly class UuidIdentifier extends IdentifierValueObject
 
     /**
      * @return Uuid
-     * @author Mariusz Waloszczyk <mwaloszczyk@ottoworkforce.eu>
+     * @author Mariusz Waloszczyk
      */
     public function toUuid(): Uuid
     {

@@ -10,6 +10,7 @@ use App\Shared\DomainUtilities\Exception\ResourceNotFoundException;
 /**
  * Common interface for aggregate repository
  * @template TClass
+ * TODO - fix templates, no code hints
  * @author Mariusz Waloszczyk
  */
 interface StandardRepository

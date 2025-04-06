@@ -12,7 +12,7 @@ use Ecotone\Modelling\Attribute\Repository;
  * Repository for {@see Employee} aggregate
  * @extends StandardRepository<Employee>
  *
- * @author Mariusz Waloszczyk <mwaloszczyk@ottoworkforce.eu>
+ * @author Mariusz Waloszczyk
  */
 #[Repository]
 interface EmployeeRepository extends StandardRepository

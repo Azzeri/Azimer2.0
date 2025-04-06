@@ -12,15 +12,18 @@ namespace App\FireBrigadeUnit\Application\Service;
 interface FireBrigadeUnitApiService
 {
     /**
-     * Find a single unit by its ID
-     *
-     * @param string $id - Identifier of the searched unit
-     * @return array{
-     *     id: string,
-     *     superiorUnitId: string|null,
-     *     subservientUnitsIds: array<int,string>
-     * }|null
+     * @param string $unitToCheck
+     * @param string $unitToCheckAgainst
+     * @return bool
      * @author Mariusz Waloszczyk
      */
-    public function findUnitById(string $id): ?array;
+    public function isUnitSuperiorTo(string $unitToCheck, string $unitToCheckAgainst): bool;
+
+    /**
+     * @param string $unitToCheck
+     * @param string $unitToCheckAgainst
+     * @return bool
+     * @author Mariusz Waloszczyk
+     */
+    public function isUnitSubservientTo(string $unitToCheck, string $unitToCheckAgainst): bool;
 }
