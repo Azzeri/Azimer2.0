@@ -8,6 +8,7 @@ doctrine:
             tenant_email: App\Security\Infrastructure\Tenant\Repository\Persistence\Doctrine\Type\Identifier\TenantEmailType
             role_unique_name: App\Security\Infrastructure\Role\Repository\Persistence\Doctrine\Type\Identifier\RoleUniqueNameType
             resource_unique_name: App\Security\Infrastructure\Resource\Repository\Persistence\Doctrine\Type\Identifier\ResourceUniqueNameType
+            fire_brigade_unit_id: App\FireBrigadeUnit\Infrastructure\Repository\Persistence\Doctrine\Type\Identifier\FireBrigadeUnitIdType
     orm:
         auto_generate_proxy_classes: true
         enable_lazy_ghost_objects: true
@@ -38,6 +39,12 @@ doctrine:
                 dir: '%kernel.project_dir%/src/App/Security/Domain/'
                 prefix: 'App\Security\Domain'
                 alias: App\Security\Domain
+            FireBrigadeUnit:
+                is_bundle: false
+                type: attribute
+                dir: '%kernel.project_dir%/src/App/FireBrigadeUnit/Domain/'
+                prefix: 'App\FireBrigadeUnit\Domain'
+                alias: App\FireBrigadeUnit\Domain
 when@test:
     doctrine:
         dbal:

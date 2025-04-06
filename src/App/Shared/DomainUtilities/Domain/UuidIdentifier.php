@@ -50,6 +50,15 @@ abstract readonly class UuidIdentifier extends IdentifierValueObject
     }
 
     /**
+     * @return Uuid
+     * @author Mariusz Waloszczyk <mwaloszczyk@ottoworkforce.eu>
+     */
+    public function toUuid(): Uuid
+    {
+        return $this->uuid;
+    }
+
+    /**
      * Verify if UUID is equal to the given one
      *
      * @param UuidIdentifier $other
