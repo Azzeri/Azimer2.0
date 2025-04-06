@@ -4,41 +4,15 @@ declare(strict_types=1);
 
 namespace Tests\Unit\App\Fleet\Infrastructure\Policy\AddVehicle\BusinessRule;
 
-use App\Fleet\Domain\Dto\VehicleInputData;
-use App\Fleet\Domain\Vehicle;
+use App\Fleet\Application\Command\AddVehicleCommand;
 use App\Fleet\Infrastructure\Policy\AddVehicle\BusinessRule\PlateNumberIsUniqueImpl;
 use App\Shared\BusinessRuleUtilities\Domain\Exception\BusinessRuleViolationException;
 use App\Shared\BusinessRuleUtilities\Domain\ValueObject\BusinessRuleNotification;
+use App\Shared\Domain\Repository\StandardRepository;
 use App\Shared\DomainUtilities\Exception\InvalidDataException;
-use Tests\SampleProvider\Fleet\FleetSamples;
-use Ecotone\Modelling\StandardRepository;
+use App\Shared\DomainUtilities\Exception\ResourceNotFoundException;
 use Mockery;
-
-it('fails if input data is missing', function () {
-    // Arrange
-    $repository = Mockery::mock(StandardRepository::class);
-    $rule = new PlateNumberIsUniqueImpl($repository);
-
-    // Act
-    $result = $rule->check();
-
-    // Assert
-    expect($result)->toBeInstanceOf(BusinessRuleNotification::class)
-        ->and($result?->message())->toEqual("Missing data to validate plate number uniqueness");
-});
-
-it('fails if plate number is missing', function () {
-    // Arrange
-    $repository = Mockery::mock(StandardRepository::class);
-    $rule = new PlateNumberIsUniqueImpl($repository);
-
-    // Act
-    $result = $rule->check(new VehicleInputData());
-
-    // Assert
-    expect($result)->toBeInstanceOf(BusinessRuleNotification::class)
-        ->and($result?->message())->toEqual("Missing data to validate plate number uniqueness");
-});
+use Tests\SampleProvider\Fleet\FleetSamples;
 
 it(
     'fails if plate number is not unique',
@@ -48,19 +22,17 @@ it(
     function () {
         // Arrange
         $plateNumber = '1234';
+        $command = new AddVehicleCommand($plateNumber, '', '', '', '');
 
         $repository = Mockery::mock(StandardRepository::class);
-        $repository->shouldReceive('findBy')
+        $repository->shouldReceive('findById')
             ->once()
-            ->with(
-                Vehicle::class,
-                ['plateNumber' => $plateNumber]
-            )->andReturn(FleetSamples::vehicleAggregate());
+            ->andReturn(FleetSamples::vehicleAggregate());
 
         $rule = new PlateNumberIsUniqueImpl($repository);
 
         // Act
-        $result = $rule->check(new VehicleInputData(plateNumber: $plateNumber));
+        $result = $rule->check($command, FleetSamples::fleetManager());
 
         // Assert
         expect($result)->toBeInstanceOf(BusinessRuleNotification::class)
@@ -68,23 +40,27 @@ it(
     }
 );
 
-it('succeeds if plate number is unique', function () {
-    // Arrange
-    $plateNumber = '1234';
+it(
+    'succeeds if plate number is unique',
+    /**
+     * @throws InvalidDataException
+     */
+    function () {
+        // Arrange
+        $plateNumber = '1234';
+        $command = new AddVehicleCommand($plateNumber, '', '', '', '');
 
-    $repository = Mockery::mock(StandardRepository::class);
-    $repository->shouldReceive('findBy')
-        ->once()
-        ->with(
-            Vehicle::class,
-            ['plateNumber' => $plateNumber]
-        )->andReturn(null);
+        $repository = Mockery::mock(StandardRepository::class);
+        $repository->shouldReceive('findById')
+            ->once()
+            ->andThrow(ResourceNotFoundException::class);
 
-    $rule = new PlateNumberIsUniqueImpl($repository);
+        $rule = new PlateNumberIsUniqueImpl($repository);
 
-    // Act
-    $result = $rule->check(new VehicleInputData(plateNumber: $plateNumber));
+        // Act
+        $result = $rule->check($command, FleetSamples::fleetManager());
 
-    // Assert
-    expect($result)->toBeNull();
-});
+        // Assert
+        expect($result)->toBeNull();
+    }
+);

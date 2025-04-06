@@ -5,15 +5,13 @@ declare(strict_types=1);
 namespace Tests\SampleProvider\Fleet;
 
 use App\Fleet\Application\Command\AddVehicleCommand;
-use App\Fleet\Domain\Dto\VehicleInputData;
 use App\Fleet\Domain\Dto\VehicleQueryModel;
 use App\Fleet\Domain\Enum\FleetPermission;
 use App\Fleet\Domain\Enum\VehicleStatus;
 use App\Fleet\Domain\Enum\VehicleType;
 use App\Fleet\Domain\Policy\AddVehicle\VehicleCanBeAdded;
-use App\Fleet\Domain\ValueObject\AssignedUnit;
-use App\Fleet\Domain\ValueObject\AssignedUnitId;
 use App\Fleet\Domain\ValueObject\FleetManager;
+use App\Fleet\Domain\ValueObject\FleetUnitId;
 use App\Fleet\Domain\Vehicle;
 use App\Shared\BusinessRuleUtilities\Domain\Exception\BusinessRuleViolationException;
 use App\Shared\BusinessRuleUtilities\Domain\ValueObject\BusinessRulesNotificationsCollection;
@@ -39,10 +37,10 @@ final readonly class FleetSamples
     public static function vehicleAggregate(): Vehicle
     {
         $policy = Mockery::mock(VehicleCanBeAdded::class);
-        $policy->shouldReceive("isSatisfiedBy")
+        $policy->shouldReceive("checkBusinessRules")
             ->andReturn(BusinessRulesNotificationsCollection::create());
 
-        $inputData = new VehicleInputData(
+        $inputData = new AddVehicleCommand(
             fake()->numerify('ONY####'),
             VehicleStatus::IN_USE->value,
             VehicleType::TRUCK->value,
@@ -52,7 +50,7 @@ final readonly class FleetSamples
             (int)fake()->month(),
             Uuid::v4()->toString()
         );
-        return Vehicle::fromInputData(new AddVehicleCommand($inputData), $policy);
+        return Vehicle::fromInputData($inputData, $policy);
     }
 
     /**
@@ -74,12 +72,12 @@ final readonly class FleetSamples
     }
 
     /**
-     * @return VehicleInputData
+     * @return AddVehicleCommand
      * @author Mariusz Waloszczyk
      */
-    public static function vehicleValidInputData(): VehicleInputData
+    public static function vehicleValidInputData(): AddVehicleCommand
     {
-        return new VehicleInputData(
+        return new AddVehicleCommand(
             fake()->numerify('ONY####'),
             VehicleStatus::IN_USE->value,
             VehicleType::TRUCK->value,
@@ -92,36 +90,16 @@ final readonly class FleetSamples
     }
 
     /**
-     * @param UuidV4|null $id
-     * @param UuidV4|null $superiorUnitId
-     * @return AssignedUnit
-     * @throws InvalidDataException
-     * @author Mariusz Waloszczyk
-     */
-    public static function assignedUnit(?UuidV4 $id = null, ?UuidV4 $superiorUnitId = null): AssignedUnit
-    {
-        $id = $id ?: Uuid::v4();
-        $superiorUnit = $superiorUnitId
-            ? AssignedUnit::create(AssignedUnitId::fromString((string)$superiorUnitId))
-            : null;
-
-        return AssignedUnit::create(
-            id: AssignedUnitId::fromString($id->toString()),
-            superiorUnit: $superiorUnit
-        );
-    }
-
-    /**
      * @param FleetPermission[] $permissions
      * @param UuidV4|null $assignedUnitId
      * @return FleetManager
      * @throws InvalidDataException
      * @author Mariusz Waloszczyk
      */
-    public static function fleetManager(array $permissions, ?UuidV4 $assignedUnitId = null): FleetManager
+    public static function fleetManager(array $permissions = [], ?UuidV4 $assignedUnitId = null): FleetManager
     {
         $assignedUnitId = $assignedUnitId ?: Uuid::v4();
-        $assignedUnit = AssignedUnit::create(AssignedUnitId::fromString((string)$assignedUnitId));
+        $assignedUnit = FleetUnitId::fromString((string)$assignedUnitId);
         return FleetManager::create($assignedUnit, $permissions);
     }
 }

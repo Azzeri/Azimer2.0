@@ -4,11 +4,13 @@ declare(strict_types=1);
 
 namespace Tests\Unit\App\Fleet\Infrastructure\Policy\AddVehicle;
 
+use App\Fleet\Domain\Factory\FleetManagerFactory;
 use App\Fleet\Domain\Policy\AddVehicle\BusinessRule\VehicleCanBeAddedBusinessRule;
 use App\Fleet\Infrastructure\Policy\AddVehicle\VehicleCanBeAddedImpl;
 use App\Shared\BusinessRuleUtilities\Domain\ValueObject\BusinessRuleNotification;
 use App\Shared\BusinessRuleUtilities\Domain\ValueObject\BusinessRulesNotificationsCollection;
 use Mockery;
+use Tests\SampleProvider\Fleet\FleetSamples;
 
 it('fail if at least one business rule fails', function () {
     // Arrange
@@ -22,10 +24,15 @@ it('fail if at least one business rule fails', function () {
         ->once()
         ->andReturn(BusinessRuleNotification::fromString('Failed!!!'));
 
-    $policy = new VehicleCanBeAddedImpl([$successfulRule, $failedRule]);
+    $managerFactory = Mockery::mock(FleetManagerFactory::class);
+    $managerFactory->shouldReceive('fromAuthenticatedEmployee')
+        ->once()
+        ->andReturn(FleetSamples::fleetManager());
+
+    $policy = new VehicleCanBeAddedImpl([$successfulRule, $failedRule], $managerFactory);
 
     // Act
-    $result = $policy->isSatisfiedBy();
+    $result = $policy->checkBusinessRules(FleetSamples::vehicleValidInputData());
 
     // Assert
     expect($result)->toBeInstanceOf(BusinessRulesNotificationsCollection::class)
@@ -39,10 +46,15 @@ it('is successful if all business rules are successful', function () {
         ->once()
         ->andReturn(null);
 
-    $policy = new VehicleCanBeAddedImpl([$successfulRule]);
+    $managerFactory = Mockery::mock(FleetManagerFactory::class);
+    $managerFactory->shouldReceive('fromAuthenticatedEmployee')
+        ->once()
+        ->andReturn(FleetSamples::fleetManager());
+
+    $policy = new VehicleCanBeAddedImpl([$successfulRule], $managerFactory);
 
     // Act
-    $result = $policy->isSatisfiedBy();
+    $result = $policy->checkBusinessRules(FleetSamples::vehicleValidInputData());
 
     // Assert
     expect($result)->toBeInstanceOf(BusinessRulesNotificationsCollection::class)

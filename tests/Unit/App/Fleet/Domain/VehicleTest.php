@@ -2,7 +2,6 @@
 
 namespace Tests\Unit\App\Fleet\Domain;
 
-use App\Fleet\Application\Command\AddVehicleCommand;
 use App\Fleet\Domain\Dto\VehicleInputData;
 use App\Fleet\Domain\Policy\AddVehicle\VehicleCanBeAdded;
 use App\Fleet\Domain\Vehicle;
@@ -10,8 +9,8 @@ use App\Shared\BusinessRuleUtilities\Domain\Exception\BusinessRuleViolationExcep
 use App\Shared\BusinessRuleUtilities\Domain\ValueObject\BusinessRuleNotification;
 use App\Shared\BusinessRuleUtilities\Domain\ValueObject\BusinessRulesNotificationsCollection;
 use App\Shared\DomainUtilities\Exception\InvalidDataException;
-use Tests\SampleProvider\Fleet\FleetSamples;
 use Mockery;
+use Tests\SampleProvider\Fleet\FleetSamples;
 
 it(
     'fails to create vehicle when policy fails',
@@ -21,11 +20,11 @@ it(
     function () {
         // Arrange
         $policy = Mockery::mock(VehicleCanBeAdded::class);
-        $policy->shouldReceive("isSatisfiedBy")
+        $policy->shouldReceive("checkBusinessRules")
             ->once()
             ->andReturn(BusinessRulesNotificationsCollection::create([BusinessRuleNotification::fromString('fail')]));
 
-        $command = new AddVehicleCommand(new VehicleInputData());
+        $command = FleetSamples::vehicleValidInputData();
 
         // Act // Assert
         expect(
@@ -42,11 +41,11 @@ it(
     function () {
         // Arrange
         $policy = Mockery::mock(VehicleCanBeAdded::class);
-        $policy->shouldReceive("isSatisfiedBy")
+        $policy->shouldReceive("checkBusinessRules")
             ->once()
             ->andReturn(BusinessRulesNotificationsCollection::create());
 
-        $command = new AddVehicleCommand(FleetSamples::vehicleValidInputData());
+        $command = FleetSamples::vehicleValidInputData();
 
         // Act
         $vehicle = Vehicle::fromInputData($command, $policy);

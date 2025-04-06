@@ -4,18 +4,16 @@ declare(strict_types=1);
 
 namespace Tests\Unit\App\Fleet\Infrastructure\Factory;
 
+use App\Employee\Application\Service\EmployeeApiService;
 use App\Fleet\Domain\Enum\FleetPermission;
-use App\Fleet\Domain\Factory\AssignedUnitFactory;
 use App\Fleet\Domain\ValueObject\FleetManager;
 use App\Fleet\Infrastructure\Factory\FleetManagerFactoryImpl;
-use App\Security\Application\Tenant\Service\SecurityApiService;
 use App\Shared\CommonUtilities\ReflectionUtils;
 use App\Shared\DomainUtilities\Exception\InvalidDataException;
 use App\Shared\DomainUtilities\Exception\ResourceNotFoundException;
 use Mockery;
 use ReflectionException;
-use Tests\SampleProvider\Fleet\FleetSamples;
-use Tests\SampleProvider\Security\SecuritySamples;
+use Symfony\Component\Uid\Uuid;
 
 it(
     'creates fleet manager from an authenticated user with fleet permissions only',
@@ -26,18 +24,24 @@ it(
      */
     function () {
         // Arrange
-        $securityApiService = Mockery::mock(SecurityApiService::class);
-        $securityApiService->shouldReceive('getAuthenticatedUser')//TODO - renamed to tenant
-            ->andReturn(SecuritySamples::apiUser([FleetPermission::ADD_SUBSERVIENT->value, 'other']));
+        $employee = [
+            'id' => '1234',
+            'fireBrigadeUnitId' => Uuid::v4()->toString(),
+            'resources' => [
+                'test',
+                FleetPermission::ADD_ALL->value,
+                FleetPermission::ADD_SUBSERVIENT->value,
+            ]
+        ];
+        $employeeApiService = Mockery::mock(EmployeeApiService::class);
+        $employeeApiService->shouldReceive('getAuthenticatedEmployee')
+            ->once()
+            ->andReturn($employee);
 
-        $assignedUnitFactory = Mockery::mock(AssignedUnitFactory::class);
-        $assignedUnitFactory->shouldReceive('createFromIdentifier')
-            ->andReturn(FleetSamples::assignedUnit());
-
-        $factory = new FleetManagerFactoryImpl($securityApiService, $assignedUnitFactory);
+        $factory = new FleetManagerFactoryImpl($employeeApiService);
 
         // Act
-        $manager = $factory->fromAuthenticatedUser();
+        $manager = $factory->fromAuthenticatedEmployee();
 
         // Assert
         $permissions = ReflectionUtils::getReflectionPropertyValue($manager, 'permissions');

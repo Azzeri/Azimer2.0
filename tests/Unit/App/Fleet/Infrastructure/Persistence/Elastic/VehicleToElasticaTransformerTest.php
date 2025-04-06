@@ -6,7 +6,7 @@ namespace Tests\Unit\App\Fleet\Infrastructure\Persistence\Elastic;
 
 use App\Fleet\Domain\Enum\VehicleStatus;
 use App\Fleet\Domain\Enum\VehicleType;
-use App\Fleet\Domain\ValueObject\AssignedUnitId;
+use App\Fleet\Domain\ValueObject\FleetUnitId;
 use App\Fleet\Domain\ValueObject\VehicleName;
 use App\Fleet\Domain\ValueObject\VehiclePlateNumber;
 use App\Fleet\Domain\ValueObject\VehicleProductionDate;
@@ -59,7 +59,7 @@ it(
         /** @var VehicleProductionDate $productionDate */
         $productionDate = ReflectionUtils::getReflectionPropertyValue($vehicle, 'productionDate');
 
-        /** @var AssignedUnitId $assignedUnitId */
+        /** @var FleetUnitId $assignedUnitId */
         $assignedUnitId = ReflectionUtils::getReflectionPropertyValue($vehicle, 'assignedUnitId');
 
         $transformer = new VehicleToElasticaTransformer();

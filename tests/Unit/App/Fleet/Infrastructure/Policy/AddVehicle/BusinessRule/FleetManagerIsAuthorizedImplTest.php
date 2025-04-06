@@ -4,44 +4,31 @@ declare(strict_types=1);
 
 namespace Tests\Unit\App\Fleet\Infrastructure\Policy\AddVehicle\BusinessRule;
 
-use App\Fleet\Domain\Dto\VehicleInputData;
-use App\Fleet\Domain\Enum\FleetPermission;
-use App\Fleet\Domain\Factory\AssignedUnitFactory;
-use App\Fleet\Domain\Factory\FleetManagerFactory;
-use App\Fleet\Domain\ValueObject\AssignedUnit;
-use App\Fleet\Domain\ValueObject\AssignedUnitId;
+use App\Fleet\Domain\Service\FleetManagerPermissionService;
 use App\Fleet\Infrastructure\Policy\AddVehicle\BusinessRule\FleetManagerIsAuthorizedImpl;
 use App\Shared\BusinessRuleUtilities\Domain\ValueObject\BusinessRuleNotification;
 use App\Shared\DomainUtilities\Exception\InvalidDataException;
-use App\Shared\DomainUtilities\Exception\ResourceNotFoundException;
-use Tests\SampleProvider\Fleet\FleetSamples;
 use Mockery;
-use Symfony\Component\Uid\Uuid;
+use Tests\SampleProvider\Fleet\FleetSamples;
 
 it(
     'fails when fleet manager is not authorized',
     /**
-     * @throws InvalidDataException|ResourceNotFoundException
+     * @throws InvalidDataException
      */
     function () {
         // Arrange
-        $fleetManagerFactory = Mockery::mock(FleetManagerFactory::class);
-        $fleetManagerFactory->shouldReceive('fromAuthenticatedUser')
-            ->once()
-            ->andReturn(FleetSamples::fleetManager([]));
+        $fleetManager = FleetSamples::fleetManager();
 
-        $unitUuid = Uuid::v4()->toString();
-        $unitId = AssignedUnitId::fromString($unitUuid);
-        $unit = AssignedUnit::create($unitId);
-        $unitFactory = Mockery::mock(AssignedUnitFactory::class);
-        $unitFactory->shouldReceive('createFromIdentifier')
+        $permissionService = Mockery::mock(FleetManagerPermissionService::class);
+        $permissionService->shouldReceive('canAddVehicleToUnit')
             ->once()
-            ->andReturn($unit);
+            ->andReturn(false);
 
-        $rule = new FleetManagerIsAuthorizedImpl($fleetManagerFactory, $unitFactory);
+        $rule = new FleetManagerIsAuthorizedImpl($permissionService);
 
         // Act
-        $result = $rule->check(new VehicleInputData(assignedUnitId: $unitUuid));
+        $result = $rule->check(FleetSamples::vehicleValidInputData(), $fleetManager);
 
         // Assert
         expect($result)->toBeInstanceOf(BusinessRuleNotification::class)
@@ -52,27 +39,21 @@ it(
 it(
     'succeeds when fleet manager is authorized',
     /**
-     * @throws InvalidDataException|ResourceNotFoundException
+     * @throws InvalidDataException
      */
     function () {
         // Arrange
-        $fleetManagerFactory = Mockery::mock(FleetManagerFactory::class);
-        $fleetManagerFactory->shouldReceive('fromAuthenticatedUser')
-            ->once()
-            ->andReturn(FleetSamples::fleetManager([FleetPermission::ADD_ALL]));
+        $fleetManager = FleetSamples::fleetManager();
 
-        $unitUuid = Uuid::v4()->toString();
-        $unitId = AssignedUnitId::fromString($unitUuid);
-        $unit = AssignedUnit::create($unitId);
-        $unitFactory = Mockery::mock(AssignedUnitFactory::class);
-        $unitFactory->shouldReceive('createFromIdentifier')
+        $permissionService = Mockery::mock(FleetManagerPermissionService::class);
+        $permissionService->shouldReceive('canAddVehicleToUnit')
             ->once()
-            ->andReturn($unit);
+            ->andReturn(true);
 
-        $rule = new FleetManagerIsAuthorizedImpl($fleetManagerFactory, $unitFactory);
+        $rule = new FleetManagerIsAuthorizedImpl($permissionService);
 
         // Act
-        $result = $rule->check(new VehicleInputData(assignedUnitId: $unitUuid));
+        $result = $rule->check(FleetSamples::vehicleValidInputData(), $fleetManager);
 
         // Assert
         expect($result)->toBeNull();
