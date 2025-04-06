@@ -9,6 +9,7 @@ doctrine:
             role_unique_name: App\Security\Infrastructure\Role\Repository\Persistence\Doctrine\Type\Identifier\RoleUniqueNameType
             resource_unique_name: App\Security\Infrastructure\Resource\Repository\Persistence\Doctrine\Type\Identifier\ResourceUniqueNameType
             fire_brigade_unit_id: App\FireBrigadeUnit\Infrastructure\Repository\Persistence\Doctrine\Type\Identifier\FireBrigadeUnitIdType
+            employee_id: App\Employee\Infrastructure\Repository\Persistence\Doctrine\Type\Identifier\EmployeeIdType
     orm:
         auto_generate_proxy_classes: true
         enable_lazy_ghost_objects: true
@@ -45,6 +46,12 @@ doctrine:
                 dir: '%kernel.project_dir%/src/App/FireBrigadeUnit/Domain/'
                 prefix: 'App\FireBrigadeUnit\Domain'
                 alias: App\FireBrigadeUnit\Domain
+            Employee:
+                is_bundle: false
+                type: attribute
+                dir: '%kernel.project_dir%/src/App/Employee/Domain/'
+                prefix: 'App\Employee\Domain'
+                alias: App\Employee\Domain
 when@test:
     doctrine:
         dbal:
