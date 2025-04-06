@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Shared\Infrastructure\Doctrine\Type\Identifier;
 
+use App\Shared\DomainUtilities\Exception\InvalidDataException;
 use Doctrine\DBAL\Platforms\AbstractPlatform;
 use Doctrine\DBAL\Types\Type;
 
@@ -24,13 +25,12 @@ abstract class AbstractStringIdentifierType extends Type
     abstract protected function fromString(string $value): object;
 
     /**
-     * Converts a target type to string value
+     * Name of the identifier class
      *
-     * @param object|string $value - sometimes type can be a string anyway
      * @return string
-     * @author Mariusz Waloszczyk
+     * @author Mariusz Waloszczyk <mwaloszczyk@ottoworkforce.eu>
      */
-    abstract protected function toString(object|string $value): string;
+    abstract protected function getClassName(): string;
 
     /**
      * @inheritDoc
@@ -43,6 +43,7 @@ abstract class AbstractStringIdentifierType extends Type
 
     /**
      * @inheritDoc
+     * @throws InvalidDataException
      * @author Mariusz Waloszczyk
      */
     public function convertToDatabaseValue($value, AbstractPlatform $platform): string
@@ -58,4 +59,22 @@ abstract class AbstractStringIdentifierType extends Type
     {
         return $this->fromString($value);
     }
+
+    /**
+     * Converts a target type to string value
+     *
+     * @param object|string $value - sometimes type can be a string anyway
+     * @return string
+     * @throws InvalidDataException
+     * @author Mariusz Waloszczyk
+     */
+    protected function toString(object|string $value): string
+    {
+        if (is_string($value) || $value::class === $this->getClassName()) {
+            return (string)$value;
+        }
+
+        throw new InvalidDataException("Invalid type provided");
+    }
+
 }

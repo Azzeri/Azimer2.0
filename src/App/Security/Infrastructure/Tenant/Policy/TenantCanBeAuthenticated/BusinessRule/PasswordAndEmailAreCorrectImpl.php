@@ -5,12 +5,10 @@ declare(strict_types=1);
 namespace App\Security\Infrastructure\Tenant\Policy\TenantCanBeAuthenticated\BusinessRule;
 
 use App\Security\Domain\Tenant\Policy\BusinessRule\PasswordAndEmailAreCorrect;
-use App\Security\Domain\Tenant\ValueObject\Password;
+use App\Security\Domain\Tenant\Service\TenantPasswordService;
+use App\Security\Domain\Tenant\ValueObject\PlainPassword;
 use App\Security\Domain\Tenant\ValueObject\TenantId;
-use App\Security\Infrastructure\Tenant\Symfony\AuthenticatedUser\AuthenticatedUserProvider;
 use App\Shared\BusinessRuleUtilities\Domain\ValueObject\BusinessRuleNotification;
-use App\Shared\DomainUtilities\Exception\ResourceNotFoundException;
-use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
 
 /**
  * Implementation of {@see PasswordAndEmailAreCorrect}
@@ -20,13 +18,11 @@ use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
 final readonly class PasswordAndEmailAreCorrectImpl implements PasswordAndEmailAreCorrect
 {
     /**
-     * @param AuthenticatedUserProvider $authenticatedUserProvider
-     * @param UserPasswordHasherInterface $passwordHasher
+     * @param TenantPasswordService $tenantPasswordService
      * @author Mariusz Waloszczyk <mwaloszczyk@ottoworkforce.eu>
      */
     public function __construct(
-        private AuthenticatedUserProvider $authenticatedUserProvider,
-        private UserPasswordHasherInterface $passwordHasher
+        private TenantPasswordService $tenantPasswordService,
     ) {
     }
 
@@ -36,16 +32,9 @@ final readonly class PasswordAndEmailAreCorrectImpl implements PasswordAndEmailA
      */
     public function check(
         TenantId $tenantId,
-        Password $password
+        PlainPassword $password
     ): ?BusinessRuleNotification {
-        try {
-            $tenant = $this->authenticatedUserProvider->loadUserByIdentifier($tenantId->email());
-        } catch (ResourceNotFoundException) {
-            return BusinessRuleNotification::fromString("Tenant: {$tenantId->email()} not found");
-        }
-
-        $isPasswordValid = $this->passwordHasher->isPasswordValid($tenant, $password->nonHashed());
-        return $isPasswordValid
+        return $this->tenantPasswordService->isPasswordValid($password, $tenantId)
             ? null
             : BusinessRuleNotification::fromString("Incorrect password");
     }

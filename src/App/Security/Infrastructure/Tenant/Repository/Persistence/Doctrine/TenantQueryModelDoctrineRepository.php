@@ -7,10 +7,8 @@ namespace App\Security\Infrastructure\Tenant\Repository\Persistence\Doctrine;
 use App\Security\Domain\Tenant\Dto\TenantQueryModel;
 use App\Security\Domain\Tenant\Repository\TenantQueryRepository;
 use App\Security\Domain\Tenant\ValueObject\TenantId;
-use App\Security\Infrastructure\Tenant\Symfony\AuthenticatedUser\AuthenticatedUser;
+use Doctrine\DBAL\Exception;
 use Doctrine\ORM\EntityManagerInterface;
-use Doctrine\ORM\Exception\ORMException;
-use Doctrine\ORM\OptimisticLockException;
 
 /**
  * Doctrine implementation of {@see TenantQueryRepository}
@@ -29,22 +27,48 @@ final readonly class TenantQueryModelDoctrineRepository implements TenantQueryRe
 
     /**
      * @inheritDoc
-     * @throws ORMException|OptimisticLockException
+     * @throws Exception
      * @author Mariusz Waloszczyk <mwaloszczyk@ottoworkforce.eu>
      */
     public function findByIdentifier(TenantId $identifier): ?TenantQueryModel
     {
-        $tenant = $this->entityManager->find(AuthenticatedUser::class, $identifier->email());
+        $connection = $this->entityManager
+            ->getConnection();
 
-        if (null === $tenant) {
+        $sql = "
+            SELECT t.email, t.password_hashed, t.status, r.name AS role_name, res.name AS resource_name
+            FROM tenant t
+            JOIN tenant_role tr ON t.email = tr.tenant_id
+            JOIN role r ON tr.role_id = r.name
+            JOIN role_resource rr ON r.name = rr.role_id
+            JOIN resource res ON rr.resource_id = res.name
+            WHERE t.email = :tenantId
+        ";
+
+        $stmt = $connection->prepare($sql);
+        $stmt->bindValue(':tenantId', $identifier->email());
+
+        $results = $stmt->executeQuery()
+            ->fetchAllAssociative();
+
+        if (empty($results)) {
             return null;
         }
 
+        $roles = [];
+        $resources = [];
+
+        foreach ($results as $row) {
+            $roles[] = $row['role_name'];
+            $resources[] = $row['resource_name'];
+        }
+
         return new TenantQueryModel(
-            $tenant->getUserIdentifier(),
-            $tenant->getPassword(),
-            $tenant->getStatus()->value,
-            $tenant->getRoles(),
+            $results[0]['email'],
+            $results[0]['password_hashed'],
+            $results[0]['status'],
+            array_unique($roles),
+            array_unique($resources)
         );
     }
 }

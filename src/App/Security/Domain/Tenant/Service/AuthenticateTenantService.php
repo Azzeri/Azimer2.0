@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace App\Security\Domain\Tenant\Service;
 
 use App\Security\Domain\Tenant\ValueObject\AuthenticationToken;
-use App\Security\Domain\Tenant\ValueObject\Password;
+use App\Security\Domain\Tenant\ValueObject\PlainPassword;
 use App\Security\Domain\Tenant\ValueObject\TenantId;
 
 /**
@@ -19,9 +19,9 @@ interface AuthenticateTenantService
      * Authenticate tenant
      *
      * @param TenantId $tenantId
-     * @param Password $password
+     * @param PlainPassword $password
      * @return AuthenticationToken
      * @author Mariusz Waloszczyk <mwaloszczyk@ottoworkforce.eu>
      */
-    public function authenticate(TenantId $tenantId, Password $password): AuthenticationToken;
+    public function authenticate(TenantId $tenantId, PlainPassword $password): AuthenticationToken;
 }

@@ -20,7 +20,7 @@ use Symfony\Component\Routing\Annotation\Route;
 #[OA\Response(response: 201, description: 'Tenant created')]
 #[OA\Response(response: 404, description: 'Resource not found')]
 #[OA\Response(response: 422, description: 'Request data is invalid')]
-#[OA\Tag(name: "Tenant")]
+#[OA\Tag(name: "Security")]
 class AuthenticateTenantController extends AbstractController
 {
     /**

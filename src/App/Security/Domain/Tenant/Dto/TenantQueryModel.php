@@ -16,14 +16,16 @@ final readonly class TenantQueryModel
      * @param string $password
      * @param string $status
      * @param array<int, string> $roles
-     * @author Mariusz Waloszczyk <mwaloszczyk@ottoworkforce.eu>
+     * @param array<int, string> $resources
+     * @author Mariusz Waloszczyk
      */
     public function __construct(
         public string $email,
         #[\SensitiveParameter]
         public string $password,
         public string $status,
-        public array $roles
+        public array $roles,
+        public array $resources
     ) {
     }
 }

@@ -7,7 +7,7 @@ namespace App\Security\Infrastructure\Tenant\Service;
 use App\Security\Domain\Tenant\Policy\TenantCanBeAuthenticated;
 use App\Security\Domain\Tenant\Service\AuthenticateTenantService;
 use App\Security\Domain\Tenant\ValueObject\AuthenticationToken;
-use App\Security\Domain\Tenant\ValueObject\Password;
+use App\Security\Domain\Tenant\ValueObject\PlainPassword;
 use App\Security\Domain\Tenant\ValueObject\TenantId;
 use App\Security\Infrastructure\Tenant\Symfony\AuthenticatedUser\AuthenticatedUserProvider;
 use App\Shared\BusinessRuleUtilities\Domain\Exception\BusinessRuleViolationException;
@@ -39,7 +39,7 @@ final readonly class AuthenticateTenantServiceImpl implements AuthenticateTenant
      * @throws BusinessRuleViolationException|ResourceNotFoundException
      * @author Mariusz Waloszczyk <mwaloszczyk@ottoworkforce.eu>
      */
-    public function authenticate(TenantId $tenantId, Password $password): AuthenticationToken
+    public function authenticate(TenantId $tenantId, PlainPassword $password): AuthenticationToken
     {
         $this->tenantCanBeAuthenticated->isSatisfiedBy($tenantId, $password)
             ->validate();

@@ -25,6 +25,7 @@ final readonly class PlateNumberIsUniqueImpl implements PlateNumberIsUnique
      */
     public function __construct(
         #[Autowire(service: VehicleDoctrineRepository::class)]
+        // TODO - create custom VehicleRepository, like TenantRepository
         private StandardRepository $vehicleRepository,
     ) {
     }

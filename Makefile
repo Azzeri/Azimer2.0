@@ -91,7 +91,10 @@ sh: ## Log to the docker container
 	@$(DOCKER_COMP) exec php sh
 
 bash: ## Connect to the application container
-	@$(DOCKER) container exec -it 0988915eb792 bash
+	@$(DOCKER_COMP) exec php bash
+
+db: ## Connect to the database container
+	@$(DOCKER_COMP) exec database psql -U app
 
 logs: ## Show live logs
 	@$(DOCKER_COMP) logs --tail=0 --follow

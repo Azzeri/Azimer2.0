@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace App\Security\Infrastructure\Tenant\Symfony\AuthenticatedUser;
 
-use App\Security\Domain\Tenant\Enum\TenantStatus;
 use App\Security\Domain\Tenant\Repository\TenantQueryRepository;
 use App\Security\Domain\Tenant\ValueObject\TenantId;
 use App\Shared\DomainUtilities\Exception\ResourceNotFoundException;
@@ -14,8 +13,7 @@ use Symfony\Component\Security\Core\User\UserProviderInterface;
 
 /**
  * Implementation of {@see UserProviderInterface}
- * @template T
- * @implements UserProviderInterface<T>
+ * @implements UserProviderInterface<AuthenticatedUser>
  * @author Mariusz Waloszczyk <mwaloszczyk@ottoworkforce.eu>
  */
 final readonly class AuthenticatedUserProvider implements UserProviderInterface
@@ -41,12 +39,11 @@ final readonly class AuthenticatedUserProvider implements UserProviderInterface
             throw new ResourceNotFoundException("User with identifier '$identifier' not found");
         }
 
-        $authenticatedUser = new AuthenticatedUser();
-        $authenticatedUser->setUserIdentifier($user->email);
-        $authenticatedUser->setPassword($user->password);
-        $authenticatedUser->setStatus(TenantStatus::from($user->status));
-
-        return $authenticatedUser;
+        return new AuthenticatedUser(
+            $user->email,
+            $user->password,
+            $user->roles
+        );
     }
 
     /**

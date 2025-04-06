@@ -25,7 +25,7 @@ use Symfony\Component\Routing\Annotation\Route;
 #[OA\Response(response: 403, description: 'User unauthorized')]
 #[OA\Response(response: 401, description: 'User unauthenticated')]
 #[OA\Response(response: 422, description: 'Request data is invalid')]
-#[OA\Tag(name: "Tenant")]
+#[OA\Tag(name: "Security")]
 class AddTenantController extends AbstractController
 {
     /**

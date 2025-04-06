@@ -15,6 +15,7 @@ final readonly class AddTenantCommand
      * @param string $email
      * @param string $password
      * @param string $status
+     * @param array<int, string> $roles
      * @author Mariusz Waloszczyk <mwaloszczyk@ottoworkforce.eu>
      */
     public function __construct(
@@ -22,6 +23,7 @@ final readonly class AddTenantCommand
         #[\SensitiveParameter]
         public string $password,
         public string $status,
+        public array $roles,
     ) {
     }
 }

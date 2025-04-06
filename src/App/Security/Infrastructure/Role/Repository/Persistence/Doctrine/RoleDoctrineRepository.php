@@ -2,20 +2,20 @@
 
 declare(strict_types=1);
 
-namespace App\Security\Infrastructure\Tenant\Repository\Persistence\Doctrine;
+namespace App\Security\Infrastructure\Role\Repository\Persistence\Doctrine;
 
-use App\Security\Domain\Tenant\Repository\TenantRepository;
-use App\Security\Domain\Tenant\Tenant;
+use App\Security\Domain\Role\Repository\RoleRepository;
+use App\Security\Domain\Role\Role;
 use App\Shared\Infrastructure\Doctrine\StandardRepositoryDoctrineImpl;
 use Ecotone\Modelling\Attribute\Repository;
 
 /**
- * Doctrine implementation of {@see TenantRepository}
+ * Doctrine implementation of {@see RoleRepository}
  *
  * @author Mariusz Waloszczyk <mwaloszczyk@ottoworkforce.eu>
  */
 #[Repository]
-final readonly class TenantDoctrineRepository extends StandardRepositoryDoctrineImpl implements TenantRepository
+final readonly class RoleDoctrineRepository extends StandardRepositoryDoctrineImpl implements RoleRepository
 {
     /**
      * @inheritDoc
@@ -23,15 +23,15 @@ final readonly class TenantDoctrineRepository extends StandardRepositoryDoctrine
      */
     public function getClassName(): string
     {
-        return Tenant::class;
+        return Role::class;
     }
-
+    
     /**
      * @inheritDoc
      * @author Mariusz Waloszczyk <mwaloszczyk@ottoworkforce.eu>
      */
     public function getIdentifierPropertyName(): string
     {
-        return 'id';
+        return 'name';
     }
 }

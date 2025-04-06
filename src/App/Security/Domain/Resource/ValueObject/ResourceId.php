@@ -1,0 +1,49 @@
+<?php
+
+declare(strict_types=1);
+
+namespace App\Security\Domain\Resource\ValueObject;
+
+use App\Shared\DomainUtilities\Domain\IdentifierValueObject;
+
+/**
+ * Unique identifier of ACL resource
+ *
+ * @author Mariusz Waloszczyk <mwaloszczyk@ottoworkforce.eu>
+ */
+final readonly class ResourceId extends IdentifierValueObject
+{
+    public const int MAX_LENGTH = 64;
+
+    /**
+     * @param string $name
+     * @return self
+     * @author Mariusz Waloszczyk <mwaloszczyk@ottoworkforce.eu>
+     */
+    public static function fromUniqueName(string $name): self
+    {
+        return new self($name);
+    }
+
+    /**
+     * @return string
+     * @author Mariusz Waloszczyk <mwaloszczyk@ottoworkforce.eu>
+     */
+    public function uniqueName(): string
+    {
+        return $this->uniqueName;
+    }
+
+    public function __toString(): string
+    {
+        return $this->uniqueName;
+    }
+
+    /**
+     * @param string $uniqueName
+     * @author Mariusz Waloszczyk <mwaloszczyk@ottoworkforce.eu>
+     */
+    private function __construct(private string $uniqueName)
+    {
+    }
+}

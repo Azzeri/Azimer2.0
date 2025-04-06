@@ -9,7 +9,7 @@ use App\Shared\DomainUtilities\Exception\ResourceNotFoundException;
 
 /**
  * Common interface for aggregate repository
- *
+ * @template TClass
  * @author Mariusz Waloszczyk <mwaloszczyk@ottoworkforce.eu>
  */
 interface StandardRepository
@@ -18,7 +18,7 @@ interface StandardRepository
      * Finds aggregate by its ID
      *
      * @param IdentifierValueObject $id
-     * @return object
+     * @return TClass
      * @throws ResourceNotFoundException
      * @author Mariusz Waloszczyk <mwaloszczyk@ottoworkforce.eu>
      */
@@ -27,7 +27,7 @@ interface StandardRepository
     /**
      * Persists aggregate in its current state
      *
-     * @param object $object
+     * @param object<TClass> $object
      * @return void
      * @author Mariusz Waloszczyk <mwaloszczyk@ottoworkforce.eu>
      */

@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace App\Security\Application\Tenant\Command\AuthenticateTenant;
 
 use App\Security\Domain\Tenant\Service\AuthenticateTenantService;
-use App\Security\Domain\Tenant\ValueObject\Password;
+use App\Security\Domain\Tenant\ValueObject\PlainPassword;
 use App\Security\Domain\Tenant\ValueObject\TenantId;
 use App\Shared\CqrsUtilities\Domain\Repository\RuntimeMessageCollectorRepository;
 use App\Shared\CqrsUtilities\Domain\ValueObject\RuntimeMessage;
@@ -41,7 +41,7 @@ final readonly class AuthenticateTenantCommandHandler
     {
         $token = $this->authenticateTenantService->authenticate(
             TenantId::fromEmail($command->email),
-            Password::fromNonHashedString($command->password)
+            PlainPassword::fromString($command->password)
         );
         $this->runtimeMessageCollectorRepository->addMessage(
             RuntimeMessage::fromKeyAndValue(self::JWT_TOKEN_MESSAGE_KEY, $token->value())

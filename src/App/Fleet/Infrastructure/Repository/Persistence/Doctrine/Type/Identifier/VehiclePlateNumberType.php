@@ -32,15 +32,10 @@ final class VehiclePlateNumberType extends AbstractStringIdentifierType
 
     /**
      * @inheritDoc
-     * @throws InvalidDataException
      * @author Mariusz Waloszczyk
      */
-    protected function toString(object|string $value): string
+    protected function getClassName(): string
     {
-        if (is_string($value) || $value instanceof VehiclePlateNumber) {
-            return (string)$value;
-        }
-
-        throw new InvalidDataException("Invalid type provided");
+        return VehiclePlateNumber::class;
     }
 }

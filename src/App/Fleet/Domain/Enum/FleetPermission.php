@@ -12,11 +12,11 @@ namespace App\Fleet\Domain\Enum;
 enum FleetPermission: string
 {
     /** Add vehicles to all units in the system */
-    case ADD_ALL = 'add_all';
+    case ADD_ALL = 'fleet_vehicle_add_all';
 
     /** Add vehicles only to the unit assigned to manager */
-    case ADD_OWN = 'add_own';
+    case ADD_OWN = 'fleet_vehicle_add_own';
 
     /** Add vehicles to units that are subservient to unit assigned to manager */
-    case ADD_SUBSERVIENT = 'add_subservient';
+    case ADD_SUBSERVIENT = 'fleet_vehicle_add_subservient';
 }

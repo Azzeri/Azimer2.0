@@ -6,7 +6,7 @@ namespace App\Security\Infrastructure\Tenant\Policy\TenantCanBeAuthenticated;
 
 use App\Security\Domain\Tenant\Policy\BusinessRule\TenantCanBeAuthenticatedBusinessRule;
 use App\Security\Domain\Tenant\Policy\TenantCanBeAuthenticated;
-use App\Security\Domain\Tenant\ValueObject\Password;
+use App\Security\Domain\Tenant\ValueObject\PlainPassword;
 use App\Security\Domain\Tenant\ValueObject\TenantId;
 use App\Shared\BusinessRuleUtilities\Domain\ValueObject\BusinessRulesNotificationsCollection;
 use Symfony\Component\DependencyInjection\Attribute\AutowireIterator;
@@ -31,7 +31,7 @@ final readonly class TenantCanBeAuthenticatedImpl implements TenantCanBeAuthenti
      * @inheritDoc
      * @author Mariusz Waloszczyk
      */
-    public function isSatisfiedBy(TenantId $tenantId, Password $password): BusinessRulesNotificationsCollection
+    public function isSatisfiedBy(TenantId $tenantId, PlainPassword $password): BusinessRulesNotificationsCollection
     {
         $notifications = BusinessRulesNotificationsCollection::create();
 
