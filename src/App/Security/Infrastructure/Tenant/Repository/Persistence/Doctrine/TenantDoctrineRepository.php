@@ -12,14 +12,14 @@ use Ecotone\Modelling\Attribute\Repository;
 /**
  * Doctrine implementation of {@see TenantRepository}
  *
- * @author Mariusz Waloszczyk <mwaloszczyk@ottoworkforce.eu>
+ * @author Mariusz Waloszczyk
  */
 #[Repository]
 final readonly class TenantDoctrineRepository extends StandardRepositoryDoctrineImpl implements TenantRepository
 {
     /**
      * @inheritDoc
-     * @author Mariusz Waloszczyk <mwaloszczyk@ottoworkforce.eu>
+     * @author Mariusz Waloszczyk
      */
     public function getClassName(): string
     {
@@ -28,7 +28,7 @@ final readonly class TenantDoctrineRepository extends StandardRepositoryDoctrine
 
     /**
      * @inheritDoc
-     * @author Mariusz Waloszczyk <mwaloszczyk@ottoworkforce.eu>
+     * @author Mariusz Waloszczyk
      */
     public function getIdentifierPropertyName(): string
     {

@@ -10,14 +10,14 @@ use App\Shared\DomainUtilities\Domain\ValueObject;
  * Token generated when tenant was successfully authenticated.
  * This token will be used to access API
  *
- * @author Mariusz Waloszczyk <mwaloszczyk@ottoworkforce.eu>
+ * @author Mariusz Waloszczyk
  */
 final readonly class AuthenticationToken extends ValueObject
 {
     /**
      * @param string $token
      * @return AuthenticationToken
-     * @author Mariusz Waloszczyk <mwaloszczyk@ottoworkforce.eu>
+     * @author Mariusz Waloszczyk
      */
     public static function fromString(string $token): AuthenticationToken
     {
@@ -26,7 +26,7 @@ final readonly class AuthenticationToken extends ValueObject
 
     /**
      * @return string
-     * @author Mariusz Waloszczyk <mwaloszczyk@ottoworkforce.eu>
+     * @author Mariusz Waloszczyk
      */
     public function value(): string
     {
@@ -35,7 +35,7 @@ final readonly class AuthenticationToken extends ValueObject
 
     /**
      * @param string $token
-     * @author Mariusz Waloszczyk <mwaloszczyk@ottoworkforce.eu>
+     * @author Mariusz Waloszczyk
      */
     private function __construct(private string $token)
     {

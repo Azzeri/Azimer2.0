@@ -15,14 +15,14 @@ use Symfony\Component\Security\Core\User\UserProviderInterface;
 /**
  * Implements {@see TenantPasswordService}
  *
- * @author Mariusz Waloszczyk <mwaloszczyk@ottoworkforce.eu>
+ * @author Mariusz Waloszczyk
  */
 final readonly class TenantPasswordServiceImpl implements TenantPasswordService
 {
     /**
      * @param UserPasswordHasherInterface $passwordHasher
      * @param UserProviderInterface $userProvider
-     * @author Mariusz Waloszczyk <mwaloszczyk@ottoworkforce.eu>
+     * @author Mariusz Waloszczyk
      */
     public function __construct(
         private UserPasswordHasherInterface $passwordHasher,
@@ -32,7 +32,7 @@ final readonly class TenantPasswordServiceImpl implements TenantPasswordService
 
     /**
      * @inheritDoc
-     * @author Mariusz Waloszczyk <mwaloszczyk@ottoworkforce.eu>
+     * @author Mariusz Waloszczyk
      */
     public function hash(PlainPassword $password, TenantId $tenantId): HashedPassword
     {
@@ -48,7 +48,7 @@ final readonly class TenantPasswordServiceImpl implements TenantPasswordService
 
     /**
      * @inheritDoc
-     * @author Mariusz Waloszczyk <mwaloszczyk@ottoworkforce.eu>
+     * @author Mariusz Waloszczyk
      */
     public function isPasswordValid(PlainPassword $password, TenantId $tenantId): bool
     {

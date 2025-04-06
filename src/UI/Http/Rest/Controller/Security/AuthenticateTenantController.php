@@ -28,7 +28,7 @@ class AuthenticateTenantController extends AbstractController
      * @param CommandBus $commandBus
      * @param RuntimeMessageCollectorRepository $runtimeMessageCollectorRepository
      * @return JsonResponse
-     * @author Mariusz Waloszczyk <mwaloszczyk@ottoworkforce.eu>
+     * @author Mariusz Waloszczyk
      */
     public function __invoke(
         #[MapRequestPayload] AuthenticateTenantCommand $command,

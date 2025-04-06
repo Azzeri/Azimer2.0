@@ -11,7 +11,7 @@ use App\Security\Domain\Tenant\ValueObject\TenantId;
 /**
  * Service used to authenticate tenant in the system
  *
- * @author Mariusz Waloszczyk <mwaloszczyk@ottoworkforce.eu>
+ * @author Mariusz Waloszczyk
  */
 interface AuthenticateTenantService
 {
@@ -21,7 +21,7 @@ interface AuthenticateTenantService
      * @param TenantId $tenantId
      * @param PlainPassword $password
      * @return AuthenticationToken
-     * @author Mariusz Waloszczyk <mwaloszczyk@ottoworkforce.eu>
+     * @author Mariusz Waloszczyk
      */
     public function authenticate(TenantId $tenantId, PlainPassword $password): AuthenticationToken;
 }

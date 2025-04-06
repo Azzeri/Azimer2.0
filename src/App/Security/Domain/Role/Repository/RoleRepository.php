@@ -10,7 +10,7 @@ use App\Shared\Domain\Repository\StandardRepository;
 /**
  * Repository for {@see Role} aggregate
  *
- * @author Mariusz Waloszczyk <mwaloszczyk@ottoworkforce.eu>
+ * @author Mariusz Waloszczyk
  */
 interface RoleRepository extends StandardRepository
 {

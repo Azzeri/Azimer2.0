@@ -14,7 +14,7 @@ use Symfony\Component\DependencyInjection\Attribute\AutowireIterator;
 /**
  * Implementation of {@see TenantCanBeAuthenticated}
  *
- * @author Mariusz Waloszczyk <mwaloszczyk@ottoworkforce.eu>
+ * @author Mariusz Waloszczyk
  */
 final readonly class TenantCanBeAuthenticatedImpl implements TenantCanBeAuthenticated
 {

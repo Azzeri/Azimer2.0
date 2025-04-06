@@ -16,7 +16,7 @@ use Symfony\Component\Routing\Annotation\Route;
 /**
  * Controller to create a new Tenant
  *
- * @author Mariusz Waloszczyk <mwaloszczyk@ottoworkforce.eu>
+ * @author Mariusz Waloszczyk
  */
 #[Route('/tenant', methods: ['POST'])]
 #[OA\RequestBody(content: new Model(type: AddTenantCommand::class))]
@@ -32,7 +32,7 @@ class AddTenantController extends AbstractController
      * @param CommandBus $commandBus
      * @param AddTenantCommand $command
      * @return JsonResponse
-     * @author Mariusz Waloszczyk <mwaloszczyk@ottoworkforce.eu>
+     * @author Mariusz Waloszczyk
      */
     public function __invoke(
         CommandBus $commandBus,

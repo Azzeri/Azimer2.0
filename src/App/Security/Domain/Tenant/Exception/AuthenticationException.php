@@ -9,7 +9,7 @@ use Exception;
 /**
  * Exception thrown if an authentication problem occurs
  *
- * @author Mariusz Waloszczyk <mwaloszczyk@ottoworkforce.eu>
+ * @author Mariusz Waloszczyk
  */
 final  class AuthenticationException extends Exception
 {

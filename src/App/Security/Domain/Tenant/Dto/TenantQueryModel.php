@@ -7,7 +7,7 @@ namespace App\Security\Domain\Tenant\Dto;
 /**
  * Query model of a tenant
  *
- * @author Mariusz Waloszczyk <mwaloszczyk@ottoworkforce.eu>
+ * @author Mariusz Waloszczyk
  */
 final readonly class TenantQueryModel
 {

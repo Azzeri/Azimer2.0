@@ -9,14 +9,14 @@ use App\Shared\DomainUtilities\Domain\IdentifierValueObject;
 /**
  * Identifier of a tenant
  *
- * @author Mariusz Waloszczyk <mwaloszczyk@ottoworkforce.eu>
+ * @author Mariusz Waloszczyk
  */
 final readonly class TenantId extends IdentifierValueObject
 {
     /**
      * @param string $email
      * @return TenantId
-     * @author Mariusz Waloszczyk <mwaloszczyk@ottoworkforce.eu>
+     * @author Mariusz Waloszczyk
      */
     public static function fromEmail(string $email): TenantId
     {
@@ -25,7 +25,7 @@ final readonly class TenantId extends IdentifierValueObject
 
     /**
      * @return string
-     * @author Mariusz Waloszczyk <mwaloszczyk@ottoworkforce.eu>
+     * @author Mariusz Waloszczyk
      */
     public function email(): string
     {
@@ -34,7 +34,7 @@ final readonly class TenantId extends IdentifierValueObject
 
     /**
      * @return string
-     * @author Mariusz Waloszczyk <mwaloszczyk@ottoworkforce.eu>
+     * @author Mariusz Waloszczyk
      */
     public function __toString(): string
     {
@@ -43,7 +43,7 @@ final readonly class TenantId extends IdentifierValueObject
 
     /**
      * @param string $email
-     * @author Mariusz Waloszczyk <mwaloszczyk@ottoworkforce.eu>
+     * @author Mariusz Waloszczyk
      */
     private function __construct(private string $email)
     {

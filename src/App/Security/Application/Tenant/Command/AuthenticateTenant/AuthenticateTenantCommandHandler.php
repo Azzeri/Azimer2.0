@@ -14,7 +14,7 @@ use Ecotone\Modelling\Attribute\CommandHandler;
 /**
  * Handler for {@see AuthenticateTenantCommand}
  *
- * @author Mariusz Waloszczyk <mwaloszczyk@ottoworkforce.eu>
+ * @author Mariusz Waloszczyk
  */
 final readonly class AuthenticateTenantCommandHandler
 {
@@ -23,7 +23,7 @@ final readonly class AuthenticateTenantCommandHandler
     /**
      * @param AuthenticateTenantService $authenticateTenantService
      * @param RuntimeMessageCollectorRepository $runtimeMessageCollectorRepository
-     * @author Mariusz Waloszczyk <mwaloszczyk@ottoworkforce.eu>
+     * @author Mariusz Waloszczyk
      */
     public function __construct(
         private AuthenticateTenantService $authenticateTenantService,
@@ -34,7 +34,7 @@ final readonly class AuthenticateTenantCommandHandler
     /**
      * @param AuthenticateTenantCommand $command
      * @return void
-     * @author Mariusz Waloszczyk <mwaloszczyk@ottoworkforce.eu>
+     * @author Mariusz Waloszczyk
      */
     #[CommandHandler]
     public function handle(AuthenticateTenantCommand $command): void

@@ -9,7 +9,7 @@ use App\Shared\DomainUtilities\Domain\IdentifierValueObject;
 /**
  * Unique identifier of ACL role
  *
- * @author Mariusz Waloszczyk <mwaloszczyk@ottoworkforce.eu>
+ * @author Mariusz Waloszczyk
  */
 final readonly class RoleId extends IdentifierValueObject
 {
@@ -18,7 +18,7 @@ final readonly class RoleId extends IdentifierValueObject
     /**
      * @param string $name
      * @return self
-     * @author Mariusz Waloszczyk <mwaloszczyk@ottoworkforce.eu>
+     * @author Mariusz Waloszczyk
      */
     public static function fromUniqueName(string $name): self
     {
@@ -27,7 +27,7 @@ final readonly class RoleId extends IdentifierValueObject
 
     /**
      * @return string
-     * @author Mariusz Waloszczyk <mwaloszczyk@ottoworkforce.eu>
+     * @author Mariusz Waloszczyk
      */
     public function uniqueName(): string
     {
@@ -41,7 +41,7 @@ final readonly class RoleId extends IdentifierValueObject
 
     /**
      * @param string $uniqueName
-     * @author Mariusz Waloszczyk <mwaloszczyk@ottoworkforce.eu>
+     * @author Mariusz Waloszczyk
      */
     private function __construct(private string $uniqueName)
     {

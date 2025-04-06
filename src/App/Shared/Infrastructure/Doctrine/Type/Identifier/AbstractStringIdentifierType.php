@@ -28,7 +28,7 @@ abstract class AbstractStringIdentifierType extends Type
      * Name of the identifier class
      *
      * @return string
-     * @author Mariusz Waloszczyk <mwaloszczyk@ottoworkforce.eu>
+     * @author Mariusz Waloszczyk
      */
     abstract protected function getClassName(): string;
 

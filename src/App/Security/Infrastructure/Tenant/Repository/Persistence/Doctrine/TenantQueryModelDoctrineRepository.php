@@ -13,13 +13,13 @@ use Doctrine\ORM\EntityManagerInterface;
 /**
  * Doctrine implementation of {@see TenantQueryRepository}
  *
- * @author Mariusz Waloszczyk <mwaloszczyk@ottoworkforce.eu>
+ * @author Mariusz Waloszczyk
  */
 final readonly class TenantQueryModelDoctrineRepository implements TenantQueryRepository
 {
     /**
      * @param EntityManagerInterface $entityManager
-     * @author Mariusz Waloszczyk <mwaloszczyk@ottoworkforce.eu>
+     * @author Mariusz Waloszczyk
      */
     public function __construct(private EntityManagerInterface $entityManager)
     {
@@ -28,7 +28,7 @@ final readonly class TenantQueryModelDoctrineRepository implements TenantQueryRe
     /**
      * @inheritDoc
      * @throws Exception
-     * @author Mariusz Waloszczyk <mwaloszczyk@ottoworkforce.eu>
+     * @author Mariusz Waloszczyk
      */
     public function findByIdentifier(TenantId $identifier): ?TenantQueryModel
     {

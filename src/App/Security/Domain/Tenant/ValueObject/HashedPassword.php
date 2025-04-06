@@ -11,7 +11,7 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * Hashed password, usually persisted in this form
  *
- * @author Mariusz Waloszczyk <mwaloszczyk@ottoworkforce.eu>
+ * @author Mariusz Waloszczyk
  */
 #[ORM\Embeddable]
 final readonly class HashedPassword extends ValueObject
@@ -19,7 +19,7 @@ final readonly class HashedPassword extends ValueObject
     /**
      * @param string $password
      * @return HashedPassword
-     * @author Mariusz Waloszczyk <mwaloszczyk@ottoworkforce.eu>
+     * @author Mariusz Waloszczyk
      */
     public static function fromString(string $password): HashedPassword
     {
@@ -28,7 +28,7 @@ final readonly class HashedPassword extends ValueObject
 
     /**
      * @return string
-     * @author Mariusz Waloszczyk <mwaloszczyk@ottoworkforce.eu>
+     * @author Mariusz Waloszczyk
      */
     public function toString(): string
     {
@@ -37,7 +37,7 @@ final readonly class HashedPassword extends ValueObject
 
     /**
      * @param string $password
-     * @author Mariusz Waloszczyk <mwaloszczyk@ottoworkforce.eu>
+     * @author Mariusz Waloszczyk
      */
     private function __construct(
         #[ORM\Column(name: "hashed", type: Types::STRING)]

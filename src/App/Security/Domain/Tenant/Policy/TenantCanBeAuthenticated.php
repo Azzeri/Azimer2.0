@@ -11,7 +11,7 @@ use App\Shared\BusinessRuleUtilities\Domain\ValueObject\BusinessRulesNotificatio
 /**
  * Policy checking if tenant can be authenticated
  *
- * @author Mariusz Waloszczyk <mwaloszczyk@ottoworkforce.eu>
+ * @author Mariusz Waloszczyk
  */
 interface TenantCanBeAuthenticated
 {
@@ -21,7 +21,7 @@ interface TenantCanBeAuthenticated
      * @param TenantId $tenantId
      * @param PlainPassword $password
      * @return BusinessRulesNotificationsCollection
-     * @author Mariusz Waloszczyk <mwaloszczyk@ottoworkforce.eu>
+     * @author Mariusz Waloszczyk
      */
     public function isSatisfiedBy(TenantId $tenantId, PlainPassword $password): BusinessRulesNotificationsCollection;
 }

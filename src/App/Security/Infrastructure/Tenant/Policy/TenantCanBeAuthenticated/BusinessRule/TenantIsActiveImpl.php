@@ -14,13 +14,13 @@ use App\Shared\DomainUtilities\Exception\ResourceNotFoundException;
 /**
  * Implementation of {@see TenantIsActive}
  *
- * @author Mariusz Waloszczyk <mwaloszczyk@ottoworkforce.eu>
+ * @author Mariusz Waloszczyk
  */
 final readonly class TenantIsActiveImpl implements TenantIsActive
 {
     /**
      * @param TenantRepository $tenantRepository
-     * @author Mariusz Waloszczyk <mwaloszczyk@ottoworkforce.eu>
+     * @author Mariusz Waloszczyk
      */
     public function __construct(
         private TenantRepository $tenantRepository,
@@ -30,7 +30,7 @@ final readonly class TenantIsActiveImpl implements TenantIsActive
     /**
      * @inheritDoc
      * @throws ResourceNotFoundException
-     * @author Mariusz Waloszczyk <mwaloszczyk@ottoworkforce.eu>
+     * @author Mariusz Waloszczyk
      */
     public function check(TenantId $tenantId, PlainPassword $password): ?BusinessRuleNotification
     {

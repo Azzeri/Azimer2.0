@@ -10,7 +10,7 @@ use App\Shared\CqrsUtilities\Domain\ValueObject\RuntimeMessage;
 /**
  * Adapter for {@see RuntimeMessageCollectorRepository} collecting messages statically in memory
  *
- * @author Mariusz Waloszczyk <mwaloszczyk@ottoworkforce.eu>
+ * @author Mariusz Waloszczyk
  */
 class RuntimeMessageCollectorStaticInMemoryRepository implements RuntimeMessageCollectorRepository
 {
@@ -18,13 +18,13 @@ class RuntimeMessageCollectorStaticInMemoryRepository implements RuntimeMessageC
      * Message collected during one lifecycle
      *
      * @var RuntimeMessage[]
-     * @author Mariusz Waloszczyk <mwaloszczyk@ottoworkforce.eu>
+     * @author Mariusz Waloszczyk
      */
     private static array $messages;
 
     /**
      * @inheritDoc
-     * @author Mariusz Waloszczyk <mwaloszczyk@ottoworkforce.eu>
+     * @author Mariusz Waloszczyk
      */
     public function addMessage(RuntimeMessage $message): void
     {
@@ -33,7 +33,7 @@ class RuntimeMessageCollectorStaticInMemoryRepository implements RuntimeMessageC
 
     /**
      * @inheritDoc
-     * @author Mariusz Waloszczyk <mwaloszczyk@ottoworkforce.eu>
+     * @author Mariusz Waloszczyk
      */
     public function getMessages(): array
     {
@@ -42,7 +42,7 @@ class RuntimeMessageCollectorStaticInMemoryRepository implements RuntimeMessageC
 
     /**
      * @inheritDoc
-     * @author Mariusz Waloszczyk <mwaloszczyk@ottoworkforce.eu>
+     * @author Mariusz Waloszczyk
      */
     public function findByKey(string $key): array
     {

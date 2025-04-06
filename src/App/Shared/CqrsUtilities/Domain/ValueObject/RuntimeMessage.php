@@ -7,7 +7,7 @@ namespace App\Shared\CqrsUtilities\Domain\ValueObject;
 /**
  * Value object representing a runtime message
  *
- * @author Mariusz Waloszczyk <mwaloszczyk@ottoworkforce.eu>
+ * @author Mariusz Waloszczyk
  */
 final readonly class RuntimeMessage
 {
@@ -17,7 +17,7 @@ final readonly class RuntimeMessage
      * @param string $key
      * @param string $value
      * @return static
-     * @author Mariusz Waloszczyk <mwaloszczyk@ottoworkforce.eu>
+     * @author Mariusz Waloszczyk
      */
     public static function fromKeyAndValue(string $key, string $value): self
     {
@@ -26,7 +26,7 @@ final readonly class RuntimeMessage
 
     /**
      * @return string
-     * @author Mariusz Waloszczyk <mwaloszczyk@ottoworkforce.eu>
+     * @author Mariusz Waloszczyk
      */
     public function message(): string
     {
@@ -35,7 +35,7 @@ final readonly class RuntimeMessage
 
     /**
      * @return string
-     * @author Mariusz Waloszczyk <mwaloszczyk@ottoworkforce.eu>
+     * @author Mariusz Waloszczyk
      */
     public function key(): string
     {
@@ -45,7 +45,7 @@ final readonly class RuntimeMessage
     /**
      * @param string $key
      * @param string $value
-     * @author Mariusz Waloszczyk <mwaloszczyk@ottoworkforce.eu>
+     * @author Mariusz Waloszczyk
      */
     private function __construct(private string $key, private string $value)
     {

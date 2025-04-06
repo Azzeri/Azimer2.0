@@ -14,13 +14,13 @@ use Symfony\Component\Security\Core\User\UserProviderInterface;
 /**
  * Implementation of {@see UserProviderInterface}
  * @implements UserProviderInterface<AuthenticatedUser>
- * @author Mariusz Waloszczyk <mwaloszczyk@ottoworkforce.eu>
+ * @author Mariusz Waloszczyk
  */
 final readonly class AuthenticatedUserProvider implements UserProviderInterface
 {
     /**
      * @param TenantQueryRepository $tenantQueryRepository
-     * @author Mariusz Waloszczyk <mwaloszczyk@ottoworkforce.eu>
+     * @author Mariusz Waloszczyk
      */
     public function __construct(private TenantQueryRepository $tenantQueryRepository)
     {
@@ -29,7 +29,7 @@ final readonly class AuthenticatedUserProvider implements UserProviderInterface
     /**
      * @inheritDoc
      * @throws ResourceNotFoundException
-     * @author Mariusz Waloszczyk <mwaloszczyk@ottoworkforce.eu>
+     * @author Mariusz Waloszczyk
      */
     public function loadUserByIdentifier(string $identifier): UserInterface
     {
@@ -49,7 +49,7 @@ final readonly class AuthenticatedUserProvider implements UserProviderInterface
     /**
      * @inheritDoc
      * @throws ResourceNotFoundException
-     * @author Mariusz Waloszczyk <mwaloszczyk@ottoworkforce.eu>
+     * @author Mariusz Waloszczyk
      */
     public function refreshUser(UserInterface $user): UserInterface
     {
@@ -62,7 +62,7 @@ final readonly class AuthenticatedUserProvider implements UserProviderInterface
 
     /**
      * @inheritDoc
-     * @author Mariusz Waloszczyk <mwaloszczyk@ottoworkforce.eu>
+     * @author Mariusz Waloszczyk
      */
     public function supportsClass(string $class): bool
     {

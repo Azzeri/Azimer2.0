@@ -15,13 +15,13 @@ use Ecotone\Modelling\StandardRepository as EcotoneStandardRepository;
  *  - Ecotone for automated aggregate actions
  *  - Domain for clear and readable domain repositories
  *
- * @author Mariusz Waloszczyk <mwaloszczyk@ottoworkforce.eu>
+ * @author Mariusz Waloszczyk
  */
 abstract readonly class StandardRepositoryDoctrineImpl implements StandardRepository, EcotoneStandardRepository
 {
     /**
      * @param EntityManagerInterface $entityManager
-     * @author Mariusz Waloszczyk <mwaloszczyk@ottoworkforce.eu>
+     * @author Mariusz Waloszczyk
      */
     public function __construct(
         private EntityManagerInterface $entityManager,
@@ -32,7 +32,7 @@ abstract readonly class StandardRepositoryDoctrineImpl implements StandardReposi
      * This method should return the name of the aggregate class managed by the repository
      *
      * @return string
-     * @author Mariusz Waloszczyk <mwaloszczyk@ottoworkforce.eu>
+     * @author Mariusz Waloszczyk
      */
     abstract public function getClassName(): string;
 
@@ -40,13 +40,13 @@ abstract readonly class StandardRepositoryDoctrineImpl implements StandardReposi
      * This method should return identifier's property name of the aggregate class managed by the repository
      *
      * @return string
-     * @author Mariusz Waloszczyk <mwaloszczyk@ottoworkforce.eu>
+     * @author Mariusz Waloszczyk
      */
     abstract public function getIdentifierPropertyName(): string;
 
     /**
      * @inheritDoc
-     * @author Mariusz Waloszczyk <mwaloszczyk@ottoworkforce.eu>
+     * @author Mariusz Waloszczyk
      */
     public function findById(IdentifierValueObject $id): object
     {
@@ -59,7 +59,7 @@ abstract readonly class StandardRepositoryDoctrineImpl implements StandardReposi
 
     /**
      * @inheritDoc
-     * @author Mariusz Waloszczyk <mwaloszczyk@ottoworkforce.eu>
+     * @author Mariusz Waloszczyk
      */
     public function persist(object $object): void
     {
@@ -68,7 +68,7 @@ abstract readonly class StandardRepositoryDoctrineImpl implements StandardReposi
 
     /**
      * @inheritDoc
-     * @author Mariusz Waloszczyk <mwaloszczyk@ottoworkforce.eu>
+     * @author Mariusz Waloszczyk
      */
     public function findBy(string $aggregateClassName, array $identifiers): ?object
     {
@@ -78,7 +78,7 @@ abstract readonly class StandardRepositoryDoctrineImpl implements StandardReposi
 
     /**
      * @inheritDoc
-     * @author Mariusz Waloszczyk <mwaloszczyk@ottoworkforce.eu>
+     * @author Mariusz Waloszczyk
      */
     public function save(array $identifiers, object $aggregate, array $metadata, ?int $versionBeforeHandling): void
     {
@@ -88,7 +88,7 @@ abstract readonly class StandardRepositoryDoctrineImpl implements StandardReposi
 
     /**
      * @inheritDoc
-     * @author Mariusz Waloszczyk <mwaloszczyk@ottoworkforce.eu>
+     * @author Mariusz Waloszczyk
      */
     public function canHandle(string $aggregateClassName): bool
     {

@@ -7,7 +7,7 @@ namespace App\Security\Domain\Tenant\Policy\BusinessRule;
 /**
  * Business rule responsible for checking if tenant is active
  *
- * @author Mariusz Waloszczyk <mwaloszczyk@ottoworkforce.eu>
+ * @author Mariusz Waloszczyk
  */
 interface TenantIsActive extends TenantCanBeAuthenticatedBusinessRule
 {

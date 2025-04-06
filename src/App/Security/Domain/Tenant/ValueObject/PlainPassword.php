@@ -9,14 +9,14 @@ use App\Shared\DomainUtilities\Domain\ValueObject;
 /**
  * Plain password, usually coming from the client to be checked or hashed
  *
- * @author Mariusz Waloszczyk <mwaloszczyk@ottoworkforce.eu>
+ * @author Mariusz Waloszczyk
  */
 final readonly class PlainPassword extends ValueObject
 {
     /**
      * @param string $password
      * @return PlainPassword
-     * @author Mariusz Waloszczyk <mwaloszczyk@ottoworkforce.eu>
+     * @author Mariusz Waloszczyk
      */
     public static function fromString(string $password): PlainPassword
     {
@@ -25,7 +25,7 @@ final readonly class PlainPassword extends ValueObject
 
     /**
      * @return string
-     * @author Mariusz Waloszczyk <mwaloszczyk@ottoworkforce.eu>
+     * @author Mariusz Waloszczyk
      */
     public function toString(): string
     {
@@ -34,7 +34,7 @@ final readonly class PlainPassword extends ValueObject
 
     /**
      * @param string $password
-     * @author Mariusz Waloszczyk <mwaloszczyk@ottoworkforce.eu>
+     * @author Mariusz Waloszczyk
      */
     private function __construct(
         private string $password,

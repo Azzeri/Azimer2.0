@@ -15,7 +15,7 @@ use Ecotone\Modelling\Attribute as CQRS;
 /**
  * ACL resource that can be assigned to a role
  *
- * @author Mariusz Waloszczyk <mwaloszczyk@ottoworkforce.eu>
+ * @author Mariusz Waloszczyk
  */
 #[ORM\Entity]
 #[CQRS\Aggregate]
@@ -24,7 +24,7 @@ final class Resource extends AggregateRoot
     /**
      * @param ResourceId $name
      * @param Collection<int, Role> $resources
-     * @author Mariusz Waloszczyk <mwaloszczyk@ottoworkforce.eu>
+     * @author Mariusz Waloszczyk
      */
     public function __construct(
         /** @phpstan-ignore-next-line */

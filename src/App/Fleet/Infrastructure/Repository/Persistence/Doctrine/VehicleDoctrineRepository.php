@@ -18,7 +18,7 @@ final readonly class VehicleDoctrineRepository extends StandardRepositoryDoctrin
 {
     /**
      * @inheritDoc
-     * @author Mariusz Waloszczyk <mwaloszczyk@ottoworkforce.eu>
+     * @author Mariusz Waloszczyk
      */
     public function getClassName(): string
     {
@@ -27,7 +27,7 @@ final readonly class VehicleDoctrineRepository extends StandardRepositoryDoctrin
 
     /**
      * @inheritDoc
-     * @author Mariusz Waloszczyk <mwaloszczyk@ottoworkforce.eu>
+     * @author Mariusz Waloszczyk
      */
     public function getIdentifierPropertyName(): string
     {

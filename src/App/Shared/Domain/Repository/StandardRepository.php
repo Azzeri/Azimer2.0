@@ -10,7 +10,7 @@ use App\Shared\DomainUtilities\Exception\ResourceNotFoundException;
 /**
  * Common interface for aggregate repository
  * @template TClass
- * @author Mariusz Waloszczyk <mwaloszczyk@ottoworkforce.eu>
+ * @author Mariusz Waloszczyk
  */
 interface StandardRepository
 {
@@ -20,7 +20,7 @@ interface StandardRepository
      * @param IdentifierValueObject $id
      * @return TClass
      * @throws ResourceNotFoundException
-     * @author Mariusz Waloszczyk <mwaloszczyk@ottoworkforce.eu>
+     * @author Mariusz Waloszczyk
      */
     public function findById(IdentifierValueObject $id): object;
 
@@ -29,7 +29,7 @@ interface StandardRepository
      *
      * @param object<TClass> $object
      * @return void
-     * @author Mariusz Waloszczyk <mwaloszczyk@ottoworkforce.eu>
+     * @author Mariusz Waloszczyk
      */
     public function persist(object $object): void;
 }

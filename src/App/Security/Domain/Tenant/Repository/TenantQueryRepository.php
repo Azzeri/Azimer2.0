@@ -11,7 +11,7 @@ use App\Shared\DomainUtilities\Exception\ResourceNotFoundException;
 /**
  * Repository for a tenant query model
  *
- * @author Mariusz Waloszczyk <mwaloszczyk@ottoworkforce.eu>
+ * @author Mariusz Waloszczyk
  */
 interface TenantQueryRepository
 {
@@ -21,7 +21,7 @@ interface TenantQueryRepository
      * @param TenantId $identifier
      * @return TenantQueryModel|null
      * @throws ResourceNotFoundException
-     * @author Mariusz Waloszczyk <mwaloszczyk@ottoworkforce.eu>
+     * @author Mariusz Waloszczyk
      */
     public function findByIdentifier(TenantId $identifier): ?TenantQueryModel;
 }

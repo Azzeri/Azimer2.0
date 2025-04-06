@@ -11,7 +11,7 @@ use App\Security\Domain\Tenant\ValueObject\TenantId;
 /**
  * This service is used to perform basic operations with tenant password
  *
- * @author Mariusz Waloszczyk <mwaloszczyk@ottoworkforce.eu>
+ * @author Mariusz Waloszczyk
  */
 interface TenantPasswordService
 {
@@ -21,7 +21,7 @@ interface TenantPasswordService
      * @param PlainPassword $password
      * @param TenantId $tenantId
      * @return HashedPassword
-     * @author Mariusz Waloszczyk <mwaloszczyk@ottoworkforce.eu>
+     * @author Mariusz Waloszczyk
      */
     public function hash(PlainPassword $password, TenantId $tenantId): HashedPassword;
 
@@ -31,7 +31,7 @@ interface TenantPasswordService
      * @param PlainPassword $password
      * @param TenantId $tenantId
      * @return bool
-     * @author Mariusz Waloszczyk <mwaloszczyk@ottoworkforce.eu>
+     * @author Mariusz Waloszczyk
      */
     public function isPasswordValid(PlainPassword $password, TenantId $tenantId): bool;
 }

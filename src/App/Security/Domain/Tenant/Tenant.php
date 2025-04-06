@@ -26,7 +26,7 @@ use Ecotone\Modelling\Attribute as CQRS;
 /**
  * Aggregate of Tenant, which represent person using the system
  *
- * @author Mariusz Waloszczyk <mwaloszczyk@ottoworkforce.eu>
+ * @author Mariusz Waloszczyk
  */
 #[ORM\Entity]
 #[CQRS\Aggregate]
@@ -37,7 +37,7 @@ final class Tenant extends AggregateRoot
      * @param HashedPassword $password
      * @param TenantStatus $status
      * @param Collection<int, Role> $roles
-     * @author Mariusz Waloszczyk <mwaloszczyk@ottoworkforce.eu>
+     * @author Mariusz Waloszczyk
      */
     private function __construct(
         /** @phpstan-ignore-next-line */
@@ -73,7 +73,7 @@ final class Tenant extends AggregateRoot
      * @param RoleRepository $roleRepository
      * @return self
      * @throws ResourceNotFoundException
-     * @author Mariusz Waloszczyk <mwaloszczyk@ottoworkforce.eu>
+     * @author Mariusz Waloszczyk
      */
     #[CQRS\CommandHandler()]
     public static function create(
@@ -101,7 +101,7 @@ final class Tenant extends AggregateRoot
 
     /**
      * @return bool
-     * @author Mariusz Waloszczyk <mwaloszczyk@ottoworkforce.eu>
+     * @author Mariusz Waloszczyk
      */
     public function isActive(): bool
     {

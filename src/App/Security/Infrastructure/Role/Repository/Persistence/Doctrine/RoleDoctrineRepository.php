@@ -12,23 +12,23 @@ use Ecotone\Modelling\Attribute\Repository;
 /**
  * Doctrine implementation of {@see RoleRepository}
  *
- * @author Mariusz Waloszczyk <mwaloszczyk@ottoworkforce.eu>
+ * @author Mariusz Waloszczyk
  */
 #[Repository]
 final readonly class RoleDoctrineRepository extends StandardRepositoryDoctrineImpl implements RoleRepository
 {
     /**
      * @inheritDoc
-     * @author Mariusz Waloszczyk <mwaloszczyk@ottoworkforce.eu>
+     * @author Mariusz Waloszczyk
      */
     public function getClassName(): string
     {
         return Role::class;
     }
-    
+
     /**
      * @inheritDoc
-     * @author Mariusz Waloszczyk <mwaloszczyk@ottoworkforce.eu>
+     * @author Mariusz Waloszczyk
      */
     public function getIdentifierPropertyName(): string
     {

@@ -10,7 +10,7 @@ use Symfony\Component\Security\Core\User\UserInterface;
 /**
  * Class representing Symfony and Doctrine authenticated user, used for authentication only
  *
- * @author Mariusz Waloszczyk <mwaloszczyk@ottoworkforce.eu>
+ * @author Mariusz Waloszczyk
  */
 final readonly class AuthenticatedUser implements UserInterface, PasswordAuthenticatedUserInterface
 {
@@ -18,7 +18,7 @@ final readonly class AuthenticatedUser implements UserInterface, PasswordAuthent
      * @param string $email
      * @param string $password
      * @param array $roles
-     * @author Mariusz Waloszczyk <mwaloszczyk@ottoworkforce.eu>
+     * @author Mariusz Waloszczyk
      */
     public function __construct(
         private string $email,
@@ -30,7 +30,7 @@ final readonly class AuthenticatedUser implements UserInterface, PasswordAuthent
 
     /**
      * @inheritDoc
-     * @author Mariusz Waloszczyk <mwaloszczyk@ottoworkforce.eu>
+     * @author Mariusz Waloszczyk
      */
     public function getUserIdentifier(): string
     {
@@ -39,7 +39,7 @@ final readonly class AuthenticatedUser implements UserInterface, PasswordAuthent
 
     /**
      * @inheritDoc
-     * @author Mariusz Waloszczyk <mwaloszczyk@ottoworkforce.eu>
+     * @author Mariusz Waloszczyk
      */
     public function getPassword(): string
     {
@@ -48,7 +48,7 @@ final readonly class AuthenticatedUser implements UserInterface, PasswordAuthent
 
     /**
      * @return array<int,string>
-     * @author Mariusz Waloszczyk <mwaloszczyk@ottoworkforce.eu>
+     * @author Mariusz Waloszczyk
      */
     public function getRoles(): array
     {
@@ -57,7 +57,7 @@ final readonly class AuthenticatedUser implements UserInterface, PasswordAuthent
 
     /**
      * @inheritDoc
-     * @author Mariusz Waloszczyk <mwaloszczyk@ottoworkforce.eu>
+     * @author Mariusz Waloszczyk
      */
     public function eraseCredentials(): void
     {

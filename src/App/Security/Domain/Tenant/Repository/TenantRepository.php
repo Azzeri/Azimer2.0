@@ -11,7 +11,7 @@ use App\Shared\Domain\Repository\StandardRepository;
  * Repository of {@see Tenant aggregate}
  * @extends StandardRepository<Tenant>
  *
- * @author Mariusz Waloszczyk <mwaloszczyk@ottoworkforce.eu>
+ * @author Mariusz Waloszczyk
  */
 interface TenantRepository extends StandardRepository
 {

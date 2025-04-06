@@ -17,7 +17,7 @@ use Lexik\Bundle\JWTAuthenticationBundle\Services\JWTTokenManagerInterface;
 /**
  * Implementation of {@see AuthenticateTenantService}
  *
- * @author Mariusz Waloszczyk <mwaloszczyk@ottoworkforce.eu>
+ * @author Mariusz Waloszczyk
  */
 final readonly class AuthenticateTenantServiceImpl implements AuthenticateTenantService
 {
@@ -25,7 +25,7 @@ final readonly class AuthenticateTenantServiceImpl implements AuthenticateTenant
      * @param AuthenticatedUserProvider $authenticatedUserProvider
      * @param TenantCanBeAuthenticated $tenantCanBeAuthenticated
      * @param JWTTokenManagerInterface $jwtManager
-     * @author Mariusz Waloszczyk <mwaloszczyk@ottoworkforce.eu>
+     * @author Mariusz Waloszczyk
      */
     public function __construct(
         private AuthenticatedUserProvider $authenticatedUserProvider,
@@ -37,7 +37,7 @@ final readonly class AuthenticateTenantServiceImpl implements AuthenticateTenant
     /**
      * @inheritDoc
      * @throws BusinessRuleViolationException|ResourceNotFoundException
-     * @author Mariusz Waloszczyk <mwaloszczyk@ottoworkforce.eu>
+     * @author Mariusz Waloszczyk
      */
     public function authenticate(TenantId $tenantId, PlainPassword $password): AuthenticationToken
     {

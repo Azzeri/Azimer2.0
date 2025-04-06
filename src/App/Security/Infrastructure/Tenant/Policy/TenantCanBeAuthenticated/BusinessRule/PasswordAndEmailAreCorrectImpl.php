@@ -13,13 +13,13 @@ use App\Shared\BusinessRuleUtilities\Domain\ValueObject\BusinessRuleNotification
 /**
  * Implementation of {@see PasswordAndEmailAreCorrect}
  *
- * @author Mariusz Waloszczyk <mwaloszczyk@ottoworkforce.eu>
+ * @author Mariusz Waloszczyk
  */
 final readonly class PasswordAndEmailAreCorrectImpl implements PasswordAndEmailAreCorrect
 {
     /**
      * @param TenantPasswordService $tenantPasswordService
-     * @author Mariusz Waloszczyk <mwaloszczyk@ottoworkforce.eu>
+     * @author Mariusz Waloszczyk
      */
     public function __construct(
         private TenantPasswordService $tenantPasswordService,
@@ -28,7 +28,7 @@ final readonly class PasswordAndEmailAreCorrectImpl implements PasswordAndEmailA
 
     /**
      * @inheritDoc
-     * @author Mariusz Waloszczyk <mwaloszczyk@ottoworkforce.eu>
+     * @author Mariusz Waloszczyk
      */
     public function check(
         TenantId $tenantId,

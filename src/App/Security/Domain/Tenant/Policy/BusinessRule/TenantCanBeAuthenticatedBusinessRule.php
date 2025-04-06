@@ -12,7 +12,7 @@ use Symfony\Component\DependencyInjection\Attribute\AutoconfigureTag;
 /**
  * Single business rule checking if tenant can be authenticated
  *
- * @author Mariusz Waloszczyk <mwaloszczyk@ottoworkforce.eu>
+ * @author Mariusz Waloszczyk
  */
 #[AutoconfigureTag(TenantCanBeAuthenticatedBusinessRule::class)]
 interface TenantCanBeAuthenticatedBusinessRule
@@ -23,7 +23,7 @@ interface TenantCanBeAuthenticatedBusinessRule
      * @param TenantId $tenantId
      * @param PlainPassword $password
      * @return BusinessRuleNotification|null
-     * @author Mariusz Waloszczyk <mwaloszczyk@ottoworkforce.eu>
+     * @author Mariusz Waloszczyk
      */
     public function check(TenantId $tenantId, PlainPassword $password): ?BusinessRuleNotification;
 }

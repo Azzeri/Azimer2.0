@@ -7,7 +7,7 @@ namespace App\Security\Domain\Tenant\Enum;
 /**
  * Available statuses of tenants
  *
- * @author Mariusz Waloszczyk <mwaloszczyk@ottoworkforce.eu>
+ * @author Mariusz Waloszczyk
  */
 enum TenantStatus: string
 {

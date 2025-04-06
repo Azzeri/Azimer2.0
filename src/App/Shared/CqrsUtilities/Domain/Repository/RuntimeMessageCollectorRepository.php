@@ -10,7 +10,7 @@ use App\Shared\CqrsUtilities\Domain\ValueObject\RuntimeMessage;
  * Class that is able to collect messages during request. Later they can be read by key, for example, in the controller.
  * The Intention of the class is collecting messages from commands or events without breaking the CQRS principle.
  *
- * @author Mariusz Waloszczyk <mwaloszczyk@ottoworkforce.eu>
+ * @author Mariusz Waloszczyk
  */
 interface RuntimeMessageCollectorRepository
 {
@@ -19,7 +19,7 @@ interface RuntimeMessageCollectorRepository
      *
      * @param RuntimeMessage $message
      * @return void
-     * @author Mariusz Waloszczyk <mwaloszczyk@ottoworkforce.eu>
+     * @author Mariusz Waloszczyk
      */
     public function addMessage(RuntimeMessage $message): void;
 
@@ -27,7 +27,7 @@ interface RuntimeMessageCollectorRepository
      * Get all collected messages
      *
      * @return RuntimeMessage[]
-     * @author Mariusz Waloszczyk <mwaloszczyk@ottoworkforce.eu>
+     * @author Mariusz Waloszczyk
      */
     public function getMessages(): array;
 
@@ -35,7 +35,7 @@ interface RuntimeMessageCollectorRepository
      * Find specific messages by a key
      * @param string $key
      * @return array<int, string>
-     * @author Mariusz Waloszczyk <mwaloszczyk@ottoworkforce.eu>
+     * @author Mariusz Waloszczyk
      */
     public function findByKey(string $key): array;
 }
