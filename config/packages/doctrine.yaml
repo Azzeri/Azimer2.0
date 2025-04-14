@@ -10,6 +10,10 @@ doctrine:
             resource_unique_name: App\Security\Infrastructure\Resource\Repository\Persistence\Doctrine\Type\Identifier\ResourceUniqueNameType
             fire_brigade_unit_id: App\FireBrigadeUnit\Infrastructure\Repository\Persistence\Doctrine\Type\Identifier\FireBrigadeUnitIdType
             employee_id: App\Employee\Infrastructure\Repository\Persistence\Doctrine\Type\Identifier\EmployeeIdType
+            equipment_template_id: App\EquipmentRegister\Infrastructure\EquipmentTemplate\Repository\Persistence\Doctrine\Type\Identifier\EquipmentTemplateIdType
+            equipment_manufacturer_id: App\EquipmentRegister\Infrastructure\EquipmentManufacturer\Repository\Persistence\Doctrine\Type\Identifier\EquipmentManufacturerIdType
+            equipment_category_id: App\EquipmentRegister\Infrastructure\EquipmentCategory\Repository\Persistence\Doctrine\Type\Identifier\EquipmentCategoryIdType
+            equipment_id: App\EquipmentRegister\Infrastructure\Equipment\Repository\Persistence\Doctrine\Type\Identifier\EquipmentIdType
     orm:
         auto_generate_proxy_classes: true
         enable_lazy_ghost_objects: true
@@ -52,6 +56,12 @@ doctrine:
                 dir: '%kernel.project_dir%/src/App/Employee/Domain/'
                 prefix: 'App\Employee\Domain'
                 alias: App\Employee\Domain
+            EquipmentRegister:
+                is_bundle: false
+                type: attribute
+                dir: '%kernel.project_dir%/src/App/EquipmentRegister/Domain/'
+                prefix: 'App\EquipmentRegister\Domain'
+                alias: App\EquipmentRegister\Domain
 when@test:
     doctrine:
         dbal:

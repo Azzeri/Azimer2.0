@@ -1,0 +1,41 @@
+### TODO
+
+    - DONE - vehicles domain layer
+    - DONE - vehicles infrastructure and application layers
+    - DONE - vehicles query model (elastic maybe)
+    - DONE - quality tools
+    - DONE - vehicles and utilities unit tests
+    - DONE - controllers and swagger
+    - DONE - PSALM analysis (too much unused code)
+    - DONE - project cleanup - xmle z .idea, gitignore, nano i inne do kontenera, composery tj. dockery
+    - DONE - makefile
+    - DONE - tests coverage check
+    - DONE - src i tests
+    - DONE - xdebug
+    - DONE - add design files
+    - DONE - a nice readme for a portfolio
+
+    powyzsze do 9 marca
+
+    - DONE - refaktor tego co ma byc refaktorowane w vehicles
+    - draft zarządzania sprzętem
+    - spróbować anotacje XML
+    - odgruzowac domene - wlasne kolekcje i wlasne ulidy
+    - naprawic testy i coverage
+    - quality
+    - security context - dokonczyc
+    - employee context - dokonczyc
+    - fire brigades context - dokonczyc
+    - przywrocic i naprawic usuniete ci z .git
+    - namespaces tests
+    - TODOs
+    - refactor design files
+    - php 8.4
+    - architecture quality tool
+    - other contexts...
+    - gherkin tests
+    - paczki
+    - deploy/CI/CD
+    - mikroserwisy
+    - frontend
+    - refresh token

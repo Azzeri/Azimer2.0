@@ -8,7 +8,7 @@ use App\Shared\DomainUtilities\Domain\IdentifierValueObject;
 
 /**
  * Identifier of a tenant
- *
+ * TODO - moze UUID bedzie lepsze od emaila?
  * @author Mariusz Waloszczyk
  */
 final readonly class TenantId extends IdentifierValueObject
