@@ -74,4 +74,20 @@ final class BusinessRulesNotificationsCollection
     {
         return empty($this->notifications);
     }
+
+    /**
+     * Transform collection to array
+     *
+     * @return array
+     * @author Mariusz Waloszczyk<mwaloszczyk@ottoworkforce.eu>
+     */
+    public function toArray(): array
+    {
+        $notifications = [];
+        foreach ($this->notifications as $notification) {
+            $notifications[] = $notification;
+        }
+
+        return $notifications;
+    }
 }

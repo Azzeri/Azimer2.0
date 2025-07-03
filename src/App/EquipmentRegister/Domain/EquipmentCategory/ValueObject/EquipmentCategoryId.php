@@ -8,7 +8,7 @@ use App\Shared\DomainUtilities\Domain\UuidIdentifier;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- *
+ * Uuid identifier of every category in the application
  *
  * @author Mariusz Waloszczyk <mwaloszczyk@ottoworkforce.eu>
  */

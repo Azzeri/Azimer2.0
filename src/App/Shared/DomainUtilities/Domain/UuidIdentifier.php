@@ -41,6 +41,17 @@ abstract readonly class UuidIdentifier extends IdentifierValueObject
     }
 
     /**
+     * Create a new UUID
+     *
+     * @return static
+     * @author Mariusz Waloszczyk<mwaloszczyk@ottoworkforce.eu>
+     */
+    public static function generate(): static
+    {
+        return new static(Uuid::v4());
+    }
+
+    /**
      * @inheritDoc
      * @author Mariusz Waloszczyk
      */

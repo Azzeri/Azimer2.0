@@ -1,0 +1,25 @@
+<?php
+
+declare(strict_types=1);
+
+namespace App\EquipmentRegister\Domain\Shared\ValueObject;
+
+use App\EquipmentRegister\Domain\Shared\Enum\EquipmentPermission;
+use App\Shared\DomainUtilities\Domain\Actor;
+
+/**
+ * Actor that is managing equipment in the application
+ *
+ * @author Mariusz Waloszczyk<mwaloszczyk@ottoworkforce.eu>
+ */
+final readonly class EquipmentManager extends Actor
+{
+    /**
+     * @return bool
+     * @author Mariusz Waloszczyk<mwaloszczyk@ottoworkforce.eu>
+     */
+    public function canAddCategory(): bool
+    {
+        return $this->hasPermission(EquipmentPermission::CATEGORY_ADD->value);
+    }
+}

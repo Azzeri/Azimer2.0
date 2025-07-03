@@ -10,7 +10,7 @@ use Doctrine\Migrations\AbstractMigration;
 /**
  * Auto-generated Migration: Please modify to your needs!
  */
-final class Version20250412101410 extends AbstractMigration
+final class Version20250619113320 extends AbstractMigration
 {
     public function getDescription(): string
     {
@@ -20,14 +20,16 @@ final class Version20250412101410 extends AbstractMigration
     public function up(Schema $schema): void
     {
         // this up() migration is auto-generated, please modify it to your needs
-        $this->addSql('ALTER TABLE equipment_template_property RENAME COLUMN value TO name');
-        $this->addSql('ALTER TABLE equipment_template_property ALTER name TYPE VARCHAR(255)');
+        $this->addSql('ALTER TABLE equipment_category ADD category_name VARCHAR(128) NOT NULL');
+        $this->addSql('ALTER TABLE equipment_category DROP name_name');
+        $this->addSql('CREATE UNIQUE INDEX UNIQ_368F9DE7D5B80441 ON equipment_category (category_name)');
     }
 
     public function down(Schema $schema): void
     {
         // this down() migration is auto-generated, please modify it to your needs
-        $this->addSql('ALTER TABLE equipment_template_property RENAME COLUMN name TO value');
-        $this->addSql('ALTER TABLE equipment_template_property ALTER value TYPE VARCHAR(255)');
+        $this->addSql('DROP INDEX UNIQ_368F9DE7D5B80441');
+        $this->addSql('ALTER TABLE equipment_category ADD name_name VARCHAR(255) NOT NULL');
+        $this->addSql('ALTER TABLE equipment_category DROP category_name');
     }
 }
