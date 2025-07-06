@@ -14,7 +14,10 @@
 |
 */
 
-// pest()->extend(Tests\TestCase::class)->in('Feature');
+pest()->extend(\Tests\AbstractWebTestCase::class)
+    ->in('Feature');
+pest()->extend(\Tests\TestCase::class)
+    ->in('Unit');
 
 /*
 |--------------------------------------------------------------------------
@@ -27,9 +30,10 @@
 |
 */
 
-//expect()->extend('toBeOne', function () {
-//    return $this->toBe(1);
-//});
+expect()->extend('toHavePrivatePropertyEqualTo', function (string $property, mixed $value) {
+    expect(\App\Shared\DomainUtilities\Domain\AggregatePropertyGetter::getProperty($this->value, $property))
+        ->toEqual($value);
+});
 
 /*
 |--------------------------------------------------------------------------

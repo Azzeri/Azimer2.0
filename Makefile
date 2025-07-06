@@ -14,7 +14,7 @@ SYMFONY       = $(EXEC_PHP) bin/console
 # if you use Docker you can replace with: "docker-compose exec my_php_container $(EXEC_PHP) bin/console"
 
 # Executables: vendors
-PEST       = ./vendor/bin/pest
+PEST       = ./vendor/bin/pest --configuration=phpunit.unit.xml
 PHPSTAN       = ./vendor/bin/phpstan
 PHP_CODE_SNIFFER  = ./vendor/bin/phpcs
 PHP_CBF  = ./vendor/bin/phpcbf
@@ -73,7 +73,7 @@ delete-index: ## Delete a given index (parameters: index=app_2021-01-05-075600")
 
 ## —— Docker 🐳 ————————————————————————————————————————————————————————————————
 up: ## Start the docker hub
-	XDEBUG_MODE=debug $(DOCKER_COMP) up --detach
+	HTTP_PORT=77 HTTPS_PORT=777 HTTP3_PORT=777 XDEBUG_MODE=debug $(DOCKER_COMP) up
 
 build-fresh: ## Builds the images (php + caddy)
 	$(DOCKER_COMP) build --pull --no-cache

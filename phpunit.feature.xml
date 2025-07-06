@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <phpunit xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:noNamespaceSchemaLocation="https://schema.phpunit.de/10.3/phpunit.xsd"
-         bootstrap="vendor/autoload.php"
+         bootstrap="tests/bootstrap_feature.php"
          colors="true"
 >
     <testsuites>
-        <testsuite name="Test Suite">
-            <directory suffix="Test.php">./tests</directory>
+        <testsuite name="Feature">
+            <directory suffix="Test.php">./tests/Feature</directory>
         </testsuite>
     </testsuites>
     <source>
@@ -21,4 +21,11 @@
             <directory suffix=".php">./src/App/Shared/Infrastructure/Doctrine/Migration</directory>
         </exclude>
     </source>
+    <php>
+        <env name="KERNEL_CLASS" value="App\Shared\Infrastructure\Symfony\Kernel"/>
+        <env name="APP_ENV" value="test" force="true" />
+    </php>
+    <extensions>
+        <bootstrap class="DAMA\DoctrineTestBundle\PHPUnit\PHPUnitExtension" />
+    </extensions>
 </phpunit>

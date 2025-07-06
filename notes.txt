@@ -20,6 +20,7 @@
     - DONE - refaktor tego co ma byc refaktorowane w vehicles
     - draft zarządzania sprzętem
     - spróbować anotacje XML
+    - zobaczyc czy da sie odkleic persist od flusha zeby bylo szybciej
     - odgruzowac domene - wlasne kolekcje i wlasne ulidy
     - naprawic testy i coverage
     - quality
