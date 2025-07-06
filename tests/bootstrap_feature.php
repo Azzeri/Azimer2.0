@@ -13,25 +13,25 @@ if (file_exists(dirname(__DIR__) . '/config/bootstrap.php')) {
 // Recreate database structure based on the production table
 passthru(sprintf(
     'APP_ENV=%s php "%s/../bin/console" --env=test doctrine:database:drop --force',
-    $_ENV['APP_ENV'],
+    $_ENV['APP_ENV'] ?? 'test',
     __DIR__
 ));
 
 passthru(sprintf(
     'APP_ENV=%s php "%s/../bin/console" --env=test doctrine:database:create',
-    $_ENV['APP_ENV'],
+    $_ENV['APP_ENV'] ?? 'test',
     __DIR__
 ));
 
 passthru(sprintf(
     'APP_ENV=%s php "%s/../bin/console" --env=test doctrine:schema:create',
-    $_ENV['APP_ENV'],
+    $_ENV['APP_ENV'] ?? 'test',
     __DIR__
 ));
 
 // Load data fixtures
 passthru(sprintf(
     'APP_ENV=%s php "%s/../bin/console" --env=test doctrine:fixtures:load --no-interaction',
-    $_ENV['APP_ENV'],
+    $_ENV['APP_ENV'] ?? 'test',
     __DIR__
 ));

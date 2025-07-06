@@ -21,8 +21,16 @@
             <errorLevel type="suppress">
                 <!-- PSALM seems to have a problem with PEST methods, so I had to ignore these -->
                 <directory name="**/tests/*"/>
+                <file name="tests/**"/>
             </errorLevel>
         </InternalMethod>
+        <InvalidScope>
+            <errorLevel type="suppress">
+                <!-- PSALM seems to have a problem with PEST methods, so I had to ignore these -->
+                <directory name="**/tests/*"/>
+                <file name="tests/**"/>
+            </errorLevel>
+        </InvalidScope>
         <PossiblyUnusedProperty>
             <errorLevel type="suppress">
                 <!-- DTOs are often mapped as API, and therefore, their properties are not directly used -->
@@ -31,6 +39,18 @@
                 <file name="**/Event/*"/>
             </errorLevel>
         </PossiblyUnusedProperty>
+        <PossiblyUnusedMethod>
+            <errorLevel type="suppress">
+                <file name="tests/**"/>
+                <directory name="**/tests/*"/>
+            </errorLevel>
+        </PossiblyUnusedMethod>
+        <UnusedClass>
+            <errorLevel type="suppress">
+                <!-- Controllers are not directly used -->
+                <directory name="**/Controller/*"/>
+            </errorLevel>
+        </UnusedClass>
     </issueHandlers>
     <plugins>
         <pluginClass class="Psalm\MockeryPlugin\Plugin"/>

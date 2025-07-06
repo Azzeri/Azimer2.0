@@ -76,5 +76,4 @@ abstract class AbstractStringIdentifierType extends Type
 
         throw new InvalidDataException("Invalid type provided");
     }
-
 }

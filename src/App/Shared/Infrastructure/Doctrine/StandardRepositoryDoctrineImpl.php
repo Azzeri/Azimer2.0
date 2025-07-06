@@ -15,6 +15,8 @@ use Ecotone\Modelling\StandardRepository as EcotoneStandardRepository;
  *  - Ecotone for automated aggregate actions
  *  - Domain for clear and readable domain repositories
  *
+ * @template T of object
+ * @implements StandardRepository<T>
  * @author Mariusz Waloszczyk
  */
 abstract readonly class StandardRepositoryDoctrineImpl implements StandardRepository, EcotoneStandardRepository
@@ -68,6 +70,7 @@ abstract readonly class StandardRepositoryDoctrineImpl implements StandardReposi
 
     /**
      * @inheritDoc
+     * @param mixed[] $identifiers
      * @author Mariusz Waloszczyk
      */
     public function findBy(string $aggregateClassName, array $identifiers): ?object

@@ -26,7 +26,7 @@ interface RuntimeMessageCollectorRepository
     /**
      * Get all collected messages
      *
-     * @return RuntimeMessage[]
+     * @return array<int, RuntimeMessage>
      * @author Mariusz Waloszczyk
      */
     public function getMessages(): array;
@@ -34,7 +34,7 @@ interface RuntimeMessageCollectorRepository
     /**
      * Find specific messages by a key
      * @param string $key
-     * @return array<int, string>
+     * @return array<int, RuntimeMessage>
      * @author Mariusz Waloszczyk
      */
     public function findByKey(string $key): array;

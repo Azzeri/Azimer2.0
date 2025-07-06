@@ -43,7 +43,10 @@ abstract class AbstractWebTestCase extends WebTestCase
         parent::setUp();
         $this->client = self::createClient();
         $this->client->disableReboot();
-        $this->entityManager = $this->service(EntityManagerInterface::class);
+
+        /** @var EntityManagerInterface $entityManager */
+        $entityManager = $this->service(EntityManagerInterface::class);
+        $this->entityManager = $entityManager;
     }
 
     /**
@@ -79,14 +82,15 @@ abstract class AbstractWebTestCase extends WebTestCase
     /**
      * Retrieve entity from persistence with criteria
      *
-     * @param string $class
+     * @param class-string $class
      * @param array<string, mixed> $criteria
      * @return object|null
      * @author Mariusz Waloszczyk
      */
     protected function getEntity(string $class, array $criteria): ?object
     {
-        return $this->entityManager->getRepository($class)->findOneBy($criteria);
+        return $this->entityManager->getRepository($class)
+            ->findOneBy($criteria);
     }
 
     /**
@@ -100,6 +104,10 @@ abstract class AbstractWebTestCase extends WebTestCase
      */
     protected function sendPost(array|object $payload, string $uri, array $tenantPermissions): Response
     {
+        $payload = json_encode($payload);
+        if ($payload === false) {
+            throw new \Exception("Invalid JSON payload");
+        }
         $this->client->request(
             'POST',
             $uri,
@@ -109,7 +117,7 @@ abstract class AbstractWebTestCase extends WebTestCase
                 'CONTENT_TYPE' => 'application/json',
                 'HTTP_Authorization' => $this->getJwtWithPermissions($tenantPermissions)
             ],
-            json_encode($payload)
+            $payload
         );
 
         return $this->client->getResponse();
@@ -124,6 +132,7 @@ abstract class AbstractWebTestCase extends WebTestCase
      */
     protected function getJwtWithPermissions(array $permissions): string
     {
+        /** @var Role $role */
         $role = $this->entityManager->getRepository(Role::class)
             ->findOneBy(['name' => self::TEST_USER_ROLE]);
         foreach ($permissions as $permission) {

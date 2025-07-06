@@ -10,7 +10,7 @@ use function Pest\Faker\fake;
 
 /**
  * Generates sample security data
- *
+ * @psalm-suppress UnusedClass
  * @author Mariusz Waloszczyk
  */
 final readonly class SecuritySamples

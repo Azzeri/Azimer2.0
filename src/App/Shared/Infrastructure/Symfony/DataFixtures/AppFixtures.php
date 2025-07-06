@@ -20,7 +20,7 @@ use Tests\AbstractWebTestCase;
 
 /**
  * These fixtures are loaded before feature tests
- *
+ * @psalm-suppress UnusedClass
  * @author Mariusz Waloszczyk
  */
 class AppFixtures extends Fixture

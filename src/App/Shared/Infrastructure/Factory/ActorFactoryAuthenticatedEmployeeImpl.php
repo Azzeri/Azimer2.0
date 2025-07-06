@@ -12,6 +12,8 @@ use BackedEnum;
 
 /**
  * Implementation of {@see ActorFactory} creating actors based on authenticated employee
+ * @template T of Actor
+ * @implements ActorFactory<T>
  *
  * @author Mariusz Waloszczyk
  */
@@ -35,9 +37,15 @@ abstract readonly class ActorFactoryAuthenticatedEmployeeImpl implements ActorFa
     {
         $employee = $this->employeeApiService->getAuthenticatedEmployee();
 
+        /** @var array<int, string> $permissions */
         $permissions = array_filter(
             array_map(
-                fn(string $permission) => $this->getPermissionEnum()::tryFrom($permission)->value,
+                function (string $permission) {
+                    $permission = $this->getPermissionEnum()::tryFrom($permission);
+                    if ($permission !== null) {
+                        return $permission->value;
+                    }
+                },
                 $employee['resources']
             )
         );
@@ -61,7 +69,7 @@ abstract readonly class ActorFactoryAuthenticatedEmployeeImpl implements ActorFa
      * Create instance of the specific actor implementation
      *
      * @param string $identifier
-     * @param array<int, BackedEnum> $permissions
+     * @param array<int, string> $permissions
      * @param string $organizationalUnitId
      */
     abstract protected function createActorInstance(
