@@ -17,7 +17,7 @@ use ReflectionException;
 /**
  * Implementation of {@see CategoryNameIsUnique}
  *
- * @author Mariusz Waloszczyk<mwaloszczyk@ottoworkforce.eu>
+ * @author Mariusz Waloszczyk
  */
 final class CategoryNameIsUniqueImpl implements CategoryNameIsUnique
 {
@@ -32,7 +32,7 @@ final class CategoryNameIsUniqueImpl implements CategoryNameIsUnique
      * @inheritDoc
      * @param EquipmentCategory $aggregate
      * @throws ReflectionException
-     * @author Mariusz Waloszczyk<mwaloszczyk@ottoworkforce.eu>
+     * @author Mariusz Waloszczyk
      */
     public function isSatisfiedBy(AggregateRoot $aggregate): BusinessRulesNotificationsCollection
     {
@@ -41,10 +41,8 @@ final class CategoryNameIsUniqueImpl implements CategoryNameIsUnique
         /** @var EquipmentCategoryName $categoryName */
         $categoryName = AggregatePropertyGetter::getProperty($aggregate, 'name');
 
-        $query = "SELECT c FROM " . EquipmentCategory::class . " c WHERE c.name = :name";
-        $category = $this->entityManager->createQuery($query)
-            ->setParameter('name', $categoryName)
-            ->getOneOrNullResult();
+        $category = $this->entityManager->getRepository(EquipmentCategory::class)
+            ->findOneBy(['name.name' => $categoryName]);
 
         $message = "Category with the given name already exists.";
         return $category === null

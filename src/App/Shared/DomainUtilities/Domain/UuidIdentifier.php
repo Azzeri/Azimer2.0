@@ -44,7 +44,7 @@ abstract readonly class UuidIdentifier extends IdentifierValueObject
      * Create a new UUID
      *
      * @return static
-     * @author Mariusz Waloszczyk<mwaloszczyk@ottoworkforce.eu>
+     * @author Mariusz Waloszczyk
      */
     public static function generate(): static
     {
@@ -56,6 +56,15 @@ abstract readonly class UuidIdentifier extends IdentifierValueObject
      * @author Mariusz Waloszczyk
      */
     public function __toString(): string
+    {
+        return $this->uuid->toString();
+    }
+
+    /**
+     * @return string
+     * @author Mariusz Waloszczyk
+     */
+    public function toString(): string
     {
         return $this->uuid->toString();
     }

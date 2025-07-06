@@ -9,7 +9,7 @@ namespace App\Shared\DomainUtilities\Domain;
  *
  * @template T of Actor
  *
- * @author Mariusz Waloszczyk<mwaloszczyk@ottoworkforce.eu>
+ * @author Mariusz Waloszczyk
  */
 interface ActorFactory
 {
@@ -17,7 +17,7 @@ interface ActorFactory
      * Create an actor
      *
      * @return T
-     * @author Mariusz Waloszczyk<mwaloszczyk@ottoworkforce.eu>
+     * @author Mariusz Waloszczyk
      */
     public function create(): Actor;
 }

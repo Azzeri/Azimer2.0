@@ -55,15 +55,15 @@ it('handles UnauthorizedException with 403 response in non-production', function
         ->and($event->getResponse()?->getContent())->toContain('trace');
 });
 
-it('handles BusinessRuleViolationException with 422 response', function () {
+it('handles BusinessRuleViolationException with the requested response', function () {
     $kernel = Mockery::mock(HttpKernelInterface::class);
     $listener = new ExceptionListener('dev');
-    $exception = new BusinessRuleViolationException('Business rule violated');
+    $exception = new BusinessRuleViolationException(560, 'Business rule violated');
     $event = new ExceptionEvent($kernel, new Request(), HttpKernelInterface::MAIN_REQUEST, $exception);
 
     $listener($event);
 
-    expect($event->getResponse()?->getStatusCode())->toBe(Response::HTTP_UNPROCESSABLE_ENTITY)
+    expect($event->getResponse()?->getStatusCode())->toBe(560)
         ->and($event->getResponse()?->getContent())->toContain('Business rule violated');
 });
 

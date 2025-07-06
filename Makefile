@@ -15,6 +15,7 @@ SYMFONY       = $(EXEC_PHP) bin/console
 
 # Executables: vendors
 PEST       = ./vendor/bin/pest --configuration=phpunit.unit.xml
+PEST_FEATURE       = ./vendor/bin/pest --configuration=phpunit.feature.xml
 PHPSTAN       = ./vendor/bin/phpstan
 PHP_CODE_SNIFFER  = ./vendor/bin/phpcs
 PHP_CBF  = ./vendor/bin/phpcbf
@@ -110,6 +111,14 @@ test: ## Run PEST tests with optional filter
 		$(PEST) --filter="$(filter)"; \
 	else \
 		$(PEST); \
+	fi
+
+test-feature: ## Run PEST feature tests with optional filter
+	@$(eval filter := $(filter-out $@,$(MAKECMDGOALS)))
+	@if [ -n "$(filter)" ]; then \
+		$(PEST_FEATURE) --filter="$(filter)"; \
+	else \
+		$(PEST_FEATURE); \
 	fi
 
 ## —— Coding standards ✨ ——————————————————————————————————————————————————————

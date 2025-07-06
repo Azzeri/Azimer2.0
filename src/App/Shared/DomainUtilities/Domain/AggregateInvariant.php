@@ -11,7 +11,7 @@ use App\Shared\BusinessRuleUtilities\Domain\ValueObject\BusinessRulesNotificatio
  *
  * @template T of AggregateRoot
  *
- * @author Mariusz Waloszczyk<mwaloszczyk@ottoworkforce.eu>
+ * @author Mariusz Waloszczyk
  */
 interface AggregateInvariant
 {
@@ -20,7 +20,7 @@ interface AggregateInvariant
      *
      * @param AggregateRoot $aggregate
      * @return BusinessRulesNotificationsCollection
-     * @author Mariusz Waloszczyk<mwaloszczyk@ottoworkforce.eu>
+     * @author Mariusz Waloszczyk
      */
     public function isSatisfiedBy(AggregateRoot $aggregate): BusinessRulesNotificationsCollection;
 }

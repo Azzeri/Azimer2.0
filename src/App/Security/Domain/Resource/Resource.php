@@ -8,6 +8,7 @@ use App\Security\Domain\Resource\ValueObject\ResourceId;
 use App\Security\Domain\Role\Role;
 use App\Security\Infrastructure\Resource\Repository\Persistence\Doctrine\Type\Identifier\ResourceUniqueNameType;
 use App\Shared\DomainUtilities\Domain\AggregateRoot;
+use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Ecotone\Modelling\Attribute as CQRS;
@@ -23,19 +24,28 @@ final class Resource extends AggregateRoot
 {
     /**
      * @param ResourceId $name
-     * @param Collection<int, Role> $resources
+     * @param Collection<int, Role> $roles
      * @author Mariusz Waloszczyk
      */
-    public function __construct(
+    private function __construct(
         /** @phpstan-ignore-next-line */
         #[ORM\Id]
         #[CQRS\Identifier]
         #[ORM\Column(type: ResourceUniqueNameType::NAME, length: ResourceId::MAX_LENGTH, unique: true)]
         private ResourceId $name,
-
         /** @phpstan-ignore-next-line */
         #[ORM\ManyToMany(targetEntity: Role::class, mappedBy: 'roles')]
-        private Collection $resources
+        private Collection $roles = new ArrayCollection()
     ) {
+    }
+
+    /**
+     * @param ResourceId $resourceId
+     * @return self
+     * @author Mariusz Waloszczyk
+     */
+    public static function create(ResourceId $resourceId): self
+    {
+        return new self($resourceId);
     }
 }

@@ -12,7 +12,7 @@ use App\Shared\DomainUtilities\Domain\ActorFactory;
  *
  * @extends ActorFactory<EquipmentManager>
  *
- * @author Mariusz Waloszczyk<mwaloszczyk@ottoworkforce.eu>
+ * @author Mariusz Waloszczyk
  */
 interface EquipmentManagerFactory extends ActorFactory
 {

@@ -9,7 +9,7 @@ use App\Shared\DomainUtilities\Domain\DataTransferObject;
 /**
  * Input data required to create a category
  *
- * @author Mariusz Waloszczyk<mwaloszczyk@ottoworkforce.eu>
+ * @author Mariusz Waloszczyk
  */
 final readonly class EquipmentCategoryInputData extends DataTransferObject
 {

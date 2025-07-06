@@ -7,7 +7,7 @@ namespace App\Shared\DomainUtilities\Domain;
 /**
  * Abstract class for every DTO in the application
  *
- * @author Mariusz Waloszczyk<mwaloszczyk@ottoworkforce.eu>
+ * @author Mariusz Waloszczyk
  */
 abstract readonly class DataTransferObject
 {

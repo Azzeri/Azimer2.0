@@ -26,7 +26,6 @@ class EquipmentManufacturer extends AggregateRoot
         #[ORM\Id]
         #[ORM\Column(type: EquipmentManufacturerIdType::NAME, unique: true)]
         private EquipmentManufacturerId $id,
-
         #[ORM\Embedded(class: EquipmentManufacturerName::class)]
         private EquipmentManufacturerName $name
     ) {
@@ -40,5 +39,4 @@ class EquipmentManufacturer extends AggregateRoot
             $name
         );
     }
-
 }

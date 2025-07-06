@@ -38,10 +38,8 @@ class FireBrigadeUnit extends AggregateRoot
         #[ORM\Id]
         #[ORM\Column(type: FireBrigadeUnitIdType::NAME, unique: true)]
         private FireBrigadeUnitId $id,
-
         #[ORM\ManyToOne(targetEntity: FireBrigadeUnit::class, inversedBy: 'subservientUnits')]
         private ?FireBrigadeUnit $superiorUnit = null,
-
         #[ORM\OneToMany(targetEntity: FireBrigadeUnit::class, mappedBy: 'superiorUnit', cascade: ['persist'])]
         private Collection $subservientUnits = new ArrayCollection()
     ) {

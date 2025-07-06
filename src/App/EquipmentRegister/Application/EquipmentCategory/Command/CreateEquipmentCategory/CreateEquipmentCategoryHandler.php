@@ -15,7 +15,7 @@ use Ecotone\Modelling\Attribute\CommandHandler;
 /**
  * Command handler for {@see CreateEquipmentCategory}
  *
- * @author Mariusz Waloszczyk<mwaloszczyk@ottoworkforce.eu>
+ * @author Mariusz Waloszczyk
  */
 final readonly class CreateEquipmentCategoryHandler
 {
@@ -37,14 +37,14 @@ final readonly class CreateEquipmentCategoryHandler
      * @param CreateEquipmentCategory $command
      * @return void
      * @throws BusinessRuleViolationException|ResourceNotFoundException
-     * @author Mariusz Waloszczyk<mwaloszczyk@ottoworkforce.eu>
+     * @author Mariusz Waloszczyk
      */
     #[CommandHandler]
     public function __invoke(CreateEquipmentCategory $command): void
     {
         $equipmentManager = $this->equipmentManagerFactory->create();
         ($this->equipmentCategoryCanBeAdded->isSatisfiedBy($equipmentManager))
-            ->validate();
+            ->validateAuthorization();
         $category = $this->equipmentCategoryFactory->fromInputData($command->inputData);
         $this->equipmentCategoryRepository->persist($category);
     }

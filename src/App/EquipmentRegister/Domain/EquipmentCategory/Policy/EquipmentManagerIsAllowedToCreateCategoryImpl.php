@@ -11,19 +11,19 @@ use App\Shared\BusinessRuleUtilities\Domain\ValueObject\BusinessRulesNotificatio
 /**
  * Implementation of {@see EquipmentManagerIsAllowedToCreateCategory}
  *
- * @author Mariusz Waloszczyk<mwaloszczyk@ottoworkforce.eu>
+ * @author Mariusz Waloszczyk
  */
 final readonly class EquipmentManagerIsAllowedToCreateCategoryImpl implements EquipmentManagerIsAllowedToCreateCategory
 {
     /**
      * @inheritDoc
-     * @author Mariusz Waloszczyk<mwaloszczyk@ottoworkforce.eu>
+     * @author Mariusz Waloszczyk
      */
     public function isSatisfiedBy(EquipmentManager $manager): BusinessRulesNotificationsCollection
     {
         if (!$manager->canAddCategory()) {
             return BusinessRulesNotificationsCollection::create([
-                BusinessRuleNotification::fromString("Fleet manager is not allowed to add category")
+                BusinessRuleNotification::fromString("Equipment manager is not allowed to add category")
             ]);
         }
 

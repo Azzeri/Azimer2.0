@@ -9,7 +9,7 @@ use App\EquipmentRegister\Domain\EquipmentCategory\Invariant\EquipmentCategoryIn
 /**
  * Invariant ensuring that category's name is unique
  *
- * @author Mariusz Waloszczyk<mwaloszczyk@ottoworkforce.eu>
+ * @author Mariusz Waloszczyk
  */
 interface CategoryNameIsUnique extends EquipmentCategoryInvariant
 {

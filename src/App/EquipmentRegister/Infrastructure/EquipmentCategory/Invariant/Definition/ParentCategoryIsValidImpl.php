@@ -15,7 +15,7 @@ use ReflectionException;
 /**
  * Implementation of {@see ParentCategoryIsValid}
  *
- * @author Mariusz Waloszczyk<mwaloszczyk@ottoworkforce.eu>
+ * @author Mariusz Waloszczyk
  */
 final class ParentCategoryIsValidImpl implements ParentCategoryIsValid
 {
@@ -23,7 +23,7 @@ final class ParentCategoryIsValidImpl implements ParentCategoryIsValid
      * @inheritDoc
      * @param EquipmentCategory $aggregate
      * @throws ReflectionException
-     * @author Mariusz Waloszczyk<mwaloszczyk@ottoworkforce.eu>
+     * @author Mariusz Waloszczyk
      */
     public function isSatisfiedBy(AggregateRoot $aggregate): BusinessRulesNotificationsCollection
     {
@@ -31,6 +31,9 @@ final class ParentCategoryIsValidImpl implements ParentCategoryIsValid
 
         /** @var EquipmentCategory $parentCategory */
         $parentCategory = AggregatePropertyGetter::getProperty($aggregate, 'parentCategory');
+        if ($parentCategory === null) {
+            return $notifications;
+        }
 
         if ($parentCategory->getId()->equals($aggregate->getId())) {
             $message = "Parent category can not be itself";

@@ -33,5 +33,4 @@ final readonly class VehicleDoctrineRepository extends StandardRepositoryDoctrin
     {
         return 'plateNumber';
     }
-
 }

@@ -24,14 +24,11 @@ class EquipmentProperty extends Entity// na ewno nie VO?
         #[ORM\GeneratedValue]
         #[ORM\Column]
         private int $id,//VO
-
         #[ORM\ManyToOne(targetEntity: Equipment::class, inversedBy: 'properties')]
         #[ORM\JoinColumn(nullable: false)]
         private Equipment $equipment,
-
         #[ORM\ManyToOne(targetEntity: EquipmentTemplateProperty::class)]
         private EquipmentTemplateProperty $templateProperty,
-
         #[ORM\Column(type: 'string')]
         private string $value
     ) {

@@ -9,7 +9,7 @@ use App\EquipmentRegister\Domain\EquipmentCategory\Dto\EquipmentCategoryInputDat
 /**
  * API service exposing equipment category operations to other bounded contexts and UI layer
  *
- * @author Mariusz Waloszczyk<mwaloszczyk@ottoworkforce.eu>
+ * @author Mariusz Waloszczyk
  */
 interface EquipmentCategoryApiService
 {
@@ -18,7 +18,7 @@ interface EquipmentCategoryApiService
      *
      * @param EquipmentCategoryInputData $inputData
      * @return void
-     * @author Mariusz Waloszczyk<mwaloszczyk@ottoworkforce.eu>
+     * @author Mariusz Waloszczyk
      */
     public function createCategory(EquipmentCategoryInputData $inputData): void;
 }

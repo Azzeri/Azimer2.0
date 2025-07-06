@@ -9,7 +9,7 @@ use App\Shared\BusinessRuleUtilities\Domain\Exception\BusinessRuleViolationExcep
 /**
  * Service that can be used to validate selected invariant on the selected aggregate
  *
- * @author Mariusz Waloszczyk<mwaloszczyk@ottoworkforce.eu>
+ * @author Mariusz Waloszczyk
  */
 interface AggregateInvariantValidationService
 {
@@ -20,7 +20,7 @@ interface AggregateInvariantValidationService
      * @param AggregateRoot $aggregate
      * @return void
      * @throws BusinessRuleViolationException
-     * @author Mariusz Waloszczyk<mwaloszczyk@ottoworkforce.eu>
+     * @author Mariusz Waloszczyk
      */
     public function validate(array $invariants, AggregateRoot $aggregate): void;
 }

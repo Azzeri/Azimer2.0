@@ -27,15 +27,15 @@ abstract readonly class StandardAggregateFactory implements AggregateFactory
      * @return AggregateRoot
      * @author Mariusz Waloszczyk
      */
-    protected abstract function inputDataToAggregate(DataTransferObject $inputData): AggregateRoot;
+    abstract protected function inputDataToAggregate(DataTransferObject $inputData): AggregateRoot;
 
     /**
      * Specify list of invariants for the aggregate
      *
-     * @return array<int, AggregateInvariant>
+     * @return iterable<int, AggregateInvariant>
      * @author Mariusz Waloszczyk
      */
-    protected abstract function getInvariants(): array;
+    abstract protected function getInvariants(): iterable;
 
     /**
      * @inheritDoc
@@ -44,7 +44,7 @@ abstract readonly class StandardAggregateFactory implements AggregateFactory
     public function fromInputData(DataTransferObject $inputData): AggregateRoot
     {
         $aggregate = $this->inputDataToAggregate($inputData);
-        $this->invariantValidationService->validate($this->getInvariants(), $aggregate);
+        $this->invariantValidationService->validate(iterator_to_array($this->getInvariants()), $aggregate);
         return $aggregate;
     }
 }

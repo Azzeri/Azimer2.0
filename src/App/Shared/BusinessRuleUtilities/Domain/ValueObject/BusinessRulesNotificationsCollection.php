@@ -46,13 +46,38 @@ final class BusinessRulesNotificationsCollection
     }
 
     /**
-     * Check if there are any notifications and throw exception if so
+     * Validate collection rules for business invariants, returning 422 status code in case of failure
      *
      * @return void
      * @throws BusinessRuleViolationException
      * @author Mariusz Waloszczyk
      */
-    public function validate(): void
+    public function validateInvariants(): void
+    {
+        $this->validate();
+    }
+
+    /**
+     * Validate collection rules for authorization, returning 403 status code in case of failure
+     *
+     * @return void
+     * @throws BusinessRuleViolationException
+     * @author Mariusz Waloszczyk
+     */
+    public function validateAuthorization(): void
+    {
+        $this->validate(403);
+    }
+
+    /**
+     * Check if there are any notifications and throw exception if so
+     *
+     * @param int $status
+     * @return void
+     * @throws BusinessRuleViolationException
+     * @author Mariusz Waloszczyk
+     */
+    public function validate(int $status = 422): void
     {
         $messages = [];
         foreach ($this->notifications as $notification) {
@@ -60,7 +85,7 @@ final class BusinessRulesNotificationsCollection
         }
 
         if ($this->isValid() === false) {
-            throw new BusinessRuleViolationException(implode("\n", $messages));
+            throw new BusinessRuleViolationException($status, implode("\n", $messages));
         }
     }
 
@@ -79,7 +104,7 @@ final class BusinessRulesNotificationsCollection
      * Transform collection to array
      *
      * @return array
-     * @author Mariusz Waloszczyk<mwaloszczyk@ottoworkforce.eu>
+     * @author Mariusz Waloszczyk
      */
     public function toArray(): array
     {

@@ -9,7 +9,7 @@ use App\EquipmentRegister\Domain\EquipmentCategory\Dto\EquipmentCategoryInputDat
 /**
  * Command creating a new equipment category
  *
- * @author Mariusz Waloszczyk<mwaloszczyk@ottoworkforce.eu>
+ * @author Mariusz Waloszczyk
  */
 final readonly class CreateEquipmentCategory
 {

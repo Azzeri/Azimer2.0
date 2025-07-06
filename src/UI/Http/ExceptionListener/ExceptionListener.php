@@ -47,7 +47,7 @@ final readonly class ExceptionListener
             $response->setStatusCode(Response::HTTP_FORBIDDEN);
             $response->setData($this->getExceptionResponse($exception, "User not authorized"));
         } elseif ($exception instanceof BusinessRuleViolationException) {
-            $response->setStatusCode(Response::HTTP_UNPROCESSABLE_ENTITY);
+            $response->setStatusCode($exception->getStatusCode());
             $response->setData($exception->getMessage());
         } else {
             $response->setStatusCode(Response::HTTP_INTERNAL_SERVER_ERROR);

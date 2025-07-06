@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\EquipmentRegister\Domain\EquipmentCategory\Factory;
 
+use App\EquipmentRegister\Domain\EquipmentCategory\Builder\EquipmentCategoryBuilder;
 use App\EquipmentRegister\Domain\EquipmentCategory\Dto\EquipmentCategoryInputData;
 use App\EquipmentRegister\Domain\EquipmentCategory\EquipmentCategory;
 use App\EquipmentRegister\Domain\EquipmentCategory\Invariant\EquipmentCategoryInvariant;
@@ -20,20 +21,20 @@ use Symfony\Component\DependencyInjection\Attribute\AutowireIterator;
 /**
  * Implementation of {@see EquipmentCategoryFactory}
  *
- * @author Mariusz Waloszczyk<mwaloszczyk@ottoworkforce.eu>
+ * @author Mariusz Waloszczyk
  */
 final readonly class EquipmentCategoryFactoryImpl extends StandardAggregateFactory implements EquipmentCategoryFactory
 {
     /**
      * @param AggregateInvariantValidationService $aggregateInvariantValidationService
      * @param EquipmentCategoryRepository $categoryRepository
-     * @param array<int, EquipmentCategoryInvariant> $invariants
+     * @param iterable<int, EquipmentCategoryInvariant> $invariants
      */
     public function __construct(
         protected AggregateInvariantValidationService $aggregateInvariantValidationService,
         private EquipmentCategoryRepository $categoryRepository,
         #[AutowireIterator(EquipmentCategoryInvariant::class)]
-        private array $invariants,
+        private iterable $invariants,
     ) {
         parent::__construct($aggregateInvariantValidationService);
     }
@@ -46,25 +47,25 @@ final readonly class EquipmentCategoryFactoryImpl extends StandardAggregateFacto
      */
     protected function inputDataToAggregate(DataTransferObject $inputData): EquipmentCategory
     {
-        $parentCategory = null;
+        $category = (new EquipmentCategoryBuilder())
+            ->withId(EquipmentCategoryId::generate())
+            ->withName(EquipmentCategoryName::fromString($inputData->name));
+
         if ($inputData->parentCategoryId !== null) {
             $parentCategory = $this->categoryRepository->findById(
                 EquipmentCategoryId::fromString($inputData->parentCategoryId)
             );
+            $category->withParent($parentCategory);
         }
 
-        return new EquipmentCategory(
-            EquipmentCategoryId::generate(),
-            EquipmentCategoryName::fromString($inputData->name),
-            $parentCategory
-        );
+        return $category->build();
     }
 
     /**
      * @inheritDoc
      * @author Mariusz Waloszczyk
      */
-    protected function getInvariants(): array
+    protected function getInvariants(): iterable
     {
         return $this->invariants;
     }

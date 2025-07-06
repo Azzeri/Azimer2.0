@@ -29,7 +29,7 @@ abstract readonly class ActorFactoryAuthenticatedEmployeeImpl implements ActorFa
     /**
      * @inheritDoc
      * @throws ResourceNotFoundException
-     * @author Mariusz Waloszczyk<mwaloszczyk@ottoworkforce.eu>
+     * @author Mariusz Waloszczyk
      */
     public function create(): Actor
     {
@@ -37,7 +37,7 @@ abstract readonly class ActorFactoryAuthenticatedEmployeeImpl implements ActorFa
 
         $permissions = array_filter(
             array_map(
-                fn(string $res) => $this->getPermissionEnum()::tryFrom($res),
+                fn(string $permission) => $this->getPermissionEnum()::tryFrom($permission)->value,
                 $employee['resources']
             )
         );
@@ -45,7 +45,7 @@ abstract readonly class ActorFactoryAuthenticatedEmployeeImpl implements ActorFa
         return $this->createActorInstance(
             $employee['id'],
             $permissions,
-            $employee['organizationalUnitId']
+            $employee['fireBrigadeUnitId']
         );
     }
 
@@ -53,7 +53,7 @@ abstract readonly class ActorFactoryAuthenticatedEmployeeImpl implements ActorFa
      * Get enum that represents permissions for actor's actions
      *
      * @return class-string<BackedEnum>
-     * @author Mariusz Waloszczyk<mwaloszczyk@ottoworkforce.eu>
+     * @author Mariusz Waloszczyk
      */
     abstract protected function getPermissionEnum(): string;
 
@@ -69,5 +69,4 @@ abstract readonly class ActorFactoryAuthenticatedEmployeeImpl implements ActorFa
         array $permissions,
         string $organizationalUnitId
     ): Actor;
-
 }

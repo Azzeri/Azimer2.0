@@ -9,13 +9,13 @@ use App\Shared\BusinessRuleUtilities\Domain\ValueObject\BusinessRulesNotificatio
 /**
  * Implementation of {@see AggregateInvariantValidationService}
  *
- * @author Mariusz Waloszczyk<mwaloszczyk@ottoworkforce.eu>
+ * @author Mariusz Waloszczyk
  */
 final class AggregateInvariantValidationServiceImpl implements AggregateInvariantValidationService
 {
     /**
      * @inheritDoc
-     * @author Mariusz Waloszczyk<mwaloszczyk@ottoworkforce.eu>
+     * @author Mariusz Waloszczyk
      */
     public function validate(array $invariants, AggregateRoot $aggregate): void
     {

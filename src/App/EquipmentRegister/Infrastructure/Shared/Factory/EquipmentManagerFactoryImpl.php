@@ -14,14 +14,14 @@ use App\Shared\Infrastructure\Factory\ActorFactoryAuthenticatedEmployeeImpl;
 /**
  * Implementation of {@see EquipmentManagerFactory} creating instance of {@see FleetManager}
  *
- * @author Mariusz Waloszczyk<mwaloszczyk@ottoworkforce.eu>
+ * @author Mariusz Waloszczyk
  */
 final readonly class EquipmentManagerFactoryImpl extends ActorFactoryAuthenticatedEmployeeImpl implements
     EquipmentManagerFactory
 {
     /**
      * @inheritDoc
-     * @author Mariusz Waloszczyk<mwaloszczyk@ottoworkforce.eu>
+     * @author Mariusz Waloszczyk
      */
     protected function getPermissionEnum(): string
     {
@@ -30,7 +30,7 @@ final readonly class EquipmentManagerFactoryImpl extends ActorFactoryAuthenticat
 
     /**
      * @inheritDoc
-     * @author Mariusz Waloszczyk<mwaloszczyk@ottoworkforce.eu>
+     * @author Mariusz Waloszczyk
      */
     protected function createActorInstance(string $identifier, array $permissions, string $organizationalUnitId): Actor
     {

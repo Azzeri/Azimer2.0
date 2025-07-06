@@ -9,7 +9,7 @@ use App\Shared\Domain\Repository\StandardRepository;
 /**
  * Repository to retrieve or save equipment category aggregate
  *
- * @author Mariusz Waloszczyk<mwaloszczyk@ottoworkforce.eu>
+ * @author Mariusz Waloszczyk
  */
 interface EquipmentCategoryRepository extends StandardRepository
 {

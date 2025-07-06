@@ -11,7 +11,7 @@ use Ecotone\Modelling\CommandBus;
 /**
  * Implementation of {@see EquipmentCategoryApiService}
  *
- * @author Mariusz Waloszczyk<mwaloszczyk@ottoworkforce.eu>
+ * @author Mariusz Waloszczyk
  */
 final readonly class EquipmentCategoryApiServiceImpl implements EquipmentCategoryApiService
 {
@@ -25,7 +25,7 @@ final readonly class EquipmentCategoryApiServiceImpl implements EquipmentCategor
 
     /**
      * @inheritDoc
-     * @author Mariusz Waloszczyk<mwaloszczyk@ottoworkforce.eu>
+     * @author Mariusz Waloszczyk
      */
     public function createCategory(EquipmentCategoryInputData $inputData): void
     {

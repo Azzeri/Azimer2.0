@@ -10,13 +10,13 @@ use App\Shared\DomainUtilities\Domain\Actor;
 /**
  * Actor that is managing equipment in the application
  *
- * @author Mariusz Waloszczyk<mwaloszczyk@ottoworkforce.eu>
+ * @author Mariusz Waloszczyk
  */
 final readonly class EquipmentManager extends Actor
 {
     /**
      * @return bool
-     * @author Mariusz Waloszczyk<mwaloszczyk@ottoworkforce.eu>
+     * @author Mariusz Waloszczyk
      */
     public function canAddCategory(): bool
     {

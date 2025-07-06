@@ -28,10 +28,19 @@ final readonly class EquipmentCategoryName extends ValueObject
     /**
      * @param string $name
      * @return EquipmentCategoryName
-     * @author Mariusz Waloszczyk<mwaloszczyk@ottoworkforce.eu>
+     * @author Mariusz Waloszczyk
      */
     public static function fromString(string $name): EquipmentCategoryName
     {
         return new self($name);
+    }
+
+    /**
+     * @return string
+     * @author Mariusz Waloszczyk
+     */
+    public function __toString(): string
+    {
+        return $this->name;
     }
 }

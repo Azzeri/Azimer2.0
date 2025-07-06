@@ -9,6 +9,7 @@ use App\EquipmentRegister\Domain\EquipmentCategory\Dto\EquipmentCategoryInputDat
 use Nelmio\ApiDocBundle\Attribute\Model;
 use OpenApi\Attributes as OA;
 use Symfony\Component\HttpFoundation\JsonResponse;
+use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpKernel\Attribute\MapRequestPayload;
 use Symfony\Component\Routing\Annotation\Route;
 
@@ -38,6 +39,6 @@ final readonly class CreateEquipmentCategoryController
         #[MapRequestPayload] EquipmentCategoryInputData $inputData
     ): JsonResponse {
         $categoryApiService->createCategory($inputData);
-        return new JsonResponse(['ok'], 200);
+        return new JsonResponse(['ok'], Response::HTTP_CREATED);
     }
 }

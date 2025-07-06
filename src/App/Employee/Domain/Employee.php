@@ -38,15 +38,12 @@ final class Employee extends AggregateRoot
         #[ORM\Id]
         #[ORM\Column(type: EmployeeIdType::NAME, unique: true)]
         private EmployeeId $id,
-
         /** @phpstan-ignore-next-line */
         #[ORM\Embedded(class: EmployeeFullName::class)]
         private EmployeeFullName $fullName,
-
         /** @phpstan-ignore-next-line */
         #[ORM\Embedded(class: EmployeeEmail::class)]
         private EmployeeEmail $email,
-
         /** @phpstan-ignore-next-line */
         #[ORM\Embedded(class: EmployeeUnitId::class)]
         private EmployeeUnitId $employeeUnitId,

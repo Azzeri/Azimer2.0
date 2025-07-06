@@ -7,13 +7,13 @@ namespace App\Shared\DomainUtilities\Domain;
 /**
  * A common class for actors performing actions in the application
  *
- * @author Mariusz Waloszczyk<mwaloszczyk@ottoworkforce.eu>
+ * @author Mariusz Waloszczyk
  */
 abstract readonly class Actor extends ValueObject
 {
     /**
      * @param string $identifier
-     * @param array $permissions
+     * @param array<int, string> $permissions
      * @param string $organizationalUnitId
      */
     public function __construct(
@@ -28,7 +28,7 @@ abstract readonly class Actor extends ValueObject
      *
      * @param string $permission
      * @return bool
-     * @author Mariusz Waloszczyk<mwaloszczyk@ottoworkforce.eu>
+     * @author Mariusz Waloszczyk
      */
     public function hasPermission(string $permission): bool
     {

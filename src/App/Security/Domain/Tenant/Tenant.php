@@ -45,15 +45,12 @@ final class Tenant extends AggregateRoot
         #[ORM\Id]
         #[ORM\Column(type: TenantEmailType::NAME, unique: true)]
         private TenantId $email,
-
         /** @phpstan-ignore-next-line */
         #[ORM\Embedded(class: HashedPassword::class)]
         private HashedPassword $password,
-
         /** @phpstan-ignore-next-line */
         #[ORM\Column(type: Types::STRING, enumType: TenantStatus::class)]
         private TenantStatus $status,
-
         /** @phpstan-ignore-next-line */
         #[ORM\ManyToMany(targetEntity: Role::class, inversedBy: 'tenants', cascade: ['persist'])]
         #[ORM\JoinTable(

@@ -7,7 +7,7 @@ namespace App\EquipmentRegister\Domain\Shared\Enum;
 /**
  * A permission specifying action that the equipment manager can perform
  *
- * @author Mariusz Waloszczyk<mwaloszczyk@ottoworkforce.eu>
+ * @author Mariusz Waloszczyk
  */
 enum EquipmentPermission: string
 {

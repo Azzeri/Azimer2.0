@@ -33,18 +33,14 @@ class EquipmentTemplate extends AggregateRoot
         #[ORM\Id]
         #[ORM\Column(type: EquipmentTemplateIdType::NAME, unique: true)]
         private EquipmentTemplateId $id,
-
         #[ORM\Embedded(EquipmentTemplateName::class), ]
         private EquipmentTemplateName $name,
-
         #[ORM\ManyToOne(targetEntity: EquipmentCategory::class)]
         #[ORM\JoinColumn(nullable: false)]
         private EquipmentCategory $category,
-
         #[ORM\ManyToOne(targetEntity: EquipmentManufacturer::class)]
         #[ORM\JoinColumn(nullable: false)]
         private EquipmentManufacturer $manufacturer,
-
         #[ORM\ManyToMany(targetEntity: EquipmentTemplateProperty::class, cascade: ['persist'])]
         private Collection $properties
     ) {

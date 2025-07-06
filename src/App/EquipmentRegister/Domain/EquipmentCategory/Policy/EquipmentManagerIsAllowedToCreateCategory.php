@@ -19,7 +19,7 @@ interface EquipmentManagerIsAllowedToCreateCategory
      *
      * @param EquipmentManager $manager
      * @return BusinessRulesNotificationsCollection
-     * @author Mariusz Waloszczyk<mwaloszczyk@ottoworkforce.eu>
+     * @author Mariusz Waloszczyk
      */
     public function isSatisfiedBy(EquipmentManager $manager): BusinessRulesNotificationsCollection;
 }

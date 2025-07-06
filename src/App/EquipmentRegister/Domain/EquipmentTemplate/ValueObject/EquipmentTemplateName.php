@@ -15,7 +15,7 @@ use Doctrine\ORM\Mapping as ORM;
  * @author Mariusz Waloszczyk <mwaloszczyk@ottoworkforce.eu>
  */
 #[ORM\Embeddable]
-final readonly class EquipmentTemplateName extends  ValueObject
+final readonly class EquipmentTemplateName extends ValueObject
 {
     private function __construct(
         #[ORM\Column(type: Types::STRING)]

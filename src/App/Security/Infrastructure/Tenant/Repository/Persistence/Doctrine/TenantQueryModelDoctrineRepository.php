@@ -38,10 +38,10 @@ final readonly class TenantQueryModelDoctrineRepository implements TenantQueryRe
         $sql = "
             SELECT t.email, t.password_hashed, t.status, r.name AS role_name, res.name AS resource_name
             FROM tenant t
-            JOIN tenant_role tr ON t.email = tr.tenant_id
-            JOIN role r ON tr.role_id = r.name
-            JOIN role_resource rr ON r.name = rr.role_id
-            JOIN resource res ON rr.resource_id = res.name
+            LEFT JOIN tenant_role tr ON t.email = tr.tenant_id
+            LEFT JOIN role r ON tr.role_id = r.name
+            LEFT JOIN role_resource rr ON r.name = rr.role_id
+            LEFT JOIN resource res ON rr.resource_id = res.name
             WHERE t.email = :tenantId
         ";
 
@@ -59,8 +59,12 @@ final readonly class TenantQueryModelDoctrineRepository implements TenantQueryRe
         $resources = [];
 
         foreach ($results as $row) {
-            $roles[] = $row['role_name'];
-            $resources[] = $row['resource_name'];
+            if ($row['role_name']) {
+                $roles[] = $row['role_name'];
+            }
+            if ($row['resource_name']) {
+                $resources[] = $row['resource_name'];
+            }
         }
 
         return new TenantQueryModel(

@@ -11,6 +11,6 @@ use Exception;
  *
  * @author Mariusz Waloszczyk
  */
-final  class AuthenticationException extends Exception
+final class AuthenticationException extends Exception
 {
 }

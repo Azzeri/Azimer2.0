@@ -28,5 +28,4 @@ interface EmployeeQueryModelRepository
      * @author Mariusz Waloszczyk
      */
     public function findByEmail(EmployeeEmail $email): ?EmployeeQueryModel;
-
 }
