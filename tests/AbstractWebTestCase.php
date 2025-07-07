@@ -124,6 +124,20 @@ abstract class AbstractWebTestCase extends WebTestCase
     }
 
     /**
+     * Decode client's response to array
+     *
+     * @return mixed
+     * @author Mariusz Waloszczyk <mwaloszczyk@ottoworkforce.eu>
+     */
+    protected function decodeResponse(): mixed
+    {
+        $responseContent = $this->client->getResponse()
+            ->getContent();
+
+        return json_decode($responseContent, true);
+    }
+
+    /**
      * Generate JWT token for test user. User will have the requested permissions assigned
      *
      * @param array<int, string> $permissions
@@ -143,7 +157,7 @@ abstract class AbstractWebTestCase extends WebTestCase
         /** @var JWTTokenManagerInterface $jwtManager */
         $jwtManager = $this->service(JWTTokenManagerInterface::class);
         return 'Bearer ' . $jwtManager->create(
-            new InMemoryUser(self::TEST_USER_EMAIL, 'Azimer1234#.', [self::TEST_USER_ROLE])
-        );
+                new InMemoryUser(self::TEST_USER_EMAIL, 'Azimer1234#.', [self::TEST_USER_ROLE])
+            );
     }
 }

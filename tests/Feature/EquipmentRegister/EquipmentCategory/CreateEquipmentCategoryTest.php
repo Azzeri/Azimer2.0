@@ -89,6 +89,9 @@ it(
         // Assert
         expect($response->getStatusCode())
             ->toBe(422, $response->getContent());
+
+        $response = $this->decodeResponse();
+        expect($response)->toBe("Category with the given name already exists.");
     }
 );
 

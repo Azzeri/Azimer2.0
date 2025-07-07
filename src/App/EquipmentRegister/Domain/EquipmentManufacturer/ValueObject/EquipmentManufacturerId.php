@@ -8,7 +8,7 @@ use App\Shared\DomainUtilities\Domain\UuidIdentifier;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- *
+ * Identifier for {@see EquipmentManufacturer}
  *
  * @author Mariusz Waloszczyk <mwaloszczyk@ottoworkforce.eu>
  */

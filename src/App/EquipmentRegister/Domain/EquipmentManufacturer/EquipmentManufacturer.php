@@ -10,10 +10,9 @@ use App\EquipmentRegister\Infrastructure\EquipmentManufacturer\Repository\Persis
 use App\Shared\DomainUtilities\Domain\AggregateRoot;
 use Doctrine\ORM\Mapping as ORM;
 use Ecotone\Modelling\Attribute as CQRS;
-use Symfony\Component\Uid\Uuid;
 
 /**
- *
+ * Aggregate representing equipment manufacturers
  *
  * @author Mariusz Waloszczyk <mwaloszczyk@ottoworkforce.eu>
  */
@@ -21,7 +20,11 @@ use Symfony\Component\Uid\Uuid;
 #[CQRS\Aggregate]
 class EquipmentManufacturer extends AggregateRoot
 {
-    private function __construct(
+    /**
+     * @param EquipmentManufacturerId $id
+     * @param EquipmentManufacturerName $name
+     */
+    public function __construct(
         #[CQRS\Identifier]
         #[ORM\Id]
         #[ORM\Column(type: EquipmentManufacturerIdType::NAME, unique: true)]
@@ -31,12 +34,12 @@ class EquipmentManufacturer extends AggregateRoot
     ) {
     }
 
-    public static function create(
-        EquipmentManufacturerName $name
-    ) {
-        return new self(
-            EquipmentManufacturerId::fromString(Uuid::v4()->toString()),
-            $name
-        );
+    /**
+     * @return EquipmentManufacturerId
+     * @author Mariusz Waloszczyk
+     */
+    public function getId(): EquipmentManufacturerId
+    {
+        return $this->id;
     }
 }

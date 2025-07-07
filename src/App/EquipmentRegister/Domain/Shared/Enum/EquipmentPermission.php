@@ -13,4 +13,7 @@ enum EquipmentPermission: string
 {
     /** Can add a new equipment category */
     case CATEGORY_ADD = 'equipment_category_add';
+
+    /** Can add a new equipment manufacturer */
+    case MANUFACTURER_ADD = 'equipment_manufacturer_add';
 }
