@@ -5,9 +5,9 @@ declare(strict_types=1);
 namespace App\EquipmentRegister\Domain\EquipmentTemplate\Enum;
 
 /**
+ * Possible types of equipment template properties
  *
- *
- * @author Mariusz Waloszczyk <mwaloszczyk@ottoworkforce.eu>
+ * @author Mariusz Waloszczyk
  */
 enum EquipmentTemplatePropertyType: string
 {

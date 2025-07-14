@@ -1,0 +1,38 @@
+<?php
+
+declare(strict_types=1);
+
+namespace App\EquipmentRegister\Domain\EquipmentTemplate\Entity;
+
+use App\EquipmentRegister\Domain\EquipmentTemplate\EquipmentTemplate;
+use App\Shared\DomainUtilities\Domain\Entity;
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * This entity represents assignment between equipment template and property definition
+ *
+ * @author Mariusz Waloszczyk
+ */
+#[ORM\Entity]
+final class EquipmentTemplateProperty extends Entity
+{
+    /**
+     * @param int $id
+     * @param EquipmentTemplate $template
+     * @param EquipmentTemplatePropertyDefinition $definition
+     * @param bool $isRequired
+     */
+    public function __construct(
+        #[ORM\Id]
+        #[ORM\GeneratedValue]
+        #[ORM\Column]
+        private int $id,
+        #[ORM\ManyToOne(targetEntity: EquipmentTemplate::class, inversedBy: "properties")]
+        private EquipmentTemplate $template,
+        #[ORM\ManyToOne(targetEntity: EquipmentTemplatePropertyDefinition::class)]
+        private EquipmentTemplatePropertyDefinition $definition,
+        #[ORM\Column]
+        private bool $isRequired,
+    ) {
+    }
+}
