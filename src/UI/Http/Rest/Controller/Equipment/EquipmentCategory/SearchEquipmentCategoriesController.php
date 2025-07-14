@@ -10,7 +10,7 @@ use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\Routing\Annotation\Route;
 
 /**
- * Controller that returns list of a single category
+ * Controller that returns list of categories
  *
  * @psalm-suppress UnusedClass
  * @author Mariusz Waloszczyk

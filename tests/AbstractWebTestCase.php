@@ -94,11 +94,32 @@ abstract class AbstractWebTestCase extends WebTestCase
     }
 
     /**
+     * Send a GET request and return response. Token is generated for the requested permissions.
+     *
+     * @param string $uri
+     * @param array<int, string> $tenantPermissions
+     * @return Response
+     * @author Mariusz Waloszczyk
+     */
+    protected function sendGet(string $uri, array $tenantPermissions): Response
+    {
+        $this->client->request(
+            method: 'GET',
+            uri: $uri,
+            server: [
+                'HTTP_Authorization' => $this->getJwtWithPermissions($tenantPermissions)
+            ],
+        );
+
+        return $this->client->getResponse();
+    }
+
+    /**
      * Send a POST request and return response. Token is generated for the requested permissions.
      *
      * @param array|object $payload
      * @param string $uri
-     * @param array $tenantPermissions
+     * @param array<int, string> $tenantPermissions
      * @return Response
      * @author Mariusz Waloszczyk
      */
@@ -109,15 +130,13 @@ abstract class AbstractWebTestCase extends WebTestCase
             throw new \Exception("Invalid JSON payload");
         }
         $this->client->request(
-            'POST',
-            $uri,
-            [],
-            [],
-            [
+            method: 'POST',
+            uri: $uri,
+            server: [
                 'CONTENT_TYPE' => 'application/json',
                 'HTTP_Authorization' => $this->getJwtWithPermissions($tenantPermissions)
             ],
-            $payload
+            content: $payload
         );
 
         return $this->client->getResponse();

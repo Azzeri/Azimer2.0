@@ -4,7 +4,11 @@ declare(strict_types=1);
 
 namespace App\EquipmentRegister\Application\EquipmentManufacturer\Service;
 
+use App\EquipmentRegister\Application\EquipmentManufacturer\Query\Dto\EquipmentManufacturerQueryModel;
 use App\EquipmentRegister\Domain\EquipmentManufacturer\Dto\EquipmentManufacturerInputData;
+use App\EquipmentRegister\Domain\EquipmentManufacturer\ValueObject\EquipmentManufacturerId;
+use App\Shared\QueryUtilities\Domain\QueryItem;
+use App\Shared\QueryUtilities\Domain\QueryItemCollection;
 
 /**
  * API service exposing equipment manufacturer operations to other bounded contexts and UI layer
@@ -13,6 +17,23 @@ use App\EquipmentRegister\Domain\EquipmentManufacturer\Dto\EquipmentManufacturer
  */
 interface EquipmentManufacturerApiService
 {
+    /**
+     * Return a single manufacturer or null
+     *
+     * @param EquipmentManufacturerId $id
+     * @return QueryItem<EquipmentManufacturerQueryModel>|null
+     * @author Mariusz Waloszczyk
+     */
+    public function findById(EquipmentManufacturerId $id): ?QueryItem;
+
+    /**
+     * Return a list of manufacturers
+     *
+     * @return QueryItemCollection<EquipmentManufacturerQueryModel>
+     * @author Mariusz Waloszczyk
+     */
+    public function search(): QueryItemCollection;
+
     /**
      * Create a new manufacturer
      *
