@@ -14,7 +14,9 @@ use App\Security\Domain\Tenant\Tenant;
 use App\Shared\DomainUtilities\Exception\InvalidDataException;
 use App\Shared\DomainUtilities\Exception\ResourceNotFoundException;
 use Doctrine\Bundle\FixturesBundle\Fixture;
+use Doctrine\Bundle\FixturesBundle\FixtureGroupInterface;
 use Doctrine\Persistence\ObjectManager;
+use PHPUnit\Framework\Attributes\Group;
 use Symfony\Component\Uid\Uuid;
 use Tests\AbstractWebTestCase;
 
@@ -23,7 +25,8 @@ use Tests\AbstractWebTestCase;
  * @psalm-suppress UnusedClass
  * @author Mariusz Waloszczyk
  */
-class AppFixtures extends Fixture
+#[Group('test')]
+class FeatureTestFixtures extends Fixture implements FixtureGroupInterface
 {
     /**
      * @param TenantPasswordService $passwordService
@@ -68,5 +71,14 @@ class AppFixtures extends Fixture
         $manager->persist($employee);
 
         $manager->flush();
+    }
+
+    /**
+     * @inheritDoc
+     * @author Mariusz Waloszczyk
+     */
+    public static function getGroups(): array
+    {
+        return ['test'];
     }
 }
