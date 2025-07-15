@@ -54,7 +54,7 @@ abstract readonly class StandardRepositoryDoctrineImpl implements StandardReposi
     {
         $model = $this->findBy($this->getClassName(), [$this->getIdentifierPropertyName() => (string)$id]);
         if (null === $model) {
-            throw new ResourceNotFoundException();
+            throw new ResourceNotFoundException("Resource: $id not found");
         }
         return $model;
     }

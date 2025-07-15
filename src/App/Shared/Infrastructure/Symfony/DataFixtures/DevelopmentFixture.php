@@ -11,6 +11,12 @@ use App\EquipmentRegister\Domain\EquipmentCategory\ValueObject\EquipmentCategory
 use App\EquipmentRegister\Domain\EquipmentManufacturer\Builder\EquipmentManufacturerBuilder;
 use App\EquipmentRegister\Domain\EquipmentManufacturer\EquipmentManufacturer;
 use App\EquipmentRegister\Domain\EquipmentManufacturer\ValueObject\EquipmentManufacturerName;
+use App\EquipmentRegister\Domain\EquipmentTemplate\Builder\EquipmentTemplateBuilder;
+use App\EquipmentRegister\Domain\EquipmentTemplate\Builder\EquipmentTemplatePropertyDefinitionBuilder;
+use App\EquipmentRegister\Domain\EquipmentTemplate\Entity\EquipmentTemplatePropertyDefinition;
+use App\EquipmentRegister\Domain\EquipmentTemplate\Enum\EquipmentTemplatePropertyDefinitionType;
+use App\EquipmentRegister\Domain\EquipmentTemplate\ValueObject\EquipmentTemplateName;
+use App\EquipmentRegister\Domain\EquipmentTemplate\ValueObject\EquipmentTemplatePropertyDefinitionName;
 use App\EquipmentRegister\Domain\Shared\Enum\EquipmentPermission;
 use App\FireBrigadeUnit\Application\Command\AddFireBrigadeUnit\AddFireBrigadeUnitCommand;
 use App\FireBrigadeUnit\Domain\FireBrigadeUnit;
@@ -100,14 +106,33 @@ class DevelopmentFixture extends Fixture implements FixtureGroupInterface
         $employee = Employee::create($employee);
         $manager->persist($employee);
 
-        foreach ($this->prepareCategories() as $category) {
+        $categories = $this->prepareCategories();
+        $manufacturers = $this->prepareManufacturers();
+        $properties = $this->preparePropertyDefinitions();
+
+        foreach ($categories as $category) {
             $manager->persist($category);
         }
 
-        foreach ($this->prepareManufacturers() as $manufacturer) {
+        foreach ($manufacturers as $manufacturer) {
             $manager->persist($manufacturer);
         }
 
+        foreach ($properties as $property) {
+            $manager->persist($property);
+        }
+
+        $template = (new EquipmentTemplateBuilder())
+            ->withName(EquipmentTemplateName::fromString("Butla Honeywell stalowa"))
+            ->withCategory($categories[0])
+            ->withManufacturer($manufacturers[0])
+            ->build();
+
+        foreach ($properties as $property) {
+            $template->assignProperty($property, true);
+        }
+
+        $manager->persist($template);
         $manager->flush();
     }
 
@@ -162,6 +187,36 @@ class DevelopmentFixture extends Fixture implements FixtureGroupInterface
 
         return [$firstManufacturer, $secondManufacturer, $thirdManufacturer];
     }
+
+    /**
+     * @return array<int, EquipmentTemplatePropertyDefinition>
+     * @author Mariusz Waloszczyk
+     */
+    private function preparePropertyDefinitions(): array
+    {
+        $serialNumber = (new EquipmentTemplatePropertyDefinitionBuilder())
+            ->withName(EquipmentTemplatePropertyDefinitionName::fromString("Serial number"))
+            ->withType(EquipmentTemplatePropertyDefinitionType::TEXT)
+            ->build();
+
+        $expiryDate = (new EquipmentTemplatePropertyDefinitionBuilder())
+            ->withName(EquipmentTemplatePropertyDefinitionName::fromString("Expiry date"))
+            ->withType(EquipmentTemplatePropertyDefinitionType::DATE)
+            ->build();
+
+        $isFillable = (new EquipmentTemplatePropertyDefinitionBuilder())
+            ->withName(EquipmentTemplatePropertyDefinitionName::fromString("Can be filled?"))
+            ->withType(EquipmentTemplatePropertyDefinitionType::YES_NO)
+            ->build();
+
+        $price = (new EquipmentTemplatePropertyDefinitionBuilder())
+            ->withName(EquipmentTemplatePropertyDefinitionName::fromString("Price"))
+            ->withType(EquipmentTemplatePropertyDefinitionType::DECIMAL)
+            ->build();
+
+        return [$serialNumber, $expiryDate, $isFillable, $price];
+    }
+
 
     /**
      * @inheritDoc

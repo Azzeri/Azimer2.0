@@ -27,7 +27,7 @@ final class EquipmentCategoryBuilder
     public function __construct()
     {
         $this->id = EquipmentCategoryId::generate();
-        $this->name = EquipmentCategoryName::fromString('Helmet');
+        $this->name = EquipmentCategoryName::fromString('Helmet' . uniqid());
     }
 
     /**

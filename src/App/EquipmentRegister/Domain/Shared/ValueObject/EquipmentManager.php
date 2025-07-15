@@ -31,4 +31,13 @@ final readonly class EquipmentManager extends Actor
     {
         return $this->hasPermission(EquipmentPermission::MANUFACTURER_ADD->value);
     }
+
+    /**
+     * @return bool
+     * @author Mariusz Waloszczyk
+     */
+    public function canAddTemplate(): bool
+    {
+        return $this->hasPermission(EquipmentPermission::TEMPLATE_ADD->value);
+    }
 }

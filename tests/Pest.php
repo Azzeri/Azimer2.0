@@ -14,9 +14,13 @@
 |
 */
 
-pest()->extend(\Tests\AbstractWebTestCase::class)
+use App\Shared\CommonUtilities\ReflectionUtils;
+use Tests\AbstractWebTestCase;
+use Tests\TestCase;
+
+pest()->extend(AbstractWebTestCase::class)
     ->in('Feature');
-pest()->extend(\Tests\TestCase::class)
+pest()->extend(TestCase::class)
     ->in('Unit');
 
 /*
@@ -31,7 +35,7 @@ pest()->extend(\Tests\TestCase::class)
 */
 
 expect()->extend('toHavePrivatePropertyEqualTo', function (string $property, mixed $value) {
-    expect(\App\Shared\DomainUtilities\Domain\AggregatePropertyGetter::getProperty($this->value, $property))
+    expect(ReflectionUtils::getReflectionPropertyValue($this->value, $property))
         ->toEqual($value);
 });
 

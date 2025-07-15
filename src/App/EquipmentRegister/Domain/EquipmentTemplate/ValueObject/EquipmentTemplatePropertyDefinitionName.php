@@ -34,4 +34,13 @@ final readonly class EquipmentTemplatePropertyDefinitionName extends ValueObject
     {
         return new self($name);
     }
+
+    /**
+     * @return string
+     * @author Mariusz Waloszczyk
+     */
+    public function __toString(): string
+    {
+        return $this->name;
+    }
 }

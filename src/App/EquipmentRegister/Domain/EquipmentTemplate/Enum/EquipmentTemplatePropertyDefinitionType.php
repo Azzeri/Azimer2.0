@@ -9,7 +9,7 @@ namespace App\EquipmentRegister\Domain\EquipmentTemplate\Enum;
  *
  * @author Mariusz Waloszczyk
  */
-enum EquipmentTemplatePropertyType: string
+enum EquipmentTemplatePropertyDefinitionType: string
 {
     case YES_NO = 'yes_no';
 

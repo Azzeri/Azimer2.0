@@ -7,10 +7,12 @@ namespace App\EquipmentRegister\Domain\EquipmentTemplate;
 use App\EquipmentRegister\Domain\EquipmentCategory\EquipmentCategory;
 use App\EquipmentRegister\Domain\EquipmentManufacturer\EquipmentManufacturer;
 use App\EquipmentRegister\Domain\EquipmentTemplate\Entity\EquipmentTemplateProperty;
+use App\EquipmentRegister\Domain\EquipmentTemplate\Entity\EquipmentTemplatePropertyDefinition;
 use App\EquipmentRegister\Domain\EquipmentTemplate\ValueObject\EquipmentTemplateId;
 use App\EquipmentRegister\Domain\EquipmentTemplate\ValueObject\EquipmentTemplateName;
 use App\EquipmentRegister\Infrastructure\EquipmentTemplate\Repository\Persistence\Doctrine\Type\Identifier\EquipmentTemplateIdType;
 use App\Shared\DomainUtilities\Domain\AggregateRoot;
+use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Ecotone\Modelling\Attribute as CQRS;
@@ -38,8 +40,20 @@ class EquipmentTemplate extends AggregateRoot
         #[ORM\ManyToOne(targetEntity: EquipmentManufacturer::class)]
         #[ORM\JoinColumn(nullable: false)]
         private EquipmentManufacturer $manufacturer,
+        /**  @var Collection<int, EquipmentTemplateProperty> $properties */
         #[ORM\OneToMany(mappedBy: "template", targetEntity: EquipmentTemplateProperty::class, cascade: ["persist"], orphanRemoval: true)]
-        private Collection $properties
+        private Collection $properties = new ArrayCollection()
     ) {
+    }
+
+    /**
+     * @param EquipmentTemplatePropertyDefinition $property
+     * @param bool $isRequired
+     * @return void
+     * @author Mariusz Waloszczyk
+     */
+    public function assignProperty(EquipmentTemplatePropertyDefinition $property, bool $isRequired): void
+    {
+        $this->properties->add(new EquipmentTemplateProperty($this, $property, $isRequired));
     }
 }

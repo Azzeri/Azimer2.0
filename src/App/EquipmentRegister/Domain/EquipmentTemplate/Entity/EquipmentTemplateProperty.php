@@ -17,22 +17,22 @@ use Doctrine\ORM\Mapping as ORM;
 final class EquipmentTemplateProperty extends Entity
 {
     /**
-     * @param int $id
+     * @param int|null $id
      * @param EquipmentTemplate $template
      * @param EquipmentTemplatePropertyDefinition $definition
      * @param bool $isRequired
      */
     public function __construct(
-        #[ORM\Id]
-        #[ORM\GeneratedValue]
-        #[ORM\Column]
-        private int $id,
         #[ORM\ManyToOne(targetEntity: EquipmentTemplate::class, inversedBy: "properties")]
         private EquipmentTemplate $template,
         #[ORM\ManyToOne(targetEntity: EquipmentTemplatePropertyDefinition::class)]
         private EquipmentTemplatePropertyDefinition $definition,
         #[ORM\Column]
         private bool $isRequired,
+        #[ORM\Id]
+        #[ORM\GeneratedValue]
+        #[ORM\Column]
+        private ?int $id = null,
     ) {
     }
 }

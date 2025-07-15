@@ -5,14 +5,15 @@ declare(strict_types=1);
 namespace App\EquipmentRegister\Infrastructure\EquipmentTemplate\Repository\Persistence\Doctrine\Type\Identifier;
 
 use App\EquipmentRegister\Domain\EquipmentTemplate\ValueObject\EquipmentTemplatePropertyDefinitionId;
-use App\Shared\Infrastructure\Doctrine\Type\Identifier\AbstractIntegerIdentifierType;
+use App\Shared\DomainUtilities\Exception\InvalidDataException;
+use App\Shared\Infrastructure\Doctrine\Type\Identifier\AbstractUuidIdentifierType;
 
 /**
- * Custom type for equipment template definition id
+ * Custom type for equipment template definition ID
  *
  * @author Mariusz Waloszczyk
  */
-final class EquipmentTemplatePropertyDefinitionIdType extends AbstractIntegerIdentifierType
+final class EquipmentTemplatePropertyDefinitionIdType extends AbstractUuidIdentifierType
 {
     /**
      * Unique name of the type
@@ -21,11 +22,12 @@ final class EquipmentTemplatePropertyDefinitionIdType extends AbstractIntegerIde
 
     /**
      * @inheritDoc
+     * @throws InvalidDataException
      * @author Mariusz Waloszczyk
      */
-    protected function fromInt(int $value): object
+    protected function fromString(string $value): object
     {
-        return EquipmentTemplatePropertyDefinitionId::fromInt($value);
+        return EquipmentTemplatePropertyDefinitionId::fromString($value);
     }
 
     /**

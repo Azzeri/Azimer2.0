@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace App\EquipmentRegister\Domain\EquipmentTemplate\ValueObject;
 
-use App\Shared\DomainUtilities\Domain\IntegerIdentifier;
+use App\Shared\DomainUtilities\Domain\UuidIdentifier;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -13,6 +13,6 @@ use Doctrine\ORM\Mapping as ORM;
  * @author Mariusz Waloszczyk
  */
 #[ORM\Embeddable]
-final readonly class EquipmentTemplatePropertyDefinitionId extends IntegerIdentifier
+final readonly class EquipmentTemplatePropertyDefinitionId extends UuidIdentifier
 {
 }

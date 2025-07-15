@@ -22,7 +22,7 @@ final class EquipmentManufacturerBuilder
     public function __construct()
     {
         $this->id = EquipmentManufacturerId::generate();
-        $this->name = EquipmentManufacturerName::fromString('Manufacturer');
+        $this->name = EquipmentManufacturerName::fromString('Manufacturer' . uniqid());
     }
 
     /**

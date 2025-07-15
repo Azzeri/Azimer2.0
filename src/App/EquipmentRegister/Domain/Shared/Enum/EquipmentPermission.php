@@ -16,4 +16,7 @@ enum EquipmentPermission: string
 
     /** Can add a new equipment manufacturer */
     case MANUFACTURER_ADD = 'equipment_manufacturer_add';
+
+    /** Can add a new equipment template */
+    case TEMPLATE_ADD = 'equipment_template_add';
 }
