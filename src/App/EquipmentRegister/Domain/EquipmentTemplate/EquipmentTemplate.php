@@ -47,6 +47,15 @@ class EquipmentTemplate extends AggregateRoot
     }
 
     /**
+     * @return EquipmentTemplateId
+     * @author Mariusz Waloszczyk
+     */
+    public function getId(): EquipmentTemplateId
+    {
+        return $this->id;
+    }
+
+    /**
      * @param EquipmentTemplatePropertyDefinition $property
      * @param bool $isRequired
      * @return void

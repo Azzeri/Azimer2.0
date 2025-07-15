@@ -56,8 +56,7 @@
     "autoload-dev": {
         "psr-4": {
             "Tests\\": "tests/",
-            "DataFixtures\\": "src/App/Shared/Infrastructure/Symfony/DataFixtures/",
-            "DoctrineMigrations\\": "src/App/Shared/Infrastructure/Doctrine/Migration/"
+            "DataFixtures\\": "src/App/Shared/Infrastructure/Symfony/DataFixtures/"
         }
     },
     "replace": {

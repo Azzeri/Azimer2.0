@@ -5,7 +5,12 @@ declare(strict_types=1);
 namespace App\EquipmentRegister\Application\EquipmentTemplate\Service;
 
 use App\EquipmentRegister\Application\EquipmentTemplate\Command\CreateEquipmentTemplate\CreateEquipmentTemplate;
+use App\EquipmentRegister\Application\EquipmentTemplate\Query\Definition\GetEquipmentTemplate;
+use App\EquipmentRegister\Application\EquipmentTemplate\Query\Definition\SearchEquipmentTemplates;
 use App\EquipmentRegister\Domain\EquipmentTemplate\Dto\EquipmentTemplateInputData;
+use App\EquipmentRegister\Domain\EquipmentTemplate\ValueObject\EquipmentTemplateId;
+use App\Shared\QueryUtilities\Domain\QueryItem;
+use App\Shared\QueryUtilities\Domain\QueryItemCollection;
 use Ecotone\Modelling\CommandBus;
 use Ecotone\Modelling\QueryBus;
 
@@ -26,23 +31,23 @@ final readonly class EquipmentTemplateApiServiceImpl implements EquipmentTemplat
     ) {
     }
 
-//    /**
-//     * @inheritDoc
-//     * @author Mariusz Waloszczyk
-//     */
-//    public function findById(EquipmentTemplateId $id): ?QueryItem
-//    {
-//        return $this->queryBus->send(new GetEquipmentTemplate($id));
-//    }
-//
-//    /**
-//     * @inheritDoc
-//     * @author Mariusz Waloszczyk
-//     */
-//    public function search(): QueryItemCollection
-//    {
-//        return $this->queryBus->send(new SearchEquipmentTemplates());
-//    }
+    /**
+     * @inheritDoc
+     * @author Mariusz Waloszczyk
+     */
+    public function findById(EquipmentTemplateId $id): ?QueryItem
+    {
+        return $this->queryBus->send(new GetEquipmentTemplate($id));
+    }
+
+    /**
+     * @inheritDoc
+     * @author Mariusz Waloszczyk
+     */
+    public function search(): QueryItemCollection
+    {
+        return $this->queryBus->send(new SearchEquipmentTemplates());
+    }
 
     /**
      * @inheritDoc
