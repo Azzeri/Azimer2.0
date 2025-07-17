@@ -43,4 +43,13 @@ final class EquipmentTemplatePropertyDefinition extends Entity
     {
         return $this->id;
     }
+
+    /**
+     * @return EquipmentTemplatePropertyDefinitionType
+     * @author Mariusz Waloszczyk
+     */
+    public function getPropertyType(): EquipmentTemplatePropertyDefinitionType
+    {
+        return $this->propertyType;
+    }
 }

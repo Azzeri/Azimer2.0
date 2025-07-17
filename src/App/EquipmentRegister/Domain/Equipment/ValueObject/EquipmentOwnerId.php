@@ -8,11 +8,11 @@ use App\Shared\DomainUtilities\Domain\UuidIdentifier;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * A unique equipment identifier
+ * An identifier of organizational unit that owns the equipment
  *
  * @author Mariusz Waloszczyk <mwaloszczyk@ottoworkforce.eu>
  */
 #[ORM\Embeddable]
-final readonly class EquipmentId extends UuidIdentifier
+final readonly class EquipmentOwnerId extends UuidIdentifier
 {
 }

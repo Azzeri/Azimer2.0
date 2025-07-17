@@ -33,7 +33,7 @@ class FireBrigadeUnit extends AggregateRoot
      * @param Collection $subservientUnits
      * @author Mariusz Waloszczyk
      */
-    private function __construct(
+    public function __construct(
         #[CQRS\Identifier]
         #[ORM\Id]
         #[ORM\Column(type: FireBrigadeUnitIdType::NAME, unique: true)]
@@ -101,6 +101,10 @@ class FireBrigadeUnit extends AggregateRoot
      */
     public function isSubservientTo(FireBrigadeUnitId $fireBrigadeUnitId): bool
     {
-        return $this->superiorUnit->getId()->equals($fireBrigadeUnitId);
+        if ($this->superiorUnit) {
+            return $this->superiorUnit->getId()->equals($fireBrigadeUnitId);
+        }
+
+        return false;
     }
 }

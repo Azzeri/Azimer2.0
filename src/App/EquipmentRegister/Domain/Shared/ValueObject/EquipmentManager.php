@@ -40,4 +40,31 @@ final readonly class EquipmentManager extends Actor
     {
         return $this->hasPermission(EquipmentPermission::TEMPLATE_ADD->value);
     }
+
+    /**
+     * @return bool
+     * @author Mariusz Waloszczyk
+     */
+    public function canAddEquipmentToAnyUnit(): bool
+    {
+        return $this->hasPermission(EquipmentPermission::EQUIPMENT_ADD_ALL_UNITS->value);
+    }
+
+    /**
+     * @return bool
+     * @author Mariusz Waloszczyk
+     */
+    public function canAddEquipmentToOwnUnit(): bool
+    {
+        return $this->hasPermission(EquipmentPermission::EQUIPMENT_ADD_OWN_UNIT->value);
+    }
+
+    /**
+     * @return bool
+     * @author Mariusz Waloszczyk
+     */
+    public function canAddEquipmentToSubservientUnits(): bool
+    {
+        return $this->hasPermission(EquipmentPermission::EQUIPMENT_ADD_SUBSERVIENT_UNITS->value);
+    }
 }

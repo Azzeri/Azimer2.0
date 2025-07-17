@@ -2,6 +2,8 @@
 
 namespace Tests;
 
+use App\Employee\Domain\Employee;
+use App\Employee\Domain\ValueObject\EmployeeUnitId;
 use App\Security\Domain\Resource\Resource;
 use App\Security\Domain\Resource\ValueObject\ResourceId;
 use App\Security\Domain\Role\Role;
@@ -98,16 +100,20 @@ abstract class AbstractWebTestCase extends WebTestCase
      *
      * @param string $uri
      * @param array<int, string> $tenantPermissions
+     * @param string|null $employeeUnit
      * @return Response
      * @author Mariusz Waloszczyk
      */
-    protected function sendGet(string $uri, array $tenantPermissions): Response
+    protected function sendGet(string $uri, array $tenantPermissions, ?string $employeeUnit = null): Response
     {
         $this->client->request(
             method: 'GET',
             uri: $uri,
             server: [
-                'HTTP_Authorization' => $this->getJwtWithPermissions($tenantPermissions)
+                'HTTP_Authorization' => $this->getJwtWithPermissionsAndOrganizationalUnit(
+                    $tenantPermissions,
+                    $employeeUnit
+                )
             ],
         );
 
@@ -121,10 +127,15 @@ abstract class AbstractWebTestCase extends WebTestCase
      * @param string $uri
      * @param array<int, string> $tenantPermissions
      * @return Response
+     * @throws \Exception
      * @author Mariusz Waloszczyk
      */
-    protected function sendPost(array|object $payload, string $uri, array $tenantPermissions): Response
-    {
+    protected function sendPost(
+        array|object $payload,
+        string $uri,
+        array $tenantPermissions,
+        ?string $employeeUnit = null
+    ): Response {
         $payload = json_encode($payload);
         if ($payload === false) {
             throw new \Exception("Invalid JSON payload");
@@ -134,7 +145,10 @@ abstract class AbstractWebTestCase extends WebTestCase
             uri: $uri,
             server: [
                 'CONTENT_TYPE' => 'application/json',
-                'HTTP_Authorization' => $this->getJwtWithPermissions($tenantPermissions)
+                'HTTP_Authorization' => $this->getJwtWithPermissionsAndOrganizationalUnit(
+                    $tenantPermissions,
+                    $employeeUnit
+                )
             ],
             content: $payload
         );
@@ -160,18 +174,29 @@ abstract class AbstractWebTestCase extends WebTestCase
      * Generate JWT token for test user. User will have the requested permissions assigned
      *
      * @param array<int, string> $permissions
+     * @param string|null $organizationalUnit
      * @return string
      * @author Mariusz Waloszczyk
      */
-    protected function getJwtWithPermissions(array $permissions): string
-    {
+    protected function getJwtWithPermissionsAndOrganizationalUnit(
+        array $permissions,
+        ?string $organizationalUnit = null
+    ): string {
         /** @var Role $role */
         $role = $this->entityManager->getRepository(Role::class)
             ->findOneBy(['name' => self::TEST_USER_ROLE]);
         foreach ($permissions as $permission) {
             $role->assignResource(Resource::create(ResourceId::fromUniqueName($permission)));
         }
-        $this->saveEntities([$role]);
+
+        if ($organizationalUnit) {
+            $employee = $this->entityManager->getRepository(Employee::class)
+                ->findOneBy(['email.email' => self::TEST_USER_EMAIL]);
+            $employee->reassignFireBrigadeUnit(EmployeeUnitId::fromString($organizationalUnit));
+            $this->saveEntities([$role, $employee]);
+        } else {
+            $this->saveEntities([$role]);
+        }
 
         /** @var JWTTokenManagerInterface $jwtManager */
         $jwtManager = $this->service(JWTTokenManagerInterface::class);

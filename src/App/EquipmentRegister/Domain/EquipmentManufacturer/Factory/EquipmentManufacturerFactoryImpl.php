@@ -4,8 +4,8 @@ declare(strict_types=1);
 
 namespace App\EquipmentRegister\Domain\EquipmentManufacturer\Factory;
 
-use App\EquipmentRegister\Domain\EquipmentCategory\Dto\EquipmentCategoryInputData;
 use App\EquipmentRegister\Domain\EquipmentManufacturer\Builder\EquipmentManufacturerBuilder;
+use App\EquipmentRegister\Domain\EquipmentManufacturer\Dto\EquipmentManufacturerInputData;
 use App\EquipmentRegister\Domain\EquipmentManufacturer\EquipmentManufacturer;
 use App\EquipmentRegister\Domain\EquipmentManufacturer\Invariant\EquipmentManufacturerInvariant;
 use App\EquipmentRegister\Domain\EquipmentManufacturer\ValueObject\EquipmentManufacturerName;
@@ -36,7 +36,7 @@ final readonly class EquipmentManufacturerFactoryImpl extends StandardAggregateF
 
     /**
      * @inheritDoc
-     * @param EquipmentCategoryInputData $inputData
+     * @param EquipmentManufacturerInputData $inputData
      * @author Mariusz Waloszczyk
      */
     protected function inputDataToAggregate(DataTransferObject $inputData): EquipmentManufacturer

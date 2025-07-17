@@ -24,6 +24,15 @@ abstract readonly class Actor extends ValueObject
     }
 
     /**
+     * @return string
+     * @author Mariusz Waloszczyk
+     */
+    public function getOrganizationalUnitId(): string
+    {
+        return $this->organizationalUnitId;
+    }
+
+    /**
      * Check if actor has a permission
      *
      * @param string $permission

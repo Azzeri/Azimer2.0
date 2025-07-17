@@ -31,7 +31,7 @@ final class EquipmentTemplateBuilder
         $manufacturer = (new EquipmentManufacturerBuilder)->build();
 
         $this->id = EquipmentTemplateId::generate();
-        $this->name = EquipmentTemplateName::fromString('Template');
+        $this->name = EquipmentTemplateName::fromString('Template' . uniqid());
         $this->category = $category;
         $this->manufacturer = $manufacturer;
     }

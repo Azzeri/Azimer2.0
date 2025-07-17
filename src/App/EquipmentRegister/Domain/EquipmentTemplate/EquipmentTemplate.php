@@ -56,6 +56,15 @@ class EquipmentTemplate extends AggregateRoot
     }
 
     /**
+     * @return Collection<int, EquipmentTemplateProperty>
+     * @author Mariusz Waloszczyk
+     */
+    public function getProperties(): Collection
+    {
+        return $this->properties;
+    }
+
+    /**
      * @param EquipmentTemplatePropertyDefinition $property
      * @param bool $isRequired
      * @return void

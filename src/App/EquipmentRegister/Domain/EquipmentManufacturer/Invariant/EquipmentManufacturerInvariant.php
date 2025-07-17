@@ -11,7 +11,7 @@ use Symfony\Component\DependencyInjection\Attribute\AutoconfigureTag;
 
 /**
  * A single invariant for {@see EquipmentManufacturer}
- * @extends AggregateInvariant<EquipmentCategory>
+ * @extends AggregateInvariant<EquipmentManufacturer>
  *
  * @author Mariusz Waloszczyk
  */

@@ -68,4 +68,14 @@ final class Employee extends AggregateRoot
             EmployeeUnitId::fromString($command->employeeUnitId),
         );
     }
+
+    /**
+     * @param EmployeeUnitId $employeeUnitId
+     * @return void
+     * @author Mariusz Waloszczyk
+     */
+    public function reassignFireBrigadeUnit(EmployeeUnitId $employeeUnitId): void
+    {
+        $this->employeeUnitId = $employeeUnitId;
+    }
 }

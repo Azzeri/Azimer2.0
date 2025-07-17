@@ -19,4 +19,13 @@ enum EquipmentPermission: string
 
     /** Can add a new equipment template */
     case TEMPLATE_ADD = 'equipment_template_add';
+
+    /** Can add equipment to own unit */
+    case EQUIPMENT_ADD_OWN_UNIT = 'equipment_add_own_unit';
+
+    /** Can add equipment to any unit */
+    case EQUIPMENT_ADD_ALL_UNITS = 'equipment_add_all_units';
+
+    /** Can add equipment to subservient units */
+    case EQUIPMENT_ADD_SUBSERVIENT_UNITS = 'equipment_add_subservient_units';
 }

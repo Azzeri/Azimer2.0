@@ -4,6 +4,9 @@ namespace App\Shared\Infrastructure\Symfony\DataFixtures;
 
 use App\Employee\Application\Command\AddEmployee\AddEmployeeCommand;
 use App\Employee\Domain\Employee;
+use App\EquipmentRegister\Domain\Equipment\Builder\EquipmentBuilder;
+use App\EquipmentRegister\Domain\Equipment\ValueObject\EquipmentOwnerId;
+use App\EquipmentRegister\Domain\Equipment\ValueObject\EquipmentPropertyValue;
 use App\EquipmentRegister\Domain\EquipmentCategory\Builder\EquipmentCategoryBuilder;
 use App\EquipmentRegister\Domain\EquipmentCategory\EquipmentCategory;
 use App\EquipmentRegister\Domain\EquipmentCategory\ValueObject\EquipmentCategoryId;
@@ -133,6 +136,33 @@ class DevelopmentFixture extends Fixture implements FixtureGroupInterface
         }
 
         $manager->persist($template);
+
+        $equipment = (new EquipmentBuilder())
+            ->withOwner(EquipmentOwnerId::fromString($unit->getId()->toString()))
+            ->withTemplate($template)
+            ->build();
+
+        $equipment->assignPropertyValue(
+            $properties[0]->getId(),
+            EquipmentPropertyValue::fromString('serial number 123456')
+        );
+
+        $equipment->assignPropertyValue(
+            $properties[1]->getId(),
+            EquipmentPropertyValue::fromString('2025-10-10')
+        );
+
+        $equipment->assignPropertyValue(
+            $properties[2]->getId(),
+            EquipmentPropertyValue::fromString('YES')
+        );
+
+        $equipment->assignPropertyValue(
+            $properties[3]->getId(),
+            EquipmentPropertyValue::fromString('33,654')
+        );
+
+        $manager->persist($equipment);
         $manager->flush();
     }
 
