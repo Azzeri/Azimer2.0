@@ -4,9 +4,10 @@ declare(strict_types=1);
 
 namespace UI\Http\Rest\Controller\Equipment\EquipmentManufacturer;
 
-use App\EquipmentRegister\Application\EquipmentManufacturer\Service\EquipmentManufacturerApiService;
+use App\EquipmentRegister\Application\EquipmentManufacturer\Query\Definition\GetEquipmentManufacturer;
 use App\EquipmentRegister\Domain\EquipmentManufacturer\ValueObject\EquipmentManufacturerId;
 use App\Shared\DomainUtilities\Exception\InvalidDataException;
+use Ecotone\Modelling\QueryBus;
 use OpenApi\Attributes as OA;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\Routing\Annotation\Route;
@@ -26,19 +27,21 @@ use Symfony\Component\Routing\Annotation\Route;
 final readonly class GetEquipmentManufacturerController
 {
     /**
-     * @param EquipmentManufacturerApiService $apiService
+     * @param QueryBus $queryBus
      * @param string $manufacturerId
      * @return JsonResponse
      * @throws InvalidDataException
      * @author Mariusz Waloszczyk
      */
     public function __invoke(
-        EquipmentManufacturerApiService $apiService,
+        QueryBus $queryBus,
         string $manufacturerId
     ): JsonResponse {
         return new JsonResponse(
-            $apiService->findById(
-                EquipmentManufacturerId::fromString($manufacturerId)
+            $queryBus->send(
+                new GetEquipmentManufacturer(
+                    EquipmentManufacturerId::fromString($manufacturerId)
+                )
             )
         );
     }

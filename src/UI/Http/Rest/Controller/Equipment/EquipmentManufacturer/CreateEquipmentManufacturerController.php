@@ -4,8 +4,9 @@ declare(strict_types=1);
 
 namespace UI\Http\Rest\Controller\Equipment\EquipmentManufacturer;
 
-use App\EquipmentRegister\Application\EquipmentManufacturer\Service\EquipmentManufacturerApiService;
+use App\EquipmentRegister\Application\EquipmentManufacturer\Command\CreateEquipmentManufacturer\CreateEquipmentManufacturer;
 use App\EquipmentRegister\Domain\EquipmentManufacturer\Dto\EquipmentManufacturerInputData;
+use Ecotone\Modelling\CommandBus;
 use Nelmio\ApiDocBundle\Attribute\Model;
 use OpenApi\Attributes as OA;
 use Symfony\Component\HttpFoundation\JsonResponse;
@@ -29,16 +30,16 @@ use Symfony\Component\Routing\Annotation\Route;
 final readonly class CreateEquipmentManufacturerController
 {
     /**
-     * @param EquipmentManufacturerApiService $manufacturerApiService
+     * @param CommandBus $commandBus
      * @param EquipmentManufacturerInputData $inputData
      * @return JsonResponse
      * @author Mariusz Waloszczyk
      */
     public function __invoke(
-        EquipmentManufacturerApiService $manufacturerApiService,
+        CommandBus $commandBus,
         #[MapRequestPayload] EquipmentManufacturerInputData $inputData
     ): JsonResponse {
-        $manufacturerApiService->createManufacturer($inputData);
+        $commandBus->send(new CreateEquipmentManufacturer($inputData));
         return new JsonResponse(['ok'], Response::HTTP_CREATED);
     }
 }

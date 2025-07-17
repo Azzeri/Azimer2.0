@@ -4,7 +4,8 @@ declare(strict_types=1);
 
 namespace UI\Http\Rest\Controller\Equipment\EquipmentManufacturer;
 
-use App\EquipmentRegister\Application\EquipmentManufacturer\Service\EquipmentManufacturerApiService;
+use App\EquipmentRegister\Application\EquipmentManufacturer\Query\Definition\SearchEquipmentManufacturers;
+use Ecotone\Modelling\QueryBus;
 use OpenApi\Attributes as OA;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\Routing\Annotation\Route;
@@ -24,13 +25,17 @@ use Symfony\Component\Routing\Annotation\Route;
 final readonly class SearchEquipmentManufacturersController
 {
     /**
-     * @param EquipmentManufacturerApiService $apiService
+     * @param QueryBus $queryBus
      * @return JsonResponse
      * @author Mariusz Waloszczyk
      */
     public function __invoke(
-        EquipmentManufacturerApiService $apiService,
+        QueryBus $queryBus,
     ): JsonResponse {
-        return new JsonResponse($apiService->search());
+        return new JsonResponse(
+            $queryBus->send(
+                new SearchEquipmentManufacturers()
+            )
+        );
     }
 }
