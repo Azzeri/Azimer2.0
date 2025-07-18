@@ -30,7 +30,7 @@ class EquipmentProperty extends Entity
         #[ORM\ManyToOne(targetEntity: Equipment::class, inversedBy: 'properties')]
         #[ORM\JoinColumn(nullable: false)]
         private Equipment $equipment,
-        #[ORM\ManyToOne(targetEntity: EquipmentTemplateProperty::class)]
+        #[ORM\ManyToOne(targetEntity: EquipmentTemplateProperty::class, cascade: ['persist'])]
         private EquipmentTemplateProperty $templateProperty,
         #[ORM\Id]
         #[ORM\GeneratedValue]

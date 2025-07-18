@@ -9,7 +9,7 @@ use App\Shared\QueryUtilities\Domain\QueryItem;
 use App\Shared\QueryUtilities\Domain\QueryItemCollection;
 
 /**
- * Query service for equipment mmanufacturers
+ * Query service for equipment manufacturers
  *
  * @author Mariusz Waloszczyk
  */

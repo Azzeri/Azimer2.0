@@ -34,10 +34,10 @@ class EquipmentTemplate extends AggregateRoot
         private EquipmentTemplateId $id,
         #[ORM\Embedded(EquipmentTemplateName::class)]
         private EquipmentTemplateName $name,
-        #[ORM\ManyToOne(targetEntity: EquipmentCategory::class)]
+        #[ORM\ManyToOne(targetEntity: EquipmentCategory::class, cascade: ['persist'])]
         #[ORM\JoinColumn(nullable: false)]
         private EquipmentCategory $category,
-        #[ORM\ManyToOne(targetEntity: EquipmentManufacturer::class)]
+        #[ORM\ManyToOne(targetEntity: EquipmentManufacturer::class, cascade: ['persist'])]
         #[ORM\JoinColumn(nullable: false)]
         private EquipmentManufacturer $manufacturer,
         /**  @var Collection<int, EquipmentTemplateProperty> $properties */

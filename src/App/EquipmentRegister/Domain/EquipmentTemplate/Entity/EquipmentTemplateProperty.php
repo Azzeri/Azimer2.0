@@ -26,7 +26,7 @@ final class EquipmentTemplateProperty extends Entity
     public function __construct(
         #[ORM\ManyToOne(targetEntity: EquipmentTemplate::class, inversedBy: "properties")]
         private EquipmentTemplate $template,
-        #[ORM\ManyToOne(targetEntity: EquipmentTemplatePropertyDefinition::class)]
+        #[ORM\ManyToOne(targetEntity: EquipmentTemplatePropertyDefinition::class, cascade: ['persist'])]
         private EquipmentTemplatePropertyDefinition $definition,
         #[ORM\Column]
         private bool $isRequired,
