@@ -201,7 +201,7 @@ abstract class AbstractWebTestCase extends WebTestCase
         /** @var JWTTokenManagerInterface $jwtManager */
         $jwtManager = $this->service(JWTTokenManagerInterface::class);
         return 'Bearer ' . $jwtManager->create(
-                new InMemoryUser(self::TEST_USER_EMAIL, 'Azimer1234#.', [self::TEST_USER_ROLE])
-            );
+            new InMemoryUser(self::TEST_USER_EMAIL, 'Azimer1234#.', [self::TEST_USER_ROLE])
+        );
     }
 }

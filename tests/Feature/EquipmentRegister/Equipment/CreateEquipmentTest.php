@@ -1,5 +1,17 @@
 <?php
 
+/**
+ *  cases:
+ *  - success if authorized to all and data is valid
+ *  - failed if own and not authorized to add to own
+ *  - failed if subservient and not authorized to add to subservient
+ *  - success if own and authorized to own
+ *  - success if subservient and authorized to subservient
+ *  - failed if not all required properties were provided
+ *  - failed if not nullable property provided as null
+ *  - failed if invalid property values were provided
+ */
+
 declare(strict_types=1);
 
 namespace Tests\Feature\EquipmentRegister\EquipmentCategory;
@@ -22,18 +34,6 @@ use App\Shared\CommonUtilities\ReflectionUtils;
 use Doctrine\Common\Collections\Collection;
 use Tests\SampleProvider\EquipmentRegister\Dto\EquipmentInputDataBuilder;
 
-/**
- *
- * cases:
- * - success if authorized to all and data is valid
- * - failed if own and not authorized to add to own
- * - failed if subservient and not authorized to add to subservient
- * - success if own and authorized to own
- * - success if subservient and authorized to subservient
- * - failed if not all required properties were provided
- * - failed if not nullable property provided as null
- * - failed if invalid property values were provided
- * */
 beforeEach(function () {
     $sampleData = [
         $this->manufacturer = (new EquipmentManufacturerBuilder())->build(),

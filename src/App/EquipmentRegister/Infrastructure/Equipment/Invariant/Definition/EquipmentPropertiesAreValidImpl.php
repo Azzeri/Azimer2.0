@@ -4,6 +4,7 @@ namespace App\EquipmentRegister\Infrastructure\Equipment\Invariant\Definition;
 
 use App\EquipmentRegister\Domain\Equipment\Entity\EquipmentProperty;
 use App\EquipmentRegister\Domain\Equipment\Equipment;
+// phpcs:ignore Generic.Files.LineLength.TooLong
 use App\EquipmentRegister\Domain\Equipment\Factory\EquipmentPropertyValidationStrategy\EquipmentPropertyValidationStrategyFactory;
 use App\EquipmentRegister\Domain\Equipment\Invariant\Definition\EquipmentPropertiesAreValid;
 use App\EquipmentRegister\Domain\EquipmentTemplate\Entity\EquipmentTemplateProperty;

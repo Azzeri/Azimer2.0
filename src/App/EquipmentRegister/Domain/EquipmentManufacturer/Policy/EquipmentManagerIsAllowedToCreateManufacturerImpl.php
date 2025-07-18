@@ -13,7 +13,8 @@ use App\Shared\BusinessRuleUtilities\Domain\ValueObject\BusinessRulesNotificatio
  *
  * @author Mariusz Waloszczyk
  */
-final readonly class EquipmentManagerIsAllowedToCreateManufacturerImpl implements EquipmentManagerIsAllowedToCreateManufacturer
+final readonly class EquipmentManagerIsAllowedToCreateManufacturerImpl implements
+    EquipmentManagerIsAllowedToCreateManufacturer
 {
     /**
      * @inheritDoc

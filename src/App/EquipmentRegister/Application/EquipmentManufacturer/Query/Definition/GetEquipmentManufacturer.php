@@ -2,7 +2,6 @@
 
 namespace App\EquipmentRegister\Application\EquipmentManufacturer\Query\Definition;
 
-
 use App\EquipmentRegister\Domain\EquipmentManufacturer\ValueObject\EquipmentManufacturerId;
 
 /**

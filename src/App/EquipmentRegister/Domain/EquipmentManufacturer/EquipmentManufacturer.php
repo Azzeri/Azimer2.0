@@ -6,6 +6,7 @@ namespace App\EquipmentRegister\Domain\EquipmentManufacturer;
 
 use App\EquipmentRegister\Domain\EquipmentManufacturer\ValueObject\EquipmentManufacturerId;
 use App\EquipmentRegister\Domain\EquipmentManufacturer\ValueObject\EquipmentManufacturerName;
+// phpcs:ignore Generic.Files.LineLength.TooLong
 use App\EquipmentRegister\Infrastructure\EquipmentManufacturer\Repository\Persistence\Doctrine\Type\Identifier\EquipmentManufacturerIdType;
 use App\Shared\DomainUtilities\Domain\AggregateRoot;
 use Doctrine\ORM\Mapping as ORM;

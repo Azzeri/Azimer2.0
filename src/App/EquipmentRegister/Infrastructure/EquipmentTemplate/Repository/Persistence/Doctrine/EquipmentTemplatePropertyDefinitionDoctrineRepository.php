@@ -15,8 +15,8 @@ use Ecotone\Modelling\Attribute\Repository;
  * @author Mariusz Waloszczyk
  */
 #[Repository]
-final readonly class EquipmentTemplatePropertyDefinitionDoctrineRepository extends
-    StandardRepositoryDoctrineImpl implements
+// phpcs:ignore Generic.Files.LineLength.TooLong
+final readonly class EquipmentTemplatePropertyDefinitionDoctrineRepository extends StandardRepositoryDoctrineImpl implements
     EquipmentTemplatePropertyDefinitionRepository
 {
     /**

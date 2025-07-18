@@ -27,8 +27,8 @@ final class EquipmentTemplateBuilder
      */
     public function __construct()
     {
-        $category = (new EquipmentCategoryBuilder)->build();
-        $manufacturer = (new EquipmentManufacturerBuilder)->build();
+        $category = (new EquipmentCategoryBuilder())->build();
+        $manufacturer = (new EquipmentManufacturerBuilder())->build();
 
         $this->id = EquipmentTemplateId::generate();
         $this->name = EquipmentTemplateName::fromString('Template' . uniqid());

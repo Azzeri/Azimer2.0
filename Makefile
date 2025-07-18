@@ -19,7 +19,7 @@ PEST_FEATURE       = ./vendor/bin/pest --configuration=phpunit.feature.xml
 PHPSTAN       = ./vendor/bin/phpstan
 PHP_CODE_SNIFFER  = ./vendor/bin/phpcs
 PHP_CBF  = ./vendor/bin/phpcbf
-PSALM = ./vendor/bin/psalm
+PSALM = ./vendor/bin/psalm --find-unused-code=false
 
 # Executables: local only
 SYMFONY_BIN   = symfony
@@ -134,7 +134,7 @@ stan: ## Run phpstan analysis
 psalm: ## Run PSALM analysis
 	@$(PSALM)
 
-quality: coverage cs-fix cs psalm stan ## Run full quality check
+quality: cs-fix cs psalm stan coverage ## Run full quality check
 
 coverage: ## Create the code coverage report with PEST
 	@XDEBUG_MODE=coverage $(PEST) --coverage --min=90

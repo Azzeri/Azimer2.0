@@ -7,6 +7,7 @@ namespace App\EquipmentRegister\Domain\EquipmentTemplate\Entity;
 use App\EquipmentRegister\Domain\EquipmentTemplate\Enum\EquipmentTemplatePropertyDefinitionType;
 use App\EquipmentRegister\Domain\EquipmentTemplate\ValueObject\EquipmentTemplatePropertyDefinitionId;
 use App\EquipmentRegister\Domain\EquipmentTemplate\ValueObject\EquipmentTemplatePropertyDefinitionName;
+// phpcs:ignore Generic.Files.LineLength.TooLong
 use App\EquipmentRegister\Infrastructure\EquipmentTemplate\Repository\Persistence\Doctrine\Type\Identifier\EquipmentTemplatePropertyDefinitionIdType;
 use App\Shared\DomainUtilities\Domain\Entity;
 use Doctrine\ORM\Mapping as ORM;

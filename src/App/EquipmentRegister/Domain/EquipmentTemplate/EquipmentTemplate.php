@@ -10,6 +10,7 @@ use App\EquipmentRegister\Domain\EquipmentTemplate\Entity\EquipmentTemplatePrope
 use App\EquipmentRegister\Domain\EquipmentTemplate\Entity\EquipmentTemplatePropertyDefinition;
 use App\EquipmentRegister\Domain\EquipmentTemplate\ValueObject\EquipmentTemplateId;
 use App\EquipmentRegister\Domain\EquipmentTemplate\ValueObject\EquipmentTemplateName;
+// phpcs:ignore Generic.Files.LineLength.TooLong
 use App\EquipmentRegister\Infrastructure\EquipmentTemplate\Repository\Persistence\Doctrine\Type\Identifier\EquipmentTemplateIdType;
 use App\Shared\DomainUtilities\Domain\AggregateRoot;
 use Doctrine\Common\Collections\ArrayCollection;
@@ -41,7 +42,12 @@ class EquipmentTemplate extends AggregateRoot
         #[ORM\JoinColumn(nullable: false)]
         private EquipmentManufacturer $manufacturer,
         /**  @var Collection<int, EquipmentTemplateProperty> $properties */
-        #[ORM\OneToMany(mappedBy: "template", targetEntity: EquipmentTemplateProperty::class, cascade: ["persist"], orphanRemoval: true)]
+        #[ORM\OneToMany(
+            mappedBy: "template",
+            targetEntity: EquipmentTemplateProperty::class,
+            cascade: ["persist"],
+            orphanRemoval: true
+        )]
         private Collection $properties = new ArrayCollection()
     ) {
     }

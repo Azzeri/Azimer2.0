@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace UI\Http\Rest\Controller\Equipment\EquipmentManufacturer;
 
+// phpcs:ignore Generic.Files.LineLength.TooLong
 use App\EquipmentRegister\Application\EquipmentManufacturer\Command\CreateEquipmentManufacturer\CreateEquipmentManufacturer;
 use App\EquipmentRegister\Domain\EquipmentManufacturer\Dto\EquipmentManufacturerInputData;
 use Ecotone\Modelling\CommandBus;
