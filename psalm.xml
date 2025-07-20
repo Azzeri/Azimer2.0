@@ -13,44 +13,14 @@
         <directory name="tests"/>
         <ignoreFiles>
             <directory name="vendor"/>
+            <directory name="tests"/>
             <directory name="src/App/Shared/Infrastructure/Doctrine/Migration"/>
         </ignoreFiles>
     </projectFiles>
     <issueHandlers>
-        <InternalMethod>
-            <errorLevel type="suppress">
-                <!-- PSALM seems to have a problem with PEST methods, so I had to ignore these -->
-                <directory name="**/tests/*"/>
-                <file name="tests/**"/>
-            </errorLevel>
-        </InternalMethod>
-        <InvalidScope>
-            <errorLevel type="suppress">
-                <!-- PSALM seems to have a problem with PEST methods, so I had to ignore these -->
-                <directory name="**/tests/*"/>
-                <file name="tests/**"/>
-            </errorLevel>
-        </InvalidScope>
-        <PossiblyUnusedProperty>
-            <errorLevel type="suppress">
-                <!-- DTOs are often mapped as API, and therefore, their properties are not directly used -->
-                <file name="**/Dto/*"/>
-                <!-- Event can be dispatched, but they are not necessarily used -->
-                <file name="**/Event/*"/>
-            </errorLevel>
-        </PossiblyUnusedProperty>
-        <PossiblyUnusedMethod>
-            <errorLevel type="suppress">
-                <file name="tests/**"/>
-                <directory name="**/tests/*"/>
-            </errorLevel>
-        </PossiblyUnusedMethod>
-        <UnusedClass>
-            <errorLevel type="suppress">
-                <!-- Controllers are not directly used -->
-                <directory name="**/Controller/*"/>
-            </errorLevel>
-        </UnusedClass>
+        <UnusedClass errorLevel="suppress" />
+        <UnusedMethod errorLevel="suppress" />
+        <UnusedProperty errorLevel="suppress" />
     </issueHandlers>
     <plugins>
         <pluginClass class="Psalm\MockeryPlugin\Plugin"/>

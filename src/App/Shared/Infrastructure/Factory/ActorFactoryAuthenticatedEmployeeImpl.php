@@ -50,6 +50,7 @@ abstract readonly class ActorFactoryAuthenticatedEmployeeImpl implements ActorFa
             )
         );
 
+        /** @var T */
         return $this->createActorInstance(
             $employee['id'],
             $permissions,

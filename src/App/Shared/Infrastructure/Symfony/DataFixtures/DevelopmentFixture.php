@@ -104,7 +104,7 @@ class DevelopmentFixture extends Fixture implements FixtureGroupInterface
             'Azimer',
             'Admin',
             'admin@azimer.com',
-            $unit->getId()
+            (string)$unit->getId()
         );
         $employee = Employee::create($employee);
         $manager->persist($employee);
