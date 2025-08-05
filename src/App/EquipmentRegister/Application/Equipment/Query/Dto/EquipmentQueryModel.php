@@ -19,6 +19,7 @@ final readonly class EquipmentQueryModel
      * @param EquipmentQueryModelManufacturer $manufacturer
      * @param EquipmentQueryModelCategory $category
      * @param array<int, EquipmentQueryModelProperty> $properties
+     * @param array<int, EquipmentQueryModelUsage> $usages
      */
     public function __construct(
         public string $id,
@@ -27,7 +28,8 @@ final readonly class EquipmentQueryModel
         public string $owner,
         public EquipmentQueryModelManufacturer $manufacturer,
         public EquipmentQueryModelCategory $category,
-        public array $properties
+        public array $properties,
+        public array $usages
     ) {
     }
 }

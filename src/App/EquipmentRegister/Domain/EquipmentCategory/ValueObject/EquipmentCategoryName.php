@@ -11,7 +11,7 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * A unique name for every category
  *
- * @author Mariusz Waloszczyk <mwaloszczyk@ottoworkforce.eu>
+ * @author Mariusz Waloszczyk
  */
 #[ORM\Embeddable]
 final readonly class EquipmentCategoryName extends ValueObject

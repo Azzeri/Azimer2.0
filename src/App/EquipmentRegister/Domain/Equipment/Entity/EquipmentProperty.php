@@ -13,7 +13,7 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * Entity representing a specific property of an equipment piece, based on a property template definition
  *
- * @author Mariusz Waloszczyk <mwaloszczyk@ottoworkforce.eu>
+ * @author Mariusz Waloszczyk
  */
 #[ORM\Entity]
 class EquipmentProperty extends Entity

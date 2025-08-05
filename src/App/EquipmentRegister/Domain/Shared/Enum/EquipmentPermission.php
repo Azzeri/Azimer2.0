@@ -28,4 +28,13 @@ enum EquipmentPermission: string
 
     /** Can add equipment to subservient units */
     case EQUIPMENT_ADD_SUBSERVIENT_UNITS = 'equipment_add_subservient_units';
+
+    /** Can register usage for equipment in own unit */
+    case EQUIPMENT_USAGE_REGISTER_OWN_UNIT = 'equipment_usage_register_own_unit';
+
+    /** Can register usage for equipment in all units */
+    case EQUIPMENT_USAGE_REGISTER_ALL_UNITS = 'equipment_usage_register_all_units';
+
+    /** Can register usage for equipment in subservient units */
+    case EQUIPMENT_USAGE_REGISTER_SUBSERVIENT_UNITS = 'equipment_usage_register_subservient_units';
 }

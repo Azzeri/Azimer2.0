@@ -160,7 +160,7 @@ abstract class AbstractWebTestCase extends WebTestCase
      * Decode client's response to array
      *
      * @return mixed
-     * @author Mariusz Waloszczyk <mwaloszczyk@ottoworkforce.eu>
+     * @author Mariusz Waloszczyk
      */
     protected function decodeResponse(): mixed
     {

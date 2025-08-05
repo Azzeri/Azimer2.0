@@ -10,7 +10,7 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * An identifier of organizational unit that owns the equipment
  *
- * @author Mariusz Waloszczyk <mwaloszczyk@ottoworkforce.eu>
+ * @author Mariusz Waloszczyk
  */
 #[ORM\Embeddable]
 final readonly class EquipmentOwnerId extends UuidIdentifier

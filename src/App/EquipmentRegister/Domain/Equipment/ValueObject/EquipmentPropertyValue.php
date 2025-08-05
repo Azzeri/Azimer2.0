@@ -11,7 +11,7 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * A specific value for equipment property in a form of string
  *
- * @author Mariusz Waloszczyk <mwaloszczyk@ottoworkforce.eu>
+ * @author Mariusz Waloszczyk
  */
 #[ORM\Embeddable]
 final readonly class EquipmentPropertyValue extends ValueObject

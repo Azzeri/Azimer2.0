@@ -15,6 +15,7 @@ doctrine:
             equipment_manufacturer_id: App\EquipmentRegister\Infrastructure\EquipmentManufacturer\Repository\Persistence\Doctrine\Type\Identifier\EquipmentManufacturerIdType
             equipment_category_id: App\EquipmentRegister\Infrastructure\EquipmentCategory\Repository\Persistence\Doctrine\Type\Identifier\EquipmentCategoryIdType
             equipment_id: App\EquipmentRegister\Infrastructure\Equipment\Repository\Persistence\Doctrine\Type\Identifier\EquipmentIdType
+            equipment_usage_id: App\EquipmentUsage\Infrastructure\Repository\Persistence\Doctrine\Type\Identifier\EquipmentUsageIdType
     orm:
         auto_generate_proxy_classes: true
         enable_lazy_ghost_objects: true
@@ -63,6 +64,12 @@ doctrine:
                 dir: '%kernel.project_dir%/src/App/EquipmentRegister/Domain/'
                 prefix: 'App\EquipmentRegister\Domain'
                 alias: App\EquipmentRegister\Domain
+            EquipmentUsage:
+                is_bundle: false
+                type: attribute
+                dir: '%kernel.project_dir%/src/App/EquipmentUsage/Domain/'
+                prefix: 'App\EquipmentUsage\Domain'
+                alias: App\EquipmentUsage\Domain
 when@test:
     doctrine:
         dbal:

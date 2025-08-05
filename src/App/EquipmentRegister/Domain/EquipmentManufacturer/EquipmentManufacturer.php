@@ -15,7 +15,7 @@ use Ecotone\Modelling\Attribute as CQRS;
 /**
  * Aggregate representing equipment manufacturers
  *
- * @author Mariusz Waloszczyk <mwaloszczyk@ottoworkforce.eu>
+ * @author Mariusz Waloszczyk
  */
 #[ORM\Entity]
 #[CQRS\Aggregate]

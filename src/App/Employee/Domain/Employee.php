@@ -70,6 +70,15 @@ final class Employee extends AggregateRoot
     }
 
     /**
+     * @return EmployeeId
+     * @author Mariusz Waloszczyk
+     */
+    public function getId(): EmployeeId
+    {
+        return $this->id;
+    }
+
+    /**
      * @param EmployeeUnitId $employeeUnitId
      * @return void
      * @author Mariusz Waloszczyk

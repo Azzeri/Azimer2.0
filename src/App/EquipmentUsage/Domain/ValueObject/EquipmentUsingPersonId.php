@@ -2,17 +2,17 @@
 
 declare(strict_types=1);
 
-namespace App\EquipmentRegister\Domain\Equipment\ValueObject;
+namespace App\EquipmentUsage\Domain\ValueObject;
 
 use App\Shared\DomainUtilities\Domain\UuidIdentifier;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * A unique equipment identifier
+ * An identifier of the person using the equipment
  *
  * @author Mariusz Waloszczyk
  */
 #[ORM\Embeddable]
-final readonly class EquipmentId extends UuidIdentifier
+final readonly class EquipmentUsingPersonId extends UuidIdentifier
 {
 }

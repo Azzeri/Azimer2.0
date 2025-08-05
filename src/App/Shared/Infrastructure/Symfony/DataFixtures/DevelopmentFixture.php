@@ -21,6 +21,10 @@ use App\EquipmentRegister\Domain\EquipmentTemplate\Enum\EquipmentTemplatePropert
 use App\EquipmentRegister\Domain\EquipmentTemplate\ValueObject\EquipmentTemplateName;
 use App\EquipmentRegister\Domain\EquipmentTemplate\ValueObject\EquipmentTemplatePropertyDefinitionName;
 use App\EquipmentRegister\Domain\Shared\Enum\EquipmentPermission;
+use App\EquipmentUsage\Domain\Builder\EquipmentUsageBuilder;
+use App\EquipmentUsage\Domain\ValueObject\EquipmentUsageDescription;
+use App\EquipmentUsage\Domain\ValueObject\EquipmentUsingPersonId;
+use App\EquipmentUsage\Domain\ValueObject\UsedEquipmentId;
 use App\FireBrigadeUnit\Application\Command\AddFireBrigadeUnit\AddFireBrigadeUnitCommand;
 use App\FireBrigadeUnit\Domain\FireBrigadeUnit;
 use App\FireBrigadeUnit\Domain\Repository\FireBrigadeUnitRepository;
@@ -163,6 +167,14 @@ class DevelopmentFixture extends Fixture implements FixtureGroupInterface
         );
 
         $manager->persist($equipment);
+
+        $usage = (new EquipmentUsageBuilder())
+            ->withUsedEquipmentId(UsedEquipmentId::fromString($equipment->getId()->toString()))
+            ->withUsingPersonId(EquipmentUsingPersonId::fromString($employee->getId()->toString()))
+            ->withDescription(EquipmentUsageDescription::create('Jakiś tam opis'))
+            ->build();
+
+        $manager->persist($usage);
         $manager->flush();
     }
 
