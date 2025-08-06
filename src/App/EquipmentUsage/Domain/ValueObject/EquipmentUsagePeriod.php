@@ -45,7 +45,7 @@ final readonly class EquipmentUsagePeriod extends ValueObject
         $from = CarbonImmutable::instance($period->getStartDate());
         $to = CarbonImmutable::instance($period->getEndDate());
 
-        if ($from->gt($to)) {
+        if (!$period->valid()) {
             throw new BusinessRuleViolationException(message: 'Start date must not be after end date.');
         }
 

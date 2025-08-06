@@ -271,4 +271,11 @@ it(
         'expectedUsagesCount' => 1,
         'expectedError' => 'Overlapping usage periods detected',
     ],
+    'invalid dates range' => [
+        'from' => Carbon::yesterday()->setTime(11, 14, 00)->format('Y-m-d H:i:s'),
+        'to' => Carbon::yesterday()->setTime(11, 13, 30)->format('Y-m-d H:i:s'),
+        'expectedStatus' => 422,
+        'expectedUsagesCount' => 1,
+        'expectedError' => 'Start date must not be after end date.',
+    ],
 ]);
