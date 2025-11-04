@@ -40,3 +40,8 @@
     - mikroserwisy
     - frontend
     - refresh token
+
+  "email": "jerry@test.test",
+  "password": "string",
+
+insert into employee values ('8b1c2d4e-7f32-4c91-9a07-1f6e3a8f4d12','Jerry', 'Doe', 'jerry@test.test', '3f0e3a9c-cc6e-4f49-9f56-a9b8d50d7a5e');

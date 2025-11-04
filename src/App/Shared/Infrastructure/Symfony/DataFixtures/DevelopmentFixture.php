@@ -4,6 +4,15 @@ namespace App\Shared\Infrastructure\Symfony\DataFixtures;
 
 use App\Employee\Application\Command\AddEmployee\AddEmployeeCommand;
 use App\Employee\Domain\Employee;
+use App\EquipmentMaintenance\Domain\EquipmentMaintenance;
+use App\EquipmentMaintenance\Domain\ValueObject\AssignedToId;
+use App\EquipmentMaintenance\Domain\ValueObject\EquipmentMaintenanceDescription;
+use App\EquipmentMaintenance\Domain\ValueObject\EquipmentMaintenanceId;
+use App\EquipmentMaintenance\Domain\ValueObject\MaintainedEquipmentId;
+use App\EquipmentMaintenance\Domain\ValueObject\MaintenancePeriod;
+use App\EquipmentMaintenance\Domain\ValueObject\PerformedById;
+use App\EquipmentMaintenance\Domain\ValueObject\PeriodUntilNextMaintenance;
+use App\EquipmentMaintenance\Domain\ValueObject\PlannedMaintenanceDate;
 use App\EquipmentRegister\Domain\Equipment\Builder\EquipmentBuilder;
 use App\EquipmentRegister\Domain\Equipment\ValueObject\EquipmentOwnerId;
 use App\EquipmentRegister\Domain\Equipment\ValueObject\EquipmentPropertyValue;
@@ -40,6 +49,9 @@ use App\Security\Domain\Tenant\Service\TenantPasswordService;
 use App\Security\Domain\Tenant\Tenant;
 use App\Shared\DomainUtilities\Exception\InvalidDataException;
 use App\Shared\DomainUtilities\Exception\ResourceNotFoundException;
+use Carbon\Carbon;
+use Carbon\CarbonPeriod;
+use DateTimeImmutable;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Bundle\FixturesBundle\FixtureGroupInterface;
 use Doctrine\Persistence\ObjectManager;
@@ -175,6 +187,38 @@ class DevelopmentFixture extends Fixture implements FixtureGroupInterface
             ->build();
 
         $manager->persist($usage);
+
+
+        $unfinishedMaintenance = new EquipmentMaintenance(
+            EquipmentMaintenanceId::generate(),
+            MaintainedEquipmentId::fromString($equipment->getId()->toString()),
+            AssignedToId::fromString($employee->getId()->toString()),
+            PlannedMaintenanceDate::fromDateTime(new DateTimeImmutable()),
+            null,
+            null,
+            null,
+            EquipmentMaintenanceDescription::create("To clean")
+        );
+        $maintenanceToFinish = new EquipmentMaintenance(
+            EquipmentMaintenanceId::generate(),
+            MaintainedEquipmentId::fromString($equipment->getId()->toString()),
+            AssignedToId::fromString($employee->getId()->toString()),
+            PlannedMaintenanceDate::fromDateTime(new DateTimeImmutable("2025-10-10 11:00:00")),
+            null,
+            null,
+            PeriodUntilNextMaintenance::fromDays(14),
+            EquipmentMaintenanceDescription::create("To throw away")
+        );
+        $manager->persist($unfinishedMaintenance);
+        $manager->persist($maintenanceToFinish);
+
+        $maintenanceToFinish->complete(
+            PerformedById::fromString($employee->getId()->toString()),
+            MaintenancePeriod::create(CarbonPeriod::create("2025-10-10 11:00:00", "2025-10-10 12:00:00")),
+            Carbon::create("2025-10-10 12:00:00")->addDays(14)
+        );
+
+        $manager->persist($maintenanceToFinish);
         $manager->flush();
     }
 
